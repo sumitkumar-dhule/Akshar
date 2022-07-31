@@ -1,17 +1,24 @@
 package com.diligentapps.core.presentation
 
 import android.content.Context
+import android.media.MediaPlayer
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.diligentapps.core.R
 import com.diligentapps.core.domain.model.DisplayCharacter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 @HiltViewModel
-class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val context: Context): ViewModel() {
+class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
+    ViewModel() {
+
+
+    private var sound = MediaPlayer.create(context, R.raw.beep)
+
 
     var displayCharacters: List<DisplayCharacter> = listOf(DisplayCharacter())
 
@@ -19,24 +26,54 @@ class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val cont
 
     var displayCharacterState: DisplayCharacter by mutableStateOf(displayCharacters[currentIndex])
 
-    fun setup(){
+    fun setup() {
         displayCharacterState = displayCharacters[currentIndex]
+        playSound()
     }
 
     fun next() {
+        if (isSoundPlaying()) {
+            return
+        }
 
-        if (currentIndex < displayCharacters.lastIndex) {
+        if (currentIndex == displayCharacters.lastIndex) {
+            currentIndex = 0
+        } else {
             currentIndex++
         }
+
         displayCharacterState = displayCharacters[currentIndex]
+
+        playSound()
 
     }
 
     fun previous() {
-        if (currentIndex > 1) {
+        if (isSoundPlaying()) {
+            return
+        }
+
+        if (currentIndex == 0) {
+            currentIndex = displayCharacters.lastIndex
+        } else {
             currentIndex--
         }
+
         displayCharacterState = displayCharacters[currentIndex]
+
+        playSound()
+
     }
 
+    fun playSound() {
+        if (isSoundPlaying()) {
+            return
+        }
+        sound = MediaPlayer.create(context, displayCharacters[currentIndex].audio)
+        sound.start()
+    }
+
+    private fun isSoundPlaying(): Boolean {
+        return sound.isPlaying
+    }
 }
