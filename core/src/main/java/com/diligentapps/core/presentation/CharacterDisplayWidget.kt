@@ -60,6 +60,7 @@ fun CharacterDisplayWidget(
                     modifier = Modifier.size(160.dp, 160.dp),
                     letter = alphabate.display,
                     fontSize = 90.sp,
+                    subtitle = alphabate.subtitle,
                     onClick = { characterDisplayViewModel.playSound() }
                 )
 
@@ -91,16 +92,34 @@ fun CharacterDisplayWidget(
 }
 
 @Composable
-fun DisplaySlip(modifier: Modifier, letter: String, fontSize: TextUnit, onClick: () -> Unit = {}) {
+fun DisplaySlip(
+    modifier: Modifier,
+    letter: String,
+    subtitle: String = "",
+    fontSize: TextUnit,
+    onClick: () -> Unit = {}
+) {
 
     Box(
-        modifier = modifier.clip(RoundedCornerShape(8.dp))
+        modifier = modifier
+            .clip(RoundedCornerShape(8.dp))
             .background(Brush.verticalGradient(listOf(Color.Blue, Color.DarkGray)))
             .shadow(elevation = 1.dp, shape = RectangleShape)
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
+
         Text(text = letter, fontSize = fontSize, color = Color.White)
+
+        if (subtitle.isNotEmpty())
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(8.dp),
+                contentAlignment = Alignment.BottomEnd
+            ) {
+                Text(text = subtitle, fontSize = 32.sp, color = Color.White, modifier = Modifier.padding(horizontal = 8.dp))
+            }
     }
 
 }
