@@ -4,13 +4,17 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -55,7 +59,9 @@ fun CharacterDisplayWidget(
                 DisplaySlip(
                     modifier = Modifier.size(160.dp, 160.dp),
                     letter = alphabate.display,
-                    fontSize = 90.sp
+                    fontSize = 90.sp,
+                    subtitle = alphabate.subtitle,
+                    onClick = { characterDisplayViewModel.playSound() }
                 )
 
                 DisplaySlip(
@@ -66,12 +72,17 @@ fun CharacterDisplayWidget(
                 )
             }
 
-            Text(text = alphabate.displayName, fontSize = 80.sp)
-            Box(modifier = Modifier.fillMaxSize(0.7f), contentAlignment = Alignment.Center){
+            Text(text = alphabate.displayName, fontSize = 50.sp, color = Color.DarkGray)
+            Box(modifier = Modifier.size(300.dp, 300.dp), contentAlignment = Alignment.Center) {
 
-                Image(painter = alphabate.displayImage
+                Image(
+                    painter = alphabate.displayImage
                         ?: painterResource(id = R.drawable.ic_image_placeholder),
-                    contentDescription = "alphabet"
+                    contentDescription = "alphabet",
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    contentScale = ContentScale.Fit,
+                    alpha = 0.95f
                 )
             }
 
@@ -81,16 +92,34 @@ fun CharacterDisplayWidget(
 }
 
 @Composable
-fun DisplaySlip(modifier: Modifier, letter: String, fontSize: TextUnit, onClick: () -> Unit = {}) {
+fun DisplaySlip(
+    modifier: Modifier,
+    letter: String,
+    subtitle: String = "",
+    fontSize: TextUnit,
+    onClick: () -> Unit = {}
+) {
 
     Box(
         modifier = modifier
-            .background(Color.White)
+            .clip(RoundedCornerShape(8.dp))
+            .background(Brush.verticalGradient(listOf(Color.Blue, Color.DarkGray)))
             .shadow(elevation = 1.dp, shape = RectangleShape)
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = letter, fontSize = fontSize)
+
+        Text(text = letter, fontSize = fontSize, color = Color.White)
+
+        if (subtitle.isNotEmpty())
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(8.dp),
+                contentAlignment = Alignment.BottomEnd
+            ) {
+                Text(text = subtitle, fontSize = 32.sp, color = Color.White, modifier = Modifier.padding(horizontal = 8.dp))
+            }
     }
 
 }
