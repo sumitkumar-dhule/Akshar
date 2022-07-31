@@ -10,5 +10,5 @@ data class DisplayCharacter(
     val subtitle: String = "b",
     val displayName: String = "Ball",
     val audio: Int = R.raw.beep,
-    val displayImage: Painter? = null
+    val displayImage: Int = R.drawable.ic_image_placeholder
 )
