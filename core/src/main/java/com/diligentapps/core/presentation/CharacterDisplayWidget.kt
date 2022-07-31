@@ -27,7 +27,8 @@ import com.diligentapps.core.domain.model.DisplayCharacter
 @Composable
 fun CharacterDisplayWidget(
     displayCharacters: List<DisplayCharacter>,
-) {
+    showSubtitle: Boolean = false,
+    ) {
     val characterDisplayViewModel = hiltViewModel<CharacterDisplayViewModel>()
     characterDisplayViewModel.displayCharacters = displayCharacters
 
@@ -63,6 +64,7 @@ fun CharacterDisplayWidget(
                     letter = alphabate.display,
                     fontSize = 90.sp,
                     subtitle = alphabate.subtitle,
+                    showSubtitle = showSubtitle,
                     onClick = { characterDisplayViewModel.playSound() }
                 )
 
@@ -76,7 +78,12 @@ fun CharacterDisplayWidget(
                 )
             }
 
-            Text(text = alphabate.displayName, fontSize = 50.sp, color = Color.Magenta, fontWeight = FontWeight.Bold)
+            Text(
+                text = alphabate.displayName,
+                fontSize = 50.sp,
+                color = Color.Magenta,
+                fontWeight = FontWeight.Bold
+            )
             Box(
                 modifier = Modifier
                     .size(300.dp, 300.dp)
@@ -104,6 +111,7 @@ fun DisplaySlip(
     letter: String,
     subtitle: String = "",
     fontSize: TextUnit,
+    showSubtitle: Boolean = false,
     onClick: () -> Unit = {}
 ) {
 
@@ -118,7 +126,7 @@ fun DisplaySlip(
 
         Text(text = letter, fontSize = fontSize, color = Color.White)
 
-        if (subtitle.isNotEmpty())
+        if (showSubtitle)
             Box(
                 modifier = Modifier
                     .fillMaxSize()
