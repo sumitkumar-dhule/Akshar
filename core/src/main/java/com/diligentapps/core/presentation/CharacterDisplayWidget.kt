@@ -86,7 +86,7 @@ fun CharacterDisplayWidget(
             )
             Box(
                 modifier = Modifier
-                    .size(300.dp, 300.dp)
+                    .aspectRatio(ratio = 0.8f, matchHeightConstraintsFirst = true)
                     .clickable(onClick = { characterDisplayViewModel.playSound() }),
                 contentAlignment = Alignment.Center
             ) {
