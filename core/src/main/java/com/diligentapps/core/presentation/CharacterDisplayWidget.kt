@@ -85,8 +85,8 @@ fun CharacterDisplayWidget(
                 fontWeight = FontWeight.Bold
             )
             Box(
-                modifier = Modifier
-                    .aspectRatio(ratio = 0.8f, matchHeightConstraintsFirst = true)
+                modifier = Modifier.fillMaxWidth(0.8f)
+                    .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = false)
                     .clickable(onClick = { characterDisplayViewModel.playSound() }),
                 contentAlignment = Alignment.Center
             ) {
