@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Akshar"
-include ':app'
+include ':english'
 include ':core'
 include ':hindi'
