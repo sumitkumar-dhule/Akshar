@@ -7,20 +7,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.electrodiligent.english.ui.theme.AksharTheme
-import com.electrodiligent.core.presentation.*
+import com.electrodiligent.core.presentation.AppBar
+import com.electrodiligent.core.presentation.BackgroundImage
+import com.electrodiligent.core.presentation.DrawerBody
+import com.electrodiligent.core.presentation.DrawerHeader
 import com.electrodiligent.english.R
 import com.electrodiligent.english.navigation.Navigation
 import com.electrodiligent.english.navigation.Screen
+import com.electrodiligent.english.ui.theme.AksharTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -61,18 +60,48 @@ class MainActivity : ComponentActivity() {
                                 items = DrawerMenu.menu,
                                 onItemClick = {
                                     when (it.id) {
-                                        "alphabet" -> navigateTo(
-                                            navController,
-                                            Screen.AlphabetIdentificationScreen.route
-                                        )
-                                        "alphabet_flashcards" -> navigateTo(
-                                            navController,
-                                            Screen.AlphabetFlashcardScreen.route
-                                        )
-                                        "settings" -> navigateTo(
-                                            navController,
-                                            Screen.SettingsScreen.route
-                                        )
+                                        "alphabet" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.AlphabetIdentificationScreen.route
+                                            )
+                                        }
+                                        "alphabet_flashcards" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.AlphabetFlashcardScreen.route
+                                            )
+                                        }
+                                        "number_identification" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.NumberIdentificationScreen.route
+                                            )
+                                        }
+                                        "number_flashcards" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.NumberFlashcardScreen.route
+                                            )
+                                        }
+                                        "gk_shapes" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.ShapesScreen.route
+                                            )
+                                        }
+                                        "gk_colors" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.ColorsScreen.route
+                                            )
+                                        }
+                                        "settings" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.SettingsScreen.route
+                                            )
+                                        }
                                     }
 
                                     scope.launch {

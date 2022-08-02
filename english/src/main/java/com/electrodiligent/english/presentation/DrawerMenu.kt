@@ -39,7 +39,7 @@ object DrawerMenu {
         ),
 
         MenuItem(
-            id = "number",
+            id = "number_identification",
             title = "Number Identification",
             contentDescription = "Go to Number Identification screen",
             icon = Icons.Default.Star
@@ -75,7 +75,7 @@ object DrawerMenu {
         ),
 
         MenuItem(
-            id = "GK",
+            id = "blank",
             title = "",
             contentDescription = "",
             icon = Icons.Default.Info,

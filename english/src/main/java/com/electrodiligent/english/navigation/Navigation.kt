@@ -4,9 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.electrodiligent.english.presentation.AlphabetFlashcardScreen
-import com.electrodiligent.english.presentation.AlphabetIdentificationScreen
-import com.electrodiligent.english.presentation.SettingsScreen
+import com.electrodiligent.english.presentation.*
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -21,6 +19,22 @@ fun Navigation(navController: NavHostController) {
 
         composable(route = Screen.AlphabetFlashcardScreen.route) {
             AlphabetFlashcardScreen()
+        }
+
+        composable(route = Screen.NumberFlashcardScreen.route) {
+            NumberFlashcardScreen()
+        }
+
+        composable(route = Screen.NumberIdentificationScreen.route) {
+            NumberIdentificationScreen()
+        }
+
+        composable(route = Screen.ColorsScreen.route) {
+            ColorsScreen()
+        }
+
+        composable(route = Screen.ShapesScreen.route) {
+            ShapesScreen()
         }
 
         composable(route = Screen.SettingsScreen.route) {
