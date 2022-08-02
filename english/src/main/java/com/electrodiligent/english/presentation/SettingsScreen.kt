@@ -1,26 +1,25 @@
-package com.electrodiligent.english
+package com.electrodiligent.english.presentation
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.electrodiligent.core.presentation.CharacterDisplayWidget
 import com.electrodiligent.core.util.Dimension
 
 @Composable
-fun HomeScreen() {
+fun SettingsScreen() {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
+                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD),
+            contentAlignment = Alignment.Center
         ) {
-            CharacterDisplayWidget(
-                modifier = Modifier.fillMaxSize(),
-                displayCharacters = AlphabetsRepository.list,
-                showSubtitle = true
-            )
+
+            Text(text = "Settings")
+
         }
 
         //TODO:: Display Ad in following box

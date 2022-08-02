@@ -1,25 +1,27 @@
-package com.electrodiligent.english
+package com.electrodiligent.english.presentation
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.electrodiligent.core.presentation.CharacterDisplayWidget
 import com.electrodiligent.core.util.Dimension
+import com.electrodiligent.english.data.AlphabetsRepository
 
 @Composable
-fun SettingsScreen() {
+fun AlphabetIdentificationScreen() {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD),
-            contentAlignment = Alignment.Center
+                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
         ) {
-
-            Text(text = "Settings")
-
+            CharacterDisplayWidget(
+                modifier = Modifier.fillMaxSize(),
+                displayCharacters = AlphabetsRepository.list,
+                showSubtitle = true
+            )
         }
 
         //TODO:: Display Ad in following box

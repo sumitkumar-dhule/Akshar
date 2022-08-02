@@ -1,6 +1,7 @@
-package com.electrodiligent.english
+package com.electrodiligent.english.data
 
 import com.electrodiligent.core.domain.model.DisplayCharacter
+import com.electrodiligent.english.R
 
 object AlphabetsRepository {
     val list = listOf(
