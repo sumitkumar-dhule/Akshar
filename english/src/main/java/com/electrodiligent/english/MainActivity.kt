@@ -11,11 +11,16 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.electrodiligent.english.ui.theme.AksharTheme
 import com.electrodiligent.core.presentation.*
+import com.electrodiligent.english.navigation.Navigation
+import com.electrodiligent.english.navigation.Screen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -33,6 +38,8 @@ class MainActivity : ComponentActivity() {
 
                     val scaffoldState = rememberScaffoldState()
                     val scope = rememberCoroutineScope()
+                    val navController = rememberNavController()
+
                     Scaffold(
                         scaffoldState = scaffoldState,
                         topBar = {
@@ -48,17 +55,86 @@ class MainActivity : ComponentActivity() {
                         drawerGesturesEnabled = scaffoldState.drawerState.isOpen,
                         drawerContent = {
                             DrawerHeader(
-                                header = "Preschool\nEssentials",
                                 headerImageID = R.mipmap.ic_launcher
                             )
                             DrawerBody(
                                 items = listOf(
                                     MenuItem(
-                                        id = "home",
-                                        title = "Home",
-                                        contentDescription = "Go to home screen",
-                                        icon = Icons.Default.Home
+                                        id = "literature",
+                                        title = "Literature",
+                                        contentDescription = "Literature",
+                                        icon = Icons.Default.Info,
+                                        isSectionHeader = true
                                     ),
+
+                                    MenuItem(
+                                        id = "alphabet",
+                                        title = "Alphabet Identification",
+                                        contentDescription = "Go to Alphabet Identification screen",
+                                        icon = Icons.Default.Star
+                                    ),
+
+                                    MenuItem(
+                                        id = "alphabet_flashcards",
+                                        title = "Alphabet Flashcards",
+                                        contentDescription = "Go to Alphabet Flashcards screen",
+                                        icon = Icons.Default.Star
+                                    ),
+
+//
+                                    MenuItem(
+                                        id = "Math",
+                                        title = "Math",
+                                        contentDescription = "Math",
+                                        icon = Icons.Default.Info,
+                                        isSectionHeader = true
+                                    ),
+
+                                    MenuItem(
+                                        id = "number",
+                                        title = "Number Identification",
+                                        contentDescription = "Go to Number Identification screen",
+                                        icon = Icons.Default.Star
+                                    ),
+
+                                    MenuItem(
+                                        id = "number_flashcards",
+                                        title = "Number Flashcards",
+                                        contentDescription = "Go to Number Flashcards screen",
+                                        icon = Icons.Default.Star
+                                    ),
+
+//
+                                    MenuItem(
+                                        id = "GK",
+                                        title = "General Knowledge",
+                                        contentDescription = "General Knowledge",
+                                        icon = Icons.Default.Info,
+                                        isSectionHeader = true
+                                    ),
+
+                                    MenuItem(
+                                        id = "gk_shapes",
+                                        title = "Shapes",
+                                        contentDescription = "Go to Shapes screen",
+                                        icon = Icons.Default.Star
+                                    ),
+
+                                    MenuItem(
+                                        id = "gk_colors",
+                                        title = "Colors",
+                                        contentDescription = "Go to Colors screen",
+                                        icon = Icons.Default.Star
+                                    ),
+
+                                    MenuItem(
+                                        id = "GK",
+                                        title = "",
+                                        contentDescription = "",
+                                        icon = Icons.Default.Info,
+                                        isSectionHeader = true
+                                    ),
+
                                     MenuItem(
                                         id = "settings",
                                         title = "Settings",
@@ -74,19 +150,25 @@ class MainActivity : ComponentActivity() {
                                 ),
                                 onItemClick = {
                                     when (it.id) {
-                                        "Home" -> {
-
-                                        }
+                                        "alphabet" -> navigateTo(
+                                            navController,
+                                            Screen.HomeScreen.route
+                                        )
+                                        "settings" -> navigateTo(
+                                            navController,
+                                            Screen.SettingsScreen.route
+                                        )
                                     }
-                                    println("Clicked on ${it.title}")
+
+                                    scope.launch {
+                                        scaffoldState.drawerState.close()
+                                    }
                                 }
                             )
                         }
                     ) {
-
                         BackgroundImage()
-                        HomeScreen()
-
+                        Navigation(navController = navController)
                     }
 
 
@@ -94,4 +176,17 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    private fun navigateTo(navController: NavHostController, route: String) {
+        navController.navigate(route) {
+            navController.graph.startDestinationRoute?.let { route ->
+                popUpTo(route) {
+                    saveState = true
+                }
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+
 }

@@ -12,26 +12,27 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun DrawerHeader(header: String, headerImageID: Int) {
+fun DrawerHeader(header: String = "", headerImageID: Int) {
     Box(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 64.dp),
+            .fillMaxWidth(),
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
-                modifier = Modifier.size(80.dp, 80.dp),
+                modifier = Modifier.size(180.dp, 180.dp).padding(16.dp),
                 painter = painterResource(id = headerImageID),
                 contentDescription = "Header Image"
             )
-            Text(text = header, fontSize = 30.sp)
+            if (header.isNotEmpty()) {
+                Text(text = header, fontSize = 30.sp)
+            }
         }
-
     }
 }
 
@@ -44,24 +45,40 @@ fun DrawerBody(
 ) {
     LazyColumn(modifier) {
         items(items) { item ->
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable {
-                        onItemClick(item)
+
+            Box {
+
+                if (item.isSectionHeader) {
+                    Text(
+                        text = item.title,
+                        style = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.Bold),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 16.dp, start = 16.dp)
+                    )
+                } else {
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                onItemClick(item)
+                            }
+                            .padding(16.dp)
+                    ) {
+
+                        Icon(
+                            imageVector = item.icon,
+                            contentDescription = item.contentDescription
+                        )
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Text(
+                            text = item.title,
+                            style = itemTextStyle,
+                            modifier = Modifier.weight(1f)
+                        )
                     }
-                    .padding(16.dp)
-            ) {
-                Icon(
-                    imageVector = item.icon,
-                    contentDescription = item.contentDescription
-                )
-                Spacer(modifier = Modifier.width(16.dp))
-                Text(
-                    text = item.title,
-                    style = itemTextStyle,
-                    modifier = Modifier.weight(1f)
-                )
+                }
             }
         }
     }
