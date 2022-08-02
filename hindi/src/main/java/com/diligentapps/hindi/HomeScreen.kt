@@ -1,4 +1,4 @@
-package com.diligentapps.akshar
+package com.diligentapps.hindi
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -16,10 +16,7 @@ fun HomeScreen() {
                 .fillMaxSize()
                 .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
         ) {
-            CharacterDisplayWidget(
-                displayCharacters = AlphabetsRepository.list,
-                showSubtitle = true
-            )
+            CharacterDisplayWidget(HindiAlphabetsRepository.list)
         }
 
         //TODO:: Display Ad in following box

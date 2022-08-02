@@ -17,7 +17,7 @@ class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val cont
     ViewModel() {
 
 
-    private var sound = MediaPlayer.create(context, R.raw.beep)
+    private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
 
     var displayCharacters: List<DisplayCharacter> = listOf(DisplayCharacter())
@@ -69,11 +69,12 @@ class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val cont
         if (isSoundPlaying()) {
             return
         }
-        sound = MediaPlayer.create(context, displayCharacters[currentIndex].audio)
-        sound.start()
+        mediaPlayer.release()
+        mediaPlayer = MediaPlayer.create(context, displayCharacters[currentIndex].audio)
+        mediaPlayer.start()
     }
 
     private fun isSoundPlaying(): Boolean {
-        return sound.isPlaying
+        return mediaPlayer.isPlaying
     }
 }
