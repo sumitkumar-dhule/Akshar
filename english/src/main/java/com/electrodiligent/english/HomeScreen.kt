@@ -17,6 +17,7 @@ fun HomeScreen() {
                 .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
         ) {
             CharacterDisplayWidget(
+                modifier = Modifier.fillMaxSize(),
                 displayCharacters = AlphabetsRepository.list,
                 showSubtitle = true
             )

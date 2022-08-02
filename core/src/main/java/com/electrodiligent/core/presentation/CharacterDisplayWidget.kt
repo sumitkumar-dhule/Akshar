@@ -26,9 +26,10 @@ import com.electrodiligent.core.domain.model.DisplayCharacter
 
 @Composable
 fun CharacterDisplayWidget(
+    modifier: Modifier,
     displayCharacters: List<DisplayCharacter>,
     showSubtitle: Boolean = false,
-    ) {
+) {
     val characterDisplayViewModel = hiltViewModel<CharacterDisplayViewModel>()
     characterDisplayViewModel.displayCharacters = displayCharacters
 
@@ -36,7 +37,7 @@ fun CharacterDisplayWidget(
 
     var alphabate = characterDisplayViewModel.displayCharacterState
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = modifier) {
 
         Column(
             Modifier.fillMaxSize(),
@@ -46,23 +47,27 @@ fun CharacterDisplayWidget(
 
             Row(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .fillMaxHeight(0.2f),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 DisplaySlip(
                     modifier = Modifier
-                        .size(80.dp, 80.dp)
+                        .fillMaxHeight(0.7f)
+                        .aspectRatio(1f, matchHeightConstraintsFirst = true)
                         .alpha(0.4f),
                     letter = alphabate.left,
-                    fontSize = 40.sp,
+                    fontSize = 30.sp,
                     onClick = { characterDisplayViewModel.previous() }
                 )
 
                 DisplaySlip(
-                    modifier = Modifier.size(160.dp, 160.dp),
+                    modifier = Modifier
+                        .fillMaxSize(0.5f)
+                        .aspectRatio(1f),
                     letter = alphabate.display,
-                    fontSize = 90.sp,
+                    fontSize = 80.sp,
                     subtitle = alphabate.subtitle,
                     showSubtitle = showSubtitle,
                     onClick = { characterDisplayViewModel.playSound() }
@@ -70,10 +75,11 @@ fun CharacterDisplayWidget(
 
                 DisplaySlip(
                     modifier = Modifier
-                        .size(80.dp, 80.dp)
+                        .fillMaxHeight(0.7f)
+                        .aspectRatio(1f, matchHeightConstraintsFirst = true)
                         .alpha(0.4f),
                     letter = alphabate.right,
-                    fontSize = 40.sp,
+                    fontSize = 30.sp,
                     onClick = { characterDisplayViewModel.next() }
                 )
             }
@@ -85,15 +91,16 @@ fun CharacterDisplayWidget(
                 fontWeight = FontWeight.Bold
             )
             Box(
-                modifier = Modifier.fillMaxWidth(0.8f)
-                    .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = false)
+                modifier = Modifier
+                    .fillMaxHeight(0.7f)
+                    .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = true)
                     .clickable(onClick = { characterDisplayViewModel.playSound() }),
                 contentAlignment = Alignment.Center
             ) {
 
                 Image(
                     painter = painterResource(id = alphabate.displayImage),
-                    contentDescription = "alphabet",
+                    contentDescription = "Image of ${alphabate.displayName}",
                     modifier = Modifier
                         .fillMaxSize(),
                     contentScale = ContentScale.Fit
