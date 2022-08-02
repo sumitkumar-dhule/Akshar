@@ -14,7 +14,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.diligentapps.core.presentation.MenuItem
 
 @Composable
 fun DrawerHeader(header: String, headerImageID: Int) {
