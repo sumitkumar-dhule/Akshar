@@ -1,4 +1,4 @@
-package com.electrodiligent.core.presentation.color
+package com.electrodiligent.core.presentation.shape
 
 import android.content.Context
 import android.media.MediaPlayer
@@ -7,25 +7,25 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
-import com.electrodiligent.core.domain.model.ColorItem
+import com.electrodiligent.core.domain.model.ShapeItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 @HiltViewModel
-class ColorDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
+class ShapeDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
 
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
-    var displayColors: List<ColorItem> = listOf(ColorItem())
+    var displayShapes: List<ShapeItem> = listOf(ShapeItem())
 
     private var currentIndex: Int by mutableStateOf(0)
 
-    var colorItemState: ColorItem by mutableStateOf(displayColors[currentIndex])
+    var shapeItem: ShapeItem by mutableStateOf(displayShapes[currentIndex])
 
     fun setup() {
-        colorItemState = displayColors[currentIndex]
+        shapeItem = displayShapes[currentIndex]
      //   playSound()
     }
 
@@ -34,13 +34,13 @@ class ColorDisplayViewModel @Inject constructor(@ApplicationContext val context:
             return
         }
 
-        if (currentIndex == displayColors.lastIndex) {
+        if (currentIndex == displayShapes.lastIndex) {
             currentIndex = 0
         } else {
             currentIndex++
         }
 
-        colorItemState = displayColors[currentIndex]
+        shapeItem = displayShapes[currentIndex]
 
       //  playSound()
 
@@ -52,12 +52,12 @@ class ColorDisplayViewModel @Inject constructor(@ApplicationContext val context:
         }
 
         if (currentIndex == 0) {
-            currentIndex = displayColors.lastIndex
+            currentIndex = displayShapes.lastIndex
         } else {
             currentIndex--
         }
 
-        colorItemState = displayColors[currentIndex]
+        shapeItem = displayShapes[currentIndex]
 
       //  playSound()
 

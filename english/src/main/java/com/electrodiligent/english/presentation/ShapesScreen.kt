@@ -1,11 +1,15 @@
 package com.electrodiligent.english.presentation
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.electrodiligent.core.presentation.shape.ShapeDisplay
 import com.electrodiligent.core.util.Dimension
+import com.electrodiligent.english.data.ShapeRepository
 
 @Composable
 fun ShapesScreen() {
@@ -13,12 +17,14 @@ fun ShapesScreen() {
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD),
+                .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
 
-            Text(text = "ShapesScreen")
+            ShapeDisplay(
+                modifier = Modifier.fillMaxSize(),
+                items = ShapeRepository.list
+            )
 
         }
 

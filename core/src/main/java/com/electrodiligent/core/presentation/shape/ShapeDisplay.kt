@@ -1,18 +1,15 @@
-package com.electrodiligent.core.presentation.color
+package com.electrodiligent.core.presentation.shape
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -20,26 +17,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
-import com.electrodiligent.core.domain.model.ColorItem
+import com.electrodiligent.core.domain.model.ShapeItem
 
 @Composable
-fun ColorDisplay(
+fun ShapeDisplay(
     modifier: Modifier,
-    colorItems: List<ColorItem>
+    items: List<ShapeItem>
 ) {
 
-    val colorDisplayViewModel = hiltViewModel<ColorDisplayViewModel>()
-    colorDisplayViewModel.displayColors = colorItems
+    val shapeDisplayViewModel = hiltViewModel<ShapeDisplayViewModel>()
+    shapeDisplayViewModel.displayShapes = items
 
-    colorDisplayViewModel.setup()
+    shapeDisplayViewModel.setup()
 
-    val colorItem = colorDisplayViewModel.colorItemState
+    val shapeItem = shapeDisplayViewModel.shapeItem
 
     Box(modifier = modifier) {
-
-        if (colorItem.colorValue == Color.White || colorItem.name == "PINK") {
-            Box(modifier = Modifier.fillMaxSize().background(Color.DarkGray))
-        }
 
         Column(
             Modifier.fillMaxSize(),
@@ -57,46 +50,54 @@ fun ColorDisplay(
                 Image(
                     painter = painterResource(R.drawable.ic_arrow_circle_left),
                     contentDescription = "Left",
-                    colorFilter = ColorFilter.tint(color = colorItem.colorValue),
+                    colorFilter = ColorFilter.tint(color = Color.Blue),
 
                     modifier = Modifier
                         .fillMaxHeight(0.7f)
                         .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .clickable { colorDisplayViewModel.previous() }
+                        .clickable { shapeDisplayViewModel.previous() }
                 )
 
                 Text(
                     modifier = Modifier.weight(1f, fill = true),
-                    fontSize = 40.sp,
-                    text = colorItem.name,
+                    fontSize = 30.sp,
+                    text = shapeItem.name,
                     textAlign = TextAlign.Center,
-                    color = colorItem.colorValue,
+                    color = Color.Blue,
                     fontWeight = FontWeight.Bold
                 )
 
                 Image(
                     painter = painterResource(R.drawable.ic_arrow_circle_right),
                     contentDescription = "Right",
-                    colorFilter = ColorFilter.tint(color = colorItem.colorValue),
+                    colorFilter = ColorFilter.tint(color = Color.Blue),
 
                     modifier = Modifier
                         .fillMaxHeight(0.7f)
                         .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .clickable { colorDisplayViewModel.next() }
+                        .clickable { shapeDisplayViewModel.next() }
                 )
             }
 
             Box(
-                modifier = Modifier.padding(bottom = 100.dp)
+                modifier = Modifier
+                    .fillMaxWidth(0.7f)
                     .fillMaxHeight(0.7f)
-                    .clip(RoundedCornerShape(16.dp))
-                    .shadow(elevation = 4.dp, shape = RoundedCornerShape(16.dp))
+                    .padding(bottom = 80.dp)
                     .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = true)
-                    .background(color = colorItem.colorValue)
                     .clickable(onClick = { }),
                 contentAlignment = Alignment.Center
             ) {
 
+                Image(
+                    painter = painterResource(id = shapeItem.imageId),
+                    contentDescription = shapeItem.name,
+                    colorFilter = ColorFilter.tint(color = Color.Blue),
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    contentScale = ContentScale.Fit
+
+                )
             }
 
         }
