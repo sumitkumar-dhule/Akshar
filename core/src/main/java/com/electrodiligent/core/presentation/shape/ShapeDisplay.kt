@@ -43,7 +43,7 @@ fun ShapeDisplay(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .fillMaxHeight(0.2f),
+                    .fillMaxHeight(0.18f),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
