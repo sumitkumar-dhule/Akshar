@@ -1,4 +1,4 @@
-package com.electrodiligent.core.presentation
+package com.electrodiligent.core.presentation.alphabate
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -23,9 +23,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.domain.model.DisplayCharacter
+import com.electrodiligent.core.presentation.BackgroundImage
 
 @Composable
-fun CharacterDisplayWidget(
+fun CharacterDisplay(
     modifier: Modifier,
     displayCharacters: List<DisplayCharacter>,
     showSubtitle: Boolean = false,
@@ -41,7 +42,7 @@ fun CharacterDisplayWidget(
 
         Column(
             Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.SpaceBetween,
+            verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 

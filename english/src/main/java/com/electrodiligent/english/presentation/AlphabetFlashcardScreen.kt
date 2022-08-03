@@ -4,8 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.electrodiligent.core.presentation.AlphabetFlashcard
-import com.electrodiligent.core.presentation.CharacterDisplayWidget
+import com.electrodiligent.core.presentation.alphabate.AlphabetFlashcard
 import com.electrodiligent.core.util.Dimension
 import com.electrodiligent.english.data.AlphabetsRepository
 

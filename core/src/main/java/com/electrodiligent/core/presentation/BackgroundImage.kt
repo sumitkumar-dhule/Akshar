@@ -9,13 +9,13 @@ import androidx.compose.ui.res.painterResource
 import com.electrodiligent.core.R
 
 @Composable
-fun BackgroundImage() {
+fun BackgroundImage(alpha:Float = 0.05f) {
     Image(
         painter = painterResource(R.drawable.background),
         contentDescription = "null",
         modifier = Modifier
             .fillMaxSize(),
         contentScale = ContentScale.FillHeight,
-        alpha = 0.05f
+        alpha = alpha
     )
 }

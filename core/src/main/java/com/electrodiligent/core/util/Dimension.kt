@@ -10,7 +10,7 @@ object Dimension {
     val PADDING_SMALL: Dp = 8.dp
     val PADDING_MEDIUM: Dp = 16.dp
     val PADDING_LARGE: Dp = 24.dp
-    val PADDING_TITLE: Dp = 50.dp
+    val PADDING_TITLE: Dp = 0.dp
     val PADDING_BANNER_AD: Dp = 60.dp
     val PADDING_TOOLBAR: Dp = 80.dp
 }

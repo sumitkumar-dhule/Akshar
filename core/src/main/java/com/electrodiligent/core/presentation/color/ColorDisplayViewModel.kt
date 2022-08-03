@@ -1,4 +1,4 @@
-package com.electrodiligent.core.presentation
+package com.electrodiligent.core.presentation.color
 
 import android.content.Context
 import android.media.MediaPlayer
@@ -7,28 +7,28 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
-import com.electrodiligent.core.domain.model.DisplayCharacter
+import com.electrodiligent.core.domain.model.ColorItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 @HiltViewModel
-class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
+class ColorDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
 
 
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
 
-    var displayCharacters: List<DisplayCharacter> = listOf(DisplayCharacter())
+    var displayColors: List<ColorItem> = listOf(ColorItem())
 
     private var currentIndex: Int by mutableStateOf(0)
 
-    var displayCharacterState: DisplayCharacter by mutableStateOf(displayCharacters[currentIndex])
+    var colorItemState: ColorItem by mutableStateOf(displayColors[currentIndex])
 
     fun setup() {
-        displayCharacterState = displayCharacters[currentIndex]
-        playSound()
+        colorItemState = displayColors[currentIndex]
+     //   playSound()
     }
 
     fun next() {
@@ -36,15 +36,15 @@ class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val cont
             return
         }
 
-        if (currentIndex == displayCharacters.lastIndex) {
+        if (currentIndex == displayColors.lastIndex) {
             currentIndex = 0
         } else {
             currentIndex++
         }
 
-        displayCharacterState = displayCharacters[currentIndex]
+        colorItemState = displayColors[currentIndex]
 
-        playSound()
+      //  playSound()
 
     }
 
@@ -54,14 +54,14 @@ class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val cont
         }
 
         if (currentIndex == 0) {
-            currentIndex = displayCharacters.lastIndex
+            currentIndex = displayColors.lastIndex
         } else {
             currentIndex--
         }
 
-        displayCharacterState = displayCharacters[currentIndex]
+        colorItemState = displayColors[currentIndex]
 
-        playSound()
+      //  playSound()
 
     }
 
@@ -70,7 +70,7 @@ class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val cont
             return
         }
         mediaPlayer.release()
-        mediaPlayer = MediaPlayer.create(context, displayCharacters[currentIndex].audio)
+//        mediaPlayer = MediaPlayer.create(context, displayColors[currentIndex].audio)
         mediaPlayer.start()
     }
 

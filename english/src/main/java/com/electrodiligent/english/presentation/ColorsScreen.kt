@@ -1,11 +1,12 @@
 package com.electrodiligent.english.presentation
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.electrodiligent.core.presentation.color.ColorDisplay
 import com.electrodiligent.core.util.Dimension
+import com.electrodiligent.english.data.ColorRepository
 
 @Composable
 fun ColorsScreen() {
@@ -13,12 +14,14 @@ fun ColorsScreen() {
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD),
+                .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
 
-            Text(text = "ColorsScreen")
+            ColorDisplay(
+                modifier = Modifier.fillMaxSize(),
+                colorItems = ColorRepository.list
+            )
 
         }
 

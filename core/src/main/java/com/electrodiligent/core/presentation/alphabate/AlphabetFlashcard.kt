@@ -1,4 +1,4 @@
-package com.electrodiligent.core.presentation
+package com.electrodiligent.core.presentation.alphabate
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
