@@ -1,4 +1,4 @@
-package com.electrodiligent.english.presentation
+package com.electrodiligent.english.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
@@ -74,25 +74,25 @@ object DrawerMenu {
             icon = Icons.Default.Star
         ),
 
-        MenuItem(
-            id = "blank",
-            title = "",
-            contentDescription = "",
-            icon = Icons.Default.Info,
-            isSectionHeader = true
-        ),
-
-        MenuItem(
-            id = "settings",
-            title = "Settings",
-            contentDescription = "Go to settings screen",
-            icon = Icons.Default.Settings
-        ),
-        MenuItem(
-            id = "help",
-            title = "Help",
-            contentDescription = "Get help",
-            icon = Icons.Default.Info
-        ),
+//        MenuItem(
+//            id = "blank",
+//            title = "",
+//            contentDescription = "",
+//            icon = Icons.Default.Info,
+//            isSectionHeader = true
+//        ),
+//
+//        MenuItem(
+//            id = "settings",
+//            title = "Settings",
+//            contentDescription = "Go to settings screen",
+//            icon = Icons.Default.Settings
+//        ),
+//        MenuItem(
+//            id = "help",
+//            title = "Help",
+//            contentDescription = "Get help",
+//            icon = Icons.Default.Info
+//        ),
     )
 }

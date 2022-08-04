@@ -22,7 +22,7 @@ object NumberRepository {
         NumberItem(name = "FOURTEEN", count = 14, image = R.drawable.notepad),
         NumberItem(name = "FIFTEEN", count = 15, image = R.drawable.mango),
         NumberItem(name = "SIXTEEN", count = 16, image = R.drawable.pencil),
-        NumberItem(name = "SEVENTEEN", count = 17, image = R.drawable.pin),
+        NumberItem(name = "SEVENTEEN", count = 17, image = R.drawable.tomato),
         NumberItem(name = "EIGHTEEN", count = 18, image = R.drawable.cap),
         NumberItem(name = "NINETEEN", count = 19, image = R.drawable.banana),
         NumberItem(name = "TWENTY", count = 20, image = R.drawable.baloon)
