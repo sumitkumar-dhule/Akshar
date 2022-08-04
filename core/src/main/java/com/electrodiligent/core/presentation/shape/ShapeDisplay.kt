@@ -50,7 +50,7 @@ fun ShapeDisplay(
                 Image(
                     painter = painterResource(R.drawable.ic_arrow_circle_left),
                     contentDescription = "Left",
-                    colorFilter = ColorFilter.tint(color = Color.Blue),
+                    colorFilter = ColorFilter.tint(color = shapeItem.color),
 
                     modifier = Modifier
                         .fillMaxHeight(0.7f)
@@ -63,14 +63,14 @@ fun ShapeDisplay(
                     fontSize = 30.sp,
                     text = shapeItem.name,
                     textAlign = TextAlign.Center,
-                    color = Color.Blue,
+                    color = shapeItem.color,
                     fontWeight = FontWeight.Bold
                 )
 
                 Image(
                     painter = painterResource(R.drawable.ic_arrow_circle_right),
                     contentDescription = "Right",
-                    colorFilter = ColorFilter.tint(color = Color.Blue),
+                    colorFilter = ColorFilter.tint(color = shapeItem.color),
 
                     modifier = Modifier
                         .fillMaxHeight(0.7f)
@@ -85,14 +85,14 @@ fun ShapeDisplay(
                     .fillMaxHeight(0.7f)
                     .padding(bottom = 80.dp)
                     .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = true)
-                    .clickable(onClick = { }),
+                    .clickable(onClick = { shapeDisplayViewModel.same() }),
                 contentAlignment = Alignment.Center
             ) {
 
                 Image(
                     painter = painterResource(id = shapeItem.imageId),
                     contentDescription = shapeItem.name,
-                    colorFilter = ColorFilter.tint(color = Color.Blue),
+                    colorFilter = ColorFilter.tint(color = shapeItem.color),
                     modifier = Modifier
                         .fillMaxSize(),
                     contentScale = ContentScale.Fit

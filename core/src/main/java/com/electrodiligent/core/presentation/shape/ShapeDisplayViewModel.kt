@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.ShapeItem
+import com.electrodiligent.core.util.RandomColor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -41,6 +42,7 @@ class ShapeDisplayViewModel @Inject constructor(@ApplicationContext val context:
         }
 
         shapeItem = displayShapes[currentIndex]
+        shapeItem.color = RandomColor.list.random().colorValue
 
       //  playSound()
 
@@ -58,12 +60,20 @@ class ShapeDisplayViewModel @Inject constructor(@ApplicationContext val context:
         }
 
         shapeItem = displayShapes[currentIndex]
+        shapeItem.color = RandomColor.list.random().colorValue
 
-      //  playSound()
+        //  playSound()
 
     }
 
+    fun same(){
+        shapeItem.color = RandomColor.list.random().colorValue
+        shapeItem = displayShapes[currentIndex]
+        //playSound()
+    }
+
     fun playSound() {
+
         if (isSoundPlaying()) {
             return
         }
