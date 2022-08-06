@@ -9,7 +9,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
@@ -25,7 +24,6 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.NumberItem
-import com.electrodiligent.core.presentation.alphabate.DisplaySlip
 import com.electrodiligent.core.presentation.number.count.*
 
 @Composable
@@ -35,7 +33,7 @@ fun NumberDisplay(
 ) {
 
     val numberDisplayViewModel = hiltViewModel<NumberDisplayViewModel>()
-    numberDisplayViewModel.displayShapes = items
+    numberDisplayViewModel.displayNumbers = items
 
     numberDisplayViewModel.setup()
 
@@ -68,7 +66,8 @@ fun NumberDisplay(
                 )
 
                 Text(
-                    modifier = Modifier.weight(1f, fill = true),
+                    modifier = Modifier
+                        .weight(1f, fill = true),
                     fontSize = 30.sp,
                     text = numberItem.name,
                     textAlign = TextAlign.Center,
@@ -90,6 +89,7 @@ fun NumberDisplay(
 
             Box(
                 modifier = Modifier
+                    .clickable(onClick = { numberDisplayViewModel.currentNumber() })
                     .fillMaxHeight(0.24f)
                     .aspectRatio(1f)
                     .clip(RoundedCornerShape(8.dp))
@@ -107,8 +107,7 @@ fun NumberDisplay(
 
             Box(
                 modifier = Modifier
-                    .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = false)
-                    .clickable(onClick = { }),
+                    .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = false),
                 contentAlignment = Alignment.Center
             ) {
 

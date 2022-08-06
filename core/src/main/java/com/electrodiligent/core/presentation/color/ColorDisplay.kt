@@ -38,7 +38,9 @@ fun ColorDisplay(
     Box(modifier = modifier) {
 
         if (colorItem.colorValue == Color.White || colorItem.name == "PINK") {
-            Box(modifier = Modifier.fillMaxSize().background(Color.DarkGray))
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .background(Color.DarkGray))
         }
 
         Column(
@@ -62,7 +64,7 @@ fun ColorDisplay(
                     modifier = Modifier
                         .fillMaxHeight(0.7f)
                         .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .clickable { colorDisplayViewModel.previous() }
+                        .clickable { colorDisplayViewModel.previousColor() }
                 )
 
                 Text(
@@ -82,18 +84,19 @@ fun ColorDisplay(
                     modifier = Modifier
                         .fillMaxHeight(0.7f)
                         .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .clickable { colorDisplayViewModel.next() }
+                        .clickable { colorDisplayViewModel.nextColor() }
                 )
             }
 
             Box(
-                modifier = Modifier.padding(bottom = 100.dp)
+                modifier = Modifier
+                    .padding(bottom = 100.dp)
                     .fillMaxHeight(0.7f)
                     .clip(RoundedCornerShape(16.dp))
                     .shadow(elevation = 4.dp, shape = RoundedCornerShape(16.dp))
                     .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = true)
                     .background(color = colorItem.colorValue)
-                    .clickable(onClick = { }),
+                    .clickable(onClick = { colorDisplayViewModel.currentColor() }),
                 contentAlignment = Alignment.Center
             ) {
 

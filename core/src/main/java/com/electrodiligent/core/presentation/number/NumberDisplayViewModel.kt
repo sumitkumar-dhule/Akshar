@@ -8,7 +8,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.NumberItem
-import com.electrodiligent.core.domain.model.ShapeItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -19,15 +18,15 @@ class NumberDisplayViewModel @Inject constructor(@ApplicationContext val context
 
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
-    var displayShapes: List<NumberItem> = listOf(NumberItem())
+    var displayNumbers: List<NumberItem> = listOf(NumberItem())
 
     private var currentIndex: Int by mutableStateOf(0)
 
-    var shapeItem: NumberItem by mutableStateOf(displayShapes[currentIndex])
+    var shapeItem: NumberItem by mutableStateOf(displayNumbers[currentIndex])
 
     fun setup() {
-        shapeItem = displayShapes[currentIndex]
-     //   playSound()
+        shapeItem = displayNumbers[currentIndex]
+        playSound()
     }
 
     fun next() {
@@ -35,16 +34,15 @@ class NumberDisplayViewModel @Inject constructor(@ApplicationContext val context
             return
         }
 
-        if (currentIndex == displayShapes.lastIndex) {
+        if (currentIndex == displayNumbers.lastIndex) {
             currentIndex = 0
         } else {
             currentIndex++
         }
 
-        shapeItem = displayShapes[currentIndex]
+        shapeItem = displayNumbers[currentIndex]
 
-      //  playSound()
-
+        playSound()
     }
 
     fun previous() {
@@ -53,23 +51,30 @@ class NumberDisplayViewModel @Inject constructor(@ApplicationContext val context
         }
 
         if (currentIndex == 0) {
-            currentIndex = displayShapes.lastIndex
+            currentIndex = displayNumbers.lastIndex
         } else {
             currentIndex--
         }
 
-        shapeItem = displayShapes[currentIndex]
+        shapeItem = displayNumbers[currentIndex]
 
-      //  playSound()
-
+        playSound()
     }
 
-    fun playSound() {
+    fun currentNumber(){
+        // TODO:: Make it work
+        // TODO:: Change var names to correct
+        shapeItem = displayNumbers[currentIndex]
+
+        playSound()
+    }
+
+    private fun playSound() {
         if (isSoundPlaying()) {
             return
         }
         mediaPlayer.release()
-//        mediaPlayer = MediaPlayer.create(context, displayColors[currentIndex].audio)
+        mediaPlayer = MediaPlayer.create(context, displayNumbers[currentIndex].audio)
         mediaPlayer.start()
     }
 
