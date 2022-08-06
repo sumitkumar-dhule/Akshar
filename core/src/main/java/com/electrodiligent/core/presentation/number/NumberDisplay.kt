@@ -67,8 +67,7 @@ fun NumberDisplay(
 
                 Text(
                     modifier = Modifier
-                        .weight(1f, fill = true)
-                        .clickable(onClick = { numberDisplayViewModel.currentNumber() }),
+                        .weight(1f, fill = true),
                     fontSize = 30.sp,
                     text = numberItem.name,
                     textAlign = TextAlign.Center,
@@ -90,6 +89,7 @@ fun NumberDisplay(
 
             Box(
                 modifier = Modifier
+                    .clickable(onClick = { numberDisplayViewModel.currentNumber() })
                     .fillMaxHeight(0.24f)
                     .aspectRatio(1f)
                     .clip(RoundedCornerShape(8.dp))
