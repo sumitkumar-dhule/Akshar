@@ -26,10 +26,10 @@ class ColorDisplayViewModel @Inject constructor(@ApplicationContext val context:
 
     fun setup() {
         colorItemState = displayColors[currentIndex]
-     //   playSound()
+        playSound()
     }
 
-    fun next() {
+    fun nextColor() {
         if (isSoundPlaying()) {
             return
         }
@@ -42,11 +42,11 @@ class ColorDisplayViewModel @Inject constructor(@ApplicationContext val context:
 
         colorItemState = displayColors[currentIndex]
 
-      //  playSound()
+        playSound()
 
     }
 
-    fun previous() {
+    fun previousColor() {
         if (isSoundPlaying()) {
             return
         }
@@ -59,16 +59,21 @@ class ColorDisplayViewModel @Inject constructor(@ApplicationContext val context:
 
         colorItemState = displayColors[currentIndex]
 
-      //  playSound()
+        playSound()
 
     }
 
-    fun playSound() {
+    fun currentColor() {
+        colorItemState = displayColors[currentIndex]
+        playSound()
+    }
+
+    private fun playSound() {
         if (isSoundPlaying()) {
             return
         }
         mediaPlayer.release()
-//        mediaPlayer = MediaPlayer.create(context, displayColors[currentIndex].audio)
+        mediaPlayer = MediaPlayer.create(context, displayColors[currentIndex].audio)
         mediaPlayer.start()
     }
 

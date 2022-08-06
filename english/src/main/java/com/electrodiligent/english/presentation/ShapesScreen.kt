@@ -6,6 +6,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.electrodiligent.core.presentation.shape.ShapeDisplay
 import com.electrodiligent.core.util.Dimension
+import com.electrodiligent.english.R.*
 import com.electrodiligent.english.data.ShapeRepository
 
 @Composable
@@ -21,7 +22,8 @@ fun ShapesScreen() {
 
             ShapeDisplay(
                 modifier = Modifier.fillMaxSize(),
-                items = ShapeRepository.list
+                items = ShapeRepository.list,
+                titleAudio = raw.learn_shape
             )
 
         }

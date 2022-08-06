@@ -7,7 +7,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -22,12 +21,13 @@ import com.electrodiligent.core.domain.model.ShapeItem
 @Composable
 fun ShapeDisplay(
     modifier: Modifier,
-    items: List<ShapeItem>
+    items: List<ShapeItem>,
+    titleAudio : Int
 ) {
 
     val shapeDisplayViewModel = hiltViewModel<ShapeDisplayViewModel>()
     shapeDisplayViewModel.displayShapes = items
-
+    shapeDisplayViewModel.titleAudio = titleAudio
     shapeDisplayViewModel.setup()
 
     val shapeItem = shapeDisplayViewModel.shapeItem
@@ -55,7 +55,7 @@ fun ShapeDisplay(
                     modifier = Modifier
                         .fillMaxHeight(0.7f)
                         .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .clickable { shapeDisplayViewModel.previous() }
+                        .clickable { shapeDisplayViewModel.previousShape() }
                 )
 
                 Text(
@@ -75,7 +75,7 @@ fun ShapeDisplay(
                     modifier = Modifier
                         .fillMaxHeight(0.7f)
                         .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .clickable { shapeDisplayViewModel.next() }
+                        .clickable { shapeDisplayViewModel.nextShape() }
                 )
             }
 
@@ -85,7 +85,7 @@ fun ShapeDisplay(
                     .fillMaxHeight(0.7f)
                     .padding(bottom = 80.dp)
                     .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = true)
-                    .clickable(onClick = { shapeDisplayViewModel.same() }),
+                    .clickable(onClick = { shapeDisplayViewModel.currentShape() }),
                 contentAlignment = Alignment.Center
             ) {
 
