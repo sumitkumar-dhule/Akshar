@@ -105,6 +105,13 @@ class MainActivity : ComponentActivity() {
                                                 Screen.SettingsScreen.route
                                             )
                                         }
+
+                                        "practice_alphabets" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.AlphabetsPracticeScreen.route
+                                            )
+                                        }
                                     }
 
                                     scope.launch {
