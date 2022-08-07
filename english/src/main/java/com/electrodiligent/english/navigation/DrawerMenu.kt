@@ -73,6 +73,27 @@ object DrawerMenu {
             contentDescription = "Go to Colors screen",
             icon = Icons.Default.Star
         ),
+        MenuItem(
+            id = "practice",
+            title = "Practice",
+            contentDescription = "General Knowledge",
+            icon = Icons.Default.Info,
+            isSectionHeader = true
+        ),
+
+        MenuItem(
+            id = "practice_alphabets",
+            title = "Alphabets",
+            contentDescription = "Alphabets",
+            icon = Icons.Default.Star
+        ),
+
+        MenuItem(
+            id = "practice_numbers",
+            title = "Numbers",
+            contentDescription = "Alphabets",
+            icon = Icons.Default.Star
+        ),
 
 //        MenuItem(
 //            id = "blank",

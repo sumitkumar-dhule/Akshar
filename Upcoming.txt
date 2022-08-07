@@ -3,7 +3,15 @@ Animals : Cat , Dog
 Transportation : bus, Car
 Fruits : Apple, Orange
 Vegetables: Bringels, Potato
+Lines and Arrow
 
+
+Exercises:
+Count and Add
+Find the alphabet
+CircLe tHe CorrEct NumbEr
+I SPY COUNTING
+AddiNg bY PictUres aNd NumbErs
 
 ------
 Space
