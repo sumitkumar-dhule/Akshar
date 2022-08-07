@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
-import com.electrodiligent.core.domain.model.AlphabetQuestion
+import com.electrodiligent.core.domain.model.CharacterQuestion
 import com.electrodiligent.core.util.RandomColor
 
 
@@ -31,7 +31,7 @@ import com.electrodiligent.core.util.RandomColor
 @Composable
 fun PracticeDisplay(
     modifier: Modifier,
-    items: List<AlphabetQuestion>
+    items: List<CharacterQuestion>
 ) {
 
     val practiceDisplayViewModel = hiltViewModel<PracticeDisplayViewModel>()
@@ -53,12 +53,20 @@ fun PracticeDisplay(
 
         Row(
             modifier = Modifier
-                .fillMaxWidth()
+                .padding(horizontal = 8.dp)
                 .clickable(onClick = { practiceDisplayViewModel.playQuestion() }),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
             val randomColor = RandomColor.list.random().colorValue
+
+            Image(
+                modifier = Modifier
+                    .size(50.dp, 50.dp),
+                painter = painterResource(id = R.drawable.ic_audio),
+                colorFilter = ColorFilter.tint(randomColor),
+                contentDescription = "Play Sound"
+            )
 
             Text(
                 text = question.question,
@@ -108,7 +116,8 @@ fun Options(modifier: Modifier, item: String, practiceDisplayViewModel: Practice
             .fillMaxSize()
             .clickable(onClick = {
                 practiceDisplayViewModel.optionSelected(item)
-            }), contentAlignment = Alignment.Center) {
+            }), contentAlignment = Alignment.Center
+        ) {
             Box(
                 modifier
                     .fillMaxWidth(0.3f)
@@ -119,7 +128,7 @@ fun Options(modifier: Modifier, item: String, practiceDisplayViewModel: Practice
 
                 Text(
                     text = item,
-                    fontSize = 70.sp,
+                    fontSize = 64.sp,
                     color = randomColor,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center

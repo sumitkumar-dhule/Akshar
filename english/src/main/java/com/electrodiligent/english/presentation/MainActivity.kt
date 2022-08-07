@@ -112,6 +112,13 @@ class MainActivity : ComponentActivity() {
                                                 Screen.AlphabetsPracticeScreen.route
                                             )
                                         }
+
+                                        "practice_numbers" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.NumbersPracticeScreen.route
+                                            )
+                                        }
                                     }
 
                                     scope.launch {

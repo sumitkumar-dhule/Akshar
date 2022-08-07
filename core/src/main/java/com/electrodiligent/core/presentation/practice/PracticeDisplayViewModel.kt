@@ -7,7 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
-import com.electrodiligent.core.domain.model.AlphabetQuestion
+import com.electrodiligent.core.domain.model.CharacterQuestion
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
@@ -25,11 +25,11 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
     private var questionMediaPlayer = MediaPlayer.create(context, R.raw.beep)
     private var effectMediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
-    var questions: List<AlphabetQuestion> = listOf(AlphabetQuestion())
+    var questions: List<CharacterQuestion> = listOf(CharacterQuestion())
 
     private var currentIndex: Int by mutableStateOf(0)
 
-    var question: AlphabetQuestion by mutableStateOf(questions[currentIndex])
+    var question: CharacterQuestion by mutableStateOf(questions[currentIndex])
 
     fun setup() {
         question = questions[currentIndex]
@@ -44,7 +44,6 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
         }
 
         question = questions[currentIndex]
-
         playQuestion()
     }
 
@@ -52,7 +51,7 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
         if (isCorrectOptionSelected(selected)) {
             playCelebration()
             CoroutineScope(Dispatchers.Main).launch() {
-                delay(2000)
+                delay(3000)
                 next()
             }
         } else {
@@ -69,7 +68,7 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
     }
 
     private fun playCelebration() {
-        playEffects(R.raw.positive)
+        playEffects(R.raw.correct)
     }
 
     private fun isCorrectOptionSelected(selected: String): Boolean {
