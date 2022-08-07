@@ -37,6 +37,14 @@ fun Navigation(navController: NavHostController) {
             ShapesScreen()
         }
 
+        composable(route = Screen.AlphabetsPracticeScreen.route) {
+            AlphabetsPracticeScreen()
+        }
+
+        composable(route = Screen.NumbersPracticeScreen.route) {
+            NumbersPracticeScreen()
+        }
+
         composable(route = Screen.SettingsScreen.route) {
             SettingsScreen()
         }
