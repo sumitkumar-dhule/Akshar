@@ -15,6 +15,6 @@ object ColorRepository {
        ColorItem("BLACK", Color.Black, R.raw.black),
        ColorItem("PURPLE", Color(red = 128, green = 0, blue = 128), R.raw.purple),
        ColorItem("BROWN", Color(red = 168, green = 42, blue = 42), R.raw.brown),
-       ColorItem("PINK", Color(red = 255, green = 192, blue = 203), R.raw.pink)
+       ColorItem("PINK", Color(red = 255, green = 0, blue = 127), R.raw.pink)
     )
 }

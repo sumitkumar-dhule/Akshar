@@ -37,7 +37,7 @@ fun ColorDisplay(
 
     Box(modifier = modifier) {
 
-        if (colorItem.colorValue == Color.White || colorItem.name == "PINK") {
+        if (colorItem.colorValue == Color.White) {
             Box(modifier = Modifier
                 .fillMaxSize()
                 .background(Color.DarkGray))
