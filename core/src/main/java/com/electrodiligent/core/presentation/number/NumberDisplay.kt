@@ -100,7 +100,7 @@ fun NumberDisplay(
                 Text(
                     text = numberItem.count.toString(),
                     fontWeight = FontWeight.Bold,
-                    fontSize = 65.sp,
+                    fontSize = 60.sp,
                     color = Color.White,
                     textAlign = TextAlign.Center
                 )

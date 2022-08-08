@@ -10,11 +10,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.electrodiligent.core.R
 
 @Composable
 fun DrawerHeader(header: String = "", headerImageID: Int) {
@@ -43,43 +45,53 @@ fun DrawerBody(
     itemTextStyle: TextStyle = TextStyle(fontSize = 18.sp),
     onItemClick: (MenuItem) -> Unit
 ) {
-    LazyColumn(modifier) {
-        items(items) { item ->
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(R.drawable.daycare),
+            contentDescription = "background",
+            modifier = Modifier
+                .fillMaxSize(),
+            contentScale = ContentScale.FillHeight,
+            alpha = 0.05f
+        )
 
-            Box {
-
-                if (item.isSectionHeader) {
-                    Text(
-                        text = item.title,
-                        style = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.Bold),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 16.dp, start = 16.dp)
-                    )
-                } else {
-
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable {
-                                onItemClick(item)
-                            }
-                            .padding(16.dp)
-                    ) {
-
-                        Icon(
-                            imageVector = item.icon,
-                            contentDescription = item.contentDescription
-                        )
-                        Spacer(modifier = Modifier.width(16.dp))
+        LazyColumn(modifier) {
+            items(items) { item ->
+                Box {
+                    if (item.isSectionHeader) {
                         Text(
                             text = item.title,
-                            style = itemTextStyle,
-                            modifier = Modifier.weight(1f)
+                            style = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.Bold),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 16.dp, start = 16.dp)
                         )
+                    } else {
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    onItemClick(item)
+                                }
+                                .padding(16.dp)
+                        ) {
+
+                            Icon(
+                                imageVector = item.icon,
+                                contentDescription = item.contentDescription
+                            )
+                            Spacer(modifier = Modifier.width(16.dp))
+                            Text(
+                                text = item.title,
+                                style = itemTextStyle,
+                                modifier = Modifier.weight(1f)
+                            )
+                        }
                     }
                 }
             }
         }
     }
+
 }
