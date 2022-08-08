@@ -77,10 +77,17 @@ fun DrawerBody(
                                 .padding(16.dp)
                         ) {
 
-                            Icon(
-                                imageVector = item.icon,
+//                            Icon(
+//                                imageVector = item.icon,
+//                                contentDescription = item.contentDescription
+//                            )
+
+                            Image(
+                                modifier = Modifier.size(15.dp, 30.dp),
+                                painter = painterResource(id = R.drawable.bookmark),
                                 contentDescription = item.contentDescription
                             )
+
                             Spacer(modifier = Modifier.width(16.dp))
                             Text(
                                 text = item.title,
