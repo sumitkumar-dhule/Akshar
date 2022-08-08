@@ -22,10 +22,10 @@ class NumberDisplayViewModel @Inject constructor(@ApplicationContext val context
 
     private var currentIndex: Int by mutableStateOf(0)
 
-    var shapeItem: NumberItem by mutableStateOf(displayNumbers[currentIndex])
+    var numberItem: NumberItem by mutableStateOf(displayNumbers[currentIndex])
 
     fun setup() {
-        shapeItem = displayNumbers[currentIndex]
+        numberItem = displayNumbers[currentIndex]
         playSound()
     }
 
@@ -40,7 +40,7 @@ class NumberDisplayViewModel @Inject constructor(@ApplicationContext val context
             currentIndex++
         }
 
-        shapeItem = displayNumbers[currentIndex]
+        numberItem = displayNumbers[currentIndex]
 
         playSound()
     }
@@ -56,7 +56,7 @@ class NumberDisplayViewModel @Inject constructor(@ApplicationContext val context
             currentIndex--
         }
 
-        shapeItem = displayNumbers[currentIndex]
+        numberItem = displayNumbers[currentIndex]
 
         playSound()
     }
@@ -64,7 +64,7 @@ class NumberDisplayViewModel @Inject constructor(@ApplicationContext val context
     fun currentNumber(){
         // TODO:: Make it work
         // TODO:: Change var names to correct
-        shapeItem = displayNumbers[currentIndex]
+        numberItem = displayNumbers[currentIndex]
 
         playSound()
     }

@@ -53,7 +53,7 @@ fun PracticeDisplay(
 
         Row(
             modifier = Modifier
-                .padding(horizontal = 8.dp)
+                .padding(horizontal = 0.dp)
                 .clickable(onClick = { practiceDisplayViewModel.playQuestion() }),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
@@ -62,7 +62,7 @@ fun PracticeDisplay(
 
             Image(
                 modifier = Modifier
-                    .size(50.dp, 50.dp),
+                    .size(35.dp, 35.dp),
                 painter = painterResource(id = R.drawable.ic_audio),
                 colorFilter = ColorFilter.tint(randomColor),
                 contentDescription = "Play Sound"
@@ -70,14 +70,14 @@ fun PracticeDisplay(
 
             Text(
                 text = question.question,
-                fontSize = 40.sp,
+                fontSize = 38.sp,
                 fontWeight = FontWeight.Bold,
                 color = randomColor
             )
 
             Image(
                 modifier = Modifier
-                    .size(50.dp, 50.dp),
+                    .size(35.dp, 35.dp),
                 painter = painterResource(id = R.drawable.ic_audio),
                 colorFilter = ColorFilter.tint(randomColor),
                 contentDescription = "Play Sound"
