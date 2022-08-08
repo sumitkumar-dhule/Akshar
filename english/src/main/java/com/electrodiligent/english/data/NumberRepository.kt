@@ -128,7 +128,7 @@ object NumberRepository {
         NumberItem(
             name = "TWENTY",
             count = 20,
-            image = R.drawable.baloon,
+            image = R.drawable.lollipop,
             audio = com.electrodiligent.english.R.raw.twenty
         )
     )

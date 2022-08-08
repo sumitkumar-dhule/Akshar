@@ -24,13 +24,13 @@ fun DrawerHeader(header: String = "", headerImageID: Int) {
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Image(
+            /*Image(
                 modifier = Modifier.size(180.dp, 180.dp).padding(16.dp),
                 painter = painterResource(id = headerImageID),
                 contentDescription = "Header Image"
-            )
+            )*/
             if (header.isNotEmpty()) {
-                Text(text = header, fontSize = 30.sp)
+                Text(text = header, fontSize = 30.sp, fontWeight = FontWeight.Bold)
             }
         }
     }

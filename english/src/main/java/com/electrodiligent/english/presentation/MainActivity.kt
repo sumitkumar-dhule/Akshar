@@ -57,6 +57,7 @@ class MainActivity : ComponentActivity() {
                         drawerGesturesEnabled = scaffoldState.drawerState.isOpen,
                         drawerContent = {
                             DrawerHeader(
+                                header = "Preschool Essentials",
                                 headerImageID = R.mipmap.ic_launcher
                             )
                             DrawerBody(
