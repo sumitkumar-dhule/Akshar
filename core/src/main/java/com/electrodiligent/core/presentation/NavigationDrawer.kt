@@ -52,7 +52,7 @@ fun DrawerBody(
             modifier = Modifier
                 .fillMaxSize(),
             contentScale = ContentScale.FillHeight,
-            alpha = 0.05f
+            alpha = 0.09f
         )
 
         LazyColumn(modifier) {

@@ -1,6 +1,7 @@
 package com.electrodiligent.core.presentation.number
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
@@ -18,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.domain.model.NumberItem
 import com.electrodiligent.core.util.RandomColor
 
@@ -29,26 +31,33 @@ fun NumberFlashcard(
 ) {
 
     val randomColor = RandomColor.list.random().colorValue
+    val numberFlashcardViewModel = hiltViewModel<NumberFlashcardViewModel>()
 
     Box(modifier = modifier.padding(horizontal = 8.dp), contentAlignment = Alignment.Center) {
 
 
         LazyVerticalGrid(modifier = modifier, cells = GridCells.Fixed(2), content = {
             items(numberItems) {
-                NumberCardBluePrint(modifier, it, randomColor)
+                NumberCardBluePrint(modifier, it, randomColor, numberFlashcardViewModel)
             }
         })
     }
 }
 
 @Composable
-fun NumberCardBluePrint(modifier: Modifier, item: NumberItem, randomColor: Color) {
+fun NumberCardBluePrint(
+    modifier: Modifier,
+    item: NumberItem,
+    randomColor: Color,
+    numberFlashcardViewModel: NumberFlashcardViewModel
+) {
 
     Card(
         modifier = Modifier
             .padding(16.dp)
             .shadow(8.dp, shape = RoundedCornerShape(4.dp))
             .clip(shape = RoundedCornerShape(4.dp))
+            .clickable(onClick = { numberFlashcardViewModel.playSound(item = item) })
     ) {
 
         Box {
