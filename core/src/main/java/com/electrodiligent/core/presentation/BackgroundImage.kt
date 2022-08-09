@@ -9,7 +9,7 @@ import androidx.compose.ui.res.painterResource
 import com.electrodiligent.core.R
 
 @Composable
-fun BackgroundImage(alpha:Float = 0.05f) {
+fun BackgroundImage(alpha:Float = 0.08f) {
     Image(
         painter = painterResource(R.drawable.daycare),
         contentDescription = "background",

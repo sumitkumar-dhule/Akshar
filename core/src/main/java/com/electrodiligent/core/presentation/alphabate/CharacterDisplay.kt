@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.domain.model.DisplayCharacter
-import com.electrodiligent.core.presentation.BackgroundImage
+import com.electrodiligent.core.util.RandomColor
 
 @Composable
 fun CharacterDisplay(
@@ -36,7 +36,7 @@ fun CharacterDisplay(
 
     characterDisplayViewModel.setup()
 
-    var alphabate = characterDisplayViewModel.displayCharacterState
+    val alphabet = characterDisplayViewModel.displayCharacterState
 
     Box(modifier = modifier) {
 
@@ -58,7 +58,7 @@ fun CharacterDisplay(
                         .fillMaxHeight(0.7f)
                         .aspectRatio(1f, matchHeightConstraintsFirst = true)
                         .alpha(0.4f),
-                    letter = alphabate.left,
+                    letter = alphabet.left,
                     fontSize = 30.sp,
                     onClick = { characterDisplayViewModel.previous() }
                 )
@@ -67,9 +67,9 @@ fun CharacterDisplay(
                     modifier = Modifier
                         .fillMaxSize(0.5f)
                         .aspectRatio(1f),
-                    letter = alphabate.display,
+                    letter = alphabet.display,
                     fontSize = 80.sp,
-                    subtitle = alphabate.subtitle,
+                    subtitle = alphabet.subtitle,
                     showSubtitle = showSubtitle,
                     onClick = { characterDisplayViewModel.playSound() }
                 )
@@ -79,16 +79,16 @@ fun CharacterDisplay(
                         .fillMaxHeight(0.7f)
                         .aspectRatio(1f, matchHeightConstraintsFirst = true)
                         .alpha(0.4f),
-                    letter = alphabate.right,
+                    letter = alphabet.right,
                     fontSize = 30.sp,
                     onClick = { characterDisplayViewModel.next() }
                 )
             }
 
             Text(
-                text = alphabate.displayName,
+                text = alphabet.displayName,
                 fontSize = 50.sp,
-                color = Color.Magenta,
+                color = characterDisplayViewModel.randomColor,
                 fontWeight = FontWeight.Bold
             )
             Box(
@@ -100,8 +100,8 @@ fun CharacterDisplay(
             ) {
 
                 Image(
-                    painter = painterResource(id = alphabate.displayImage),
-                    contentDescription = "Image of ${alphabate.displayName}",
+                    painter = painterResource(id = alphabet.displayImage),
+                    contentDescription = "Image of ${alphabet.displayName}",
                     modifier = Modifier
                         .fillMaxSize(),
                     contentScale = ContentScale.Fit
