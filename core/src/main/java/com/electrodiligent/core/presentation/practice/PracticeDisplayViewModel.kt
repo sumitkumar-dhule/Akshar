@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.CharacterQuestion
+import com.electrodiligent.core.util.RandomColor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
@@ -21,9 +22,12 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
     ViewModel() {
 
     val score = 0;
+    val randomColor = RandomColor.list.random().colorValue
+
 
     private var questionMediaPlayer = MediaPlayer.create(context, R.raw.beep)
     private var effectMediaPlayer = MediaPlayer.create(context, R.raw.beep)
+    private var specialEffectMediaPlayer = MediaPlayer.create(context, R.raw.positive)
 
     var questions: List<CharacterQuestion> = listOf(CharacterQuestion())
 
@@ -68,6 +72,7 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
     }
 
     private fun playCelebration() {
+        specialEffects(R.raw.positive)
         playEffects(R.raw.correct)
     }
 
@@ -86,6 +91,12 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
         questionMediaPlayer.release()
         questionMediaPlayer = MediaPlayer.create(context, audio)
         questionMediaPlayer.start()
+    }
+
+    private fun specialEffects(audio: Int) {
+        specialEffectMediaPlayer.release()
+        specialEffectMediaPlayer = MediaPlayer.create(context, audio)
+        specialEffectMediaPlayer.start()
     }
 
     private fun playEffects(audio: Int) {

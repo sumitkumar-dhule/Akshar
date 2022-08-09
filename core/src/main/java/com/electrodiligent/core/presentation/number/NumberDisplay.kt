@@ -37,7 +37,7 @@ fun NumberDisplay(
 
     numberDisplayViewModel.setup()
 
-    val numberItem = numberDisplayViewModel.shapeItem
+    val numberItem = numberDisplayViewModel.numberItem
 
     Box(modifier = modifier) {
 
@@ -90,7 +90,7 @@ fun NumberDisplay(
             Box(
                 modifier = Modifier
                     .clickable(onClick = { numberDisplayViewModel.currentNumber() })
-                    .fillMaxHeight(0.24f)
+                    .fillMaxHeight(0.22f)
                     .aspectRatio(1f)
                     .clip(RoundedCornerShape(8.dp))
                     .background(Brush.verticalGradient(listOf(Color.Blue, Color.DarkGray)))
@@ -100,8 +100,9 @@ fun NumberDisplay(
                 Text(
                     text = numberItem.count.toString(),
                     fontWeight = FontWeight.Bold,
-                    fontSize = 70.sp,
-                    color = Color.White
+                    fontSize = 60.sp,
+                    color = Color.White,
+                    textAlign = TextAlign.Center
                 )
             }
 

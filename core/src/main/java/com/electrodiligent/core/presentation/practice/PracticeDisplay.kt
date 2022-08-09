@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.CharacterQuestion
+import com.electrodiligent.core.domain.model.ColorItem
 import com.electrodiligent.core.util.RandomColor
 
 
@@ -33,6 +35,8 @@ fun PracticeDisplay(
     modifier: Modifier,
     items: List<CharacterQuestion>
 ) {
+
+    val randomColorList = RandomColor.list.toMutableList()
 
     val practiceDisplayViewModel = hiltViewModel<PracticeDisplayViewModel>()
     practiceDisplayViewModel.questions = items
@@ -53,33 +57,32 @@ fun PracticeDisplay(
 
         Row(
             modifier = Modifier
-                .padding(horizontal = 8.dp)
+                .padding(horizontal = 0.dp)
                 .clickable(onClick = { practiceDisplayViewModel.playQuestion() }),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            val randomColor = RandomColor.list.random().colorValue
 
             Image(
                 modifier = Modifier
-                    .size(50.dp, 50.dp),
+                    .size(35.dp, 35.dp),
                 painter = painterResource(id = R.drawable.ic_audio),
-                colorFilter = ColorFilter.tint(randomColor),
+                colorFilter = ColorFilter.tint(practiceDisplayViewModel.randomColor),
                 contentDescription = "Play Sound"
             )
 
             Text(
                 text = question.question,
-                fontSize = 40.sp,
+                fontSize = 38.sp,
                 fontWeight = FontWeight.Bold,
-                color = randomColor
+                color = practiceDisplayViewModel.randomColor
             )
 
             Image(
                 modifier = Modifier
-                    .size(50.dp, 50.dp),
+                    .size(35.dp, 35.dp),
                 painter = painterResource(id = R.drawable.ic_audio),
-                colorFilter = ColorFilter.tint(randomColor),
+                colorFilter = ColorFilter.tint(practiceDisplayViewModel.randomColor),
                 contentDescription = "Play Sound"
             )
         }
@@ -92,7 +95,7 @@ fun PracticeDisplay(
         ) {
             LazyVerticalGrid(modifier = modifier, cells = GridCells.Fixed(3), content = {
                 items(question.options) {
-                    Options(modifier, it, practiceDisplayViewModel)
+                    Options(modifier, it, practiceDisplayViewModel, randomColorList)
                 }
             })
         }
@@ -101,9 +104,18 @@ fun PracticeDisplay(
 }
 
 @Composable
-fun Options(modifier: Modifier, item: String, practiceDisplayViewModel: PracticeDisplayViewModel) {
+fun Options(
+    modifier: Modifier,
+    item: String,
+    practiceDisplayViewModel: PracticeDisplayViewModel,
+    randomColorList: MutableList<ColorItem>
+) {
 
-    val randomColor = RandomColor.list.random().colorValue
+    fun getNewColour(): Color {
+        val newColor = randomColorList.random()
+        randomColorList.remove(newColor)
+        return newColor.colorValue
+    }
 
     Card(
         modifier = Modifier
@@ -112,11 +124,12 @@ fun Options(modifier: Modifier, item: String, practiceDisplayViewModel: Practice
             .clip(shape = RoundedCornerShape(4.dp))
     ) {
 
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .clickable(onClick = {
-                practiceDisplayViewModel.optionSelected(item)
-            }), contentAlignment = Alignment.Center
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable(onClick = {
+                    practiceDisplayViewModel.optionSelected(item)
+                }), contentAlignment = Alignment.Center
         ) {
             Box(
                 modifier
@@ -129,7 +142,7 @@ fun Options(modifier: Modifier, item: String, practiceDisplayViewModel: Practice
                 Text(
                     text = item,
                     fontSize = 64.sp,
-                    color = randomColor,
+                    color = getNewColour(),
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
                 )
