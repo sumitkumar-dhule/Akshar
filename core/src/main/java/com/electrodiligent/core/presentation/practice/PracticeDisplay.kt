@@ -4,8 +4,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -29,7 +30,6 @@ import com.electrodiligent.core.domain.model.ColorItem
 import com.electrodiligent.core.util.RandomColor
 
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PracticeDisplay(
     modifier: Modifier,
@@ -93,11 +93,11 @@ fun PracticeDisplay(
                 .fillMaxWidth()
                 .aspectRatio(1f), contentAlignment = Alignment.Center
         ) {
-            LazyVerticalGrid(modifier = modifier, cells = GridCells.Fixed(3), content = {
+            LazyVerticalGrid(modifier = modifier, columns = GridCells.Fixed(3)) {
                 items(question.options) {
                     Options(modifier, it, practiceDisplayViewModel, randomColorList)
                 }
-            })
+            }
         }
 
     }

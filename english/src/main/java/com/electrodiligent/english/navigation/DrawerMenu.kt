@@ -8,6 +8,14 @@ import com.electrodiligent.core.presentation.MenuItem
 
 object DrawerMenu {
     val menu: List<MenuItem> = listOf(
+
+        MenuItem(
+            id = "home",
+            title = "Home",
+            contentDescription = "home",
+            icon = Icons.Default.Info,
+        ),
+
         MenuItem(
             id = "literature",
             title = "Literature",

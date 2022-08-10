@@ -1,5 +1,6 @@
 package com.electrodiligent.english.presentation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -27,6 +28,8 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    //TODO:: Remove lint
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
@@ -120,6 +123,14 @@ class MainActivity : ComponentActivity() {
                                                 Screen.NumbersPracticeScreen.route
                                             )
                                         }
+
+                                        "home" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.HomeScreen.route
+                                            )
+                                        }
+
                                     }
 
                                     scope.launch {
@@ -132,7 +143,6 @@ class MainActivity : ComponentActivity() {
                         BackgroundImage()
                         Navigation(navController = navController)
                     }
-
 
                 }
             }
