@@ -1,6 +1,7 @@
 package com.electrodiligent.english.presentation
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -14,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -56,6 +58,8 @@ fun HomeScreen() {
                         modifier = Modifier
                             .padding(horizontal = 8.dp)
                             .fillMaxWidth()
+                            .padding(start = 8.dp, end = 8.dp, bottom = 16.dp)
+
                     ) {
                         Text(
                             modifier = Modifier
@@ -81,7 +85,6 @@ fun HomeScreen() {
                     }
                 }
 
-
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -91,7 +94,7 @@ fun HomeScreen() {
                 ) {
                     Column(
                         modifier = Modifier
-                            .padding(horizontal = 8.dp)
+                            .padding(start = 8.dp, end = 8.dp, bottom = 16.dp)
                             .fillMaxWidth()
                     ) {
                         Text(
@@ -145,28 +148,38 @@ fun LearnOptions(
 
     ) {
 
-        Image(
-            painter = painterResource(id = item.icon),
-            contentDescription = item.title,
+        Box(
             modifier = Modifier
-                .fillMaxSize(),
-            contentScale = ContentScale.Fit
-
-        )
-
-        Column(
-            modifier = Modifier
-                .size(120.dp, 120.dp)
-                .clickable(onClick = {
-
-                }),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Bottom
+                .size(120.dp, 120.dp),
+            contentAlignment = Alignment.Center
         ) {
-            Text(
-                text = item.title,
-                textAlign = TextAlign.Center
+
+            Image(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = 24.dp, end = 24.dp, bottom = 32.dp),
+                contentScale = ContentScale.Fit,
+                painter = painterResource(id = item.icon),
+                contentDescription = item.title,
+                alignment = Alignment.Center
             )
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clickable(onClick = {
+
+                    }),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Bottom
+            ) {
+
+                Text(
+                    text = item.title,
+                    textAlign = TextAlign.Center
+                )
+            }
         }
     }
+
 }
