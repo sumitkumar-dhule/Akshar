@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -23,7 +25,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.core.util.RandomColor
 import com.electrodiligent.english.navigation.LearningItems
 import com.electrodiligent.english.navigation.NavigationItem
 import com.electrodiligent.english.navigation.NavigationUtil
@@ -32,19 +33,20 @@ import com.electrodiligent.english.navigation.PracticeItems
 @Composable
 fun HomeScreen(navController: NavHostController) {
 
-    val randomColor = Color(red = 168, green = 42, blue = 42)
+    val brownColor = Color(red = 168, green = 42, blue = 42)
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .verticalScroll(rememberScrollState())
                 .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
         ) {
 
             Column(
                 modifier = Modifier
-                    .padding(horizontal = 8.dp)
-                    .fillMaxWidth()
+                    .padding(horizontal = 4.dp)
+                    .fillMaxSize()
             ) {
 
                 Card(
@@ -68,7 +70,7 @@ fun HomeScreen(navController: NavHostController) {
                             fontWeight = FontWeight.Bold,
                             fontSize = 24.sp,
                             textAlign = TextAlign.Center,
-                            color = randomColor
+                            color = brownColor
                         )
 
                         LazyHorizontalGrid(
@@ -80,7 +82,11 @@ fun HomeScreen(navController: NavHostController) {
                             verticalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
                             items(LearningItems.menu) {
-                                LearnOptions(navController = navController, item = it, color = randomColor)
+                                LearnOptions(
+                                    navController = navController,
+                                    item = it,
+                                    color = brownColor
+                                )
                             }
                         }
                     }
@@ -105,7 +111,7 @@ fun HomeScreen(navController: NavHostController) {
                             fontWeight = FontWeight.Bold,
                             fontSize = 24.sp,
                             textAlign = TextAlign.Center,
-                            color = randomColor
+                            color = brownColor
                         )
 
                         LazyHorizontalGrid(
@@ -117,7 +123,11 @@ fun HomeScreen(navController: NavHostController) {
                             verticalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
                             items(PracticeItems.menu) {
-                                LearnOptions(navController, it, color = randomColor)
+                                LearnOptions(
+                                    navController = navController,
+                                    item = it,
+                                    color = brownColor
+                                )
                             }
                         }
                     }

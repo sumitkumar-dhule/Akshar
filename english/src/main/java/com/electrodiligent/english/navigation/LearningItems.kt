@@ -1,8 +1,6 @@
 package com.electrodiligent.english.navigation
 
 import com.electrodiligent.core.R
-import com.electrodiligent.english.presentation.AlphabetIdentificationScreen
-
 
 object LearningItems {
     val menu: List<NavigationItem> = listOf(

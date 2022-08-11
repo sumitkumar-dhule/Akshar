@@ -53,20 +53,18 @@ fun PracticeDisplay(
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
 
-//        Text(text = "Score: ${practiceDisplayViewModel.score}")
-
-        Row(
+        Column(
             modifier = Modifier
                 .padding(horizontal = 0.dp)
                 .clickable(onClick = { practiceDisplayViewModel.playQuestion() }),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             Image(
                 modifier = Modifier
-                    .size(35.dp, 35.dp),
-                painter = painterResource(id = R.drawable.ic_audio),
+                    .size(50.dp, 50.dp),
+                painter = painterResource(id = R.drawable.play_button),
                 colorFilter = ColorFilter.tint(practiceDisplayViewModel.randomColor),
                 contentDescription = "Play Sound"
             )
@@ -78,13 +76,6 @@ fun PracticeDisplay(
                 color = practiceDisplayViewModel.randomColor
             )
 
-            Image(
-                modifier = Modifier
-                    .size(35.dp, 35.dp),
-                painter = painterResource(id = R.drawable.ic_audio),
-                colorFilter = ColorFilter.tint(practiceDisplayViewModel.randomColor),
-                contentDescription = "Play Sound"
-            )
         }
 
         Box(
