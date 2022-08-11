@@ -9,14 +9,16 @@ object PracticeItems {
             id = "practice_alphabets",
             title = "Alphabets",
             contentDescription = "Alphabets",
-            icon = R.drawable.practice_abc
+            icon = R.drawable.practice_abc,
+            navigationRoute = Screen.AlphabetsPracticeScreen
         ),
 
         NavigationItem(
             id = "practice_numbers",
             title = "Numbers",
             contentDescription = "Alphabets",
-            icon = R.drawable.practice_number
+            icon = R.drawable.practice_number,
+            navigationRoute = Screen.NumbersPracticeScreen
         )
     )
 }

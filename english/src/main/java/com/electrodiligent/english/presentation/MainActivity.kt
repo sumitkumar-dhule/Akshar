@@ -21,6 +21,7 @@ import com.electrodiligent.core.presentation.DrawerHeader
 import com.electrodiligent.english.R
 import com.electrodiligent.english.navigation.DrawerMenu
 import com.electrodiligent.english.navigation.Navigation
+import com.electrodiligent.english.navigation.NavigationUtil.navigateTo
 import com.electrodiligent.english.navigation.Screen
 import com.electrodiligent.english.ui.theme.AksharTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -149,16 +150,16 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun navigateTo(navController: NavHostController, route: String) {
-        navController.navigate(route) {
-            navController.graph.startDestinationRoute?.let { route ->
-                popUpTo(route) {
-                    saveState = true
-                }
-            }
-            launchSingleTop = true
-            restoreState = true
-        }
-    }
+//    private fun navigateTo(navController: NavHostController, route: String) {
+//        navController.navigate(route) {
+//            navController.graph.startDestinationRoute?.let { route ->
+//                popUpTo(route) {
+//                    saveState = true
+//                }
+//            }
+//            launchSingleTop = true
+//            restoreState = true
+//        }
+//    }
 
 }

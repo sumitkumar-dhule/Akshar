@@ -1,7 +1,6 @@
 package com.electrodiligent.english.presentation
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -16,21 +15,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.english.data.AlphabetQuestionRepository
+import com.electrodiligent.core.util.RandomColor
 import com.electrodiligent.english.navigation.LearningItems
 import com.electrodiligent.english.navigation.NavigationItem
+import com.electrodiligent.english.navigation.NavigationUtil
 import com.electrodiligent.english.navigation.PracticeItems
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavHostController) {
+
+    val randomColor = Color(red = 168, green = 42, blue = 42)
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
@@ -38,8 +40,6 @@ fun HomeScreen() {
                 .fillMaxSize()
                 .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
         ) {
-
-            val options = AlphabetQuestionRepository.list.random().options
 
             Column(
                 modifier = Modifier
@@ -67,7 +67,8 @@ fun HomeScreen() {
                             text = "Learning",
                             fontWeight = FontWeight.Bold,
                             fontSize = 24.sp,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            color = randomColor
                         )
 
                         LazyHorizontalGrid(
@@ -79,7 +80,7 @@ fun HomeScreen() {
                             verticalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
                             items(LearningItems.menu) {
-                                LearnOptions(it)
+                                LearnOptions(navController = navController, item = it, color = randomColor)
                             }
                         }
                     }
@@ -103,7 +104,8 @@ fun HomeScreen() {
                             text = "Practice",
                             fontWeight = FontWeight.Bold,
                             fontSize = 24.sp,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            color = randomColor
                         )
 
                         LazyHorizontalGrid(
@@ -115,7 +117,7 @@ fun HomeScreen() {
                             verticalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
                             items(PracticeItems.menu) {
-                                LearnOptions(it)
+                                LearnOptions(navController, it, color = randomColor)
                             }
                         }
                     }
@@ -137,9 +139,10 @@ fun HomeScreen() {
 
 @Composable
 fun LearnOptions(
-    item: NavigationItem
+    navController: NavHostController,
+    item: NavigationItem,
+    color: Color
 ) {
-
     Card(
         modifier = Modifier
             .padding(8.dp)
@@ -168,7 +171,7 @@ fun LearnOptions(
                 modifier = Modifier
                     .fillMaxSize()
                     .clickable(onClick = {
-
+                        NavigationUtil.navigateTo(navController, item.navigationRoute.route)
                     }),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Bottom
@@ -176,7 +179,8 @@ fun LearnOptions(
 
                 Text(
                     text = item.title,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    color = color
                 )
             }
         }
