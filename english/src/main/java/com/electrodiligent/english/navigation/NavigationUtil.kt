@@ -1,0 +1,17 @@
+package com.electrodiligent.english.navigation
+
+import androidx.navigation.NavHostController
+
+object NavigationUtil {
+    fun navigateTo(navController: NavHostController, route: String) {
+        navController.navigate(route) {
+            navController.graph.startDestinationRoute?.let { route ->
+                popUpTo(route) {
+                    saveState = true
+                }
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+}

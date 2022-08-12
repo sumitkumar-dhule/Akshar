@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -17,6 +18,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.electrodiligent.core.R
+
+val brownColor = Color(red = 168, green = 42, blue = 42)
 
 @Composable
 fun DrawerHeader(header: String = "", headerImageID: Int) {
@@ -32,7 +35,12 @@ fun DrawerHeader(header: String = "", headerImageID: Int) {
                 contentDescription = "Header Image"
             )*/
             if (header.isNotEmpty()) {
-                Text(text = header, fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                Text(
+                    text = header,
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = brownColor
+                )
             }
         }
     }
@@ -77,14 +85,9 @@ fun DrawerBody(
                                 .padding(16.dp)
                         ) {
 
-//                            Icon(
-//                                imageVector = item.icon,
-//                                contentDescription = item.contentDescription
-//                            )
-
                             Image(
-                                modifier = Modifier.size(15.dp, 30.dp),
-                                painter = painterResource(id = R.drawable.bookmark),
+                                modifier = Modifier.size(30.dp, 30.dp),
+                                painter = painterResource(id = item.icon),
                                 contentDescription = item.contentDescription
                             )
 
@@ -92,7 +95,8 @@ fun DrawerBody(
                             Text(
                                 text = item.title,
                                 style = itemTextStyle,
-                                modifier = Modifier.weight(1f)
+                                modifier = Modifier.weight(1f),
+                                color = brownColor
                             )
                         }
                     }

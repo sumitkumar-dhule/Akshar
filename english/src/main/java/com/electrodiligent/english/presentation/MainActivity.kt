@@ -1,5 +1,6 @@
 package com.electrodiligent.english.presentation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -20,6 +21,7 @@ import com.electrodiligent.core.presentation.DrawerHeader
 import com.electrodiligent.english.R
 import com.electrodiligent.english.navigation.DrawerMenu
 import com.electrodiligent.english.navigation.Navigation
+import com.electrodiligent.english.navigation.NavigationUtil.navigateTo
 import com.electrodiligent.english.navigation.Screen
 import com.electrodiligent.english.ui.theme.AksharTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,6 +29,8 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    //TODO:: Remove lint
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
@@ -120,6 +124,14 @@ class MainActivity : ComponentActivity() {
                                                 Screen.NumbersPracticeScreen.route
                                             )
                                         }
+
+                                        "home" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.HomeScreen.route
+                                            )
+                                        }
+
                                     }
 
                                     scope.launch {
@@ -133,22 +145,21 @@ class MainActivity : ComponentActivity() {
                         Navigation(navController = navController)
                     }
 
-
                 }
             }
         }
     }
 
-    private fun navigateTo(navController: NavHostController, route: String) {
-        navController.navigate(route) {
-            navController.graph.startDestinationRoute?.let { route ->
-                popUpTo(route) {
-                    saveState = true
-                }
-            }
-            launchSingleTop = true
-            restoreState = true
-        }
-    }
+//    private fun navigateTo(navController: NavHostController, route: String) {
+//        navController.navigate(route) {
+//            navController.graph.startDestinationRoute?.let { route ->
+//                popUpTo(route) {
+//                    saveState = true
+//                }
+//            }
+//            launchSingleTop = true
+//            restoreState = true
+//        }
+//    }
 
 }

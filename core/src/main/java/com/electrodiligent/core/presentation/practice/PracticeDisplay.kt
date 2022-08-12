@@ -4,8 +4,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -29,7 +30,6 @@ import com.electrodiligent.core.domain.model.ColorItem
 import com.electrodiligent.core.util.RandomColor
 
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PracticeDisplay(
     modifier: Modifier,
@@ -53,20 +53,18 @@ fun PracticeDisplay(
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
 
-//        Text(text = "Score: ${practiceDisplayViewModel.score}")
-
-        Row(
+        Column(
             modifier = Modifier
                 .padding(horizontal = 0.dp)
                 .clickable(onClick = { practiceDisplayViewModel.playQuestion() }),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             Image(
                 modifier = Modifier
-                    .size(35.dp, 35.dp),
-                painter = painterResource(id = R.drawable.ic_audio),
+                    .size(50.dp, 50.dp),
+                painter = painterResource(id = R.drawable.play_button),
                 colorFilter = ColorFilter.tint(practiceDisplayViewModel.randomColor),
                 contentDescription = "Play Sound"
             )
@@ -78,13 +76,6 @@ fun PracticeDisplay(
                 color = practiceDisplayViewModel.randomColor
             )
 
-            Image(
-                modifier = Modifier
-                    .size(35.dp, 35.dp),
-                painter = painterResource(id = R.drawable.ic_audio),
-                colorFilter = ColorFilter.tint(practiceDisplayViewModel.randomColor),
-                contentDescription = "Play Sound"
-            )
         }
 
         Box(
@@ -93,11 +84,11 @@ fun PracticeDisplay(
                 .fillMaxWidth()
                 .aspectRatio(1f), contentAlignment = Alignment.Center
         ) {
-            LazyVerticalGrid(modifier = modifier, cells = GridCells.Fixed(3), content = {
+            LazyVerticalGrid(modifier = modifier, columns = GridCells.Fixed(3)) {
                 items(question.options) {
                     Options(modifier, it, practiceDisplayViewModel, randomColorList)
                 }
-            })
+            }
         }
 
     }

@@ -11,8 +11,12 @@ fun Navigation(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.AlphabetIdentificationScreen.route
+        startDestination = Screen.HomeScreen.route
     ) {
+        composable(route = Screen.HomeScreen.route) {
+            HomeScreen(navController)
+        }
+
         composable(route = Screen.AlphabetIdentificationScreen.route) {
             AlphabetIdentificationScreen()
         }
