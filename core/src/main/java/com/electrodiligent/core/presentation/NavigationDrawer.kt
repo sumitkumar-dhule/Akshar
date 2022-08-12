@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,7 +21,7 @@ import com.electrodiligent.core.R
 val brownColor = Color(red = 168, green = 42, blue = 42)
 
 @Composable
-fun DrawerHeader(header: String = "", headerImageID: Int) {
+fun DrawerHeader(header: String = "", headerImageID: Int, version: String = "") {
     Box(
         modifier = Modifier
             .fillMaxWidth(),
@@ -39,6 +38,13 @@ fun DrawerHeader(header: String = "", headerImageID: Int) {
                     text = header,
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
+                    color = brownColor
+                )
+
+
+                Text(
+                    text = version,
+                    fontSize = 10.sp,
                     color = brownColor
                 )
             }

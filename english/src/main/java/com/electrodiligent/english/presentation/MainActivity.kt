@@ -12,12 +12,12 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.electrodiligent.core.presentation.AppBar
 import com.electrodiligent.core.presentation.BackgroundImage
 import com.electrodiligent.core.presentation.DrawerBody
 import com.electrodiligent.core.presentation.DrawerHeader
+import com.electrodiligent.english.BuildConfig.VERSION_NAME
 import com.electrodiligent.english.R
 import com.electrodiligent.english.navigation.DrawerMenu
 import com.electrodiligent.english.navigation.Navigation
@@ -62,7 +62,8 @@ class MainActivity : ComponentActivity() {
                         drawerContent = {
                             DrawerHeader(
                                 header = "Preschool Essentials",
-                                headerImageID = R.mipmap.ic_launcher
+                                headerImageID = R.mipmap.ic_launcher,
+                                version = "version: $VERSION_NAME"
                             )
                             DrawerBody(
                                 items = DrawerMenu.menu,
@@ -149,17 +150,4 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
-//    private fun navigateTo(navController: NavHostController, route: String) {
-//        navController.navigate(route) {
-//            navController.graph.startDestinationRoute?.let { route ->
-//                popUpTo(route) {
-//                    saveState = true
-//                }
-//            }
-//            launchSingleTop = true
-//            restoreState = true
-//        }
-//    }
-
 }
