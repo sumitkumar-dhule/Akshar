@@ -78,8 +78,8 @@ fun HomeScreen(navController: NavHostController) {
                                 .fillMaxWidth()
                                 .height(280.dp),
                             rows = GridCells.Fixed(2),
-                            horizontalArrangement = Arrangement.spacedBy(4.dp),
-                            verticalArrangement = Arrangement.spacedBy(4.dp)
+                            horizontalArrangement = Arrangement.SpaceEvenly,
+                            verticalArrangement = Arrangement.SpaceEvenly
                         ) {
                             items(LearningItems.menu) {
                                 LearnOptions(
@@ -119,8 +119,8 @@ fun HomeScreen(navController: NavHostController) {
                                 .fillMaxWidth()
                                 .height(130.dp),
                             rows = GridCells.Fixed(1),
-                            horizontalArrangement = Arrangement.spacedBy(4.dp),
-                            verticalArrangement = Arrangement.spacedBy(4.dp)
+                            horizontalArrangement = Arrangement.SpaceEvenly,
+                            verticalArrangement = Arrangement.SpaceEvenly
                         ) {
                             items(PracticeItems.menu) {
                                 LearnOptions(

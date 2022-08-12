@@ -7,7 +7,7 @@ object LearningItems {
         
         NavigationItem(
             id = "alphabet",
-            title = "Alphabet Identification",
+            title = "Alphabets",
             contentDescription = "Go to Alphabet Identification screen",
             icon = R.drawable.abc,
             navigationRoute = Screen.AlphabetIdentificationScreen
@@ -15,7 +15,7 @@ object LearningItems {
 
         NavigationItem(
             id = "alphabet_flashcards",
-            title = "Alphabet Flashcards",
+            title = "A to Z",
             contentDescription = "Go to Alphabet Flashcards screen",
             icon = R.drawable.flashcards_abc,
             navigationRoute = Screen.AlphabetFlashcardScreen
@@ -24,7 +24,7 @@ object LearningItems {
 
         NavigationItem(
             id = "number_identification",
-            title = "Number Identification",
+            title = "Numbers",
             contentDescription = "Go to Number Identification screen",
             icon = R.drawable.numbers,
             navigationRoute = Screen.NumberIdentificationScreen
@@ -32,7 +32,7 @@ object LearningItems {
 
         NavigationItem(
             id = "number_flashcards",
-            title = "Number Flashcards",
+            title = "1 to 100",
             contentDescription = "Go to Number Flashcards screen",
             icon = R.drawable.flashcard_123,
             navigationRoute = Screen.NumberFlashcardScreen
