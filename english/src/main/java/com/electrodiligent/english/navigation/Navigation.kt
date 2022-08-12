@@ -41,6 +41,10 @@ fun Navigation(navController: NavHostController) {
             ShapesScreen()
         }
 
+        composable(route = Screen.VegetablesScreen.route) {
+            VegetablesScreen()
+        }
+
         composable(route = Screen.AlphabetsPracticeScreen.route) {
             AlphabetsPracticeScreen()
         }

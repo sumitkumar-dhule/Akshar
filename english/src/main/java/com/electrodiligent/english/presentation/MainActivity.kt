@@ -133,6 +133,14 @@ class MainActivity : ComponentActivity() {
                                             )
                                         }
 
+                                        "gk_vegetables" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.VegetablesScreen.route
+                                            )
+                                        }
+
+
                                     }
 
                                     scope.launch {

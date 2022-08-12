@@ -118,7 +118,7 @@ object AlphabetsRepository {
 
         DisplayCharacter(
             display = "Q", left = "P", right = "R", displayName = "QUEEN",
-            displayImage = R.drawable.q,
+            displayImage = com.electrodiligent.core.R.drawable.queen,
             subtitle = "q",
             audio = R.raw.q_for_queen
         ),
@@ -139,7 +139,7 @@ object AlphabetsRepository {
 
         DisplayCharacter(
             display = "T", left = "S", right = "U", displayName = "TIGER",
-            displayImage = R.drawable.t,
+            displayImage = com.electrodiligent.core.R.drawable.tiger,
             subtitle = "t",
             audio = R.raw.t_for_tiger
         ),

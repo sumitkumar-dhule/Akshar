@@ -78,6 +78,13 @@ object DrawerMenu {
             contentDescription = "Go to Colors screen",
             icon = R.drawable.colors
         ),
+
+        MenuItem(
+            id = "gk_vegetables",
+            title = "Vegetables",
+            contentDescription = "Vegetables",
+            icon = R.drawable.vegetable
+        ),
         MenuItem(
             id = "practice",
             title = "Practice",
@@ -99,6 +106,8 @@ object DrawerMenu {
             contentDescription = "Alphabets",
             icon = R.drawable.practice_number
         ),
+
+
 
 //        MenuItem(
 //            id = "blank",

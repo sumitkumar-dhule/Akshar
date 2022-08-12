@@ -52,6 +52,14 @@ object LearningItems {
             contentDescription = "Go to Colors screen",
             icon = R.drawable.colors,
             navigationRoute = Screen.ColorsScreen
+        ),
+
+        NavigationItem(
+            id = "gk_vegetables",
+            title = "Vegetables",
+            contentDescription = "Go to Vegetables screen",
+            icon = R.drawable.vegetable,
+            navigationRoute = Screen.VegetablesScreen
         )
     )
 }

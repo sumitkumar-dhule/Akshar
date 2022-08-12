@@ -1,4 +1,4 @@
-package com.electrodiligent.core.presentation.shape
+package com.electrodiligent.core.presentation.picture
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -12,25 +12,25 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.PictureItem
 
 @Composable
-fun ShapeDisplay(
+fun PictureDisplay(
     modifier: Modifier,
     items: List<PictureItem>,
-    titleAudio : Int
+    title: String,
+    titleAudio: Int
 ) {
 
-    val shapeDisplayViewModel = hiltViewModel<ShapeDisplayViewModel>()
-    shapeDisplayViewModel.displayShapes = items
-    shapeDisplayViewModel.titleAudio = titleAudio
-    shapeDisplayViewModel.setup()
+    val pictureDisplayViewModel = hiltViewModel<PictureDisplayViewModel>()
+    pictureDisplayViewModel.displayPictures = items
+    pictureDisplayViewModel.titleAudio = titleAudio
+    pictureDisplayViewModel.setup()
 
-    val shapeItem = shapeDisplayViewModel.pictureItem
+    val shapeItem = pictureDisplayViewModel.pictureItem
 
     Box(modifier = modifier) {
 
@@ -44,59 +44,67 @@ fun ShapeDisplay(
                 modifier = Modifier
                     .fillMaxWidth()
                     .fillMaxHeight(0.18f),
-                horizontalArrangement = Arrangement.SpaceEvenly,
+                horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
                     painter = painterResource(R.drawable.ic_arrow_circle_left),
                     contentDescription = "Left",
-                    colorFilter = ColorFilter.tint(color = shapeItem.color),
+                    colorFilter = ColorFilter.tint(color = pictureDisplayViewModel.randomColor),
 
                     modifier = Modifier
                         .fillMaxHeight(0.7f)
                         .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .clickable { shapeDisplayViewModel.previousShape() }
+                        .clickable { pictureDisplayViewModel.previousShape() }
                 )
 
                 Text(
                     modifier = Modifier.weight(1f, fill = true),
                     fontSize = 30.sp,
-                    text = shapeItem.name,
+                    text = title,
                     textAlign = TextAlign.Center,
-                    color = shapeItem.color,
+                    color = pictureDisplayViewModel.randomColor,
                     fontWeight = FontWeight.Bold
                 )
+
 
                 Image(
                     painter = painterResource(R.drawable.ic_arrow_circle_right),
                     contentDescription = "Right",
-                    colorFilter = ColorFilter.tint(color = shapeItem.color),
+                    colorFilter = ColorFilter.tint(color = pictureDisplayViewModel.randomColor),
 
                     modifier = Modifier
                         .fillMaxHeight(0.7f)
                         .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .clickable { shapeDisplayViewModel.nextShape() }
+                        .clickable { pictureDisplayViewModel.nextShape() }
                 )
             }
 
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth(0.7f)
-                    .fillMaxHeight(0.7f)
-                    .padding(bottom = 80.dp)
-                    .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = true)
-                    .clickable(onClick = { shapeDisplayViewModel.currentShape() }),
-                contentAlignment = Alignment.Center
+
+
+            Column(
+                Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
                 Image(
                     painter = painterResource(id = shapeItem.imageId),
                     contentDescription = shapeItem.name,
-                    colorFilter = ColorFilter.tint(color = shapeItem.color),
                     modifier = Modifier
-                        .fillMaxSize(),
+                        .fillMaxWidth(0.7f)
+                        .aspectRatio(1f),
                     contentScale = ContentScale.Fit
 
+                )
+
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    fontSize = 50.sp,
+                    text = shapeItem.name,
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.Bold,
+                    color = pictureDisplayViewModel.randomColor
                 )
             }
 
