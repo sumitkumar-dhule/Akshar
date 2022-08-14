@@ -56,7 +56,7 @@ object NumberRepository {
         NumberItem(
             name = "EIGHT",
             count = 8,
-            image = R.drawable.pig,
+            image = R.drawable.piglet,
             audio = R.raw.eight
         ),
         NumberItem(

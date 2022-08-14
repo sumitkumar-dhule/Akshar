@@ -21,7 +21,7 @@ object FruitsRepository {
         ),
         PictureItem(
             "ONION",
-            com.electrodiligent.english.R.drawable.a,
+            R.drawable.apple,
 //            audio = com.electrodiligent.english.R.raw.triangle
         ),
         PictureItem(
@@ -44,6 +44,11 @@ object FruitsRepository {
             "POTATO",
             R.drawable.fig,
 //            audio = com.electrodiligent.english.R.raw.pentagon
+        ),
+        PictureItem(
+            "CABBAGE",
+            R.drawable.grapes,
+//            audio = com.electrodiligent.english.R.raw.hexagon
         ),
         PictureItem(
             "CABBAGE",
