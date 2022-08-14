@@ -118,7 +118,7 @@ object AlphabetsRepository {
 
         DisplayCharacter(
             display = "Q", left = "P", right = "R", displayName = "QUEEN",
-            displayImage = queen,
+            displayImage = queen_ashwini,
             subtitle = "q",
             audio = com.electrodiligent.english.R.raw.q_for_queen
         ),
