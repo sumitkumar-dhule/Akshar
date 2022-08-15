@@ -103,8 +103,7 @@ fun HomeScreen(navController: NavHostController) {
                             .fillMaxWidth()
                     ) {
                         Text(
-                            modifier = Modifier
-                                .fillMaxWidth(),
+                            modifier = Modifier.fillMaxWidth(),
                             text = "Practice",
                             fontWeight = FontWeight.Bold,
                             fontSize = 24.sp,
@@ -131,10 +130,7 @@ fun HomeScreen(navController: NavHostController) {
                         }
                     }
                 }
-
             }
-
-
         }
 
         //TODO:: Display Ad in following box
@@ -184,10 +180,10 @@ fun LearnOptions(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(bottom = 4.dp)
                     .clickable(onClick = {
                         NavigationUtil.navigateTo(navController, item.navigationRoute.route)
-                    }),
+                    })
+                    .padding(bottom = 4.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Bottom
             ) {

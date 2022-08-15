@@ -6,98 +6,74 @@ import com.electrodiligent.core.domain.model.PictureItem
 object BirdsRepository {
     val list = listOf(
         PictureItem(
-            name = "PUMPKIN", imageId = R.drawable.pumpkin,
+            name = "CRANE", imageId = R.drawable.crane,
             //     audio = com.electrodiligent.english.R.raw.heart
         ),
         PictureItem(
-            "TOMATO",
-            R.drawable.tomato,
+            "CROW",
+            R.drawable.crow,
 //            audio = com.electrodiligent.english.R.raw.circle
         ),
         PictureItem(
-            name = "CUCUMBER",
-            imageId = R.drawable.cucumber,
+            name = "EAGLE",
+            imageId = R.drawable.eagle,
 //            audio = com.electrodiligent.english.R.raw.oval
         ),
         PictureItem(
-            "ONION",
-            R.drawable.onion,
+            "FLAMINGO",
+            R.drawable.flamingo,
 //            audio = com.electrodiligent.english.R.raw.triangle
         ),
         PictureItem(
-            "GARLIC",
-            R.drawable.garlic,
+            "HAWK",
+            R.drawable.hawk,
 //            audio = com.electrodiligent.english.R.raw.square
         ),
         PictureItem(
-            "CARROT",
-            R.drawable.carrot,
+            "HEN",
+            R.drawable.hen,
 
 //            audio = com.electrodiligent.english.R.raw.rectangle
         ),
         PictureItem(
-            "SPINACH",
-            R.drawable.spinach,
+            "HORN BILL",
+            R.drawable.hornbill,
 //            audio = com.electrodiligent.english.R.raw.diamond
         ),
         PictureItem(
-            "POTATO",
-            R.drawable.potato,
+            "HUMMING BIRD",
+            R.drawable.humming_bird,
 //            audio = com.electrodiligent.english.R.raw.pentagon
         ),
         PictureItem(
-            "CABBAGE",
-            R.drawable.cabbage,
+            "KINGFISHER",
+            R.drawable.kingfisher,
 //            audio = com.electrodiligent.english.R.raw.hexagon
         ),
         PictureItem(
-            name = "RADDISH",
-            imageId = R.drawable.radish,
+            name = "OSTRICH",
+            imageId = R.drawable.ostrich,
 //            audio = com.electrodiligent.english.R.raw.star
         ),
         PictureItem(
-            name = "EGGPLANT", imageId = R.drawable.eggplant,
+            name = "PEACOCK", imageId = R.drawable.peacock,
 //            audio = com.electrodiligent.english.R.raw.heart
         ),
         PictureItem(
-            name = "MUSHROOM", imageId = R.drawable.mushroom,
+            name = "PENGUIN", imageId = R.drawable.penguin,
 //            audio = com.electrodiligent.english.R.raw.heart
         ),
         PictureItem(
-            name = "YELLOW PEPPER", imageId = R.drawable.yellow_pepper,
+            name = "SWAN", imageId = R.drawable.swan,
 //            audio = com.electrodiligent.english.R.raw.heart
         ),
         PictureItem(
-            name = "RED PEPPER", imageId = R.drawable.red_pepper,
+            name = "TURKEY", imageId = R.drawable.turkey,
 //            audio = com.electrodiligent.english.R.raw.heart
         ),
         PictureItem(
-            name = "GREEN PEPPER", imageId = R.drawable.green_pepper,
+            name = "WOODPECKER", imageId = R.drawable.woodpecker,
 //            audio = com.electrodiligent.english.R.raw.heart
-        ),
-        PictureItem(
-            name = "CORN", imageId = R.drawable.corn,
-//            audio = com.electrodiligent.english.R.raw.heart
-        ),
-        PictureItem(
-            name = "AVOCADO", imageId = R.drawable.avacado,
-//            audio = com.electrodiligent.english.R.raw.heart
-        ),
-        PictureItem(
-            name = "CAULIFLOWER", imageId = R.drawable.cauliflower,
-//            audio = com.electrodiligent.english.R.raw.heart
-        ),
-        PictureItem(
-            name = "RED CHILLI", imageId = R.drawable.red_chilli,
-//            audio = com.electrodiligent.english.R.raw.heart
-        ),
-        PictureItem(
-            name = "GREEN CHILLI", imageId = R.drawable.green_chilli,
-//            audio = com.electrodiligent.english.R.raw.heart
-        ),
-        PictureItem(
-            name = "GREEN PEAS", imageId = R.drawable.green_peas,
-            //   audio = com.electrodiligent.english.R.raw.heart
         )
 
     )

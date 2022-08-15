@@ -90,7 +90,7 @@ object AlphabetsRepository {
 
         DisplayCharacter(
             display = "M", left = "L", right = "N", displayName = "MONKEY",
-            displayImage = m,
+            displayImage = monkey,
             subtitle = "m",
             audio = com.electrodiligent.english.R.raw.m_for_monkey
         ),
