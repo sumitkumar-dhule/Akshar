@@ -7,7 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
-import com.electrodiligent.core.domain.model.ShapeItem
+import com.electrodiligent.core.domain.model.PictureItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -18,15 +18,15 @@ class ShapeDisplayViewModel @Inject constructor(@ApplicationContext val context:
 
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
-    var displayShapes: List<ShapeItem> = listOf(ShapeItem())
+    var displayShapes: List<PictureItem> = listOf(PictureItem())
     var titleAudio: Int = R.raw.beep
 
     private var currentIndex: Int by mutableStateOf(0)
 
-    var shapeItem: ShapeItem by mutableStateOf(displayShapes[currentIndex])
+    var pictureItem: PictureItem by mutableStateOf(displayShapes[currentIndex])
 
     fun setup() {
-        shapeItem = displayShapes[currentIndex]
+        pictureItem = displayShapes[currentIndex]
         playSound()
     }
 
@@ -41,7 +41,7 @@ class ShapeDisplayViewModel @Inject constructor(@ApplicationContext val context:
             currentIndex++
         }
 
-        shapeItem = displayShapes[currentIndex]
+        pictureItem = displayShapes[currentIndex]
         playSound()
 
     }
@@ -57,13 +57,13 @@ class ShapeDisplayViewModel @Inject constructor(@ApplicationContext val context:
             currentIndex--
         }
 
-        shapeItem = displayShapes[currentIndex]
+        pictureItem = displayShapes[currentIndex]
         playSound()
 
     }
 
     fun currentShape() {
-        shapeItem = displayShapes[currentIndex]
+        pictureItem = displayShapes[currentIndex]
         playSound()
     }
 

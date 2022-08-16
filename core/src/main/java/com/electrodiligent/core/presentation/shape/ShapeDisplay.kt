@@ -16,12 +16,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
-import com.electrodiligent.core.domain.model.ShapeItem
+import com.electrodiligent.core.domain.model.PictureItem
 
 @Composable
 fun ShapeDisplay(
     modifier: Modifier,
-    items: List<ShapeItem>,
+    items: List<PictureItem>,
     titleAudio : Int
 ) {
 
@@ -30,7 +30,7 @@ fun ShapeDisplay(
     shapeDisplayViewModel.titleAudio = titleAudio
     shapeDisplayViewModel.setup()
 
-    val shapeItem = shapeDisplayViewModel.shapeItem
+    val shapeItem = shapeDisplayViewModel.pictureItem
 
     Box(modifier = modifier) {
 

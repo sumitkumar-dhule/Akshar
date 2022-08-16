@@ -1,14 +1,11 @@
 package com.electrodiligent.english.presentation
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -76,13 +73,14 @@ fun HomeScreen(navController: NavHostController) {
                         LazyHorizontalGrid(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(280.dp),
+                                .aspectRatio(1.5f),
                             rows = GridCells.Fixed(2),
                             horizontalArrangement = Arrangement.SpaceEvenly,
                             verticalArrangement = Arrangement.SpaceEvenly
                         ) {
                             items(LearningItems.menu) {
                                 LearnOptions(
+                                    modifier = Modifier.fillMaxSize(),
                                     navController = navController,
                                     item = it,
                                     color = brownColor
@@ -105,8 +103,7 @@ fun HomeScreen(navController: NavHostController) {
                             .fillMaxWidth()
                     ) {
                         Text(
-                            modifier = Modifier
-                                .fillMaxWidth(),
+                            modifier = Modifier.fillMaxWidth(),
                             text = "Practice",
                             fontWeight = FontWeight.Bold,
                             fontSize = 24.sp,
@@ -117,13 +114,14 @@ fun HomeScreen(navController: NavHostController) {
                         LazyHorizontalGrid(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(130.dp),
+                                .aspectRatio(3f),
                             rows = GridCells.Fixed(1),
                             horizontalArrangement = Arrangement.SpaceEvenly,
                             verticalArrangement = Arrangement.SpaceEvenly
                         ) {
                             items(PracticeItems.menu) {
                                 LearnOptions(
+                                    modifier = Modifier.fillMaxSize(),
                                     navController = navController,
                                     item = it,
                                     color = brownColor
@@ -133,7 +131,6 @@ fun HomeScreen(navController: NavHostController) {
                     }
                 }
             }
-
         }
 
         //TODO:: Display Ad in following box
@@ -149,12 +146,15 @@ fun HomeScreen(navController: NavHostController) {
 
 @Composable
 fun LearnOptions(
+    modifier: Modifier,
     navController: NavHostController,
     item: NavigationItem,
     color: Color
 ) {
     Card(
-        modifier = Modifier
+        modifier = modifier
+            .fillMaxHeight(0.5f)
+            .aspectRatio(1f)
             .padding(8.dp)
             .shadow(4.dp, shape = RoundedCornerShape(4.dp))
             .clip(shape = RoundedCornerShape(4.dp))
@@ -163,7 +163,7 @@ fun LearnOptions(
 
         Box(
             modifier = Modifier
-                .size(120.dp, 120.dp),
+                .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
 
@@ -182,7 +182,8 @@ fun LearnOptions(
                     .fillMaxSize()
                     .clickable(onClick = {
                         NavigationUtil.navigateTo(navController, item.navigationRoute.route)
-                    }),
+                    })
+                    .padding(bottom = 4.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Bottom
             ) {
@@ -190,7 +191,7 @@ fun LearnOptions(
                 Text(
                     text = item.title,
                     textAlign = TextAlign.Center,
-                    color = color
+                    color = color,
                 )
             }
         }

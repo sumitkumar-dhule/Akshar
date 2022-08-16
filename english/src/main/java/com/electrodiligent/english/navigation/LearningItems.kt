@@ -52,6 +52,39 @@ object LearningItems {
             contentDescription = "Go to Colors screen",
             icon = R.drawable.colors,
             navigationRoute = Screen.ColorsScreen
+        ),
+
+        NavigationItem(
+            id = "gk_vegetables",
+            title = "Vegetables",
+            contentDescription = "Go to Vegetables screen",
+            icon = R.drawable.vegetable,
+            navigationRoute = Screen.VegetablesScreen
+        ),
+
+        NavigationItem(
+            id = "gk_fruits",
+            title = "Fruits",
+            contentDescription = "Go to Fruits screen",
+            icon = R.drawable.fruits,
+            navigationRoute = Screen.FruitsScreen
+        ),
+
+        NavigationItem(
+            id = "gk_animals",
+            title = "Animals",
+            contentDescription = "Go to Animals screen",
+            icon = R.drawable.animals,
+            navigationRoute = Screen.AnimalsScreen
+        ),
+
+        NavigationItem(
+            id = "gk_birds",
+            title = "Birds",
+            contentDescription = "Go to Birds screen",
+            icon = R.drawable.birds,
+            navigationRoute = Screen.BirdsScreen
         )
+
     )
 }

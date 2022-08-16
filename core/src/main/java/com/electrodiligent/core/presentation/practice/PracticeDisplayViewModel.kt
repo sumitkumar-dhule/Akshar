@@ -23,6 +23,7 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
 
     val score = 0;
     val randomColor = RandomColor.list.random().colorValue
+    var validNextState = true
 
 
     private var questionMediaPlayer = MediaPlayer.create(context, R.raw.beep)
@@ -49,10 +50,18 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
 
         question = questions[currentIndex]
         playQuestion()
+
+        validNextState = true
     }
 
     fun optionSelected(selected: String) {
+
+        if (!validNextState){
+            return
+        }
+
         if (isCorrectOptionSelected(selected)) {
+            validNextState = false
             playCelebration()
             CoroutineScope(Dispatchers.Main).launch() {
                 delay(3000)
