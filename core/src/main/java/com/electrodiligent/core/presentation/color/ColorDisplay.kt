@@ -38,9 +38,11 @@ fun ColorDisplay(
     Box(modifier = modifier) {
 
         if (colorItem.colorValue == Color.White) {
-            Box(modifier = Modifier
-                .fillMaxSize()
-                .background(Color.DarkGray))
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.DarkGray)
+            )
         }
 
         Column(
@@ -70,7 +72,7 @@ fun ColorDisplay(
                 Text(
                     modifier = Modifier.weight(1f, fill = true),
                     fontSize = 40.sp,
-                    text = colorItem.name,
+                    text = "Colors",
                     textAlign = TextAlign.Center,
                     color = colorItem.colorValue,
                     fontWeight = FontWeight.Bold
@@ -88,19 +90,36 @@ fun ColorDisplay(
                 )
             }
 
-            Box(
-                modifier = Modifier
-                    .padding(bottom = 100.dp)
-                    .fillMaxHeight(0.7f)
-                    .clip(RoundedCornerShape(16.dp))
-                    .shadow(elevation = 4.dp, shape = RoundedCornerShape(16.dp))
-                    .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = true)
-                    .background(color = colorItem.colorValue)
-                    .clickable(onClick = { colorDisplayViewModel.currentColor() }),
-                contentAlignment = Alignment.Center
-            ) {
 
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceEvenly,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Box(
+                    modifier = Modifier
+                        .padding(24.dp)
+                        .fillMaxWidth(0.9f)
+                        .clip(RoundedCornerShape(16.dp))
+                        .shadow(elevation = 4.dp, shape = RoundedCornerShape(16.dp))
+                        .aspectRatio(ratio = 1f)
+                        .background(color = colorItem.colorValue)
+                        .clickable(onClick = { colorDisplayViewModel.currentColor() }),
+                    contentAlignment = Alignment.Center
+                ) {
+
+                }
+
+                Text(
+                    modifier = Modifier.weight(1f, fill = true),
+                    fontSize = 50.sp,
+                    text = colorItem.name,
+                    textAlign = TextAlign.Center,
+                    color = colorItem.colorValue,
+                    fontWeight = FontWeight.Bold
+                )
             }
+
 
         }
     }

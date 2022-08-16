@@ -60,8 +60,8 @@ fun ShapeDisplay(
 
                 Text(
                     modifier = Modifier.weight(1f, fill = true),
-                    fontSize = 30.sp,
-                    text = shapeItem.name,
+                    fontSize = 40.sp,
+                    text = "Shapes",
                     textAlign = TextAlign.Center,
                     color = shapeItem.color,
                     fontWeight = FontWeight.Bold
@@ -79,24 +79,36 @@ fun ShapeDisplay(
                 )
             }
 
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth(0.7f)
-                    .fillMaxHeight(0.7f)
-                    .padding(bottom = 80.dp)
-                    .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = true)
-                    .clickable(onClick = { shapeDisplayViewModel.currentShape() }),
-                contentAlignment = Alignment.Center
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceEvenly,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                Image(
-                    painter = painterResource(id = shapeItem.imageId),
-                    contentDescription = shapeItem.name,
-                    colorFilter = ColorFilter.tint(color = shapeItem.color),
+                Box(
                     modifier = Modifier
-                        .fillMaxSize(),
-                    contentScale = ContentScale.Fit
+                        .fillMaxWidth(0.9f).aspectRatio(1f)
+                        .clickable(onClick = { shapeDisplayViewModel.currentShape() }),
+                    contentAlignment = Alignment.Center
+                ) {
 
+                    Image(
+                        painter = painterResource(id = shapeItem.imageId),
+                        contentDescription = shapeItem.name,
+                        colorFilter = ColorFilter.tint(color = shapeItem.color),
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        contentScale = ContentScale.Fit
+
+                    )
+                }
+
+                Text(
+                    fontSize = 50.sp,
+                    text = shapeItem.name,
+                    textAlign = TextAlign.Center,
+                    color = shapeItem.color,
+                    fontWeight = FontWeight.Bold
                 )
             }
 

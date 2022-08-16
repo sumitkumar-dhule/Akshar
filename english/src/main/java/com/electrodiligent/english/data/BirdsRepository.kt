@@ -30,6 +30,16 @@ object BirdsRepository {
 //            audio = com.electrodiligent.english.R.raw.square
         ),
         PictureItem(
+            "OWL",
+            R.drawable.owl,
+//            audio = com.electrodiligent.english.R.raw.square
+        ),
+        PictureItem(
+            "PARROT",
+            R.drawable.parrot,
+//            audio = com.electrodiligent.english.R.raw.square
+        ),
+        PictureItem(
             "HEN",
             R.drawable.hen,
 
