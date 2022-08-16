@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,6 +13,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.ColorItem
+import com.electrodiligent.core.util.ResponsiveText
 
 @Composable
 fun ColorDisplay(
@@ -69,13 +70,13 @@ fun ColorDisplay(
                         .clickable { colorDisplayViewModel.previousColor() }
                 )
 
-                Text(
+                ResponsiveText(
                     modifier = Modifier.weight(1f, fill = true),
-                    fontSize = 40.sp,
+                    targetTextSizeHeight = 45.sp,
                     text = "Colors",
                     textAlign = TextAlign.Center,
                     color = colorItem.colorValue,
-                    fontWeight = FontWeight.Bold
+                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
                 )
 
                 Image(
@@ -110,17 +111,14 @@ fun ColorDisplay(
 
                 }
 
-                Text(
-                    modifier = Modifier.weight(1f, fill = true),
-                    fontSize = 50.sp,
+                ResponsiveText(
+                    targetTextSizeHeight = 70.sp,
                     text = colorItem.name,
                     textAlign = TextAlign.Center,
                     color = colorItem.colorValue,
-                    fontWeight = FontWeight.Bold
+                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
                 )
             }
-
-
         }
     }
 }

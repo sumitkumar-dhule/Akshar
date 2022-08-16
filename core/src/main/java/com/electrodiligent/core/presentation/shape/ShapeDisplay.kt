@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -17,12 +18,13 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.PictureItem
+import com.electrodiligent.core.util.ResponsiveText
 
 @Composable
 fun ShapeDisplay(
     modifier: Modifier,
     items: List<PictureItem>,
-    titleAudio : Int
+    titleAudio: Int
 ) {
 
     val shapeDisplayViewModel = hiltViewModel<ShapeDisplayViewModel>()
@@ -58,13 +60,13 @@ fun ShapeDisplay(
                         .clickable { shapeDisplayViewModel.previousShape() }
                 )
 
-                Text(
+                ResponsiveText(
                     modifier = Modifier.weight(1f, fill = true),
-                    fontSize = 40.sp,
+                    targetTextSizeHeight = 45.sp,
                     text = "Shapes",
                     textAlign = TextAlign.Center,
                     color = shapeItem.color,
-                    fontWeight = FontWeight.Bold
+                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
                 )
 
                 Image(
@@ -87,7 +89,8 @@ fun ShapeDisplay(
 
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.9f).aspectRatio(1f)
+                        .fillMaxWidth(0.9f)
+                        .aspectRatio(1f)
                         .clickable(onClick = { shapeDisplayViewModel.currentShape() }),
                     contentAlignment = Alignment.Center
                 ) {
@@ -103,12 +106,12 @@ fun ShapeDisplay(
                     )
                 }
 
-                Text(
-                    fontSize = 50.sp,
+                ResponsiveText(
+                    targetTextSizeHeight = 70.sp,
                     text = shapeItem.name,
                     textAlign = TextAlign.Center,
                     color = shapeItem.color,
-                    fontWeight = FontWeight.Bold
+                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
                 )
             }
 

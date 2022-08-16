@@ -84,6 +84,10 @@ object BirdsRepository {
         PictureItem(
             name = "WOODPECKER", imageId = R.drawable.woodpecker,
 //            audio = com.electrodiligent.english.R.raw.heart
+        ),
+        PictureItem(
+            name = "PIGEON", imageId = R.drawable.pigeon,
+//            audio = com.electrodiligent.english.R.raw.heart
         ), PictureItem(
             name = "KIWI",
             imageId = R.drawable.kiwi_bird,

@@ -12,12 +12,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.PictureItem
+import com.electrodiligent.core.util.ResponsiveText
 
 @Composable
 fun PictureDisplay(
@@ -60,13 +62,13 @@ fun PictureDisplay(
                         .clickable { pictureDisplayViewModel.previousShape() }
                 )
 
-                Text(
+                ResponsiveText(
                     modifier = Modifier.weight(1f, fill = true),
-                    fontSize = 30.sp,
+                    targetTextSizeHeight = 45.sp,
                     text = title,
                     textAlign = TextAlign.Center,
                     color = pictureDisplayViewModel.randomColor,
-                    fontWeight = FontWeight.Bold
+                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
                 )
 
 
@@ -100,13 +102,13 @@ fun PictureDisplay(
 
                 )
 
-                Text(
+                ResponsiveText(
                     modifier = Modifier.fillMaxWidth(),
-                    fontSize = 50.sp,
+                    targetTextSizeHeight = 60.sp,
                     text = shapeItem.name,
                     textAlign = TextAlign.Center,
-                    fontWeight = FontWeight.Bold,
-                    color = pictureDisplayViewModel.randomColor
+                    color = pictureDisplayViewModel.randomColor,
+                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
                 )
             }
 
