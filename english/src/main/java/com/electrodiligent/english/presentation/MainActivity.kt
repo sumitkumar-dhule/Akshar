@@ -2,6 +2,7 @@ package com.electrodiligent.english.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -140,6 +141,27 @@ class MainActivity : ComponentActivity() {
                                             )
                                         }
 
+                                        "gk_fruits" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.FruitsScreen.route
+                                            )
+                                        }
+
+                                        "gk_animals" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.AnimalsScreen.route
+                                            )
+                                        }
+
+                                        "gk_birds" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.BirdsScreen.route
+                                            )
+                                        }
+
 
                                     }
 
@@ -156,6 +178,7 @@ class MainActivity : ComponentActivity() {
 
                 }
             }
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
     }
 }

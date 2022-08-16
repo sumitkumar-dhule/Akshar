@@ -92,7 +92,7 @@ fun PictureDisplay(
                     painter = painterResource(id = shapeItem.imageId),
                     contentDescription = shapeItem.name,
                     modifier = Modifier
-                        .fillMaxWidth(0.7f)
+                        .fillMaxWidth(0.95f)
                         .aspectRatio(1f),
                     contentScale = ContentScale.Fit
 

@@ -51,7 +51,7 @@ object VegetablesRepository {
 //            audio = com.electrodiligent.english.R.raw.hexagon
         ),
         PictureItem(
-            name = "RADDISH",
+            name = "RADISH",
             imageId = R.drawable.radish,
 //            audio = com.electrodiligent.english.R.raw.star
         ),
@@ -77,10 +77,6 @@ object VegetablesRepository {
         ),
         PictureItem(
             name = "CORN", imageId = R.drawable.corn,
-//            audio = com.electrodiligent.english.R.raw.heart
-        ),
-        PictureItem(
-            name = "AVOCADO", imageId = R.drawable.avacado,
 //            audio = com.electrodiligent.english.R.raw.heart
         ),
         PictureItem(

@@ -25,7 +25,7 @@ fun FruitsScreen() {
                 modifier = Modifier.fillMaxSize(),
                 items = FruitsRepository.list,
                 titleAudio = raw.learn_shape,
-                title = "Vegetables"
+                title = "Fruits"
             )
 
         }

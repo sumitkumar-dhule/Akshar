@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import com.electrodiligent.core.presentation.picture.PictureDisplay
 import com.electrodiligent.core.util.Dimension
 import com.electrodiligent.english.R.raw
-import com.electrodiligent.english.data.VegetablesRepository
+import com.electrodiligent.english.data.BirdsRepository
 
 @Composable
 fun BirdsScreen() {
@@ -22,9 +22,9 @@ fun BirdsScreen() {
 
             PictureDisplay(
                 modifier = Modifier.fillMaxSize(),
-                items = VegetablesRepository.list,
+                items = BirdsRepository.list,
                 titleAudio = raw.learn_shape,
-                title = "Vegetables"
+                title = "Birds"
             )
 
         }

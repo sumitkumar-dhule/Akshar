@@ -24,7 +24,7 @@ fun AnimalsScreen() {
                 modifier = Modifier.fillMaxSize(),
                 items = AnimalsRepository.list,
                 titleAudio = raw.learn_shape,
-                title = "Vegetables"
+                title = "Animals"
             )
 
         }

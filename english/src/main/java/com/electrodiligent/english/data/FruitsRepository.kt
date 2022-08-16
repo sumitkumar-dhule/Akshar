@@ -87,6 +87,10 @@ object FruitsRepository {
         PictureItem(
             name = "WATERMELON", imageId = R.drawable.watermelon,
 //            audio = com.electrodiligent.english.R.raw.heart
+        ),
+        PictureItem(
+            name = "AVOCADO", imageId = R.drawable.avacado,
+//            audio = com.electrodiligent.english.R.raw.heart
         )
     )
 }
