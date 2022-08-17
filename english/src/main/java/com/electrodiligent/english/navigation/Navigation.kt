@@ -65,6 +65,10 @@ fun Navigation(navController: NavHostController) {
             NumbersPracticeScreen()
         }
 
+        composable(route = Screen.VegetablePracticeScreen.route) {
+            VegetablePracticeScreen()
+        }
+
         composable(route = Screen.SettingsScreen.route) {
             SettingsScreen()
         }

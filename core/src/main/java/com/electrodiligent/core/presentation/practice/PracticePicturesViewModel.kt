@@ -7,7 +7,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
-import com.electrodiligent.core.domain.model.CharacterQuestion
+import com.electrodiligent.core.domain.model.PictureItem
+import com.electrodiligent.core.domain.model.PictureQuestion
 import com.electrodiligent.core.util.RandomColor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
+class PracticePicturesViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
 
     val score = 0;
@@ -30,11 +31,11 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
     private var effectMediaPlayer = MediaPlayer.create(context, R.raw.beep)
     private var specialEffectMediaPlayer = MediaPlayer.create(context, R.raw.positive)
 
-    var questions: List<CharacterQuestion> = listOf(CharacterQuestion())
+    var questions: List<PictureQuestion> = listOf(PictureQuestion())
 
     private var currentIndex: Int by mutableStateOf(0)
 
-    var question: CharacterQuestion by mutableStateOf(questions[currentIndex])
+    var question: PictureQuestion by mutableStateOf(questions[currentIndex])
 
     fun setup() {
         question = questions[currentIndex]
@@ -54,7 +55,7 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
         validNextState = true
     }
 
-    fun optionSelected(selected: String) {
+    fun optionSelected(selected: PictureItem) {
 
         if (!validNextState){
             return
@@ -85,15 +86,15 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
         playEffects(R.raw.yay)
     }
 
-    private fun isCorrectOptionSelected(selected: String): Boolean {
-        return selected == question.correctAnswer
+    private fun isCorrectOptionSelected(selected: PictureItem): Boolean {
+        return selected.name == question.correctAnswer.name
     }
 
     fun playQuestion() {
         if (isSoundPlaying()) {
             return
         }
-        playSound(questions[currentIndex].audio)
+        playSound(questions[currentIndex].correctAnswer.audio)
     }
 
     private fun playSound(audio: Int) {

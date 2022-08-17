@@ -16,9 +16,20 @@ object PracticeItems {
         NavigationItem(
             id = "practice_numbers",
             title = "Numbers",
-            contentDescription = "Alphabets",
+            contentDescription = "Numbers",
             icon = R.drawable.practice_number,
             navigationRoute = Screen.NumbersPracticeScreen
-        )
+        ),
+
+        NavigationItem(
+            id = "practice_vegetable",
+            title = "Vegetable",
+            contentDescription = "Vegetable",
+            icon = R.drawable.practice_number,
+            navigationRoute = Screen.VegetablePracticeScreen
+        ),
+
+
+
     )
 }
