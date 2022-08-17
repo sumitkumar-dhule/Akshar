@@ -2,6 +2,7 @@ package com.electrodiligent.english.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,12 +13,12 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.electrodiligent.core.presentation.AppBar
 import com.electrodiligent.core.presentation.BackgroundImage
 import com.electrodiligent.core.presentation.DrawerBody
 import com.electrodiligent.core.presentation.DrawerHeader
+import com.electrodiligent.english.BuildConfig.VERSION_NAME
 import com.electrodiligent.english.R
 import com.electrodiligent.english.navigation.DrawerMenu
 import com.electrodiligent.english.navigation.Navigation
@@ -62,7 +63,8 @@ class MainActivity : ComponentActivity() {
                         drawerContent = {
                             DrawerHeader(
                                 header = "Preschool Essentials",
-                                headerImageID = R.mipmap.ic_launcher
+                                headerImageID = R.mipmap.ic_launcher,
+                                version = "version: $VERSION_NAME"
                             )
                             DrawerBody(
                                 items = DrawerMenu.menu,
@@ -132,6 +134,35 @@ class MainActivity : ComponentActivity() {
                                             )
                                         }
 
+                                        "gk_vegetables" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.VegetablesScreen.route
+                                            )
+                                        }
+
+                                        "gk_fruits" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.FruitsScreen.route
+                                            )
+                                        }
+
+                                        "gk_animals" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.AnimalsScreen.route
+                                            )
+                                        }
+
+                                        "gk_birds" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.BirdsScreen.route
+                                            )
+                                        }
+
+
                                     }
 
                                     scope.launch {
@@ -147,19 +178,7 @@ class MainActivity : ComponentActivity() {
 
                 }
             }
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
     }
-
-//    private fun navigateTo(navController: NavHostController, route: String) {
-//        navController.navigate(route) {
-//            navController.graph.startDestinationRoute?.let { route ->
-//                popUpTo(route) {
-//                    saveState = true
-//                }
-//            }
-//            launchSingleTop = true
-//            restoreState = true
-//        }
-//    }
-
 }

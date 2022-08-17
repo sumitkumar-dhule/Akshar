@@ -15,4 +15,14 @@ object RandomColor {
         ColorItem("PINK", Color(red = 255, green = 0, blue = 127)),
         ColorItem("BLUE", Color.DarkGray)
     )
+
+    val textColors = listOf(
+        ColorItem("RED", Color.Red),
+        ColorItem("BLUE", Color.Blue),
+        ColorItem("BLACK", Color.Black),
+        ColorItem("PURPLE", Color(red = 128, green = 0, blue = 128)),
+        ColorItem("BROWN", Color(red = 168, green = 42, blue = 42)),
+        ColorItem("PINK", Color(red = 255, green = 0, blue = 127)),
+        ColorItem("BLUE", Color.DarkGray)
+    )
 }

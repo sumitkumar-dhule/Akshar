@@ -1,12 +1,10 @@
 package com.electrodiligent.core.presentation.number
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -71,7 +69,7 @@ fun NumberCardBluePrint(
             ) {
                 var numberFontSize = 90.sp
                 if (item.count > 99) {
-                    numberFontSize = 70.sp
+                    numberFontSize = 60.sp
                 }
                 Text(
                     text = item.count.toString(),

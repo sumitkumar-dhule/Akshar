@@ -20,7 +20,7 @@ object NumberRepository {
         NumberItem(
             name = "TWO",
             count = 2,
-            image = R.drawable.duck,
+            image = R.drawable.duck_cartoon,
             audio = R.raw.two
         ),
         NumberItem(
@@ -38,7 +38,7 @@ object NumberRepository {
         NumberItem(
             name = "FIVE",
             count = 5,
-            image = R.drawable.fox,
+            image = R.drawable.notepad,
             audio = R.raw.five
         ),
         NumberItem(
@@ -56,7 +56,7 @@ object NumberRepository {
         NumberItem(
             name = "EIGHT",
             count = 8,
-            image = R.drawable.pig,
+            image = R.drawable.piglet,
             audio = R.raw.eight
         ),
         NumberItem(
@@ -92,13 +92,13 @@ object NumberRepository {
         NumberItem(
             name = "FOURTEEN",
             count = 14,
-            image = R.drawable.notepad,
+            image = R.drawable.radish_catoon,
             audio = R.raw.fourteen
         ),
         NumberItem(
             name = "FIFTEEN",
             count = 15,
-            image = R.drawable.mango,
+            image = R.drawable.baloon,
             audio = R.raw.fifteen
         ),
         NumberItem(

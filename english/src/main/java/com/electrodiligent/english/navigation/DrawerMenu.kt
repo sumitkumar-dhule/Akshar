@@ -23,14 +23,14 @@ object DrawerMenu {
 
         MenuItem(
             id = "alphabet",
-            title = "Alphabet Identification",
+            title = "Alphabets",
             contentDescription = "Go to Alphabet Identification screen",
             icon = R.drawable.abc
         ),
 
         MenuItem(
             id = "alphabet_flashcards",
-            title = "Alphabet Flashcards",
+            title = "A to Z",
             contentDescription = "Go to Alphabet Flashcards screen",
             icon = R.drawable.flashcards_abc
         ),
@@ -45,18 +45,19 @@ object DrawerMenu {
 
         MenuItem(
             id = "number_identification",
-            title = "Number Identification",
+            title = "Numbers",
             contentDescription = "Go to Number Identification screen",
             icon = R.drawable.numbers
         ),
 
         MenuItem(
             id = "number_flashcards",
-            title = "Number Flashcards",
+            title = "1 to 100",
             contentDescription = "Go to Number Flashcards screen",
             icon = R.drawable.flashcard_123
         ),
 
+        //GK
         MenuItem(
             id = "GK",
             title = "General Knowledge",
@@ -78,6 +79,36 @@ object DrawerMenu {
             contentDescription = "Go to Colors screen",
             icon = R.drawable.colors
         ),
+
+        MenuItem(
+            id = "gk_vegetables",
+            title = "Vegetables",
+            contentDescription = "Vegetables",
+            icon = R.drawable.vegetable
+        ),
+
+        MenuItem(
+            id = "gk_fruits",
+            title = "Fruits",
+            contentDescription = "Fruits",
+            icon = R.drawable.fruits
+        ),
+
+        MenuItem(
+            id = "gk_animals",
+            title = "Animals",
+            contentDescription = "Animals",
+            icon = R.drawable.animals
+        ),
+
+        MenuItem(
+            id = "gk_birds",
+            title = "Birds",
+            contentDescription = "Birds",
+            icon = R.drawable.birds
+        ),
+
+        //Practice
         MenuItem(
             id = "practice",
             title = "Practice",
@@ -99,6 +130,8 @@ object DrawerMenu {
             contentDescription = "Alphabets",
             icon = R.drawable.practice_number
         ),
+
+
 
 //        MenuItem(
 //            id = "blank",
