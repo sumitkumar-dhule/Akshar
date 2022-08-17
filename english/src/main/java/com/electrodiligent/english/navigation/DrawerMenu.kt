@@ -128,9 +128,50 @@ object DrawerMenu {
             id = "practice_numbers",
             title = "Numbers",
             contentDescription = "Alphabets",
-            icon = R.drawable.practice_number
+            icon = R.drawable.practice_numbers
         ),
 
+        MenuItem(
+            id = "practice_vegetable",
+            title = "Vegetables",
+            contentDescription = "Vegetable",
+            icon = R.drawable.practice_vegetable
+        ),
+
+        MenuItem(
+            id = "practice_fruit",
+            title = "Fruits",
+            contentDescription = "Fruit",
+            icon = R.drawable.practice_fruits
+        ),
+
+        MenuItem(
+            id = "practice_animal",
+            title = "Animals",
+            contentDescription = "Animal",
+            icon = R.drawable.practice_animal
+        ),
+
+        MenuItem(
+            id = "practice_bird",
+            title = "Birds",
+            contentDescription = "Bird",
+            icon = R.drawable.practice_bird
+        ),
+
+        MenuItem(
+            id = "practice_shapes",
+            title = "Shapes",
+            contentDescription = "Shapes",
+            icon = R.drawable.practice_shapes
+        ),
+
+        MenuItem(
+            id = "practice_colors",
+            title = "Colors",
+            contentDescription = "Colors",
+            icon = R.drawable.practice_colors
+        )
 
 
 //        MenuItem(

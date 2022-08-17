@@ -22,7 +22,7 @@ fun BirdsScreen() {
 
             PictureDisplay(
                 modifier = Modifier.fillMaxSize(),
-                items = BirdsRepository.list,
+                items = BirdsRepository.list.shuffled(),
                 titleAudio = raw.learn_shape,
                 title = "Birds"
             )

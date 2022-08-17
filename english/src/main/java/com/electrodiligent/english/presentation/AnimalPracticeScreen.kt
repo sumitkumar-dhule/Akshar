@@ -4,29 +4,23 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.electrodiligent.core.presentation.picture.PictureDisplay
+import com.electrodiligent.core.presentation.practice.PracticePictures
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.english.R.raw
-import com.electrodiligent.english.data.VegetablesRepository
+import com.electrodiligent.english.data.PictureQuestionRepository
 
 @Composable
-fun VegetablesScreen() {
+fun AnimalPracticeScreen() {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD),
-            contentAlignment = Alignment.Center
+                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
         ) {
-
-            PictureDisplay(
+            PracticePictures(
                 modifier = Modifier.fillMaxSize(),
-                items = VegetablesRepository.list.shuffled(),
-                titleAudio = raw.learn_shape,
-                title = "Vegetables"
+                items = PictureQuestionRepository.animalQuestionList
             )
-
         }
 
         //TODO:: Display Ad in following box

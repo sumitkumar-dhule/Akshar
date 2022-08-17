@@ -7,7 +7,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
-import com.electrodiligent.core.domain.model.CharacterQuestion
+import com.electrodiligent.core.domain.model.PictureItem
+import com.electrodiligent.core.domain.model.PictureQuestion
 import com.electrodiligent.core.util.RandomColor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -18,23 +19,22 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
+class PracticePicturesViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
 
-    val score = 0;
-    val randomColor = RandomColor.list.random().colorValue
+    val randomColor = RandomColor.textColors.random().colorValue
     var validNextState = true
-
 
     private var questionMediaPlayer = MediaPlayer.create(context, R.raw.beep)
     private var effectMediaPlayer = MediaPlayer.create(context, R.raw.beep)
     private var specialEffectMediaPlayer = MediaPlayer.create(context, R.raw.positive)
+    private var findMediaPlayer = MediaPlayer.create(context, R.raw.find)
 
-    var questions: List<CharacterQuestion> = listOf(CharacterQuestion())
+    var questions: List<PictureQuestion> = listOf(PictureQuestion())
 
     private var currentIndex: Int by mutableStateOf(0)
 
-    var question: CharacterQuestion by mutableStateOf(questions[currentIndex])
+    var question: PictureQuestion by mutableStateOf(questions[currentIndex])
 
     fun setup() {
         question = questions[currentIndex]
@@ -54,9 +54,9 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
         validNextState = true
     }
 
-    fun optionSelected(selected: String) {
+    fun optionSelected(selected: PictureItem) {
 
-        if (!validNextState){
+        if (!validNextState) {
             return
         }
 
@@ -81,19 +81,24 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
     }
 
     private fun playCelebration() {
-        specialEffects(R.raw.positive)
-        playEffects(R.raw.correct)
+        playEffects(R.raw.positive)
+        specialEffects(R.raw.yay)
     }
 
-    private fun isCorrectOptionSelected(selected: String): Boolean {
-        return selected == question.correctAnswer
+    private fun isCorrectOptionSelected(selected: PictureItem): Boolean {
+        return selected.name == question.correctAnswer.name
     }
 
     fun playQuestion() {
         if (isSoundPlaying()) {
             return
         }
-        playSound(questions[currentIndex].audio)
+        playFindSound(R.raw.find)
+        CoroutineScope(Dispatchers.Main).launch() {
+            delay(500)
+            playSound(questions[currentIndex].correctAnswer.audio)
+        }
+
     }
 
     private fun playSound(audio: Int) {
@@ -102,9 +107,16 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
         questionMediaPlayer.start()
     }
 
+    private fun playFindSound(audio: Int) {
+        findMediaPlayer.release()
+        findMediaPlayer = MediaPlayer.create(context, audio)
+        findMediaPlayer.start()
+    }
+
     private fun specialEffects(audio: Int) {
         specialEffectMediaPlayer.release()
         specialEffectMediaPlayer = MediaPlayer.create(context, audio)
+        specialEffectMediaPlayer.setVolume(0.05f, 0.05f)
         specialEffectMediaPlayer.start()
     }
 
@@ -115,6 +127,6 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
     }
 
     private fun isSoundPlaying(): Boolean {
-        return questionMediaPlayer.isPlaying
+        return questionMediaPlayer.isPlaying || findMediaPlayer.isPlaying
     }
 }

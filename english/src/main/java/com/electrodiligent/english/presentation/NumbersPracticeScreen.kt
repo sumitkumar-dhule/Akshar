@@ -4,9 +4,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.electrodiligent.core.presentation.practice.PracticeDisplay
+import com.electrodiligent.core.presentation.practice.PracticeCharacters
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.english.data.AlphabetQuestionRepository
 import com.electrodiligent.english.data.NumberQuestionRepository
 
 @Composable
@@ -18,7 +17,7 @@ fun NumbersPracticeScreen() {
                 .fillMaxSize()
                 .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
         ) {
-            PracticeDisplay(
+            PracticeCharacters(
                 modifier = Modifier.fillMaxSize(),
                 items = NumberQuestionRepository.list
             )
