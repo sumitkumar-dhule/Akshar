@@ -81,8 +81,8 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
     }
 
     private fun playCelebration() {
-        specialEffects(R.raw.yay)
         playEffects(R.raw.positive)
+        specialEffects(R.raw.yay)
     }
 
     private fun isCorrectOptionSelected(selected: PictureItem): Boolean {

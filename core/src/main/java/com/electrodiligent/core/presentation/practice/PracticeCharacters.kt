@@ -1,13 +1,11 @@
 package com.electrodiligent.core.presentation.practice
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -31,19 +29,19 @@ import com.electrodiligent.core.util.RandomColor
 
 
 @Composable
-fun PracticeDisplay(
+fun PracticeCharacters(
     modifier: Modifier,
     items: List<CharacterQuestion>
 ) {
 
     val randomColorList = RandomColor.list.toMutableList()
 
-    val practiceDisplayViewModel = hiltViewModel<PracticeDisplayViewModel>()
-    practiceDisplayViewModel.questions = items
+    val practiceCharactersViewModel = hiltViewModel<PracticeCharactersViewModel>()
+    practiceCharactersViewModel.questions = items
 
-    practiceDisplayViewModel.setup()
+    practiceCharactersViewModel.setup()
 
-    val question = practiceDisplayViewModel.question
+    val question = practiceCharactersViewModel.question
 
     Column(
         modifier = modifier
@@ -56,7 +54,7 @@ fun PracticeDisplay(
         Column(
             modifier = Modifier
                 .padding(horizontal = 0.dp)
-                .clickable(onClick = { practiceDisplayViewModel.playQuestion() }),
+                .clickable(onClick = { practiceCharactersViewModel.playQuestion() }),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -65,7 +63,7 @@ fun PracticeDisplay(
                 modifier = Modifier
                     .size(50.dp, 50.dp),
                 painter = painterResource(id = R.drawable.play_button),
-                colorFilter = ColorFilter.tint(practiceDisplayViewModel.randomColor),
+                colorFilter = ColorFilter.tint(practiceCharactersViewModel.randomColor),
                 contentDescription = "Play Sound"
             )
 
@@ -73,7 +71,7 @@ fun PracticeDisplay(
                 text = question.question,
                 fontSize = 38.sp,
                 fontWeight = FontWeight.Bold,
-                color = practiceDisplayViewModel.randomColor
+                color = practiceCharactersViewModel.randomColor
             )
 
         }
@@ -86,7 +84,7 @@ fun PracticeDisplay(
         ) {
             LazyVerticalGrid(modifier = modifier, columns = GridCells.Fixed(3)) {
                 items(question.options) {
-                    Options(modifier, it, practiceDisplayViewModel, randomColorList)
+                    Options(modifier, it, practiceCharactersViewModel, randomColorList)
                 }
             }
         }
@@ -98,7 +96,7 @@ fun PracticeDisplay(
 fun Options(
     modifier: Modifier,
     item: String,
-    practiceDisplayViewModel: PracticeDisplayViewModel,
+    practiceCharactersViewModel: PracticeCharactersViewModel,
     randomColorList: MutableList<ColorItem>
 ) {
 
@@ -119,7 +117,7 @@ fun Options(
             modifier = Modifier
                 .fillMaxSize()
                 .clickable(onClick = {
-                    practiceDisplayViewModel.optionSelected(item)
+                    practiceCharactersViewModel.optionSelected(item)
                 }), contentAlignment = Alignment.Center
         ) {
             Box(

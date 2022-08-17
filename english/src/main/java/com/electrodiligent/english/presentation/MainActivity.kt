@@ -113,20 +113,6 @@ class MainActivity : ComponentActivity() {
                                             )
                                         }
 
-                                        "practice_alphabets" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.AlphabetsPracticeScreen.route
-                                            )
-                                        }
-
-                                        "practice_numbers" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.NumbersPracticeScreen.route
-                                            )
-                                        }
-
                                         "home" -> {
                                             navigateTo(
                                                 navController,
@@ -159,6 +145,48 @@ class MainActivity : ComponentActivity() {
                                             navigateTo(
                                                 navController,
                                                 Screen.BirdsScreen.route
+                                            )
+                                        }
+
+                                        "practice_alphabets" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.AlphabetsPracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_numbers" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.NumbersPracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_vegetable" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.VegetablePracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_fruit" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.FruitPracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_animal" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.AnimalPracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_bird" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.BirdPracticeScreen.route
                                             )
                                         }
 

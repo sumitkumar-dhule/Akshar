@@ -18,11 +18,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
+class PracticeCharactersViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
 
-    val score = 0;
-    val randomColor = RandomColor.list.random().colorValue
+    val randomColor = RandomColor.textColors.random().colorValue
     var validNextState = true
 
 
@@ -56,7 +55,7 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
 
     fun optionSelected(selected: String) {
 
-        if (!validNextState){
+        if (!validNextState) {
             return
         }
 
@@ -81,8 +80,8 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
     }
 
     private fun playCelebration() {
-        specialEffects(R.raw.positive)
-        playEffects(R.raw.yay)
+        playEffects(R.raw.positive)
+        specialEffects(R.raw.yay)
     }
 
     private fun isCorrectOptionSelected(selected: String): Boolean {
@@ -105,6 +104,7 @@ class PracticeDisplayViewModel @Inject constructor(@ApplicationContext val conte
     private fun specialEffects(audio: Int) {
         specialEffectMediaPlayer.release()
         specialEffectMediaPlayer = MediaPlayer.create(context, audio)
+        specialEffectMediaPlayer.setVolume(0.05f, 0.05f)
         specialEffectMediaPlayer.start()
     }
 
