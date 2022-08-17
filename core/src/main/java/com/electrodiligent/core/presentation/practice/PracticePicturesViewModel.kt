@@ -22,14 +22,13 @@ import javax.inject.Inject
 class PracticePicturesViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
 
-    val score = 0;
-    val randomColor = RandomColor.list.random().colorValue
+    val randomColor = RandomColor.textColors.random().colorValue
     var validNextState = true
-
 
     private var questionMediaPlayer = MediaPlayer.create(context, R.raw.beep)
     private var effectMediaPlayer = MediaPlayer.create(context, R.raw.beep)
     private var specialEffectMediaPlayer = MediaPlayer.create(context, R.raw.positive)
+    private var findMediaPlayer = MediaPlayer.create(context, R.raw.find)
 
     var questions: List<PictureQuestion> = listOf(PictureQuestion())
 
@@ -57,7 +56,7 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
 
     fun optionSelected(selected: PictureItem) {
 
-        if (!validNextState){
+        if (!validNextState) {
             return
         }
 
@@ -82,8 +81,8 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
     }
 
     private fun playCelebration() {
-        specialEffects(R.raw.positive)
-        playEffects(R.raw.yay)
+        specialEffects(R.raw.yay)
+        playEffects(R.raw.positive)
     }
 
     private fun isCorrectOptionSelected(selected: PictureItem): Boolean {
@@ -94,7 +93,12 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
         if (isSoundPlaying()) {
             return
         }
-        playSound(questions[currentIndex].correctAnswer.audio)
+        playFindSound(R.raw.find)
+        CoroutineScope(Dispatchers.Main).launch() {
+            delay(500)
+            playSound(questions[currentIndex].correctAnswer.audio)
+        }
+
     }
 
     private fun playSound(audio: Int) {
@@ -103,9 +107,16 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
         questionMediaPlayer.start()
     }
 
+    private fun playFindSound(audio: Int) {
+        findMediaPlayer.release()
+        findMediaPlayer = MediaPlayer.create(context, audio)
+        findMediaPlayer.start()
+    }
+
     private fun specialEffects(audio: Int) {
         specialEffectMediaPlayer.release()
         specialEffectMediaPlayer = MediaPlayer.create(context, audio)
+        specialEffectMediaPlayer.setVolume(0.05f, 0.05f)
         specialEffectMediaPlayer.start()
     }
 
@@ -116,6 +127,6 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
     }
 
     private fun isSoundPlaying(): Boolean {
-        return questionMediaPlayer.isPlaying
+        return questionMediaPlayer.isPlaying || findMediaPlayer.isPlaying
     }
 }

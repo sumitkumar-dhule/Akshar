@@ -15,5 +15,8 @@ sealed class Screen(val route: String) {
     object AlphabetsPracticeScreen : Screen("alphabets_practice_screen")
     object NumbersPracticeScreen : Screen("numbers_practice_screen")
     object VegetablePracticeScreen : Screen("vegetable_practice_screen")
+    object FruitPracticeScreen : Screen("fruit_practice_screen")
+    object AnimalPracticeScreen : Screen("animal_practice_screen")
+    object BirdPracticeScreen : Screen("bird_practice_screen")
     object SettingsScreen : Screen("settings_screen")
 }

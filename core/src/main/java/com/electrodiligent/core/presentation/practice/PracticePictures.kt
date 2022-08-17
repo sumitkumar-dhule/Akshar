@@ -17,7 +17,9 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -26,6 +28,7 @@ import com.electrodiligent.core.domain.model.ColorItem
 import com.electrodiligent.core.domain.model.PictureItem
 import com.electrodiligent.core.domain.model.PictureQuestion
 import com.electrodiligent.core.util.RandomColor
+import com.electrodiligent.core.util.ResponsiveText
 
 
 @Composable
@@ -71,11 +74,12 @@ fun PracticePictures(
                 color = practicePicturesViewModel.randomColor
             )
 
-            Text(
+            ResponsiveText(
+                targetTextSizeHeight = 60.sp,
                 text = question.question,
-                fontSize = 38.sp,
-                fontWeight = FontWeight.Bold,
-                color = practicePicturesViewModel.randomColor
+                textAlign = TextAlign.Center,
+                color = practicePicturesViewModel.randomColor,
+                textStyle = TextStyle(fontWeight = FontWeight.Bold)
             )
 
         }

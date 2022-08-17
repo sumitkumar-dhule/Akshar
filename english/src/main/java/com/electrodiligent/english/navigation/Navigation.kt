@@ -69,6 +69,18 @@ fun Navigation(navController: NavHostController) {
             VegetablePracticeScreen()
         }
 
+        composable(route = Screen.FruitPracticeScreen.route) {
+            FruitPracticeScreen()
+        }
+
+        composable(route = Screen.AnimalPracticeScreen.route) {
+            AnimalPracticeScreen()
+        }
+
+        composable(route = Screen.BirdPracticeScreen.route) {
+            BirdPracticeScreen()
+        }
+
         composable(route = Screen.SettingsScreen.route) {
             SettingsScreen()
         }

@@ -17,19 +17,40 @@ object PracticeItems {
             id = "practice_numbers",
             title = "Numbers",
             contentDescription = "Numbers",
-            icon = R.drawable.practice_number,
+            icon = R.drawable.practice_numbers,
             navigationRoute = Screen.NumbersPracticeScreen
         ),
 
         NavigationItem(
             id = "practice_vegetable",
-            title = "Vegetable",
+            title = "Vegetables",
             contentDescription = "Vegetable",
-            icon = R.drawable.practice_number,
+            icon = R.drawable.practice_vegetable,
             navigationRoute = Screen.VegetablePracticeScreen
         ),
 
+        NavigationItem(
+            id = "practice_fruit",
+            title = "Fruits",
+            contentDescription = "Fruit",
+            icon = R.drawable.practice_fruits,
+            navigationRoute = Screen.FruitPracticeScreen
+        ),
 
+        NavigationItem(
+            id = "practice_animal",
+            title = "Animals",
+            contentDescription = "Animal",
+            icon = R.drawable.practice_animal,
+            navigationRoute = Screen.AnimalPracticeScreen
+        ),
 
+        NavigationItem(
+            id = "practice_bird",
+            title = "Birds",
+            contentDescription = "Bird",
+            icon = R.drawable.practice_bird,
+            navigationRoute = Screen.BirdPracticeScreen
+        )
     )
 }

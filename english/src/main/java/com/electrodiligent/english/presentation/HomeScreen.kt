@@ -55,7 +55,7 @@ fun HomeScreen(navController: NavHostController) {
                 ) {
                     Column(
                         modifier = Modifier
-                            .padding(horizontal = 8.dp)
+//                            .padding(horizontal = 8.dp)
                             .fillMaxWidth()
                             .padding(start = 8.dp, end = 8.dp, bottom = 16.dp)
 
@@ -114,8 +114,8 @@ fun HomeScreen(navController: NavHostController) {
                         LazyHorizontalGrid(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .aspectRatio(3f),
-                            rows = GridCells.Fixed(1),
+                                .aspectRatio(1.5f),
+                            rows = GridCells.Fixed(2),
                             horizontalArrangement = Arrangement.SpaceEvenly,
                             verticalArrangement = Arrangement.SpaceEvenly
                         ) {
