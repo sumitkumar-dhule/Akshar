@@ -2,6 +2,7 @@ package com.electrodiligent.english.data
 
 import com.electrodiligent.core.domain.model.PictureItem
 import com.electrodiligent.core.domain.model.PictureQuestion
+import com.electrodiligent.english.R
 
 object PictureQuestionRepository {
     val vegetableQuestionList =
@@ -9,6 +10,8 @@ object PictureQuestionRepository {
     val fruitQuestionList = getVegetableQuestions(repository = FruitsRepository.list).shuffled()
     val animalQuestionList = getVegetableQuestions(repository = AnimalsRepository.list).shuffled()
     val birdQuestionList = getVegetableQuestions(repository = BirdsRepository.list).shuffled()
+    val shapeQuestionList = getVegetableQuestions(repository = ShapeRepository.list).shuffled()
+    val colorQuestionList = getVegetableQuestions(repository = getColorPictureRepository()).shuffled()
 
     private fun getVegetableQuestions(repository: List<PictureItem>): List<PictureQuestion> {
         val questionList: MutableList<PictureQuestion> = mutableListOf()
@@ -40,6 +43,23 @@ object PictureQuestionRepository {
             availableOptions.remove(randomOption)
         }
         return options.shuffled()
+    }
+
+    private fun getColorPictureRepository(): List<PictureItem> {
+        var mutableList = mutableListOf<PictureItem>()
+
+        for (color in ColorRepository.list) {
+            mutableList.add(
+                PictureItem(
+                    name = color.name,
+                    color = color.colorValue,
+                    imageId = com.electrodiligent.core.R.drawable.square,
+                    audio = color.audio
+                )
+            )
+        }
+
+        return mutableList
     }
 
 }

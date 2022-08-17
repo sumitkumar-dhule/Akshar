@@ -80,6 +80,13 @@ fun Navigation(navController: NavHostController) {
         composable(route = Screen.BirdPracticeScreen.route) {
             BirdPracticeScreen()
         }
+        composable(route = Screen.ColorPracticeScreen.route) {
+            ColorPracticeScreen()
+        }
+
+        composable(route = Screen.ShapePracticeScreen.route) {
+            ShapePracticeScreen()
+        }
 
         composable(route = Screen.SettingsScreen.route) {
             SettingsScreen()

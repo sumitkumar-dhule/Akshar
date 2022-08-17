@@ -157,6 +157,20 @@ object DrawerMenu {
             title = "Birds",
             contentDescription = "Bird",
             icon = R.drawable.practice_bird
+        ),
+
+        MenuItem(
+            id = "practice_shapes",
+            title = "Shapes",
+            contentDescription = "Shapes",
+            icon = R.drawable.practice_shapes
+        ),
+
+        MenuItem(
+            id = "practice_colors",
+            title = "Colors",
+            contentDescription = "Colors",
+            icon = R.drawable.practice_colors
         )
 
 

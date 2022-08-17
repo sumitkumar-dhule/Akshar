@@ -51,6 +51,22 @@ object PracticeItems {
             contentDescription = "Bird",
             icon = R.drawable.practice_bird,
             navigationRoute = Screen.BirdPracticeScreen
+        ),
+
+        NavigationItem(
+            id = "practice_shapes",
+            title = "Shapes",
+            contentDescription = "Shapes",
+            icon = R.drawable.practice_shapes,
+            navigationRoute = Screen.ShapePracticeScreen
+        ),
+
+        NavigationItem(
+            id = "practice_colors",
+            title = "Colors",
+            contentDescription = "Colors",
+            icon = R.drawable.practice_colors,
+            navigationRoute = Screen.ColorPracticeScreen
         )
     )
 }

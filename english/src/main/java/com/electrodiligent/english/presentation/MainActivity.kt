@@ -190,6 +190,20 @@ class MainActivity : ComponentActivity() {
                                             )
                                         }
 
+                                        "practice_shapes" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.ShapePracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_colors" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.ColorPracticeScreen.route
+                                            )
+                                        }
+
 
                                     }
 
