@@ -22,7 +22,7 @@ fun AnimalsScreen() {
 
             PictureDisplay(
                 modifier = Modifier.fillMaxSize(),
-                items = AnimalsRepository.list,
+                items = AnimalsRepository.list.shuffled(),
                 titleAudio = raw.learn_shape,
                 title = "Animals"
             )

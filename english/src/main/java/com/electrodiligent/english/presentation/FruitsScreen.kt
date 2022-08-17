@@ -23,7 +23,7 @@ fun FruitsScreen() {
 
             PictureDisplay(
                 modifier = Modifier.fillMaxSize(),
-                items = FruitsRepository.list,
+                items = FruitsRepository.list.shuffled(),
                 titleAudio = raw.learn_shape,
                 title = "Fruits"
             )

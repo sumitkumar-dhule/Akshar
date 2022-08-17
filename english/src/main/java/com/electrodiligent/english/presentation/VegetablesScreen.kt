@@ -22,7 +22,7 @@ fun VegetablesScreen() {
 
             PictureDisplay(
                 modifier = Modifier.fillMaxSize(),
-                items = VegetablesRepository.list,
+                items = VegetablesRepository.list.shuffled(),
                 titleAudio = raw.learn_shape,
                 title = "Vegetables"
             )
