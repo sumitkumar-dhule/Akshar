@@ -36,6 +36,4 @@ fun ShapesScreen() {
                 .height(Dimension.PADDING_BANNER_AD)
         )
     }
-
-
 }

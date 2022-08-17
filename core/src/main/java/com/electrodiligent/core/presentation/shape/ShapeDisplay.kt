@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -17,12 +18,13 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.PictureItem
+import com.electrodiligent.core.util.ResponsiveText
 
 @Composable
 fun ShapeDisplay(
     modifier: Modifier,
     items: List<PictureItem>,
-    titleAudio : Int
+    titleAudio: Int
 ) {
 
     val shapeDisplayViewModel = hiltViewModel<ShapeDisplayViewModel>()
@@ -58,13 +60,13 @@ fun ShapeDisplay(
                         .clickable { shapeDisplayViewModel.previousShape() }
                 )
 
-                Text(
+                ResponsiveText(
                     modifier = Modifier.weight(1f, fill = true),
-                    fontSize = 30.sp,
-                    text = shapeItem.name,
+                    targetTextSizeHeight = 45.sp,
+                    text = "Shapes",
                     textAlign = TextAlign.Center,
                     color = shapeItem.color,
-                    fontWeight = FontWeight.Bold
+                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
                 )
 
                 Image(
@@ -79,24 +81,37 @@ fun ShapeDisplay(
                 )
             }
 
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth(0.7f)
-                    .fillMaxHeight(0.7f)
-                    .padding(bottom = 80.dp)
-                    .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = true)
-                    .clickable(onClick = { shapeDisplayViewModel.currentShape() }),
-                contentAlignment = Alignment.Center
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceEvenly,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                Image(
-                    painter = painterResource(id = shapeItem.imageId),
-                    contentDescription = shapeItem.name,
-                    colorFilter = ColorFilter.tint(color = shapeItem.color),
+                Box(
                     modifier = Modifier
-                        .fillMaxSize(),
-                    contentScale = ContentScale.Fit
+                        .fillMaxWidth(0.9f)
+                        .aspectRatio(1f)
+                        .clickable(onClick = { shapeDisplayViewModel.currentShape() }),
+                    contentAlignment = Alignment.Center
+                ) {
 
+                    Image(
+                        painter = painterResource(id = shapeItem.imageId),
+                        contentDescription = shapeItem.name,
+                        colorFilter = ColorFilter.tint(color = shapeItem.color),
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        contentScale = ContentScale.Fit
+
+                    )
+                }
+
+                ResponsiveText(
+                    targetTextSizeHeight = 70.sp,
+                    text = shapeItem.name,
+                    textAlign = TextAlign.Center,
+                    color = shapeItem.color,
+                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
                 )
             }
 

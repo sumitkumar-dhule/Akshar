@@ -104,14 +104,14 @@ object AlphabetsRepository {
 
         DisplayCharacter(
             display = "O", left = "N", right = "P", displayName = "OWL",
-            displayImage = o,
+            displayImage = owl,
             subtitle = "o",
             audio = com.electrodiligent.english.R.raw.o_for_owl
         ),
 
         DisplayCharacter(
             display = "P", left = "O", right = "Q", displayName = "PARROT",
-            displayImage = p,
+            displayImage = parrot,
             subtitle = "p",
             audio = com.electrodiligent.english.R.raw.p_for_parrot
         ),

@@ -5,7 +5,7 @@ import com.electrodiligent.core.domain.model.PictureItem
 import com.electrodiligent.core.util.RandomColor
 
 object ShapeRepository {
-    private val randomColor = RandomColor.list.random().colorValue
+    private val randomColor = RandomColor.textColors.random().colorValue
     val list = listOf(
         PictureItem(
             "CIRCLE",
