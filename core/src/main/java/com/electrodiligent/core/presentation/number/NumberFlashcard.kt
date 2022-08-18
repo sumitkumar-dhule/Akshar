@@ -28,7 +28,7 @@ fun NumberFlashcard(
     numberItems: List<NumberItem>
 ) {
 
-    val randomColor = RandomColor.list.random().colorValue
+    val randomColor = RandomColor.textColors.random().colorValue
     val numberFlashcardViewModel = hiltViewModel<NumberFlashcardViewModel>()
 
     Box(modifier = modifier.padding(horizontal = 8.dp), contentAlignment = Alignment.Center) {

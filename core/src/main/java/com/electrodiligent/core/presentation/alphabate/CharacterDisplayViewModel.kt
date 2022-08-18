@@ -16,25 +16,18 @@ import javax.inject.Inject
 @HiltViewModel
 class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
-
-
-    private var isFirstTime =  true
-
+    private var isFirstTime = true
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
-
-    val randomColor = RandomColor.list.random().colorValue
-
+    val randomColor = RandomColor.textColors.random().colorValue
     var displayCharacters: List<DisplayCharacter> = listOf(DisplayCharacter())
-
     private var currentIndex: Int by mutableStateOf(0)
-
     var displayCharacterState: DisplayCharacter by mutableStateOf(displayCharacters[currentIndex])
 
     fun setup() {
         displayCharacterState = displayCharacters[currentIndex]
-        if (isFirstTime){
+        if (isFirstTime) {
             playSound()
-            isFirstTime =false
+            isFirstTime = false
         }
     }
 

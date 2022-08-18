@@ -22,6 +22,8 @@ import javax.inject.Inject
 class PracticePicturesViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
 
+    private var isFirstTime = true
+
     val randomColor = RandomColor.textColors.random().colorValue
     var validNextState = true
 
@@ -38,7 +40,10 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
 
     fun setup() {
         question = questions[currentIndex]
-        playQuestion()
+        if (isFirstTime) {
+            playQuestion()
+            isFirstTime = false
+        }
     }
 
     fun next() {

@@ -16,6 +16,8 @@ import javax.inject.Inject
 class ColorDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
 
+    private var isFirstTime = true
+
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
     var displayColors: List<ColorItem> = listOf(ColorItem())
@@ -26,7 +28,10 @@ class ColorDisplayViewModel @Inject constructor(@ApplicationContext val context:
 
     fun setup() {
         colorItemState = displayColors[currentIndex]
-        playSound()
+        if (isFirstTime) {
+            playSound()
+            isFirstTime = false
+        }
     }
 
     fun nextColor() {

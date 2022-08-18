@@ -16,6 +16,8 @@ import javax.inject.Inject
 class ShapeDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
 
+    private var isFirstTime = true
+
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
     var displayShapes: List<PictureItem> = listOf(PictureItem())
@@ -26,7 +28,10 @@ class ShapeDisplayViewModel @Inject constructor(@ApplicationContext val context:
 
     fun setup() {
         pictureItem = displayShapes[currentIndex]
-        playSound()
+        if (isFirstTime) {
+            playSound()
+            isFirstTime = false
+        }
     }
 
     fun nextShape() {

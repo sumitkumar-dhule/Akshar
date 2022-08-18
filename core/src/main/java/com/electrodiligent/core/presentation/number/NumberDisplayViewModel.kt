@@ -16,6 +16,8 @@ import javax.inject.Inject
 class NumberDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
 
+    private var isFirstTime = true
+
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
     var displayNumbers: List<NumberItem> = listOf(NumberItem())
@@ -26,7 +28,10 @@ class NumberDisplayViewModel @Inject constructor(@ApplicationContext val context
 
     fun setup() {
         numberItem = displayNumbers[currentIndex]
-        playSound()
+        if (isFirstTime) {
+            playSound()
+            isFirstTime = false
+        }
     }
 
     fun next() {
@@ -61,7 +66,7 @@ class NumberDisplayViewModel @Inject constructor(@ApplicationContext val context
         playSound()
     }
 
-    fun currentNumber(){
+    fun currentNumber() {
         // TODO:: Make it work
         // TODO:: Change var names to correct
         numberItem = displayNumbers[currentIndex]

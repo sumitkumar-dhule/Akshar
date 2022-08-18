@@ -16,7 +16,10 @@ fun HomeScreen() {
                 .fillMaxSize()
                 .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
         ) {
-            CharacterDisplay(modifier = Modifier.fillMaxSize(), displayCharacters =  HindiAlphabetsRepository.list)
+            CharacterDisplay(
+                modifier = Modifier.fillMaxSize(),
+                displayCharacters =  HindiAlphabetsRepository.list
+            )
         }
 
         //TODO:: Display Ad in following box

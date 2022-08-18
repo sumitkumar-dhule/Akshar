@@ -25,7 +25,7 @@ fun AlphabetFlashcard(
     displayCharacters: List<DisplayCharacter>
 ) {
 
-    val randomColor = RandomColor.list.random().colorValue
+    val randomColor = RandomColor.textColors.random().colorValue
     val alphabetFlashcardViewModel = hiltViewModel<AlphabetFlashcardViewModel>()
 
     Box(modifier = modifier.padding(horizontal = 16.dp), contentAlignment = Alignment.Center) {
