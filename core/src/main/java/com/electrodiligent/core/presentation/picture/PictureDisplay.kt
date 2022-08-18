@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,12 +25,10 @@ fun PictureDisplay(
     modifier: Modifier,
     items: List<PictureItem>,
     title: String,
-    titleAudio: Int
 ) {
 
     val pictureDisplayViewModel = hiltViewModel<PictureDisplayViewModel>()
     pictureDisplayViewModel.displayPictures = items
-    pictureDisplayViewModel.titleAudio = titleAudio
     pictureDisplayViewModel.setup()
 
     val shapeItem = pictureDisplayViewModel.pictureItem

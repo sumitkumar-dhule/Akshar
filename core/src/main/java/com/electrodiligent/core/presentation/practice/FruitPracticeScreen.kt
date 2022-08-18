@@ -1,28 +1,25 @@
-package com.electrodiligent.english.presentation
+package com.electrodiligent.core.presentation.practice
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.electrodiligent.core.presentation.color.ColorDisplay
+import com.electrodiligent.core.domain.model.PictureQuestion
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.english.data.ColorRepository
 
 @Composable
-fun ColorsScreen() {
+fun FruitPracticeScreen(items: List<PictureQuestion>) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
+                .fillMaxSize()
+                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
         ) {
-
-            ColorDisplay(
+            PracticePictures(
                 modifier = Modifier.fillMaxSize(),
-                colorItems = ColorRepository.list
+                items = items
             )
-
         }
 
         //TODO:: Display Ad in following box

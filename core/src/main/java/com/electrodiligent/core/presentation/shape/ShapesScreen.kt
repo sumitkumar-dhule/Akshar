@@ -1,26 +1,28 @@
-package com.electrodiligent.english.presentation
+package com.electrodiligent.core.presentation.shape
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.electrodiligent.core.presentation.practice.PracticeCharacters
+import com.electrodiligent.core.domain.model.PictureItem
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.english.data.AlphabetQuestionRepository
 
 @Composable
-fun AlphabetsPracticeScreen() {
+fun ShapesScreen(items: List<PictureItem>) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
+                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD),
+            contentAlignment = Alignment.Center
         ) {
-            PracticeCharacters(
+
+            ShapeDisplay(
                 modifier = Modifier.fillMaxSize(),
-                items = AlphabetQuestionRepository.list
+                items = items
             )
+
         }
 
         //TODO:: Display Ad in following box
@@ -31,6 +33,4 @@ fun AlphabetsPracticeScreen() {
                 .height(Dimension.PADDING_BANNER_AD)
         )
     }
-
-
 }

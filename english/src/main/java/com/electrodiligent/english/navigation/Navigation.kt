@@ -4,6 +4,20 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.electrodiligent.core.navigation.Screen
+import com.electrodiligent.core.presentation.alphabate.AlphabetFlashcardScreen
+import com.electrodiligent.core.presentation.alphabate.AlphabetIdentificationScreen
+import com.electrodiligent.core.presentation.alphabate.NumberFlashcardScreen
+import com.electrodiligent.core.presentation.alphabate.NumberIdentificationScreen
+import com.electrodiligent.core.presentation.color.ColorsScreen
+import com.electrodiligent.core.presentation.picture.AnimalsScreen
+import com.electrodiligent.core.presentation.picture.BirdsScreen
+import com.electrodiligent.core.presentation.picture.FruitsScreen
+import com.electrodiligent.core.presentation.picture.VegetablesScreen
+import com.electrodiligent.core.presentation.practice.*
+import com.electrodiligent.core.presentation.settings.SettingsScreen
+import com.electrodiligent.core.presentation.shape.ShapesScreen
+import com.electrodiligent.english.data.*
 import com.electrodiligent.english.presentation.*
 
 @Composable
@@ -18,74 +32,74 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.AlphabetIdentificationScreen.route) {
-            AlphabetIdentificationScreen()
+            AlphabetIdentificationScreen(displayCharacters = AlphabetsRepository.list)
         }
 
         composable(route = Screen.AlphabetFlashcardScreen.route) {
-            AlphabetFlashcardScreen()
+            AlphabetFlashcardScreen(displayCharacters = AlphabetFlashCardRepository.list)
         }
 
         composable(route = Screen.NumberFlashcardScreen.route) {
-            NumberFlashcardScreen()
+            NumberFlashcardScreen(numberItems = NumberFlashCardRepository.list)
         }
 
         composable(route = Screen.NumberIdentificationScreen.route) {
-            NumberIdentificationScreen()
+            NumberIdentificationScreen(items = NumberRepository.list)
         }
 
         composable(route = Screen.ColorsScreen.route) {
-            ColorsScreen()
+            ColorsScreen(colorItems = ColorRepository.list)
         }
 
         composable(route = Screen.ShapesScreen.route) {
-            ShapesScreen()
+            ShapesScreen(items = ShapeRepository.list)
         }
 
         composable(route = Screen.VegetablesScreen.route) {
-            VegetablesScreen()
+            VegetablesScreen(items = VegetablesRepository.list, title = "Vegetables")
         }
 
         composable(route = Screen.FruitsScreen.route) {
-            FruitsScreen()
+            FruitsScreen(items = FruitsRepository.list, title = "Fruits")
         }
 
         composable(route = Screen.AnimalsScreen.route) {
-            AnimalsScreen()
+            AnimalsScreen(items = AnimalsRepository.list, title = "Animals")
         }
 
         composable(route = Screen.BirdsScreen.route) {
-            BirdsScreen()
+            BirdsScreen(items = BirdsRepository.list, title = "Birds")
         }
 
         composable(route = Screen.AlphabetsPracticeScreen.route) {
-            AlphabetsPracticeScreen()
+            AlphabetsPracticeScreen(items = AlphabetQuestionRepository.list)
         }
 
         composable(route = Screen.NumbersPracticeScreen.route) {
-            NumbersPracticeScreen()
+            NumbersPracticeScreen(items = NumberQuestionRepository.list)
         }
 
         composable(route = Screen.VegetablePracticeScreen.route) {
-            VegetablePracticeScreen()
+            VegetablePracticeScreen(items = PictureQuestionRepository.vegetableQuestionList)
         }
 
         composable(route = Screen.FruitPracticeScreen.route) {
-            FruitPracticeScreen()
+            FruitPracticeScreen(items = PictureQuestionRepository.fruitQuestionList)
         }
 
         composable(route = Screen.AnimalPracticeScreen.route) {
-            AnimalPracticeScreen()
+            AnimalPracticeScreen(items = PictureQuestionRepository.animalQuestionList)
         }
 
         composable(route = Screen.BirdPracticeScreen.route) {
-            BirdPracticeScreen()
+            BirdPracticeScreen(items = PictureQuestionRepository.birdQuestionList)
         }
         composable(route = Screen.ColorPracticeScreen.route) {
-            ColorPracticeScreen()
+            ColorPracticeScreen(items = PictureQuestionRepository.colorQuestionList)
         }
 
         composable(route = Screen.ShapePracticeScreen.route) {
-            ShapePracticeScreen()
+            ShapePracticeScreen(items = PictureQuestionRepository.shapeQuestionList)
         }
 
         composable(route = Screen.SettingsScreen.route) {

@@ -19,7 +19,6 @@ class ShapeDisplayViewModel @Inject constructor(@ApplicationContext val context:
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
     var displayShapes: List<PictureItem> = listOf(PictureItem())
-    var titleAudio: Int = R.raw.beep
 
     private var currentIndex: Int by mutableStateOf(0)
 

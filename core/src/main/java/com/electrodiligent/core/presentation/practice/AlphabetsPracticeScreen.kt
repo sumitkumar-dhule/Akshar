@@ -1,16 +1,14 @@
-package com.electrodiligent.english.presentation
+package com.electrodiligent.core.presentation.practice
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.electrodiligent.core.presentation.practice.PracticeColorfulPictures
-import com.electrodiligent.core.presentation.practice.PracticePictures
+import com.electrodiligent.core.domain.model.CharacterQuestion
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.english.data.PictureQuestionRepository
 
 @Composable
-fun ColorPracticeScreen() {
+fun AlphabetsPracticeScreen(items: List<CharacterQuestion>) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
@@ -18,9 +16,9 @@ fun ColorPracticeScreen() {
                 .fillMaxSize()
                 .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
         ) {
-            PracticeColorfulPictures(
+            PracticeCharacters(
                 modifier = Modifier.fillMaxSize(),
-                items = PictureQuestionRepository.colorQuestionList
+                items = items
             )
         }
 

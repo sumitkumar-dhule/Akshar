@@ -1,16 +1,15 @@
-package com.electrodiligent.english.presentation
+package com.electrodiligent.core.presentation.picture
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.electrodiligent.core.domain.model.PictureItem
 import com.electrodiligent.core.presentation.picture.PictureDisplay
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.english.R.raw
-import com.electrodiligent.english.data.VegetablesRepository
 
 @Composable
-fun VegetablesScreen() {
+fun BirdsScreen(items: List<PictureItem>, title: String) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
@@ -22,9 +21,8 @@ fun VegetablesScreen() {
 
             PictureDisplay(
                 modifier = Modifier.fillMaxSize(),
-                items = VegetablesRepository.list.shuffled(),
-                titleAudio = raw.learn_shape,
-                title = "Vegetables"
+                items = items,
+                title = title
             )
 
         }

@@ -1,4 +1,4 @@
-package com.electrodiligent.english.navigation
+package com.electrodiligent.core.navigation
 
 data class NavigationItem(
     val id: String,

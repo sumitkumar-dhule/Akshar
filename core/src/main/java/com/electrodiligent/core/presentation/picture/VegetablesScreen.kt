@@ -1,28 +1,28 @@
-package com.electrodiligent.english.presentation
+package com.electrodiligent.core.presentation.picture
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.electrodiligent.core.presentation.alphabate.CharacterDisplay
-import com.electrodiligent.core.presentation.number.NumberDisplay
+import com.electrodiligent.core.domain.model.PictureItem
+import com.electrodiligent.core.presentation.picture.PictureDisplay
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.english.data.AlphabetsRepository
-import com.electrodiligent.english.data.NumberRepository
 
 @Composable
-fun NumberIdentificationScreen() {
+fun VegetablesScreen(items: List<PictureItem>, title: String) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
+                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD),
+            contentAlignment = Alignment.Center
         ) {
-            NumberDisplay(
+
+            PictureDisplay(
                 modifier = Modifier.fillMaxSize(),
-                items = NumberRepository.list
+                items = items,
+                title = title
             )
         }
 

@@ -18,6 +18,8 @@ class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val cont
     ViewModel() {
 
 
+    private var isFirstTime =  true
+
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
     val randomColor = RandomColor.list.random().colorValue
@@ -30,7 +32,10 @@ class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val cont
 
     fun setup() {
         displayCharacterState = displayCharacters[currentIndex]
-        playSound()
+        if (isFirstTime){
+            playSound()
+            isFirstTime =false
+        }
     }
 
     fun next() {

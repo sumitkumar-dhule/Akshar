@@ -1,33 +1,25 @@
-package com.electrodiligent.english.presentation
+package com.electrodiligent.core.presentation.practice
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.electrodiligent.core.presentation.picture.PictureDisplay
+import com.electrodiligent.core.domain.model.PictureQuestion
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.english.R.raw
-import com.electrodiligent.english.data.FruitsRepository
-import com.electrodiligent.english.data.VegetablesRepository
 
 @Composable
-fun FruitsScreen() {
+fun ShapePracticeScreen(items: List<PictureQuestion>) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD),
-            contentAlignment = Alignment.Center
+                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
         ) {
-
-            PictureDisplay(
+            PracticeColorfulPictures(
                 modifier = Modifier.fillMaxSize(),
-                items = FruitsRepository.list.shuffled(),
-                titleAudio = raw.learn_shape,
-                title = "Fruits"
+                items = items
             )
-
         }
 
         //TODO:: Display Ad in following box

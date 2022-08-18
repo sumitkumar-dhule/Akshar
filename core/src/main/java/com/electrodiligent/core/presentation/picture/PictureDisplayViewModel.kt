@@ -16,13 +16,13 @@ import javax.inject.Inject
 @HiltViewModel
 class PictureDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
+    private var isFirstTime = true
 
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
     val randomColor = RandomColor.textColors.random().colorValue
 
     var displayPictures: List<PictureItem> = listOf(PictureItem())
-    var titleAudio: Int = R.raw.beep
 
     private var currentIndex: Int by mutableStateOf(0)
 
@@ -30,7 +30,10 @@ class PictureDisplayViewModel @Inject constructor(@ApplicationContext val contex
 
     fun setup() {
         pictureItem = displayPictures[currentIndex]
-        playSound()
+        if (isFirstTime) {
+            playSound()
+            isFirstTime = false
+        }
     }
 
     fun nextShape() {

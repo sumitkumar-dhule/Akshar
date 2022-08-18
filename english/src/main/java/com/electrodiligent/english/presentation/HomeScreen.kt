@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.electrodiligent.core.util.Dimension
 import com.electrodiligent.english.navigation.LearningItems
-import com.electrodiligent.english.navigation.NavigationItem
-import com.electrodiligent.english.navigation.NavigationUtil
+import com.electrodiligent.core.navigation.NavigationItem
+import com.electrodiligent.core.navigation.NavigationUtil
 import com.electrodiligent.english.navigation.PracticeItems
 
 @Composable
