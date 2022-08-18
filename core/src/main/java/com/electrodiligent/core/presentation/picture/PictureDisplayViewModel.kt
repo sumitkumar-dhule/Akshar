@@ -36,7 +36,7 @@ class PictureDisplayViewModel @Inject constructor(@ApplicationContext val contex
         }
     }
 
-    fun nextShape() {
+    fun nextPicture() {
         if (isSoundPlaying()) {
             return
         }
@@ -52,7 +52,7 @@ class PictureDisplayViewModel @Inject constructor(@ApplicationContext val contex
 
     }
 
-    fun previousShape() {
+    fun previousPicture() {
         if (isSoundPlaying()) {
             return
         }
@@ -68,8 +68,7 @@ class PictureDisplayViewModel @Inject constructor(@ApplicationContext val contex
 
     }
 
-    fun currentShape() {
-        pictureItem = displayPictures[currentIndex]
+    fun currentPicture() {
         playSound()
     }
 

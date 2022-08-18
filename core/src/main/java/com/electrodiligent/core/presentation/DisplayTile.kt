@@ -1,4 +1,4 @@
-package com.electrodiligent.english.presentation
+package com.electrodiligent.core.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -58,7 +58,7 @@ fun DisplayTile(
                 modifier = Modifier
                     .fillMaxSize()
                     .clickable(onClick = {
-                        NavigationUtil.push(navController, item.navigationRoute.route)
+                        NavigationUtil.navigateTo(navController, item.navigationRoute.route)
                     })
                     .padding(bottom = 4.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,

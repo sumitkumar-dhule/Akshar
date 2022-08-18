@@ -18,7 +18,8 @@ import com.electrodiligent.core.presentation.practice.*
 import com.electrodiligent.core.presentation.settings.SettingsScreen
 import com.electrodiligent.core.presentation.shape.ShapesScreen
 import com.electrodiligent.english.data.*
-import com.electrodiligent.english.presentation.*
+import com.electrodiligent.core.presentation.HomeScreen
+import com.electrodiligent.core.presentation.PracticeScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -28,11 +29,17 @@ fun Navigation(navController: NavHostController) {
         startDestination = Screen.HomeScreen.route
     ) {
         composable(route = Screen.HomeScreen.route) {
-            HomeScreen(navController)
+            HomeScreen(
+                navController = navController,
+                screenTitle = "Learning",
+                navigationItems = LearningItems.menu
+            )
         }
 
         composable(route = Screen.PracticeScreen.route) {
-            PracticeScreen(navController)
+            PracticeScreen(navController = navController,
+                screenTitle = "Practice",
+                navigationItems = PracticeItems.menu)
         }
 
         composable(route = Screen.AlphabetIdentificationScreen.route) {

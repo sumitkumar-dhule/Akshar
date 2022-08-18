@@ -1,4 +1,4 @@
-package com.electrodiligent.english.presentation
+package com.electrodiligent.core.presentation
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -14,11 +14,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.electrodiligent.core.navigation.NavigationItem
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.english.navigation.PracticeItems
 
 @Composable
-fun PracticeScreen(navController: NavHostController) {
+fun PracticeScreen(
+    navController: NavHostController,
+    screenTitle: String,
+    navigationItems: List<NavigationItem>
+) {
 
     val brownColor = Color(red = 168, green = 42, blue = 42)
 
@@ -35,8 +39,10 @@ fun PracticeScreen(navController: NavHostController) {
         ) {
 
             Text(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
-                text = "Practice",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp),
+                text = screenTitle,
                 fontWeight = FontWeight.Bold,
                 fontSize = 36.sp,
                 textAlign = TextAlign.Center,
@@ -49,7 +55,7 @@ fun PracticeScreen(navController: NavHostController) {
                 columns = GridCells.Fixed(3),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                items(PracticeItems.menu) {
+                items(navigationItems) {
                     DisplayTile(
                         modifier = Modifier.fillMaxSize(),
                         navController = navController,
