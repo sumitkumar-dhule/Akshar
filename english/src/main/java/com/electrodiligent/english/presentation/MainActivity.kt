@@ -120,6 +120,13 @@ class MainActivity : ComponentActivity() {
                                             )
                                         }
 
+                                        "home_practice" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.PracticeScreen.route
+                                            )
+                                        }
+
                                         "gk_vegetables" -> {
                                             navigateTo(
                                                 navController,

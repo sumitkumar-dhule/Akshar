@@ -14,4 +14,8 @@ object NavigationUtil {
             restoreState = true
         }
     }
+
+    fun push(navController: NavHostController, route: String) {
+        navController.navigate(route)
+    }
 }

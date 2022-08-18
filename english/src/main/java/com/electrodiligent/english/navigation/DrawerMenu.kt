@@ -14,6 +14,14 @@ object DrawerMenu {
         ),
 
         MenuItem(
+            id = "home_practice",
+            title = "Practice",
+            contentDescription = "Practice",
+            icon = R.drawable.practice,
+        ),
+
+
+        MenuItem(
             id = "literature",
             title = "Literature",
             contentDescription = "Literature",

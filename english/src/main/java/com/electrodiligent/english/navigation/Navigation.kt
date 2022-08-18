@@ -31,6 +31,10 @@ fun Navigation(navController: NavHostController) {
             HomeScreen(navController)
         }
 
+        composable(route = Screen.PracticeScreen.route) {
+            PracticeScreen(navController)
+        }
+
         composable(route = Screen.AlphabetIdentificationScreen.route) {
             AlphabetIdentificationScreen(displayCharacters = AlphabetsRepository.list)
         }

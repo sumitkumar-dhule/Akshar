@@ -15,10 +15,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.english.navigation.LearningItems
+import com.electrodiligent.english.navigation.PracticeItems
 
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun PracticeScreen(navController: NavHostController) {
 
     val brownColor = Color(red = 168, green = 42, blue = 42)
 
@@ -35,10 +35,8 @@ fun HomeScreen(navController: NavHostController) {
         ) {
 
             Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp),
-                text = "Learning",
+                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                text = "Practice",
                 fontWeight = FontWeight.Bold,
                 fontSize = 36.sp,
                 textAlign = TextAlign.Center,
@@ -51,7 +49,7 @@ fun HomeScreen(navController: NavHostController) {
                 columns = GridCells.Fixed(3),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                items(LearningItems.menu) {
+                items(PracticeItems.menu) {
                     DisplayTile(
                         modifier = Modifier.fillMaxSize(),
                         navController = navController,
@@ -71,4 +69,5 @@ fun HomeScreen(navController: NavHostController) {
                 .height(Dimension.PADDING_BANNER_AD)
         )
     }
+
 }
