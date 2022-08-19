@@ -20,7 +20,6 @@ import com.electrodiligent.core.presentation.shape.ShapesScreen
 import com.electrodiligent.english.data.*
 import com.electrodiligent.core.presentation.HomeScreen
 import com.electrodiligent.core.presentation.PracticeScreen
-import com.electrodiligent.english.navigation.PracticeItems
 import com.electrodiligent.hindi.data.*
 
 @Composable
@@ -33,14 +32,15 @@ fun Navigation(navController: NavHostController) {
         composable(route = Screen.HomeScreen.route) {
             HomeScreen(
                 navController = navController,
-                screenTitle = "Learning",
+                screenTitle = "सीखना",
                 navigationItems = LearningItems.menu
             )
         }
 
         composable(route = Screen.PracticeScreen.route) {
-            PracticeScreen(navController = navController,
-                screenTitle = "Practice",
+            PracticeScreen(
+                navController = navController,
+                screenTitle = "अभ्यास",
                 navigationItems = PracticeItems.menu
             )
         }
@@ -62,27 +62,27 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.ColorsScreen.route) {
-            ColorsScreen(colorItems = ColorRepository.list)
+            ColorsScreen(colorItems = ColorRepository.list, title = "रंग")
         }
 
         composable(route = Screen.ShapesScreen.route) {
-            ShapesScreen(items = ShapeRepository.list)
+            ShapesScreen(items = ShapeRepository.list, title = "आकार")
         }
 
         composable(route = Screen.VegetablesScreen.route) {
-            VegetablesScreen(items = VegetablesRepository.list, title = "Vegetables")
+            VegetablesScreen(items = VegetablesRepository.list, title = "सब्जियां")
         }
 
         composable(route = Screen.FruitsScreen.route) {
-            FruitsScreen(items = FruitsRepository.list, title = "Fruits")
+            FruitsScreen(items = FruitsRepository.list, title = "फल")
         }
 
         composable(route = Screen.AnimalsScreen.route) {
-            AnimalsScreen(items = AnimalsRepository.list, title = "Animals")
+            AnimalsScreen(items = AnimalsRepository.list, title = "जानवर")
         }
 
         composable(route = Screen.BirdsScreen.route) {
-            BirdsScreen(items = BirdsRepository.list, title = "Birds")
+            BirdsScreen(items = BirdsRepository.list, title = "पक्षी")
         }
 
         composable(route = Screen.AlphabetsPracticeScreen.route) {

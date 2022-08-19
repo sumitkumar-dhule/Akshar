@@ -8,16 +8,25 @@ object LearningItems {
     val menu: List<NavigationItem> = listOf(
 
         NavigationItem(
-            id = "alphabet",
-            title = "Alphabets",
+            id = "alphabet_swar",
+            title = "स्वर",
             contentDescription = "Go to Alphabet Identification screen",
             icon = R.drawable.abc,
             navigationRoute = Screen.AlphabetIdentificationScreen
         ),
 
         NavigationItem(
+            id = "alphabet_vyanjan",
+            title = "व्यंजन",
+            contentDescription = "Go to Alphabet Identification screen",
+            icon = R.drawable.abc,
+            navigationRoute = Screen.AlphabetIdentificationScreen
+        ),
+
+
+        NavigationItem(
             id = "alphabet_flashcards",
-            title = "A to Z",
+            title = "चार्ट",
             contentDescription = "Go to Alphabet Flashcards screen",
             icon = R.drawable.flashcards_abc,
             navigationRoute = Screen.AlphabetFlashcardScreen
@@ -26,7 +35,7 @@ object LearningItems {
 
         NavigationItem(
             id = "number_identification",
-            title = "Numbers",
+            title = "संख्या",
             contentDescription = "Go to Number Identification screen",
             icon = R.drawable.numbers,
             navigationRoute = Screen.NumberIdentificationScreen
@@ -34,7 +43,7 @@ object LearningItems {
 
         NavigationItem(
             id = "number_flashcards",
-            title = "1 to 100",
+            title = "१ से १००",
             contentDescription = "Go to Number Flashcards screen",
             icon = R.drawable.flashcard_123,
             navigationRoute = Screen.NumberFlashcardScreen
@@ -42,7 +51,7 @@ object LearningItems {
 
         NavigationItem(
             id = "gk_shapes",
-            title = "Shapes",
+            title = "आकार",
             contentDescription = "Go to Shapes screen",
             icon = R.drawable.shapes,
             navigationRoute = Screen.ShapesScreen
@@ -50,7 +59,7 @@ object LearningItems {
 
         NavigationItem(
             id = "gk_colors",
-            title = "Colors",
+            title = "रंग",
             contentDescription = "Go to Colors screen",
             icon = R.drawable.colors,
             navigationRoute = Screen.ColorsScreen
@@ -58,7 +67,7 @@ object LearningItems {
 
         NavigationItem(
             id = "gk_vegetables",
-            title = "Vegetables",
+            title = "सब्जियां",
             contentDescription = "Go to Vegetables screen",
             icon = R.drawable.vegetable,
             navigationRoute = Screen.VegetablesScreen
@@ -66,7 +75,7 @@ object LearningItems {
 
         NavigationItem(
             id = "gk_fruits",
-            title = "Fruits",
+            title = "फल",
             contentDescription = "Go to Fruits screen",
             icon = R.drawable.fruits,
             navigationRoute = Screen.FruitsScreen
@@ -74,7 +83,7 @@ object LearningItems {
 
         NavigationItem(
             id = "gk_animals",
-            title = "Animals",
+            title = "जानवर",
             contentDescription = "Go to Animals screen",
             icon = R.drawable.animals,
             navigationRoute = Screen.AnimalsScreen
@@ -82,7 +91,7 @@ object LearningItems {
 
         NavigationItem(
             id = "gk_birds",
-            title = "Birds",
+            title = "पक्षी",
             contentDescription = "Go to Birds screen",
             icon = R.drawable.birds,
             navigationRoute = Screen.BirdsScreen
@@ -90,7 +99,7 @@ object LearningItems {
 
         NavigationItem(
             id = "home_practice",
-            title = "Practice",
+            title = "अभ्यास",
             contentDescription = "Go to Practice screen",
             icon = R.drawable.practice,
             navigationRoute = Screen.PracticeScreen

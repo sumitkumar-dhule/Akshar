@@ -8,13 +8,13 @@ object ShapeRepository {
     private val randomColor = RandomColor.textColors.random().colorValue
     val list = listOf(
         PictureItem(
-            "CIRCLE",
+            "गोल",
             R.drawable.circle,
             randomColor,
             //audio = com.electrodiligent.english.R.raw.circle
         ),
         PictureItem(
-            name = "OVAL",
+            name = "अंडाकार",
             imageId = R.drawable.oval,
             randomColor,
             //audio = com.electrodiligent.english.R.raw.oval
@@ -26,43 +26,38 @@ object ShapeRepository {
             //audio = com.electrodiligent.english.R.raw.triangle
         ),
         PictureItem(
-            "SQUARE",
+            "चौकोर",
             R.drawable.square,
             randomColor,
             //audio = com.electrodiligent.english.R.raw.square
         ),
         PictureItem(
-            "RECTANGLE",
+            "आयत",
             R.drawable.rectangle,
             randomColor,
             //audio = com.electrodiligent.english.R.raw.rectangle
         ),
+
         PictureItem(
-            "DIAMOND",
-            R.drawable.diamond,
-            randomColor,
-            //audio = com.electrodiligent.english.R.raw.diamond
-        ),
-        PictureItem(
-            "PENTAGON",
+            "पंचकोण",
             R.drawable.pentagon,
             randomColor,
             //audio = com.electrodiligent.english.R.raw.pentagon
         ),
         PictureItem(
-            "HEXAGON",
+            "षट्भुज",
             R.drawable.hexagon,
             randomColor,
             //audio = com.electrodiligent.english.R.raw.hexagon
         ),
         PictureItem(
-            name = "STAR",
+            name = "सितारा",
             imageId = R.drawable.star,
             color = randomColor,
             //audio = com.electrodiligent.english.R.raw.star
         ),
         PictureItem(
-            name = "HEART", imageId = R.drawable.heart,
+            name = "दिल", imageId = R.drawable.heart,
             color = randomColor,
             //audio = com.electrodiligent.english.R.raw.heart
         )

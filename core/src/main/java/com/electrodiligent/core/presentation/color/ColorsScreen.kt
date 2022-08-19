@@ -11,7 +11,7 @@ import com.electrodiligent.core.domain.model.ColorItem
 import com.electrodiligent.core.util.Dimension
 
 @Composable
-fun ColorsScreen(colorItems: List<ColorItem>) {
+fun ColorsScreen(colorItems: List<ColorItem>, title: String = "Colors") {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
@@ -22,7 +22,8 @@ fun ColorsScreen(colorItems: List<ColorItem>) {
 
             ColorDisplay(
                 modifier = Modifier.fillMaxSize(),
-                colorItems = colorItems
+                colorItems = colorItems,
+                title = title
             )
 
         }

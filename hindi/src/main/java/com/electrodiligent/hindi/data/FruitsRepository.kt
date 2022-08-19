@@ -8,90 +8,90 @@ object FruitsRepository {
 
     private val listItems = listOf(
         PictureItem(
-            name = "MANGO", imageId = R.drawable.mango,
+            name = "आम", imageId = R.drawable.mango,
             // audio = com.electrodiligent.english.R.raw.mango
         ),
         PictureItem(
-            "BANANA",
+            "केला",
             R.drawable.banana,
             // audio = com.electrodiligent.english.R.raw.banana
         ),
         PictureItem(
-            name = "CHERRY",
+            name = "चेरी",
             imageId = R.drawable.cherry,
             // audio = com.electrodiligent.english.R.raw.cherry
         ),
         PictureItem(
-            "APPLE",
+            "सेब",
             R.drawable.apple,
             // audio = com.electrodiligent.english.R.raw.apple
         ),
         PictureItem(
-            "COCONUT",
+            "नारियल",
             R.drawable.coconut,
             // audio = com.electrodiligent.english.R.raw.coconut
         ),
         PictureItem(
-            "CUSTARD APPLE",
+            "शरीफा",
             R.drawable.custard_apple,
 
             // audio = com.electrodiligent.english.R.raw.custard_apple
         ),
         PictureItem(
-            "DRAGON FRUIT",
+            "ड्रैगन फल",
             R.drawable.dragon_fruit,
             // audio = com.electrodiligent.english.R.raw.dragon_fruit
         ),
         PictureItem(
-            "FIG",
+            "अंजीर",
             R.drawable.fig,
             // audio = com.electrodiligent.english.R.raw.fig,
         ),
         PictureItem(
-            "GRAPES",
+            "अंगूर",
             R.drawable.grapes,
             // audio = com.electrodiligent.english.R.raw.grapes
         ),
         PictureItem(
-            "JACKFRUIT",
+            "कटहल",
             R.drawable.jackfruit,
             // audio = com.electrodiligent.english.R.raw.jackfruit
         ),
         PictureItem(
-            name = "KIWI",
+            name = "कीवी",
             imageId = R.drawable.kiwi,
             // audio = com.electrodiligent.english.R.raw.kiwi
         ),
         PictureItem(
-            name = "ORANGE", imageId = R.drawable.orange,
+            name = "संतरा", imageId = R.drawable.orange,
             // audio = com.electrodiligent.english.R.raw.orange
         ),
         PictureItem(
-            name = "PAPAYA", imageId = R.drawable.papaya,
+            name = "पपीता", imageId = R.drawable.papaya,
             // audio = com.electrodiligent.english.R.raw.papaya
         ),
         PictureItem(
-            name = "PEAR", imageId = R.drawable.pear,
+            name = "नाशपाती", imageId = R.drawable.pear,
             // audio = com.electrodiligent.english.R.raw.pear
         ),
         PictureItem(
-            name = "PINE-APPLE", imageId = R.drawable.pineapple,
+            name = "अनानास", imageId = R.drawable.pineapple,
             // audio = com.electrodiligent.english.R.raw.pineapple
         ),
         PictureItem(
-            name = "POMEGRANATE", imageId = R.drawable.pomegranate,
+            name = "अनार", imageId = R.drawable.pomegranate,
             // audio = com.electrodiligent.english.R.raw.pomegranate
         ),
         PictureItem(
-            name = "STRAWBERRY", imageId = R.drawable.strawberry,
+            name = "स्ट्रॉबेरी", imageId = R.drawable.strawberry,
             // audio = com.electrodiligent.english.R.raw.strawberry
         ),
         PictureItem(
-            name = "WATERMELON", imageId = R.drawable.watermelon,
+            name = "तरबूज", imageId = R.drawable.watermelon,
             // audio = com.electrodiligent.english.R.raw.watermelon
         ),
         PictureItem(
-            name = "AVOCADO", imageId = R.drawable.avacado,
+            name = "एवोकाडो", imageId = R.drawable.avacado,
             // audio = com.electrodiligent.english.R.raw.avacado
         )
     )

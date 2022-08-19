@@ -8,7 +8,7 @@ import com.electrodiligent.core.domain.model.PictureItem
 import com.electrodiligent.core.util.Dimension
 
 @Composable
-fun ShapesScreen(items: List<PictureItem>) {
+fun ShapesScreen(items: List<PictureItem>, title: String = "Shapes") {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
@@ -20,7 +20,8 @@ fun ShapesScreen(items: List<PictureItem>) {
 
             ShapeDisplay(
                 modifier = Modifier.fillMaxSize(),
-                items = items
+                items = items,
+                title = title
             )
 
         }

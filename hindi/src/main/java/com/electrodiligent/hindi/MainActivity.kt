@@ -17,13 +17,13 @@ import androidx.navigation.compose.rememberNavController
 import com.electrodiligent.core.navigation.NavigationUtil
 import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.core.presentation.AppBar
-import com.electrodiligent.hindi.ui.theme.AksharTheme
 import com.electrodiligent.core.presentation.BackgroundImage
 import com.electrodiligent.core.presentation.DrawerBody
 import com.electrodiligent.core.presentation.DrawerHeader
-import com.electrodiligent.hindi.navigation.Navigation
 import com.electrodiligent.hindi.BuildConfig.VERSION_NAME
 import com.electrodiligent.hindi.navigation.DrawerMenu
+import com.electrodiligent.hindi.navigation.Navigation
+import com.electrodiligent.hindi.ui.theme.AksharTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -63,7 +63,8 @@ class MainActivity : ComponentActivity() {
                             DrawerHeader(
                                 header = "Preschool Essentials",
                                 headerImageID = R.mipmap.ic_launcher,
-                                version = "version: $VERSION_NAME"
+                                version = "version: $VERSION_NAME",
+                                language = "हिंदी"
                             )
                             DrawerBody(
                                 items = DrawerMenu.menu,

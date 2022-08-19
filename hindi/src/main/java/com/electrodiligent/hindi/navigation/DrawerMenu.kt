@@ -8,14 +8,14 @@ object DrawerMenu {
 
         MenuItem(
             id = "home",
-            title = "Home",
+            title = "सीखना",
             contentDescription = "home",
-            icon = R.drawable.home,
+            icon = R.drawable.teacher,
         ),
 
         MenuItem(
             id = "home_practice",
-            title = "Practice",
+            title = "अभ्यास",
             contentDescription = "Practice",
             icon = R.drawable.practice,
         ),
@@ -23,29 +23,36 @@ object DrawerMenu {
 
         MenuItem(
             id = "literature",
-            title = "Literature",
+            title = "वर्णमाला",
             contentDescription = "Literature",
             icon = R.drawable.bee,
             isSectionHeader = true
         ),
 
         MenuItem(
-            id = "alphabet",
-            title = "Alphabets",
+            id = "alphabet_swar",
+            title = "स्वर",
+            contentDescription = "Go to Alphabet Identification screen",
+            icon = R.drawable.abc
+        ),
+
+        MenuItem(
+            id = "alphabet_vyanjan",
+            title = "व्यंजन",
             contentDescription = "Go to Alphabet Identification screen",
             icon = R.drawable.abc
         ),
 
         MenuItem(
             id = "alphabet_flashcards",
-            title = "A to Z",
+            title = "चार्ट",
             contentDescription = "Go to Alphabet Flashcards screen",
             icon = R.drawable.flashcards_abc
         ),
 
         MenuItem(
             id = "Math",
-            title = "Math",
+            title = "गणित",
             contentDescription = "Math",
             icon = R.drawable.bookmark,
             isSectionHeader = true
@@ -53,14 +60,14 @@ object DrawerMenu {
 
         MenuItem(
             id = "number_identification",
-            title = "Numbers",
+            title = "संख्या",
             contentDescription = "Go to Number Identification screen",
             icon = R.drawable.numbers
         ),
 
         MenuItem(
             id = "number_flashcards",
-            title = "1 to 100",
+            title = "१ से १००",
             contentDescription = "Go to Number Flashcards screen",
             icon = R.drawable.flashcard_123
         ),
@@ -68,7 +75,7 @@ object DrawerMenu {
         //GK
         MenuItem(
             id = "GK",
-            title = "General Knowledge",
+            title = "सामान्य ज्ञान",
             contentDescription = "General Knowledge",
             icon = R.drawable.bookmark,
             isSectionHeader = true
@@ -76,42 +83,42 @@ object DrawerMenu {
 
         MenuItem(
             id = "gk_shapes",
-            title = "Shapes",
+            title = "आकार",
             contentDescription = "Go to Shapes screen",
             icon = R.drawable.shapes
         ),
 
         MenuItem(
             id = "gk_colors",
-            title = "Colors",
+            title = "रंग",
             contentDescription = "Go to Colors screen",
             icon = R.drawable.colors
         ),
 
         MenuItem(
             id = "gk_vegetables",
-            title = "Vegetables",
+            title = "सब्जियां",
             contentDescription = "Vegetables",
             icon = R.drawable.vegetable
         ),
 
         MenuItem(
             id = "gk_fruits",
-            title = "Fruits",
+            title = "फल",
             contentDescription = "Fruits",
             icon = R.drawable.fruits
         ),
 
         MenuItem(
             id = "gk_animals",
-            title = "Animals",
+            title = "जानवर",
             contentDescription = "Animals",
             icon = R.drawable.animals
         ),
 
         MenuItem(
             id = "gk_birds",
-            title = "Birds",
+            title = "पक्षी",
             contentDescription = "Birds",
             icon = R.drawable.birds
         ),
@@ -119,7 +126,7 @@ object DrawerMenu {
         //Practice
         MenuItem(
             id = "practice",
-            title = "Practice",
+            title = "अभ्यास",
             contentDescription = "General Knowledge",
             icon = R.drawable.bookmark,
             isSectionHeader = true
@@ -127,57 +134,57 @@ object DrawerMenu {
 
         MenuItem(
             id = "practice_alphabets",
-            title = "Alphabets",
+            title = "वर्णमाला",
             contentDescription = "Alphabets",
             icon = R.drawable.practice_abc
         ),
 
         MenuItem(
             id = "practice_numbers",
-            title = "Numbers",
+            title = "संख्या",
             contentDescription = "Alphabets",
             icon = R.drawable.practice_numbers
         ),
 
         MenuItem(
             id = "practice_vegetable",
-            title = "Vegetables",
+            title = "सब्जियां",
             contentDescription = "Vegetable",
             icon = R.drawable.practice_vegetable
         ),
 
         MenuItem(
             id = "practice_fruit",
-            title = "Fruits",
+            title = "फल",
             contentDescription = "Fruit",
             icon = R.drawable.practice_fruits
         ),
 
         MenuItem(
             id = "practice_animal",
-            title = "Animals",
+            title = "जानवर",
             contentDescription = "Animal",
             icon = R.drawable.practice_animal
         ),
 
         MenuItem(
             id = "practice_bird",
-            title = "Birds",
+            title = "पक्षी",
             contentDescription = "Bird",
             icon = R.drawable.practice_bird
         ),
 
         MenuItem(
             id = "practice_shapes",
-            title = "Shapes",
+            title = "आकार",
             contentDescription = "Shapes",
             icon = R.drawable.practice_shapes
         ),
 
         MenuItem(
             id = "practice_colors",
-            title = "Colors",
-            contentDescription = "Colors",
+            title = "रंग",
+            contentDescription = "रंग",
             icon = R.drawable.practice_colors
         )
 

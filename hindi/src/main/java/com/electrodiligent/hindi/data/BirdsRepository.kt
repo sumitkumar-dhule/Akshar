@@ -6,93 +6,85 @@ import com.electrodiligent.core.domain.model.PictureItem
 object BirdsRepository {
     val list by lazy { listItems.shuffled() }
     private val listItems = listOf(
+
         PictureItem(
-            name = "CRANE", imageId = R.drawable.crane,
-           //            audio = com.electrodiligent.english.R.raw.crane
-        ),
-        PictureItem(
-            "CROW",
+            "कौआ",
             R.drawable.crow,
            //            audio = com.electrodiligent.english.R.raw.crow
         ),
         PictureItem(
-            name = "EAGLE",
+            name = "गरुड़",
             imageId = R.drawable.eagle,
            //            audio = com.electrodiligent.english.R.raw.eagle
         ),
         PictureItem(
-            "FLAMINGO",
+            "राजहंस",
             R.drawable.flamingo,
            //            audio = com.electrodiligent.english.R.raw.flamingo
         ),
         PictureItem(
-            "HAWK",
+            "बाज",
             R.drawable.hawk,
            //            audio = com.electrodiligent.english.R.raw.hawk
         ),
         PictureItem(
-            "OWL",
+            "उल्लू",
             R.drawable.owl,
            //            audio = com.electrodiligent.english.R.raw.owl
         ),
         PictureItem(
-            "PARROT",
+            "तोता",
             R.drawable.parrot,
            //            audio = com.electrodiligent.english.R.raw.parrot
         ),
         PictureItem(
-            "HEN",
+            "मुर्गी",
             R.drawable.hen,
 
            //            audio = com.electrodiligent.english.R.raw.hen
         ),
         PictureItem(
-            "HORN BILL",
-            R.drawable.hornbill,
-           //            audio = com.electrodiligent.english.R.raw.hornbill
-        ),
-        PictureItem(
-            "HUMMING BIRD",
+            "हमिंग बर्ड",
             R.drawable.humming_bird,
            //            audio = com.electrodiligent.english.R.raw.humming_bird
         ),
         PictureItem(
-            "KINGFISHER",
+            "नीलकंठ",
             R.drawable.kingfisher,
            //            audio = com.electrodiligent.english.R.raw.kingfisher
         ),
         PictureItem(
-            name = "OSTRICH",
+            name = "शुतुरमुर्ग",
             imageId = R.drawable.ostrich,
            //            audio = com.electrodiligent.english.R.raw.ostrich
         ),
         PictureItem(
-            name = "PEACOCK", imageId = R.drawable.peacock,
+            name = "मोर", imageId = R.drawable.peacock,
            //            audio = com.electrodiligent.english.R.raw.peacock
         ),
         PictureItem(
-            name = "PENGUIN", imageId = R.drawable.penguin,
+            name = "पेंगुइन", imageId = R.drawable.penguin,
            //            audio = com.electrodiligent.english.R.raw.penguin
         ),
         PictureItem(
-            name = "SWAN", imageId = R.drawable.swan,
+            name = "हंस", imageId = R.drawable.swan,
            //            audio = com.electrodiligent.english.R.raw.swan
         ),
         PictureItem(
-            name = "TURKEY", imageId = R.drawable.turkey,
+            name = "टर्की", imageId = R.drawable.turkey,
            //            audio = com.electrodiligent.english.R.raw.turkey
         ),
         PictureItem(
-            name = "WOODPECKER", imageId = R.drawable.woodpecker,
+            name = "कठफोड़वा", imageId = R.drawable.woodpecker,
            //            audio = com.electrodiligent.english.R.raw.woodpecker
         ),
         PictureItem(
-            name = "KIWI",
+            name = "कीवी",
             imageId = R.drawable.kiwi_bird,
            //            audio = com.electrodiligent.english.R.raw.kiwi_bird
         ),
         PictureItem(
-            name = "PIGEON",
+            name = "कबूतर",
             imageId = R.drawable.pigeon,
            //            audio = com.electrodiligent.english.R.raw.pigeon
         )

@@ -22,6 +22,7 @@ import com.electrodiligent.core.util.ResponsiveText
 fun ShapeDisplay(
     modifier: Modifier,
     items: List<PictureItem>,
+    title: String,
 ) {
 
     val shapeDisplayViewModel = hiltViewModel<ShapeDisplayViewModel>()
@@ -59,7 +60,7 @@ fun ShapeDisplay(
                 ResponsiveText(
                     modifier = Modifier.weight(1f, fill = true),
                     targetTextSizeHeight = 45.sp,
-                    text = "Shapes",
+                    text = title,
                     textAlign = TextAlign.Center,
                     color = shapeItem.color,
                     textStyle = TextStyle(fontWeight = FontWeight.Bold)

@@ -1,4 +1,4 @@
-package com.electrodiligent.english.navigation
+package com.electrodiligent.hindi.navigation
 
 import com.electrodiligent.core.R
 import com.electrodiligent.core.navigation.NavigationItem
@@ -9,7 +9,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_alphabets",
-            title = "Alphabets",
+            title = "वर्णमाला",
             contentDescription = "Alphabets",
             icon = R.drawable.practice_abc,
             navigationRoute = Screen.AlphabetsPracticeScreen
@@ -17,7 +17,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_numbers",
-            title = "Numbers",
+            title = "संख्या",
             contentDescription = "Numbers",
             icon = R.drawable.practice_numbers,
             navigationRoute = Screen.NumbersPracticeScreen
@@ -25,7 +25,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_vegetable",
-            title = "Vegetables",
+            title = "सब्जियां",
             contentDescription = "Vegetable",
             icon = R.drawable.practice_vegetable,
             navigationRoute = Screen.VegetablePracticeScreen
@@ -33,7 +33,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_fruit",
-            title = "Fruits",
+            title = "फल",
             contentDescription = "Fruit",
             icon = R.drawable.practice_fruits,
             navigationRoute = Screen.FruitPracticeScreen
@@ -41,7 +41,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_animal",
-            title = "Animals",
+            title = "जानवर",
             contentDescription = "Animal",
             icon = R.drawable.practice_animal,
             navigationRoute = Screen.AnimalPracticeScreen
@@ -49,7 +49,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_bird",
-            title = "Birds",
+            title = "पक्षी",
             contentDescription = "Bird",
             icon = R.drawable.practice_bird,
             navigationRoute = Screen.BirdPracticeScreen
@@ -57,7 +57,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_shapes",
-            title = "Shapes",
+            title = "आकार",
             contentDescription = "Shapes",
             icon = R.drawable.practice_shapes,
             navigationRoute = Screen.ShapePracticeScreen
@@ -65,7 +65,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_colors",
-            title = "Colors",
+            title = "रंग",
             contentDescription = "Colors",
             icon = R.drawable.practice_colors,
             navigationRoute = Screen.ColorPracticeScreen
