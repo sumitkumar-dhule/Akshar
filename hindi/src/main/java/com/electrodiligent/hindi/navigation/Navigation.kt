@@ -5,8 +5,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.electrodiligent.core.navigation.Screen
-import com.electrodiligent.core.presentation.alphabate.AlphabetFlashcardScreen
+import com.electrodiligent.core.presentation.HomeScreen
+import com.electrodiligent.core.presentation.PracticeScreen
 import com.electrodiligent.core.presentation.alphabate.AlphabetIdentificationScreen
+import com.electrodiligent.core.presentation.alphabate.DevnagariFlashcardScreen
 import com.electrodiligent.core.presentation.alphabate.NumberFlashcardScreen
 import com.electrodiligent.core.presentation.alphabate.NumberIdentificationScreen
 import com.electrodiligent.core.presentation.color.ColorsScreen
@@ -17,9 +19,7 @@ import com.electrodiligent.core.presentation.picture.VegetablesScreen
 import com.electrodiligent.core.presentation.practice.*
 import com.electrodiligent.core.presentation.settings.SettingsScreen
 import com.electrodiligent.core.presentation.shape.ShapesScreen
-import com.electrodiligent.english.data.*
-import com.electrodiligent.core.presentation.HomeScreen
-import com.electrodiligent.core.presentation.PracticeScreen
+import com.electrodiligent.english.data.FruitsRepository
 import com.electrodiligent.hindi.data.*
 
 @Composable
@@ -32,7 +32,7 @@ fun Navigation(navController: NavHostController) {
         composable(route = Screen.HomeScreen.route) {
             HomeScreen(
                 navController = navController,
-                screenTitle = "सीखना",
+                screenTitle = "पढ़े",
                 navigationItems = LearningItems.menu
             )
         }
@@ -40,17 +40,25 @@ fun Navigation(navController: NavHostController) {
         composable(route = Screen.PracticeScreen.route) {
             PracticeScreen(
                 navController = navController,
-                screenTitle = "अभ्यास",
+                screenTitle = "खेले",
                 navigationItems = PracticeItems.menu
             )
         }
 
-        composable(route = Screen.AlphabetIdentificationScreen.route) {
-            AlphabetIdentificationScreen(displayCharacters = SwarAlphabetsRepository.list)
+        composable(route = Screen.SwarIdentificationScreen.route) {
+            AlphabetIdentificationScreen(displayCharacters = SwarRepository.list)
         }
 
-        composable(route = Screen.AlphabetFlashcardScreen.route) {
-            AlphabetFlashcardScreen(displayCharacters = AlphabetFlashCardRepository.list)
+        composable(route = Screen.VyanjanIdentificationScreen.route) {
+            AlphabetIdentificationScreen(displayCharacters = VyanjanRepository.list)
+        }
+
+        composable(route = Screen.SwarFlashcardScreen.route) {
+            DevnagariFlashcardScreen(displayCharacters = SwarFlashCardRepository.list)
+        }
+
+        composable(route = Screen.VyanjanFlashcardScreen.route) {
+            DevnagariFlashcardScreen(displayCharacters = VyanjanFlashCardRepository.list)
         }
 
         composable(route = Screen.NumberFlashcardScreen.route) {
@@ -86,7 +94,7 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.AlphabetsPracticeScreen.route) {
-            AlphabetsPracticeScreen(items = AlphabetQuestionRepository.list)
+            AlphabetsPracticeScreen(items = VarnamalaQuestionRepository.list)
         }
 
         composable(route = Screen.NumbersPracticeScreen.route) {

@@ -70,18 +70,33 @@ class MainActivity : ComponentActivity() {
                                 items = DrawerMenu.menu,
                                 onItemClick = {
                                     when (it.id) {
-                                        "alphabet" -> {
+                                        "alphabet_swar" -> {
                                             NavigationUtil.navigateTo(
                                                 navController,
-                                                Screen.AlphabetIdentificationScreen.route
+                                                Screen.SwarIdentificationScreen.route
                                             )
                                         }
-                                        "alphabet_flashcards" -> {
+                                        "alphabet_vyanjan" -> {
                                             NavigationUtil.navigateTo(
                                                 navController,
-                                                Screen.AlphabetFlashcardScreen.route
+                                                Screen.VyanjanIdentificationScreen.route
                                             )
                                         }
+
+                                        "swar_flashcards" -> {
+                                            NavigationUtil.navigateTo(
+                                                navController,
+                                                Screen.SwarFlashcardScreen.route
+                                            )
+                                        }
+
+                                        "vyanjan_flashcards" -> {
+                                            NavigationUtil.navigateTo(
+                                                navController,
+                                                Screen.VyanjanFlashcardScreen.route
+                                            )
+                                        }
+
                                         "number_identification" -> {
                                             NavigationUtil.navigateTo(
                                                 navController,

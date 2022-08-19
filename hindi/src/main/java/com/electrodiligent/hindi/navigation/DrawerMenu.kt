@@ -8,14 +8,14 @@ object DrawerMenu {
 
         MenuItem(
             id = "home",
-            title = "सीखना",
+            title = "पढ़े",
             contentDescription = "home",
             icon = R.drawable.teacher,
         ),
 
         MenuItem(
             id = "home_practice",
-            title = "अभ्यास",
+            title = "खेले",
             contentDescription = "Practice",
             icon = R.drawable.practice,
         ),
@@ -133,7 +133,7 @@ object DrawerMenu {
         //Practice
         MenuItem(
             id = "practice",
-            title = "अभ्यास",
+            title = "खेले",
             contentDescription = "General Knowledge",
             icon = R.drawable.bookmark,
             isSectionHeader = true

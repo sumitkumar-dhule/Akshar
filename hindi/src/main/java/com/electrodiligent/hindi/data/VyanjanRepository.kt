@@ -3,7 +3,7 @@ package com.electrodiligent.hindi.data
 import com.electrodiligent.core.domain.model.DisplayCharacter
 import com.electrodiligent.core.R.drawable.*
 
-object VyanjanAlphabetsRepository {
+object VyanjanRepository {
     val list = listOf(
         DisplayCharacter(
             left = "श्र", display = "क", right = "ख",

@@ -2,7 +2,7 @@ package com.electrodiligent.hindi.data
 
 import com.electrodiligent.core.domain.model.DisplayCharacter
 
-object SwarAlphabetsRepository {
+object SwarRepository {
     val list = listOf(
         DisplayCharacter(
             left = "अ:", display = "अ", right = "आ"
@@ -32,10 +32,13 @@ object SwarAlphabetsRepository {
             left = "ए", display = "ऐ", right = "ओ",
         ),
         DisplayCharacter(
-            left = "ऐ", display = "ओ", right = "अं",
+            left = "ऐ", display = "ओ", right = "औ",
         ),
         DisplayCharacter(
-            left = "ओ", display = "अं", right = "अ:",
+            left = "ओ", display = "औ", right = "अं",
+        ),
+        DisplayCharacter(
+            left = "औ", display = "अं", right = "अ:",
         ),
         DisplayCharacter(
             left = "अं", display = "अ:", right = "अ",

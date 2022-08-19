@@ -3,8 +3,10 @@ package com.electrodiligent.core.navigation
 sealed class Screen(val route: String) {
     object HomeScreen : Screen("home_screen")
     object PracticeScreen : Screen("practice_screen")
-    object AlphabetIdentificationScreen : Screen("alphabet_identification_screen")
-    object AlphabetFlashcardScreen : Screen("alphabet_flashcard_screen")
+    object SwarIdentificationScreen : Screen("swar_identification_screen")
+    object VyanjanIdentificationScreen : Screen("vyanjan_identification_screen")
+    object SwarFlashcardScreen : Screen("swar_flashcard_screen")
+    object VyanjanFlashcardScreen : Screen("vyanjan_flashcard_screen")
     object NumberFlashcardScreen : Screen("number_flashcard_screen")
     object NumberIdentificationScreen : Screen("number_identification_screen")
     object ColorsScreen : Screen("colors_screen")

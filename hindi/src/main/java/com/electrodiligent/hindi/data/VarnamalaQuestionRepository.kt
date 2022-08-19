@@ -3,7 +3,7 @@ package com.electrodiligent.hindi.data
 import com.electrodiligent.core.R.raw.*
 import com.electrodiligent.core.domain.model.CharacterQuestion
 
-object AlphabetQuestionRepository {
+object VarnamalaQuestionRepository {
     val list = getQuestionList().shuffled()
 
     private fun getQuestionList(): List<CharacterQuestion> {

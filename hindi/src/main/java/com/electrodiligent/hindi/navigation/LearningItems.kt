@@ -12,7 +12,7 @@ object LearningItems {
             title = "स्वर",
             contentDescription = "Go to Alphabet Identification screen",
             icon = R.drawable.abc,
-            navigationRoute = Screen.AlphabetIdentificationScreen
+            navigationRoute = Screen.SwarIdentificationScreen
         ),
 
         NavigationItem(
@@ -20,7 +20,7 @@ object LearningItems {
             title = "व्यंजन",
             contentDescription = "Go to Alphabet Identification screen",
             icon = R.drawable.abc,
-            navigationRoute = Screen.AlphabetIdentificationScreen
+            navigationRoute = Screen.VyanjanIdentificationScreen
         ),
 
         NavigationItem(
@@ -28,14 +28,14 @@ object LearningItems {
             title = "स्वर चार्ट",
             contentDescription = "Go to Alphabet Flashcards screen",
             icon = R.drawable.flashcards_abc,
-            navigationRoute = Screen.AlphabetFlashcardScreen
+            navigationRoute = Screen.SwarFlashcardScreen
         ),
         NavigationItem(
             id = "vyanjan_flashcards",
             title = "व्यंजन चार्ट",
             contentDescription = "Go to Alphabet Flashcards screen",
             icon = R.drawable.flashcards_abc,
-            navigationRoute = Screen.AlphabetFlashcardScreen
+            navigationRoute = Screen.VyanjanFlashcardScreen
         ),
 
         NavigationItem(
@@ -104,7 +104,7 @@ object LearningItems {
 
         NavigationItem(
             id = "home_practice",
-            title = "अभ्यास",
+            title = "खेले",
             contentDescription = "Go to Practice screen",
             icon = R.drawable.practice,
             navigationRoute = Screen.PracticeScreen
