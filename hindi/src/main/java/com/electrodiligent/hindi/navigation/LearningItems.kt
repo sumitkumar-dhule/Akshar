@@ -23,19 +23,24 @@ object LearningItems {
             navigationRoute = Screen.AlphabetIdentificationScreen
         ),
 
-
         NavigationItem(
-            id = "alphabet_flashcards",
-            title = "चार्ट",
+            id = "swar_flashcards",
+            title = "स्वर चार्ट",
+            contentDescription = "Go to Alphabet Flashcards screen",
+            icon = R.drawable.flashcards_abc,
+            navigationRoute = Screen.AlphabetFlashcardScreen
+        ),
+        NavigationItem(
+            id = "vyanjan_flashcards",
+            title = "व्यंजन चार्ट",
             contentDescription = "Go to Alphabet Flashcards screen",
             icon = R.drawable.flashcards_abc,
             navigationRoute = Screen.AlphabetFlashcardScreen
         ),
 
-
         NavigationItem(
             id = "number_identification",
-            title = "संख्या",
+            title = "गिनती",
             contentDescription = "Go to Number Identification screen",
             icon = R.drawable.numbers,
             navigationRoute = Screen.NumberIdentificationScreen

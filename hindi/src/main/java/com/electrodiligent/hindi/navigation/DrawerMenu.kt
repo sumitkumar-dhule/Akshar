@@ -44,8 +44,15 @@ object DrawerMenu {
         ),
 
         MenuItem(
-            id = "alphabet_flashcards",
-            title = "चार्ट",
+            id = "swar_flashcards",
+            title = "स्वर चार्ट",
+            contentDescription = "Go to Alphabet Flashcards screen",
+            icon = R.drawable.flashcards_abc
+        ),
+
+        MenuItem(
+            id = "vyanjan_flashcards",
+            title = "व्यंजन चार्ट",
             contentDescription = "Go to Alphabet Flashcards screen",
             icon = R.drawable.flashcards_abc
         ),
@@ -60,7 +67,7 @@ object DrawerMenu {
 
         MenuItem(
             id = "number_identification",
-            title = "संख्या",
+            title = "गिनती",
             contentDescription = "Go to Number Identification screen",
             icon = R.drawable.numbers
         ),
@@ -141,7 +148,7 @@ object DrawerMenu {
 
         MenuItem(
             id = "practice_numbers",
-            title = "संख्या",
+            title = "गिनती",
             contentDescription = "Alphabets",
             icon = R.drawable.practice_numbers
         ),

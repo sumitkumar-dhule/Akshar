@@ -17,7 +17,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_numbers",
-            title = "संख्या",
+            title = "गिनती",
             contentDescription = "Numbers",
             icon = R.drawable.practice_numbers,
             navigationRoute = Screen.NumbersPracticeScreen

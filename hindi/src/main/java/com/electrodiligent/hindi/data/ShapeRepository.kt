@@ -20,7 +20,7 @@ object ShapeRepository {
             //audio = com.electrodiligent.english.R.raw.oval
         ),
         PictureItem(
-            "TRIANGLE",
+            "त्रिकोण",
             R.drawable.triangle,
             randomColor,
             //audio = com.electrodiligent.english.R.raw.triangle
