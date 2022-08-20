@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.sp
 import com.electrodiligent.core.domain.model.NumberItem
 import com.electrodiligent.core.presentation.number.NumberFlashcard
 import com.electrodiligent.core.util.Dimension
@@ -19,7 +20,7 @@ fun NumberFlashcardScreen(numberItems: List<NumberItem>) {
             contentAlignment = Alignment.Center
         ) {
 
-            NumberFlashcard(modifier = Modifier.fillMaxSize(), numberItems = numberItems)
+            NumberFlashcard(modifier = Modifier.fillMaxSize(), numberItems = numberItems, textSize = 45.sp)
 
         }
 

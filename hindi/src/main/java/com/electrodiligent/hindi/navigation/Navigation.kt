@@ -62,11 +62,11 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.NumberFlashcardScreen.route) {
-            NumberFlashcardScreen(numberItems = NumberFlashCardRepository.list)
+            NumberFlashcardScreen(numberItems = NumberRepository.listUpTo100)
         }
 
         composable(route = Screen.NumberIdentificationScreen.route) {
-            NumberIdentificationScreen(items = NumberRepository.list)
+            NumberIdentificationScreen(items = NumberRepository.listUpTo20)
         }
 
         composable(route = Screen.ColorsScreen.route) {

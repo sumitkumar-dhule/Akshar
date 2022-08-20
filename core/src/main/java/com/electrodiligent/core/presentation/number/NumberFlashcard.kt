@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -25,14 +26,14 @@ import com.electrodiligent.core.util.RandomColor
 @Composable
 fun NumberFlashcard(
     modifier: Modifier,
-    numberItems: List<NumberItem>
+    numberItems: List<NumberItem>,
+    textSize: TextUnit = 40.sp
 ) {
 
     val randomColor = RandomColor.textColors.random().colorValue
     val numberFlashcardViewModel = hiltViewModel<NumberFlashcardViewModel>()
 
     Box(modifier = modifier.padding(horizontal = 8.dp), contentAlignment = Alignment.Center) {
-
 
         LazyVerticalGrid(modifier = modifier, columns = GridCells.Fixed(2)){
             items(numberItems) {
@@ -71,8 +72,13 @@ fun NumberCardBluePrint(
                 if (item.count > 99) {
                     numberFontSize = 60.sp
                 }
+
+                val countText = item.countString.ifEmpty {
+                    item.count.toString()
+                }
+
                 Text(
-                    text = item.count.toString(),
+                    text = countText,
                     fontSize = numberFontSize,
                     color = randomColor,
                     fontWeight = FontWeight.Bold,
