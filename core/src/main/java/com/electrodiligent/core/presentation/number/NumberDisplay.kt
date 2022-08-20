@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.NumberItem
-import com.electrodiligent.core.presentation.brownColor
 import com.electrodiligent.core.presentation.number.count.*
 import com.electrodiligent.core.util.ResponsiveText
 
