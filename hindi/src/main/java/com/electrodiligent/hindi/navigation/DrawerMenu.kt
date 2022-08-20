@@ -33,28 +33,28 @@ object DrawerMenu {
             id = "alphabet_swar",
             title = "स्वर",
             contentDescription = "Go to Alphabet Identification screen",
-            icon = R.drawable.abc
+            icon = com.electrodiligent.hindi.R.drawable.a_aa_e
         ),
 
         MenuItem(
             id = "alphabet_vyanjan",
             title = "व्यंजन",
             contentDescription = "Go to Alphabet Identification screen",
-            icon = R.drawable.abc
+            icon = com.electrodiligent.hindi.R.drawable.ka_kha_ga
         ),
 
         MenuItem(
             id = "swar_flashcards",
             title = "स्वर चार्ट",
             contentDescription = "Go to Alphabet Flashcards screen",
-            icon = R.drawable.flashcards_abc
+            icon = com.electrodiligent.hindi.R.drawable.swar_flashcard
         ),
 
         MenuItem(
             id = "vyanjan_flashcards",
             title = "व्यंजन चार्ट",
             contentDescription = "Go to Alphabet Flashcards screen",
-            icon = R.drawable.flashcards_abc
+            icon = com.electrodiligent.hindi.R.drawable.vyanjan_flashcard
         ),
 
         MenuItem(
@@ -69,7 +69,7 @@ object DrawerMenu {
             id = "number_identification",
             title = "गिनती",
             contentDescription = "Go to Number Identification screen",
-            icon = R.drawable.numbers
+            icon = com.electrodiligent.hindi.R.drawable.ek_do_teen
         ),
 
         MenuItem(

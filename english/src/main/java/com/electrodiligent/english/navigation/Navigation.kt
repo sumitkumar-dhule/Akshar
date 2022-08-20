@@ -59,11 +59,11 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.ColorsScreen.route) {
-            ColorsScreen(colorItems = ColorRepository.list, title = "रंग")
+            ColorsScreen(colorItems = ColorRepository.list, title = "Colors")
         }
 
         composable(route = Screen.ShapesScreen.route) {
-            ShapesScreen(items = ShapeRepository.list, title = "आकार")
+            ShapesScreen(items = ShapeRepository.list, title = "Shapes")
         }
 
         composable(route = Screen.VegetablesScreen.route) {
