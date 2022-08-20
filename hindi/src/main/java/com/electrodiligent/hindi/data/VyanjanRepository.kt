@@ -141,13 +141,13 @@ object VyanjanRepository {
         DisplayCharacter(
             left = "फ", display = "ब", right = "भ",
             displayImage = duck,
-            displayName = "",
+            displayName = "बतख",
             audio = R.raw.beep
         ),
         DisplayCharacter(
             left = "ब", display = "भ", right = "म",
             displayImage = bear,
-            displayName = "बतख",
+            displayName = "भालू",
             audio = R.raw.beep
         ),
         DisplayCharacter(

@@ -24,17 +24,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
-import com.electrodiligent.core.domain.model.ColorItem
 import com.electrodiligent.core.domain.model.PictureItem
 import com.electrodiligent.core.domain.model.PictureQuestion
-import com.electrodiligent.core.util.RandomColor
 import com.electrodiligent.core.util.ResponsiveText
 
 
 @Composable
 fun PracticePictures(
     modifier: Modifier,
-    items: List<PictureQuestion>
+    items: List<PictureQuestion>,
+    textFind: String = "FIND"
 ) {
 
     val practicePicturesViewModel = hiltViewModel<PracticePicturesViewModel>()
