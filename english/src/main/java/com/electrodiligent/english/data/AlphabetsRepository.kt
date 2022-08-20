@@ -14,7 +14,7 @@ object AlphabetsRepository {
         ),
         DisplayCharacter(
             display = "B", left = "A", right = "C", displayName = "BALL",
-            displayImage = b,
+            displayImage = football,
             subtitle = "b",
             audio = com.electrodiligent.english.R.raw.b_for_ball
         ),
@@ -41,7 +41,7 @@ object AlphabetsRepository {
 
         DisplayCharacter(
             display = "F", left = "E", right = "G", displayName = "FISH",
-            displayImage = f,
+            displayImage = fish,
             subtitle = "f",
             audio = com.electrodiligent.english.R.raw.f_for_fish
         ),
@@ -69,21 +69,21 @@ object AlphabetsRepository {
 
         DisplayCharacter(
             display = "J", left = "I", right = "K", displayName = "JUG",
-            displayImage = j,
+            displayImage = jug,
             subtitle = "j",
             audio = com.electrodiligent.english.R.raw.j_for_jug
         ),
 
         DisplayCharacter(
             display = "K", left = "J", right = "L", displayName = "KITE",
-            displayImage = k,
+            displayImage = kite,
             subtitle = "k",
             audio = com.electrodiligent.english.R.raw.k_for_kite
         ),
 
         DisplayCharacter(
             display = "L", left = "K", right = "M", displayName = "LEMON",
-            displayImage = l,
+            displayImage = lemon,
             subtitle = "l",
             audio = com.electrodiligent.english.R.raw.l_for_lemon
         ),
@@ -146,7 +146,7 @@ object AlphabetsRepository {
 
         DisplayCharacter(
             display = "U", left = "T", right = "V", displayName = "UMBRELLA",
-            displayImage = u,
+            displayImage = umrella,
             subtitle = "u",
             audio = com.electrodiligent.english.R.raw.u_for_umbrella
         ),
