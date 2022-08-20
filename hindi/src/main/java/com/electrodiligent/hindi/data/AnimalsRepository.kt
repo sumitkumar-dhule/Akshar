@@ -90,7 +90,7 @@ object AnimalsRepository {
            //            audio = com.electrodiligent.english.R.raw.leopard
         ),
         PictureItem(
-            name = "सिंह", imageId = R.drawable.lion,
+            name = "शेर", imageId = R.drawable.lion,
            //            audio = com.electrodiligent.english.R.raw.lion
         ),
         PictureItem(
