@@ -8,13 +8,12 @@ object SwarFlashCardRepository {
 
     private fun getSwarList(): List<DisplayCharacter> {
         val questionList: MutableList<DisplayCharacter> = mutableListOf()
-//        val sounds = getSounds()
-        for ((index, letter) in SwarRepository.list.withIndex()) {
+        for (letter in SwarRepository.list) {
             questionList.add(
 
                 DisplayCharacter(
                     display = letter.display,
-//                    audio = sounds[index]
+                    audio = letter.audio
                 )
 
             )
