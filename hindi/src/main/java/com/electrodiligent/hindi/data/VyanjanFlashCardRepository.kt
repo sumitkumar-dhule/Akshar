@@ -8,13 +8,12 @@ object VyanjanFlashCardRepository {
 
     private fun getSwarList(): List<DisplayCharacter> {
         val questionList: MutableList<DisplayCharacter> = mutableListOf()
-//        val sounds = getSounds()
-        for ((index, letter) in VyanjanRepository.list.withIndex()) {
+        for (letter in VyanjanRepository.list) {
             questionList.add(
 
                 DisplayCharacter(
                     display = letter.display,
-//                    audio = sounds[index]
+                    audio = letter.audio
                 )
 
             )
