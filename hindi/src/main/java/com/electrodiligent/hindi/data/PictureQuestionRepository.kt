@@ -2,7 +2,6 @@ package com.electrodiligent.hindi.data
 
 import com.electrodiligent.core.domain.model.PictureItem
 import com.electrodiligent.core.domain.model.PictureQuestion
-import com.electrodiligent.english.data.FruitsRepository
 
 object PictureQuestionRepository {
     val vegetableQuestionList =

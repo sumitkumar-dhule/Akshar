@@ -19,7 +19,7 @@ import com.electrodiligent.core.presentation.picture.VegetablesScreen
 import com.electrodiligent.core.presentation.practice.*
 import com.electrodiligent.core.presentation.settings.SettingsScreen
 import com.electrodiligent.core.presentation.shape.ShapesScreen
-import com.electrodiligent.english.data.FruitsRepository
+import com.electrodiligent.hindi.data.FruitsRepository
 import com.electrodiligent.hindi.data.*
 
 @Composable
