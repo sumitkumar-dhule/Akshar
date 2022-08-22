@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.electrodiligent.hindi.R
 import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.core.presentation.HomeScreen
 import com.electrodiligent.core.presentation.PracticeScreen
@@ -102,26 +103,50 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.VegetablePracticeScreen.route) {
-            PicturePracticeScreen(items = PictureQuestionRepository.vegetableQuestionList, findText = "सब्जी खोजे")
+            PicturePracticeScreen(
+                items = PictureQuestionRepository.vegetableQuestionList,
+                findText = "सब्जी खोजे",
+                findSound = R.raw.khoje
+            )
         }
 
         composable(route = Screen.FruitPracticeScreen.route) {
-            PicturePracticeScreen(items = PictureQuestionRepository.fruitQuestionList, findText = "फल खोजे")
+            PicturePracticeScreen(
+                items = PictureQuestionRepository.fruitQuestionList,
+                findText = "फल खोजे",
+                findSound = R.raw.khoje
+            )
         }
 
         composable(route = Screen.AnimalPracticeScreen.route) {
-            PicturePracticeScreen(items = PictureQuestionRepository.animalQuestionList, findText = "प्राणी खोजे")
+            PicturePracticeScreen(
+                items = PictureQuestionRepository.animalQuestionList,
+                findText = "प्राणी खोजे",
+                findSound = R.raw.khoje
+            )
         }
 
         composable(route = Screen.BirdPracticeScreen.route) {
-            PicturePracticeScreen(items = PictureQuestionRepository.birdQuestionList, findText = "पक्षी खोजे")
+            PicturePracticeScreen(
+                items = PictureQuestionRepository.birdQuestionList,
+                findText = "पक्षी खोजे",
+                findSound = R.raw.khoje
+            )
         }
         composable(route = Screen.ColorPracticeScreen.route) {
-            ColorfulPracticeScreen(items = PictureQuestionRepository.colorQuestionList, findText = "रंग खोजे")
+            ColorfulPracticeScreen(
+                items = PictureQuestionRepository.colorQuestionList,
+                findText = "रंग खोजे",
+                findSound = R.raw.khoje
+            )
         }
 
         composable(route = Screen.ShapePracticeScreen.route) {
-            ColorfulPracticeScreen(items = PictureQuestionRepository.shapeQuestionList, findText = "आकार खोजे")
+            ColorfulPracticeScreen(
+                items = PictureQuestionRepository.shapeQuestionList,
+                findText = "आकार खोजे",
+                findSound = R.raw.khoje
+            )
         }
 
         composable(route = Screen.SettingsScreen.route) {

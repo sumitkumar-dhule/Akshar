@@ -33,6 +33,8 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
     private var findMediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
     var questions: List<PictureQuestion> = listOf(PictureQuestion())
+    var findSound: Int = R.raw.beep
+
 
     private var currentIndex: Int by mutableStateOf(0)
 
@@ -98,11 +100,13 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
         if (isSoundPlaying()) {
             return
         }
-        playFindSound(R.raw.find)
+      /*  playFindSound(findSound)
         CoroutineScope(Dispatchers.Main).launch() {
             delay(500)
             playSound(questions[currentIndex].correctAnswer.audio)
-        }
+        }*/
+
+        playSound(questions[currentIndex].correctAnswer.audio)
 
     }
 

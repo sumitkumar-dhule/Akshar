@@ -33,11 +33,13 @@ import com.electrodiligent.core.util.ResponsiveText
 fun PracticePictures(
     modifier: Modifier,
     items: List<PictureQuestion>,
-    textFind: String = "FIND"
+    textFind: String = "FIND",
+    findSound: Int
 ) {
 
     val practicePicturesViewModel = hiltViewModel<PracticePicturesViewModel>()
     practicePicturesViewModel.questions = items
+    practicePicturesViewModel.findSound = findSound
 
     practicePicturesViewModel.setup()
 

@@ -8,7 +8,7 @@ import com.electrodiligent.core.domain.model.PictureQuestion
 import com.electrodiligent.core.util.Dimension
 
 @Composable
-fun ColorfulPracticeScreen(items: List<PictureQuestion>, findText: String = "FIND") {
+fun ColorfulPracticeScreen(items: List<PictureQuestion>, findText: String = "FIND", findSound: Int) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
@@ -19,7 +19,8 @@ fun ColorfulPracticeScreen(items: List<PictureQuestion>, findText: String = "FIN
             PracticeColorfulPictures(
                 modifier = Modifier.fillMaxSize(),
                 items = items,
-                findText = findText
+                findText = findText,
+                findSound = findSound
             )
         }
 

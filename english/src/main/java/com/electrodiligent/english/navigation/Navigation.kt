@@ -20,6 +20,8 @@ import com.electrodiligent.core.presentation.shape.ShapesScreen
 import com.electrodiligent.english.data.*
 import com.electrodiligent.core.presentation.HomeScreen
 import com.electrodiligent.core.presentation.PracticeScreen
+import com.electrodiligent.core.R
+import java.nio.file.Files.find
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -94,28 +96,41 @@ fun Navigation(navController: NavHostController) {
 
         composable(route = Screen.VegetablePracticeScreen.route) {
             PicturePracticeScreen(
-                items = PictureQuestionRepository.vegetableQuestionList,
+                items = PictureQuestionRepository.vegetableQuestionList, findSound = R.raw.find
             )
         }
 
         composable(route = Screen.FruitPracticeScreen.route) {
-            PicturePracticeScreen(items = PictureQuestionRepository.fruitQuestionList)
+            PicturePracticeScreen(
+                items = PictureQuestionRepository.fruitQuestionList,
+                findSound = R.raw.find
+            )
         }
 
         composable(route = Screen.AnimalPracticeScreen.route) {
             PicturePracticeScreen(
-                items = PictureQuestionRepository.animalQuestionList)
+                items = PictureQuestionRepository.animalQuestionList, findSound = R.raw.find
+            )
         }
 
         composable(route = Screen.BirdPracticeScreen.route) {
-            PicturePracticeScreen(items = PictureQuestionRepository.birdQuestionList)
+            PicturePracticeScreen(
+                items = PictureQuestionRepository.birdQuestionList,
+                findSound = R.raw.find
+            )
         }
         composable(route = Screen.ColorPracticeScreen.route) {
-            ColorfulPracticeScreen(items = PictureQuestionRepository.colorQuestionList)
+            ColorfulPracticeScreen(
+                items = PictureQuestionRepository.colorQuestionList,
+                findSound = R.raw.find
+            )
         }
 
         composable(route = Screen.ShapePracticeScreen.route) {
-            ColorfulPracticeScreen(items = PictureQuestionRepository.shapeQuestionList)
+            ColorfulPracticeScreen(
+                items = PictureQuestionRepository.shapeQuestionList,
+                findSound = R.raw.find
+            )
         }
 
         composable(route = Screen.SettingsScreen.route) {
