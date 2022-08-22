@@ -1,10 +1,12 @@
 package com.electrodiligent.english.navigation
 
 import com.electrodiligent.core.R
+import com.electrodiligent.core.navigation.NavigationItem
+import com.electrodiligent.core.navigation.Screen
 
 object LearningItems {
     val menu: List<NavigationItem> = listOf(
-        
+
         NavigationItem(
             id = "alphabet",
             title = "Alphabets",
@@ -20,7 +22,7 @@ object LearningItems {
             icon = R.drawable.flashcards_abc,
             navigationRoute = Screen.AlphabetFlashcardScreen
         ),
-        
+
 
         NavigationItem(
             id = "number_identification",
@@ -37,7 +39,7 @@ object LearningItems {
             icon = R.drawable.flashcard_123,
             navigationRoute = Screen.NumberFlashcardScreen
         ),
-        
+
         NavigationItem(
             id = "gk_shapes",
             title = "Shapes",
@@ -84,6 +86,14 @@ object LearningItems {
             contentDescription = "Go to Birds screen",
             icon = R.drawable.birds,
             navigationRoute = Screen.BirdsScreen
+        ),
+
+        NavigationItem(
+            id = "home_practice",
+            title = "Practice",
+            contentDescription = "Go to Practice screen",
+            icon = R.drawable.practice,
+            navigationRoute = Screen.PracticeScreen
         )
 
     )

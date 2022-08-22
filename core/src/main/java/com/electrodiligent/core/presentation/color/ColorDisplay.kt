@@ -26,7 +26,8 @@ import com.electrodiligent.core.util.ResponsiveText
 @Composable
 fun ColorDisplay(
     modifier: Modifier,
-    colorItems: List<ColorItem>
+    colorItems: List<ColorItem>,
+    title: String
 ) {
 
     val colorDisplayViewModel = hiltViewModel<ColorDisplayViewModel>()
@@ -73,7 +74,7 @@ fun ColorDisplay(
                 ResponsiveText(
                     modifier = Modifier.weight(1f, fill = true),
                     targetTextSizeHeight = 45.sp,
-                    text = "Colors",
+                    text = title,
                     textAlign = TextAlign.Center,
                     color = colorItem.colorValue,
                     textStyle = TextStyle(fontWeight = FontWeight.Bold)

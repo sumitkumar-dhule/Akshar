@@ -4,7 +4,9 @@ import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.PictureItem
 
 object FruitsRepository {
-    val list = listOf(
+    val list by lazy { listItems.shuffled() }
+
+    private val listItems = listOf(
         PictureItem(
             name = "MANGO", imageId = R.drawable.mango,
             audio = com.electrodiligent.english.R.raw.mango

@@ -14,14 +14,21 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.electrodiligent.core.R
+import com.electrodiligent.core.util.ResponsiveText
 
 val brownColor = Color(red = 168, green = 42, blue = 42)
 
 @Composable
-fun DrawerHeader(header: String = "", headerImageID: Int, version: String = "") {
+fun DrawerHeader(
+    header: String = "",
+    headerImageID: Int,
+    version: String = "",
+    language: String = ""
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth(),
@@ -34,13 +41,27 @@ fun DrawerHeader(header: String = "", headerImageID: Int, version: String = "") 
                 contentDescription = "Header Image"
             )*/
             if (header.isNotEmpty()) {
-                Text(
-                    text = header,
-                    fontSize = 30.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = brownColor
-                )
 
+                ResponsiveText(
+                    targetTextSizeHeight = 30.sp,
+                    text = header,
+                    textAlign = TextAlign.Center,
+                    color = brownColor,
+                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
+                )
+            }
+            if (language.isNotEmpty()) {
+
+                ResponsiveText(
+                    targetTextSizeHeight = 30.sp,
+                    text = language,
+                    textAlign = TextAlign.Center,
+                    color = brownColor,
+                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
+                )
+            }
+
+            if (version.isNotEmpty()) {
 
                 Text(
                     text = version,

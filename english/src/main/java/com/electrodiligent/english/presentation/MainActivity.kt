@@ -22,8 +22,9 @@ import com.electrodiligent.english.BuildConfig.VERSION_NAME
 import com.electrodiligent.english.R
 import com.electrodiligent.english.navigation.DrawerMenu
 import com.electrodiligent.english.navigation.Navigation
-import com.electrodiligent.english.navigation.NavigationUtil.navigateTo
-import com.electrodiligent.english.navigation.Screen
+import com.electrodiligent.core.navigation.NavigationUtil.navigateTo
+import com.electrodiligent.core.navigation.NavigationUtil.setAsBase
+import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.english.ui.theme.AksharTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -113,24 +114,17 @@ class MainActivity : ComponentActivity() {
                                             )
                                         }
 
-                                        "practice_alphabets" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.AlphabetsPracticeScreen.route
-                                            )
-                                        }
-
-                                        "practice_numbers" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.NumbersPracticeScreen.route
-                                            )
-                                        }
-
                                         "home" -> {
-                                            navigateTo(
+                                            setAsBase(
                                                 navController,
                                                 Screen.HomeScreen.route
+                                            )
+                                        }
+
+                                        "home_practice" -> {
+                                            setAsBase(
+                                                navController,
+                                                Screen.PracticeScreen.route
                                             )
                                         }
 
@@ -159,6 +153,62 @@ class MainActivity : ComponentActivity() {
                                             navigateTo(
                                                 navController,
                                                 Screen.BirdsScreen.route
+                                            )
+                                        }
+
+                                        "practice_alphabets" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.AlphabetsPracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_numbers" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.NumbersPracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_vegetable" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.VegetablePracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_fruit" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.FruitPracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_animal" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.AnimalPracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_bird" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.BirdPracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_shapes" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.ShapePracticeScreen.route
+                                            )
+                                        }
+
+                                        "practice_colors" -> {
+                                            navigateTo(
+                                                navController,
+                                                Screen.ColorPracticeScreen.route
                                             )
                                         }
 
