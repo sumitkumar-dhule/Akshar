@@ -22,15 +22,19 @@ import javax.inject.Inject
 class PracticePicturesViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
 
+    private var isFirstTime = true
+
     val randomColor = RandomColor.textColors.random().colorValue
     var validNextState = true
 
     private var questionMediaPlayer = MediaPlayer.create(context, R.raw.beep)
     private var effectMediaPlayer = MediaPlayer.create(context, R.raw.beep)
     private var specialEffectMediaPlayer = MediaPlayer.create(context, R.raw.positive)
-    private var findMediaPlayer = MediaPlayer.create(context, R.raw.find)
+    private var findMediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
     var questions: List<PictureQuestion> = listOf(PictureQuestion())
+    var findSound: Int = R.raw.beep
+
 
     private var currentIndex: Int by mutableStateOf(0)
 
@@ -38,7 +42,10 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
 
     fun setup() {
         question = questions[currentIndex]
-        playQuestion()
+        if (isFirstTime) {
+            playQuestion()
+            isFirstTime = false
+        }
     }
 
     fun next() {
@@ -93,11 +100,13 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
         if (isSoundPlaying()) {
             return
         }
-        playFindSound(R.raw.find)
+      /*  playFindSound(findSound)
         CoroutineScope(Dispatchers.Main).launch() {
             delay(500)
             playSound(questions[currentIndex].correctAnswer.audio)
-        }
+        }*/
+
+        playSound(questions[currentIndex].correctAnswer.audio)
 
     }
 

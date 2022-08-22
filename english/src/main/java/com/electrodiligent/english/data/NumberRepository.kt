@@ -9,7 +9,7 @@ object NumberRepository {
             name = "ZERO",
             count = 0,
             image = R.drawable.circle,
-            R.raw.zero
+            audio = R.raw.zero
         ),
         NumberItem(
             name = "ONE",

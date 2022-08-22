@@ -16,3 +16,4 @@ rootProject.name = "Akshar"
 include ':english'
 include ':core'
 include ':hindi'
+include ':marathi'

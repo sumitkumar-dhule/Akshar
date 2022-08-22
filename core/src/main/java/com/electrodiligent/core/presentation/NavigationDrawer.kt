@@ -23,7 +23,12 @@ import com.electrodiligent.core.util.ResponsiveText
 val brownColor = Color(red = 168, green = 42, blue = 42)
 
 @Composable
-fun DrawerHeader(header: String = "", headerImageID: Int, version: String = "") {
+fun DrawerHeader(
+    header: String = "",
+    headerImageID: Int,
+    version: String = "",
+    language: String = ""
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth(),
@@ -44,6 +49,19 @@ fun DrawerHeader(header: String = "", headerImageID: Int, version: String = "") 
                     color = brownColor,
                     textStyle = TextStyle(fontWeight = FontWeight.Bold)
                 )
+            }
+            if (language.isNotEmpty()) {
+
+                ResponsiveText(
+                    targetTextSizeHeight = 30.sp,
+                    text = language,
+                    textAlign = TextAlign.Center,
+                    color = brownColor,
+                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
+                )
+            }
+
+            if (version.isNotEmpty()) {
 
                 Text(
                     text = version,

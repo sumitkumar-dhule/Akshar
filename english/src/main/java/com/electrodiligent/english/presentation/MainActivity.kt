@@ -22,8 +22,9 @@ import com.electrodiligent.english.BuildConfig.VERSION_NAME
 import com.electrodiligent.english.R
 import com.electrodiligent.english.navigation.DrawerMenu
 import com.electrodiligent.english.navigation.Navigation
-import com.electrodiligent.english.navigation.NavigationUtil.navigateTo
-import com.electrodiligent.english.navigation.Screen
+import com.electrodiligent.core.navigation.NavigationUtil.navigateTo
+import com.electrodiligent.core.navigation.NavigationUtil.setAsBase
+import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.english.ui.theme.AksharTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -114,9 +115,16 @@ class MainActivity : ComponentActivity() {
                                         }
 
                                         "home" -> {
-                                            navigateTo(
+                                            setAsBase(
                                                 navController,
                                                 Screen.HomeScreen.route
+                                            )
+                                        }
+
+                                        "home_practice" -> {
+                                            setAsBase(
+                                                navController,
+                                                Screen.PracticeScreen.route
                                             )
                                         }
 

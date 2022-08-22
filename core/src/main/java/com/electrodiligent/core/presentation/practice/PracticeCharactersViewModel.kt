@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PracticeCharactersViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
-
+    private var isFirstTime = true
     val randomColor = RandomColor.textColors.random().colorValue
     var validNextState = true
 
@@ -37,7 +37,10 @@ class PracticeCharactersViewModel @Inject constructor(@ApplicationContext val co
 
     fun setup() {
         question = questions[currentIndex]
-        playQuestion()
+        if (isFirstTime) {
+            playQuestion()
+            isFirstTime = false
+        }
     }
 
     fun next() {
@@ -104,7 +107,7 @@ class PracticeCharactersViewModel @Inject constructor(@ApplicationContext val co
     private fun specialEffects(audio: Int) {
         specialEffectMediaPlayer.release()
         specialEffectMediaPlayer = MediaPlayer.create(context, audio)
-        specialEffectMediaPlayer.setVolume(0.05f, 0.05f)
+        specialEffectMediaPlayer.setVolume(0.1f, 0.1f)
         specialEffectMediaPlayer.start()
     }
 

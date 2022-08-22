@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -25,6 +26,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.NumberItem
 import com.electrodiligent.core.presentation.number.count.*
+import com.electrodiligent.core.util.ResponsiveText
 
 @Composable
 fun NumberDisplay(
@@ -65,14 +67,14 @@ fun NumberDisplay(
                         .clickable { numberDisplayViewModel.previous() }
                 )
 
-                Text(
+                ResponsiveText(
                     modifier = Modifier
                         .weight(1f, fill = true),
-                    fontSize = 30.sp,
+                    targetTextSizeHeight = 40.sp,
                     text = numberItem.name,
                     textAlign = TextAlign.Center,
                     color = Color.Blue,
-                    fontWeight = FontWeight.Bold
+                    textStyle = TextStyle(fontWeight = FontWeight.Normal)
                 )
 
                 Image(
@@ -97,9 +99,14 @@ fun NumberDisplay(
                     .shadow(elevation = 1.dp, shape = RectangleShape),
                 contentAlignment = Center
             ) {
+
+                val countText = numberItem.countString.ifEmpty {
+                    numberItem.count.toString()
+                }
+
                 Text(
-                    text = numberItem.count.toString(),
-                    fontWeight = FontWeight.Bold,
+                    text = countText,
+                    fontWeight = FontWeight.Normal,
                     fontSize = 60.sp,
                     color = Color.White,
                     textAlign = TextAlign.Center

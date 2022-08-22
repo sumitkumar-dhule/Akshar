@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,12 +25,10 @@ fun PictureDisplay(
     modifier: Modifier,
     items: List<PictureItem>,
     title: String,
-    titleAudio: Int
 ) {
 
     val pictureDisplayViewModel = hiltViewModel<PictureDisplayViewModel>()
     pictureDisplayViewModel.displayPictures = items
-    pictureDisplayViewModel.titleAudio = titleAudio
     pictureDisplayViewModel.setup()
 
     val shapeItem = pictureDisplayViewModel.pictureItem
@@ -59,7 +56,7 @@ fun PictureDisplay(
                     modifier = Modifier
                         .fillMaxHeight(0.7f)
                         .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .clickable { pictureDisplayViewModel.previousShape() }
+                        .clickable { pictureDisplayViewModel.previousPicture() }
                 )
 
                 ResponsiveText(
@@ -80,14 +77,16 @@ fun PictureDisplay(
                     modifier = Modifier
                         .fillMaxHeight(0.7f)
                         .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .clickable { pictureDisplayViewModel.nextShape() }
+                        .clickable { pictureDisplayViewModel.nextPicture() }
                 )
             }
 
 
 
             Column(
-                Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
+                Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -97,7 +96,8 @@ fun PictureDisplay(
                     contentDescription = shapeItem.name,
                     modifier = Modifier
                         .fillMaxWidth(0.95f)
-                        .aspectRatio(1f),
+                        .aspectRatio(1f)
+                        .clickable(onClick = { pictureDisplayViewModel.currentPicture() }),
                     contentScale = ContentScale.Fit
 
                 )

@@ -32,11 +32,14 @@ import com.electrodiligent.core.util.ResponsiveText
 @Composable
 fun PracticeColorfulPictures(
     modifier: Modifier,
-    items: List<PictureQuestion>
+    items: List<PictureQuestion>,
+    findText: String = "FIND",
+    findSound: Int
 ) {
 
     val practicePicturesViewModel = hiltViewModel<PracticePicturesViewModel>()
     practicePicturesViewModel.questions = items
+    practicePicturesViewModel.findSound = findSound
 
     practicePicturesViewModel.setup()
 
@@ -67,7 +70,7 @@ fun PracticeColorfulPictures(
             )
 
             Text(
-                text = "FIND",
+                text = findText,
                 fontSize = 25.sp,
                 color = practicePicturesViewModel.randomColor
             )
