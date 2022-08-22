@@ -23,6 +23,7 @@ import com.electrodiligent.english.R
 import com.electrodiligent.english.navigation.DrawerMenu
 import com.electrodiligent.english.navigation.Navigation
 import com.electrodiligent.core.navigation.NavigationUtil.navigateTo
+import com.electrodiligent.core.navigation.NavigationUtil.setAsBase
 import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.english.ui.theme.AksharTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -114,14 +115,14 @@ class MainActivity : ComponentActivity() {
                                         }
 
                                         "home" -> {
-                                            navigateTo(
+                                            setAsBase(
                                                 navController,
                                                 Screen.HomeScreen.route
                                             )
                                         }
 
                                         "home_practice" -> {
-                                            navigateTo(
+                                            setAsBase(
                                                 navController,
                                                 Screen.PracticeScreen.route
                                             )

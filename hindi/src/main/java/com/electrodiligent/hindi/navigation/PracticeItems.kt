@@ -3,6 +3,7 @@ package com.electrodiligent.hindi.navigation
 import com.electrodiligent.core.R
 import com.electrodiligent.core.navigation.NavigationItem
 import com.electrodiligent.core.navigation.Screen
+import com.electrodiligent.core.presentation.MenuItem
 
 object PracticeItems {
     val menu: List<NavigationItem> = listOf(
@@ -69,6 +70,14 @@ object PracticeItems {
             contentDescription = "Colors",
             icon = R.drawable.practice_colors,
             navigationRoute = Screen.ColorPracticeScreen
+        ),
+
+        NavigationItem(
+            id = "home",
+            title = "पढ़े",
+            contentDescription = "home",
+            icon = R.drawable.teacher,
+            navigationRoute = Screen.HomeScreen
         )
     )
 }

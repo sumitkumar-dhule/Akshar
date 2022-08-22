@@ -15,7 +15,14 @@ object NavigationUtil {
         }
     }
 
-    fun push(navController: NavHostController, route: String) {
-        navController.navigate(route)
+    fun setAsBase(navController: NavHostController, route: String) {
+        navController.popBackStack(route = Screen.HomeScreen.route,
+            inclusive = true,
+            saveState = false
+        )
+        navController.navigate(route) {
+            launchSingleTop = true
+            restoreState = false
+        }
     }
 }

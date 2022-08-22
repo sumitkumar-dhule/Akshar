@@ -129,14 +129,14 @@ class MainActivity : ComponentActivity() {
                                         }
 
                                         "home" -> {
-                                            NavigationUtil.navigateTo(
+                                            NavigationUtil.setAsBase(
                                                 navController,
                                                 Screen.HomeScreen.route
                                             )
                                         }
 
                                         "home_practice" -> {
-                                            NavigationUtil.navigateTo(
+                                            NavigationUtil.setAsBase(
                                                 navController,
                                                 Screen.PracticeScreen.route
                                             )
