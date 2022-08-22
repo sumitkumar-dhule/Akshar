@@ -30,7 +30,7 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
     private var questionMediaPlayer = MediaPlayer.create(context, R.raw.beep)
     private var effectMediaPlayer = MediaPlayer.create(context, R.raw.beep)
     private var specialEffectMediaPlayer = MediaPlayer.create(context, R.raw.positive)
-    private var findMediaPlayer = MediaPlayer.create(context, R.raw.find)
+    private var findMediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
     var questions: List<PictureQuestion> = listOf(PictureQuestion())
 

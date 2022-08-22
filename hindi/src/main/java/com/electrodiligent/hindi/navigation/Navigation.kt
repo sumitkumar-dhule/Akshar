@@ -102,26 +102,26 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.VegetablePracticeScreen.route) {
-            VegetablePracticeScreen(items = PictureQuestionRepository.vegetableQuestionList)
+            PicturePracticeScreen(items = PictureQuestionRepository.vegetableQuestionList, findText = "सब्जी खोजे")
         }
 
         composable(route = Screen.FruitPracticeScreen.route) {
-            FruitPracticeScreen(items = PictureQuestionRepository.fruitQuestionList)
+            PicturePracticeScreen(items = PictureQuestionRepository.fruitQuestionList, findText = "फल खोजे")
         }
 
         composable(route = Screen.AnimalPracticeScreen.route) {
-            AnimalPracticeScreen(items = PictureQuestionRepository.animalQuestionList)
+            PicturePracticeScreen(items = PictureQuestionRepository.animalQuestionList, findText = "प्राणी खोजे")
         }
 
         composable(route = Screen.BirdPracticeScreen.route) {
-            BirdPracticeScreen(items = PictureQuestionRepository.birdQuestionList)
+            PicturePracticeScreen(items = PictureQuestionRepository.birdQuestionList, findText = "पक्षी खोजे")
         }
         composable(route = Screen.ColorPracticeScreen.route) {
-            ColorPracticeScreen(items = PictureQuestionRepository.colorQuestionList)
+            ColorfulPracticeScreen(items = PictureQuestionRepository.colorQuestionList, findText = "रंग खोजे")
         }
 
         composable(route = Screen.ShapePracticeScreen.route) {
-            ShapePracticeScreen(items = PictureQuestionRepository.shapeQuestionList)
+            ColorfulPracticeScreen(items = PictureQuestionRepository.shapeQuestionList, findText = "आकार खोजे")
         }
 
         composable(route = Screen.SettingsScreen.route) {

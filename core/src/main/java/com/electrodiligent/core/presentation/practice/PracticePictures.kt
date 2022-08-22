@@ -68,7 +68,7 @@ fun PracticePictures(
             )
 
             Text(
-                text = "FIND",
+                text = textFind,
                 fontSize = 25.sp,
                 color = practicePicturesViewModel.randomColor
             )

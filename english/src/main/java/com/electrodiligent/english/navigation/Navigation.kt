@@ -37,9 +37,11 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.PracticeScreen.route) {
-            PracticeScreen(navController = navController,
+            PracticeScreen(
+                navController = navController,
                 screenTitle = "Practice",
-                navigationItems = PracticeItems.menu)
+                navigationItems = PracticeItems.menu
+            )
         }
 
         composable(route = Screen.AlphabetIdentificationScreen.route) {
@@ -91,26 +93,29 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.VegetablePracticeScreen.route) {
-            VegetablePracticeScreen(items = PictureQuestionRepository.vegetableQuestionList)
+            PicturePracticeScreen(
+                items = PictureQuestionRepository.vegetableQuestionList,
+            )
         }
 
         composable(route = Screen.FruitPracticeScreen.route) {
-            FruitPracticeScreen(items = PictureQuestionRepository.fruitQuestionList)
+            PicturePracticeScreen(items = PictureQuestionRepository.fruitQuestionList)
         }
 
         composable(route = Screen.AnimalPracticeScreen.route) {
-            AnimalPracticeScreen(items = PictureQuestionRepository.animalQuestionList)
+            PicturePracticeScreen(
+                items = PictureQuestionRepository.animalQuestionList)
         }
 
         composable(route = Screen.BirdPracticeScreen.route) {
-            BirdPracticeScreen(items = PictureQuestionRepository.birdQuestionList)
+            PicturePracticeScreen(items = PictureQuestionRepository.birdQuestionList)
         }
         composable(route = Screen.ColorPracticeScreen.route) {
-            ColorPracticeScreen(items = PictureQuestionRepository.colorQuestionList)
+            ColorfulPracticeScreen(items = PictureQuestionRepository.colorQuestionList)
         }
 
         composable(route = Screen.ShapePracticeScreen.route) {
-            ShapePracticeScreen(items = PictureQuestionRepository.shapeQuestionList)
+            ColorfulPracticeScreen(items = PictureQuestionRepository.shapeQuestionList)
         }
 
         composable(route = Screen.SettingsScreen.route) {
