@@ -8,7 +8,7 @@ object DrawerMenu {
 
         MenuItem(
             id = "home",
-            title = "Home",
+            title = "Learn",
             contentDescription = "home",
             icon = R.drawable.teacher,
         ),

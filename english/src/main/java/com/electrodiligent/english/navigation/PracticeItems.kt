@@ -73,7 +73,7 @@ object PracticeItems {
         ),
         NavigationItem(
             id = "home",
-            title = "Home",
+            title = "Learn",
             contentDescription = "home",
             icon = R.drawable.teacher,
             navigationRoute = Screen.HomeScreen
