@@ -8,7 +8,7 @@ object VegetablesRepository {
 
     private val listItems = listOf(
         PictureItem(
-            name = "कद्दू", imageId = R.drawable.pumpkin,
+            name = "भोपळा", imageId = R.drawable.pumpkin,
             // audio = com.electrodiligent.hindi.R.raw.kaddu
         ),
         PictureItem(
@@ -17,17 +17,17 @@ object VegetablesRepository {
             // audio = com.electrodiligent.hindi.R.raw.tamatar
         ),
         PictureItem(
-            name = "खीरा",
+            name = "काकडी",
             imageId = R.drawable.cucumber,
             // audio = com.electrodiligent.hindi.R.raw.khira
         ),
         PictureItem(
-            "प्याज़",
+            "कांदा",
             R.drawable.onion,
             // audio = com.electrodiligent.hindi.R.raw.pyaj
         ),
         PictureItem(
-            "लहसुन",
+            "लसूण",
             R.drawable.garlic,
             // audio = com.electrodiligent.hindi.R.raw.lehsoon
         ),
@@ -42,22 +42,22 @@ object VegetablesRepository {
             // audio = com.electrodiligent.hindi.R.raw.palak
         ),
         PictureItem(
-            "आलू",
+            "बटाटा",
             R.drawable.potato,
             // audio = com.electrodiligent.hindi.R.raw.aloo
         ),
         PictureItem(
-            "पत्ता गोभी",
+            "कोबी",
             R.drawable.cabbage,
             // audio = com.electrodiligent.hindi.R.raw.pattagobhi
         ),
         PictureItem(
-            name = "मूली",
+            name = "मुळा",
             imageId = R.drawable.radish,
             // audio = com.electrodiligent.hindi.R.raw.muli
         ),
         PictureItem(
-            name = "बैंगन", imageId = R.drawable.eggplant,
+            name = "वांगं", imageId = R.drawable.eggplant,
             // audio = com.electrodiligent.hindi.R.raw.baigan
         ),
         PictureItem(
@@ -65,27 +65,27 @@ object VegetablesRepository {
             // audio = com.electrodiligent.hindi.R.raw.mashroom
         ),
         PictureItem(
-            name = "शिमला मिर्च", imageId = R.drawable.green_pepper,
+            name = "शिमला मिर्ची", imageId = R.drawable.green_pepper,
             // audio = com.electrodiligent.hindi.R.raw.simla_mirch
         ),
         PictureItem(
-            name = "मकई", imageId = R.drawable.corn,
+            name = "मका", imageId = R.drawable.corn,
             // audio = com.electrodiligent.hindi.R.raw.makai,
         ),
         PictureItem(
-            name = "फूलगोभी", imageId = R.drawable.cauliflower,
+            name = "फुलकोबी", imageId = R.drawable.cauliflower,
             // audio = com.electrodiligent.hindi.R.raw.fulgobhi
         ),
         PictureItem(
-            name = "लाल मिर्च", imageId = R.drawable.red_chilli,
+            name = "लाल मिरची", imageId = R.drawable.red_chilli,
             // audio = com.electrodiligent.hindi.R.raw.lal_mirch
         ),
         PictureItem(
-            name = "हरी मिर्च", imageId = R.drawable.green_chilli,
+            name = "हिरवी मिरची", imageId = R.drawable.green_chilli,
             // audio = com.electrodiligent.hindi.R.raw.hari_mirch
         ),
         PictureItem(
-            name = "हरी मटर", imageId = R.drawable.green_peas,
+            name = "मटार", imageId = R.drawable.green_peas,
             // audio = com.electrodiligent.hindi.R.raw.hari_matar
         )
     )

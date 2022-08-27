@@ -197,7 +197,7 @@ object VyanjanRepository {
         DisplayCharacter(
             left = "भ", display = "म", right = "य",
             displayImage = corn,
-            displayName = "मक्का",
+            displayName = "मका",
             // audio =R.raw.ma_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.machali
