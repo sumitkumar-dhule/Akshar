@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.domain.model.NumberItem
-import com.electrodiligent.core.util.RandomColor
+import com.electrodiligent.core.util.ColorUtil
 
 @Composable
 fun NumberFlashcard(
@@ -30,7 +30,7 @@ fun NumberFlashcard(
     textSize: TextUnit = 40.sp
 ) {
 
-    val randomColor = RandomColor.textColors.random().colorValue
+    val randomColor = ColorUtil.textColors.random().colorValue
     val numberFlashcardViewModel = hiltViewModel<NumberFlashcardViewModel>()
 
     Box(modifier = modifier.padding(horizontal = 8.dp), contentAlignment = Alignment.Center) {
