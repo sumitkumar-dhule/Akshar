@@ -2,6 +2,7 @@ package com.electrodiligent.marathi.data
 
 import com.electrodiligent.core.domain.model.DisplayCharacter
 import com.electrodiligent.core.R.drawable.*
+import com.electrodiligent.marathi.R
 
 object VyanjanRepository {
     val list = listOf(
@@ -15,24 +16,24 @@ object VyanjanRepository {
         ),
         DisplayCharacter(
             left = "क", display = "ख", right = "ग",
-            displayImage = rabbit,
-            displayName = "खरगोश",
+            displayImage = R.drawable.chalk,
+            displayName = "खडू",
             // audio =R.raw.kha_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.khargosh
         ),
         DisplayCharacter(
             left = "ख", display = "ग", right = "घ",
-            displayImage = donkey,
-            displayName = "गधा",
+            displayImage = R.drawable.grass,
+            displayName = "गवत",
             // audio =R.raw.ga_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.gadha
         ),
         DisplayCharacter(
             left = "ग", display = "घ", right = "ङ",
-            displayImage = horse,
-            displayName = "घोडा",
+            displayImage = R.drawable.home,
+            displayName = "घर",
             // audio =R.raw.gha_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.ghoda
@@ -46,7 +47,7 @@ object VyanjanRepository {
         DisplayCharacter(
             left = "ङ", display = "च", right = "छ",
             displayImage = spoon,
-            displayName = "चम्मच",
+            displayName = "चमचा",
             // audio =R.raw.cha_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.chammach
@@ -54,7 +55,7 @@ object VyanjanRepository {
         DisplayCharacter(
             left = "च", display = "छ", right = "ज",
             displayImage = umrella,
-            displayName = "छाता",
+            displayName = "छत्री",
             // audio =R.raw.chha_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.chaata
@@ -70,7 +71,7 @@ object VyanjanRepository {
         DisplayCharacter(
             left = "ज", display = "झ", right = "ञ",
             displayImage = indian_flag,
-            displayName = "झंडा",
+            displayName = "झेंडा",
             // audio =R.raw.zha_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.zanda
@@ -83,8 +84,8 @@ object VyanjanRepository {
         ),
         DisplayCharacter(
             left = "ञ", display = "ट", right = "ठ",
-            displayImage = tomato,
-            displayName = "टमाटर",
+            displayImage = watermelon,
+            displayName = "टरबूज",
             // audio =R.raw.ta_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.tamatar
@@ -107,8 +108,8 @@ object VyanjanRepository {
         ),
         DisplayCharacter(
             left = "ड", display = "ढ", right = "ण",
-            displayImage = dhol,
-            displayName = "ढोल",
+            displayImage = R.drawable.cloud,
+            displayName = "ढग",
             // audio =R.raw.dha_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.dhol
@@ -123,8 +124,8 @@ object VyanjanRepository {
         ),
         DisplayCharacter(
             left = "ण", display = "त", right = "थ",
-            displayImage = watermelon,
-            displayName = "तरबूज",
+            displayImage = R.drawable.taraju,
+            displayName = "तराजू",
             // audio =R.raw.taa_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.tarbuj
@@ -139,8 +140,8 @@ object VyanjanRepository {
         ),
         DisplayCharacter(
             left = "थ", display = "द", right = "ध",
-            displayImage = medicine,
-            displayName = "दवाई",
+            displayImage = R.drawable.schoolbag,
+            displayName = "दप्तर",
             // audio =R.raw.daa_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.dawai
@@ -155,8 +156,8 @@ object VyanjanRepository {
         ),
         DisplayCharacter(
             left = "ध", display = "न", right = "प",
-            displayImage = lemon,
-            displayName = "नींबू",
+            displayImage = R.drawable.tap,
+            displayName = "नळ",
             // audio =R.raw.na_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.nimbu
@@ -171,8 +172,8 @@ object VyanjanRepository {
         ),
         DisplayCharacter(
             left = "प", display = "फ", right = "ब",
-            displayImage = football,
-            displayName = "फुटबॉल",
+            displayImage = jackfruit,
+            displayName = "फणस",
             // audio =R.raw.fa_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.football
@@ -180,23 +181,23 @@ object VyanjanRepository {
         DisplayCharacter(
             left = "फ", display = "ब", right = "भ",
             displayImage = duck,
-            displayName = "बतख",
+            displayName = "बदक",
             // audio =R.raw.ba_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.batakh
         ),
         DisplayCharacter(
             left = "ब", display = "भ", right = "म",
-            displayImage = bear,
-            displayName = "भालू",
+            displayImage = R.drawable.bhajiya,
+            displayName = "भजे",
             // audio =R.raw.bha_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.bhalu
         ),
         DisplayCharacter(
             left = "भ", display = "म", right = "य",
-            displayImage = fish,
-            displayName = "मछली",
+            displayImage = corn,
+            displayName = "मक्का",
             // audio =R.raw.ma_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.machali
@@ -211,8 +212,8 @@ object VyanjanRepository {
         ),
         DisplayCharacter(
             left = "य", display = "र", right = "ल",
-            displayImage = queen_ashwini,
-            displayName = "रानी",
+            displayImage = R.drawable.rath,
+            displayName = "रथ",
             // audio =R.raw.ra_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.rani
@@ -220,7 +221,7 @@ object VyanjanRepository {
         DisplayCharacter(
             left = "र", display = "ल", right = "व",
             displayImage = garlic,
-            displayName = "लहसुन",
+            displayName = "लसूण",
             // audio =R.raw.la_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.lehsun
@@ -236,31 +237,31 @@ object VyanjanRepository {
         DisplayCharacter(
             left = "व", display = "श", right = "ष",
             displayImage = ostrich,
-            displayName = "शुतुरमुर्ग",
+            displayName = "शहामृग",
             // audio =R.raw.sha_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.shururmurg
         ),
         DisplayCharacter(
             left = "श", display = "ष", right = "स",
-            displayImage = hexagon,
-            displayName = "षट्कोण",
+            displayImage = hexagon_red,
+            displayName = "षटकोन",
             // audio =R.raw.sha_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.shatkon
         ),
         DisplayCharacter(
             left = "ष", display = "स", right = "ह",
-            displayImage = apple,
-            displayName = "सेब",
+            displayImage = rabbit,
+            displayName = "ससा",
             // audio =R.raw.sa_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.seb
         ),
         DisplayCharacter(
             left = "स", display = "ह", right = "क्ष",
-            displayImage = deer,
-            displayName = "हिरन",
+            displayImage = elephant,
+            displayName = "हत्ती",
             // audio =R.raw.ha_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.hiran
@@ -284,7 +285,7 @@ object VyanjanRepository {
         DisplayCharacter(
             left = "त्र", display = "ज्ञ", right = "श्र",
             displayImage = dnyaneshwar,
-            displayName = "ज्ञानी",
+            displayName = "ज्ञानेश्वर",
             // audio =R.raw.gya_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.gyani
