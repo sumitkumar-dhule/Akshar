@@ -8,13 +8,13 @@ object ShapeRepository {
     private val randomColor = ColorUtil.textColors.random().colorValue
     val list = listOf(
         PictureItem(
-            "गोल",
+            "वर्तुळ",
             R.drawable.circle,
             randomColor,
             // audio = com.electrodiligent.hindi.R.raw.gol
         ),
         PictureItem(
-            name = "अंडाकार",
+            name = "अंडाकृती",
             imageId = R.drawable.oval,
             randomColor,
             // audio = com.electrodiligent.hindi.R.raw.andakar
@@ -26,7 +26,7 @@ object ShapeRepository {
             // audio = com.electrodiligent.hindi.R.raw.trikon
         ),
         PictureItem(
-            "चौकोर",
+            "चौरस",
             R.drawable.square,
             randomColor,
             // audio = com.electrodiligent.hindi.R.raw.chaukor
@@ -39,25 +39,25 @@ object ShapeRepository {
         ),
 
         PictureItem(
-            "पंचकोण",
+            "पंचकोन",
             R.drawable.pentagon,
             randomColor,
             // audio = com.electrodiligent.hindi.R.raw.panchakon
         ),
         PictureItem(
-            "षट्कोण",
+            "षटकोन",
             R.drawable.hexagon,
             randomColor,
             // audio = com.electrodiligent.hindi.R.raw.shatkon
         ),
         PictureItem(
-            name = "सितारा",
+            name = "तारा",
             imageId = R.drawable.star,
             color = randomColor,
             // audio = com.electrodiligent.hindi.R.raw.sitara
         ),
         PictureItem(
-            name = "दिल", imageId = R.drawable.heart,
+            name = "हृदय", imageId = R.drawable.heart,
             color = randomColor,
             // audio = com.electrodiligent.hindi.R.raw.dil
         )

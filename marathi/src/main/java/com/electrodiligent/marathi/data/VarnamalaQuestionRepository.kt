@@ -12,7 +12,7 @@ object VarnamalaQuestionRepository {
         for (letter in getAllSwarAndVyanjan()) {
             questionList.add(
                 CharacterQuestion(
-                    question = "अक्षर खोजें",
+                    question = "अक्षर शोधा",
                     correctAnswer = letter.display,
                     audio = letter.audio,
                     options = createOptions(letter.display)

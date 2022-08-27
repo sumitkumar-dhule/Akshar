@@ -11,7 +11,7 @@ object NumberQuestionRepository {
         for (item in NumberRepository.listUpTo20) {
             questionList.add(
                 CharacterQuestion(
-                    question = "संख्या खोजें",
+                    question = "संख्या शोधा",
                     audio = item.audio,
                     correctAnswer = item.countString,
                     options = createOptions(item.countString)

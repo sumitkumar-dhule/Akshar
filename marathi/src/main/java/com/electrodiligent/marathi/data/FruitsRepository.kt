@@ -8,11 +8,11 @@ object FruitsRepository {
 
     private val listItems = listOf(
         PictureItem(
-            name = "आम", imageId = R.drawable.mango,
+            name = "आंबा", imageId = R.drawable.mango,
             // audio = com.electrodiligent.hindi.R.raw.aam
         ),
         PictureItem(
-            "केला",
+            "केळ",
             R.drawable.banana,
             // audio = com.electrodiligent.hindi.R.raw.kela
         ),
@@ -22,22 +22,22 @@ object FruitsRepository {
             // audio = com.electrodiligent.hindi.R.raw.cherry
         ),
         PictureItem(
-            "सेब",
+            "सफरचंद",
             R.drawable.apple,
             // audio = com.electrodiligent.hindi.R.raw.seb
         ),
         PictureItem(
-            "नारियल",
+            "नारळ",
             R.drawable.coconut,
             // audio = com.electrodiligent.hindi.R.raw.nariyal
         ),
         PictureItem(
-            "शरीफा",
+            "सीताफळ",
             R.drawable.custard_apple,
             // audio = com.electrodiligent.hindi.R.raw.sharifa
         ),
         PictureItem(
-            "ड्रैगन फल",
+            "ड्रॅगन फळ",
             R.drawable.dragon_fruit,
             // audio = com.electrodiligent.hindi.R.raw.dragon_fruit
         ),
@@ -47,12 +47,12 @@ object FruitsRepository {
             // audio = com.electrodiligent.hindi.R.raw.anjir,
         ),
         PictureItem(
-            "अंगूर",
+            "द्राक्षे",
             R.drawable.grapes,
             // audio = com.electrodiligent.hindi.R.raw.angur
         ),
         PictureItem(
-            "कटहल",
+            "फणस",
             R.drawable.jackfruit,
             // audio = com.electrodiligent.hindi.R.raw.katahal
         ),
@@ -62,11 +62,11 @@ object FruitsRepository {
             // audio = com.electrodiligent.hindi.R.raw.kiwi
         ),
         PictureItem(
-            name = "संतरा", imageId = R.drawable.orange,
+            name = "संत्रा", imageId = R.drawable.orange,
             // audio = com.electrodiligent.hindi.R.raw.santra
         ),
         PictureItem(
-            name = "पपीता", imageId = R.drawable.papaya,
+            name = "पपई", imageId = R.drawable.papaya,
             // audio = com.electrodiligent.hindi.R.raw.papita
         ),
         PictureItem(
@@ -74,11 +74,11 @@ object FruitsRepository {
             // audio = com.electrodiligent.hindi.R.raw.nashpati
         ),
         PictureItem(
-            name = "अनानास", imageId = R.drawable.pineapple,
+            name = "अननस", imageId = R.drawable.pineapple,
             // audio = com.electrodiligent.hindi.R.raw.ananas
         ),
         PictureItem(
-            name = "अनार", imageId = R.drawable.pomegranate,
+            name = "डाळिंब", imageId = R.drawable.pomegranate,
             // audio = com.electrodiligent.hindi.R.raw.anar
         ),
         PictureItem(
@@ -86,12 +86,8 @@ object FruitsRepository {
             // audio = com.electrodiligent.hindi.R.raw.strawberry
         ),
         PictureItem(
-            name = "तरबूज", imageId = R.drawable.watermelon,
+            name = "टरबूज", imageId = R.drawable.watermelon,
             // audio = com.electrodiligent.hindi.R.raw.tarbuj
-        ),
-        PictureItem(
-            name = "एवोकाडो", imageId = R.drawable.avacado,
-            // audio = com.electrodiligent.hindi.R.raw.avacado
         )
     )
 }

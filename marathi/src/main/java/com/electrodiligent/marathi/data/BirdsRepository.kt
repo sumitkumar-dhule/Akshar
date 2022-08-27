@@ -8,12 +8,12 @@ object BirdsRepository {
     private val listItems = listOf(
 
         PictureItem(
-            "कौआ",
+            "कावळा",
             R.drawable.crow,
             // audio = com.electrodiligent.hindi.R.raw.kauaa
         ),
         PictureItem(
-            name = "गरुड़",
+            name = "गरुड",
             imageId = R.drawable.eagle,
             // audio = com.electrodiligent.hindi.R.raw.garud
         ),
@@ -23,22 +23,22 @@ object BirdsRepository {
             // audio = com.electrodiligent.hindi.R.raw.rajhans
         ),
         PictureItem(
-            "बाज",
+            "ससाणा",
             R.drawable.hawk,
             // audio = com.electrodiligent.hindi.R.raw.baaz
         ),
         PictureItem(
-            "उल्लू",
+            "घुबड",
             R.drawable.owl,
             // audio = com.electrodiligent.hindi.R.raw.ullu
         ),
         PictureItem(
-            "तोता",
+            "पोपट",
             R.drawable.parrot,
             // audio = com.electrodiligent.hindi.R.raw.tota
         ),
         PictureItem(
-            "मुर्गी",
+            "कोंबडी",
             R.drawable.hen,
             // audio = com.electrodiligent.hindi.R.raw.murgi
         ),
@@ -48,12 +48,12 @@ object BirdsRepository {
             // audio = com.electrodiligent.hindi.R.raw.hummingbird
         ),
         PictureItem(
-            "नीलकंठ",
+            "किंगफिशर",
             R.drawable.kingfisher,
             // audio = com.electrodiligent.hindi.R.raw.nilkanth
         ),
         PictureItem(
-            name = "शुतुरमुर्ग",
+            name = "शहामृग",
             imageId = R.drawable.ostrich,
             // audio = com.electrodiligent.hindi.R.raw.shururmurg
         ),
@@ -62,7 +62,7 @@ object BirdsRepository {
             // audio = com.electrodiligent.hindi.R.raw.mor
         ),
         PictureItem(
-            name = "पेंगुइन", imageId = R.drawable.penguin,
+            name = "पेंग्विन", imageId = R.drawable.penguin,
             // audio = com.electrodiligent.hindi.R.raw.pengine
         ),
         PictureItem(
@@ -74,7 +74,7 @@ object BirdsRepository {
             // audio = com.electrodiligent.hindi.R.raw.turkey
         ),
         PictureItem(
-            name = "कठफोड़वा", imageId = R.drawable.woodpecker,
+            name = "सुतारपक्षी", imageId = R.drawable.woodpecker,
             // audio = com.electrodiligent.hindi.R.raw.kathfodwa
         ),
         PictureItem(

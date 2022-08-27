@@ -8,31 +8,31 @@ object AnimalsRepository {
 
     private val listItems = listOf(
         PictureItem(
-            name = "भालू", imageId = R.drawable.bear,
+            name = "अस्वल", imageId = R.drawable.bear,
             // audio = com.electrodiligent.hindi.R.raw.bhalu
         ),
         PictureItem(
-            "बंदर",
+            "माकड",
             R.drawable.monkey,
             // audio = com.electrodiligent.hindi.R.raw.bandar
         ),
         PictureItem(
-            name = "भेंस",
+            name = "म्हैस",
             imageId = R.drawable.buffalo,
             // audio = com.electrodiligent.hindi.R.raw.bhais
         ),
         PictureItem(
-            "ऊंट",
+            "उंट",
             R.drawable.camel,
             // audio = com.electrodiligent.hindi.R.raw.oot
         ),
         PictureItem(
-            "बिल्ली",
+            "मांजर",
             R.drawable.cat,
             // audio = com.electrodiligent.hindi.R.raw.billi
         ),
         PictureItem(
-            "चिंपांज़ी",
+            "चिंपांझी",
             R.drawable.chimpanzi,
 
             // audio = com.electrodiligent.hindi.R.raw.chimpanzi
@@ -43,54 +43,54 @@ object AnimalsRepository {
             // audio = com.electrodiligent.hindi.R.raw.gaay
         ),
         PictureItem(
-            "हिरन",
+            "हरीण",
             R.drawable.deer,
             // audio = com.electrodiligent.hindi.R.raw.hiran
         ),
         PictureItem(
-            "कुत्ता",
+            "कुत्रा",
             R.drawable.dog,
             // audio = com.electrodiligent.hindi.R.raw.kutta
         ),
         PictureItem(
-            name = "गधा",
+            name = "गाढव",
             imageId = R.drawable.donkey,
             // audio = com.electrodiligent.hindi.R.raw.gadha
         ),
         PictureItem(
-            name = "हाथी", imageId = R.drawable.elephant,
+            name = "हत्ती", imageId = R.drawable.elephant,
             // audio = com.electrodiligent.hindi.R.raw.hathi
         ),
         PictureItem(
-            name = "लोमड़ी", imageId = R.drawable.fox,
+            name = "कोल्हा", imageId = R.drawable.fox,
             // audio = com.electrodiligent.hindi.R.raw.lomadi
         ),
         PictureItem(
-            name = "जिराफ़", imageId = R.drawable.giraffe,
+            name = "जिराफ", imageId = R.drawable.giraffe,
             // audio = com.electrodiligent.hindi.R.raw.jiraf
         ),
         PictureItem(
-            name = "बकरी", imageId = R.drawable.goat,
+            name = "शेळी", imageId = R.drawable.goat,
             // audio = com.electrodiligent.hindi.R.raw.bakri
         ),
         PictureItem(
-            name = "जलहस्ती", imageId = R.drawable.hippopotomous,
+            name = "पाणघोडा", imageId = R.drawable.hippopotomous,
             // audio = com.electrodiligent.hindi.R.raw.jalhasti
         ),
         PictureItem(
-            name = "घोड़ा", imageId = R.drawable.horse,
+            name = "घोडा", imageId = R.drawable.horse,
             // audio = com.electrodiligent.hindi.R.raw.ghoda
         ),
         PictureItem(
-            name = "कंगारू", imageId = R.drawable.kangaroo,
+            name = "कांगारू", imageId = R.drawable.kangaroo,
             // audio = com.electrodiligent.hindi.R.raw.kangaru
         ),
         PictureItem(
-            name = "तेंदुआ", imageId = R.drawable.leopard,
+            name = "बिबट्या", imageId = R.drawable.leopard,
             // audio = com.electrodiligent.hindi.R.raw.tendua
         ),
         PictureItem(
-            name = "शेर", imageId = R.drawable.lion,
+            name = "सिंह", imageId = R.drawable.lion,
             // audio = com.electrodiligent.hindi.R.raw.sher
         ),
         PictureItem(
@@ -98,35 +98,35 @@ object AnimalsRepository {
             // audio = com.electrodiligent.hindi.R.raw.panda
         ),
         PictureItem(
-            name = "सुअर", imageId = R.drawable.pig,
+            name = "डुक्कर", imageId = R.drawable.pig,
             // audio = com.electrodiligent.hindi.R.raw.suar
         ),
         PictureItem(
-            name = "खरगोश", imageId = R.drawable.rabbit,
+            name = "ससा", imageId = R.drawable.rabbit,
             // audio = com.electrodiligent.hindi.R.raw.khargosh
         ),
         PictureItem(
-            name = "चूहा", imageId = R.drawable.rat,
+            name = "उंदीर", imageId = R.drawable.rat,
             // audio = com.electrodiligent.hindi.R.raw.chuha
         ),
         PictureItem(
-            name = "गैंडा", imageId = R.drawable.rhinoceros,
+            name = "गेंडा", imageId = R.drawable.rhinoceros,
             // audio = com.electrodiligent.hindi.R.raw.genda
         ),
         PictureItem(
-            name = "भेड़", imageId = R.drawable.sheep,
+            name = "मेंढ्या", imageId = R.drawable.sheep,
             // audio = com.electrodiligent.hindi.R.raw.bhed
         ),
         PictureItem(
-            name = "गिलहरी", imageId = R.drawable.squirrel,
+            name = "खार", imageId = R.drawable.squirrel,
             // audio = com.electrodiligent.hindi.R.raw.gilihari
         ),
         PictureItem(
-            name = "बाघ", imageId = R.drawable.tiger,
+            name = "वाघ", imageId = R.drawable.tiger,
             // audio = com.electrodiligent.hindi.R.raw.bagh
         ),
         PictureItem(
-            name = "ज़ेबरा", imageId = R.drawable.zebra,
+            name = "झेब्रा", imageId = R.drawable.zebra,
             // audio = com.electrodiligent.hindi.R.raw.jebra
         )
 
