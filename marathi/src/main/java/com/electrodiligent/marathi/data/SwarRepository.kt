@@ -7,48 +7,48 @@ object SwarRepository {
     val list = listOf(
         DisplayCharacter(
             left = "अ:", display = "अ", right = "आ",
-            displayImage = R.drawable.pomegranate,
-            displayName = "अनार",
+            displayImage = R.drawable.pineapple,
+            displayName = "अननस",
             // audio = com.electrodiligent.hindi.R.raw.a_h,
             // middle// audio = com.electrodiligent.hindi.R.raw.se,
             // display// audio = com.electrodiligent.hindi.R.raw.anar
         ),
         DisplayCharacter(
             left = "अ", display = "आ", right = "इ",
-            displayImage = R.drawable.mango,
-            displayName = "आम",
+            displayImage = R.drawable.icecream,
+            displayName = "आईसक्रीम",
             // audio = com.electrodiligent.hindi.R.raw.aa_h,
             // middle// audio = com.electrodiligent.hindi.R.raw.se,
             // display// audio = com.electrodiligent.hindi.R.raw.aam
         ),
         DisplayCharacter(
             left = "आ", display = "इ", right = "ई",
-            displayImage = R.drawable.tamarind,
-            displayName = "इमली",
+            displayImage = R.drawable.building,
+            displayName = "इमारत",
             // audio = com.electrodiligent.hindi.R.raw.e_h,
             // middle// audio = com.electrodiligent.hindi.R.raw.se,
             // display// audio = com.electrodiligent.hindi.R.raw.emli
         ),
         DisplayCharacter(
             left = "इ", display = "ई", right = "उ",
-            displayImage = R.drawable.sugarcane,
-            displayName = "ईख",
+            displayImage = R.drawable.lemon,
+            displayName = "ईडलिंबू ",
             // audio = com.electrodiligent.hindi.R.raw.ee_h,
             // middle// audio = com.electrodiligent.hindi.R.raw.se,
             // display// audio = com.electrodiligent.hindi.R.raw.ekh
         ),
         DisplayCharacter(
             left = "ई", display = "उ", right = "ऊ",
-            displayImage = R.drawable.owl,
-            displayName = "उल्लू",
+            displayImage = R.drawable.pillow,
+            displayName = "उशी",
             // audio = com.electrodiligent.hindi.R.raw.u_h,
             // middle// audio = com.electrodiligent.hindi.R.raw.se,
             // display// audio = com.electrodiligent.hindi.R.raw.ullu
         ),
         DisplayCharacter(
             left = "उ", display = "ऊ", right = "ऋ",
-            displayImage = R.drawable.camel,
-            displayName = "ऊंट",
+            displayImage = R.drawable.sugarcane,
+            displayName = "ऊस",
             // audio = com.electrodiligent.hindi.R.raw.oo_h,
             // middle// audio = com.electrodiligent.hindi.R.raw.se,
             // display// audio = com.electrodiligent.hindi.R.raw.oot
@@ -63,40 +63,40 @@ object SwarRepository {
         ),
         DisplayCharacter(
             left = "ऋ", display = "ए", right = "ऐ",
-            displayImage = R.drawable.ankle,
-            displayName = "एड़ी",
+            displayImage = R.drawable.ram,
+            displayName = "एडका",
             // audio = com.electrodiligent.hindi.R.raw.ea_h,
             // middle// audio = com.electrodiligent.hindi.R.raw.se,
             // display// audio = com.electrodiligent.hindi.R.raw.adi
         ),
         DisplayCharacter(
             left = "ए", display = "ऐ", right = "ओ",
-            displayImage = R.drawable.spectacle,
-            displayName = "ऐनक",
+            displayImage = R.drawable.anvil,
+            displayName = "ऐरण",
             // audio = com.electrodiligent.hindi.R.raw.ae_h,
             // middle// audio = com.electrodiligent.hindi.R.raw.se,
             // display// audio = com.electrodiligent.hindi.R.raw.ainak
         ),
         DisplayCharacter(
             left = "ऐ", display = "ओ", right = "औ",
-            displayImage = R.drawable.okhali,
-            displayName = "ओखली",
+            displayImage = R.drawable.lips,
+            displayName = "ओठ",
             // audio = com.electrodiligent.hindi.R.raw.o_h,
             // middle// audio = com.electrodiligent.hindi.R.raw.se,
             // display// audio = com.electrodiligent.hindi.R.raw.okhli
         ),
         DisplayCharacter(
             left = "ओ", display = "औ", right = "अं",
-            displayImage = R.drawable.ashwini,
-            displayName = "औरत",
+            displayImage = R.drawable.medicine,
+            displayName = "औषध",
             // audio = com.electrodiligent.hindi.R.raw.ou_h,
             // middle// audio = com.electrodiligent.hindi.R.raw.se,
             // display// audio = com.electrodiligent.hindi.R.raw.aurat
         ),
         DisplayCharacter(
             left = "औ", display = "अं", right = "अ:",
-            displayImage = R.drawable.grapes,
-            displayName = "अंगूर",
+            displayImage = R.drawable.ring,
+            displayName = "अंगठी",
             // audio = com.electrodiligent.hindi.R.raw.um_h,
             // middle// audio = com.electrodiligent.hindi.R.raw.se,
             // display// audio = com.electrodiligent.hindi.R.raw.angur

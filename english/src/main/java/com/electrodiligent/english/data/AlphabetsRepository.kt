@@ -62,7 +62,7 @@ object AlphabetsRepository {
 
         DisplayCharacter(
             display = "I", left = "H", right = "J", displayName = "ICE-CREAM",
-            displayImage = i,
+            displayImage = icecream,
             subtitle = "i",
             audio = com.electrodiligent.english.R.raw.i_for_icecream
         ),
