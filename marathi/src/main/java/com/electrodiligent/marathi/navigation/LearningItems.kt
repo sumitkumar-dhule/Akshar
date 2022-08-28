@@ -40,7 +40,7 @@ object LearningItems {
 
         NavigationItem(
             id = "number_identification",
-            title = "गिनती",
+            title = "अंकवाचन",
             contentDescription = "Go to Number Identification screen",
             icon = com.electrodiligent.marathi.R.drawable.ek_do_teen,
             navigationRoute = Screen.NumberIdentificationScreen
@@ -48,7 +48,7 @@ object LearningItems {
 
         NavigationItem(
             id = "number_flashcards",
-            title = "१ से १००",
+            title = "१ ते १००",
             contentDescription = "Go to Number Flashcards screen",
             icon = R.drawable.flashcard_123,
             navigationRoute = Screen.NumberFlashcardScreen
@@ -72,7 +72,7 @@ object LearningItems {
 
         NavigationItem(
             id = "gk_vegetables",
-            title = "सब्जियां",
+            title = "भाज्या",
             contentDescription = "Go to Vegetables screen",
             icon = R.drawable.vegetable,
             navigationRoute = Screen.VegetablesScreen
@@ -80,7 +80,7 @@ object LearningItems {
 
         NavigationItem(
             id = "gk_fruits",
-            title = "फल",
+            title = "फळे",
             contentDescription = "Go to Fruits screen",
             icon = R.drawable.fruits,
             navigationRoute = Screen.FruitsScreen
@@ -88,7 +88,7 @@ object LearningItems {
 
         NavigationItem(
             id = "gk_animals",
-            title = "जानवर",
+            title = "प्राणी",
             contentDescription = "Go to Animals screen",
             icon = R.drawable.animals,
             navigationRoute = Screen.AnimalsScreen

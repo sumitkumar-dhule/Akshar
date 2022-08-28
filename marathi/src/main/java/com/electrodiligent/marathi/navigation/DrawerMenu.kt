@@ -67,14 +67,14 @@ object DrawerMenu {
 
         MenuItem(
             id = "number_identification",
-            title = "गिनती",
+            title = "अंकवाचन",
             contentDescription = "Go to Number Identification screen",
             icon = com.electrodiligent.marathi.R.drawable.ek_do_teen
         ),
 
         MenuItem(
             id = "number_flashcards",
-            title = "१ से १००",
+            title = "१ ते १००",
             contentDescription = "Go to Number Flashcards screen",
             icon = R.drawable.flashcard_123
         ),
@@ -104,21 +104,21 @@ object DrawerMenu {
 
         MenuItem(
             id = "gk_vegetables",
-            title = "सब्जियां",
+            title = "भाज्या",
             contentDescription = "Vegetables",
             icon = R.drawable.vegetable
         ),
 
         MenuItem(
             id = "gk_fruits",
-            title = "फल",
+            title = "फळे",
             contentDescription = "Fruits",
             icon = R.drawable.fruits
         ),
 
         MenuItem(
             id = "gk_animals",
-            title = "जानवर",
+            title = "प्राणी",
             contentDescription = "Animals",
             icon = R.drawable.animals
         ),
@@ -148,28 +148,28 @@ object DrawerMenu {
 
         MenuItem(
             id = "practice_numbers",
-            title = "गिनती",
+            title = "अंकवाचन",
             contentDescription = "Alphabets",
             icon = R.drawable.practice_numbers
         ),
 
         MenuItem(
             id = "practice_vegetable",
-            title = "सब्जियां",
+            title = "भाज्या",
             contentDescription = "Vegetable",
             icon = R.drawable.practice_vegetable
         ),
 
         MenuItem(
             id = "practice_fruit",
-            title = "फल",
+            title = "फळे",
             contentDescription = "Fruit",
             icon = R.drawable.practice_fruits
         ),
 
         MenuItem(
             id = "practice_animal",
-            title = "जानवर",
+            title = "प्राणी",
             contentDescription = "Animal",
             icon = R.drawable.practice_animal
         ),

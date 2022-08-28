@@ -18,7 +18,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_numbers",
-            title = "गिनती",
+            title = "अंकवाचन",
             contentDescription = "Numbers",
             icon = R.drawable.practice_numbers,
             navigationRoute = Screen.NumbersPracticeScreen
@@ -26,7 +26,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_vegetable",
-            title = "सब्जियां",
+            title = "भाज्या",
             contentDescription = "Vegetable",
             icon = R.drawable.practice_vegetable,
             navigationRoute = Screen.VegetablePracticeScreen
@@ -34,7 +34,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_fruit",
-            title = "फल",
+            title = "फळे",
             contentDescription = "Fruit",
             icon = R.drawable.practice_fruits,
             navigationRoute = Screen.FruitPracticeScreen
@@ -42,7 +42,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "practice_animal",
-            title = "जानवर",
+            title = "प्राणी",
             contentDescription = "Animal",
             icon = R.drawable.practice_animal,
             navigationRoute = Screen.AnimalPracticeScreen
@@ -74,7 +74,7 @@ object PracticeItems {
 
         NavigationItem(
             id = "home",
-            title = "पढ़े",
+            title = "वाचन",
             contentDescription = "home",
             icon = R.drawable.teacher,
             navigationRoute = Screen.HomeScreen
