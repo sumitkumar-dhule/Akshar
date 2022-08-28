@@ -78,15 +78,15 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.VegetablesScreen.route) {
-            VegetablesScreen(items = VegetablesRepository.list, title = "सब्जियां")
+            VegetablesScreen(items = VegetablesRepository.list, title = "भाज्या")
         }
 
         composable(route = Screen.FruitsScreen.route) {
-            FruitsScreen(items = FruitsRepository.list, title = "फल")
+            FruitsScreen(items = FruitsRepository.list, title = "फळे")
         }
 
         composable(route = Screen.AnimalsScreen.route) {
-            AnimalsScreen(items = AnimalsRepository.list, title = "जानवर")
+            AnimalsScreen(items = AnimalsRepository.list, title = "प्राणी")
         }
 
         composable(route = Screen.BirdsScreen.route) {
@@ -104,7 +104,7 @@ fun Navigation(navController: NavHostController) {
         composable(route = Screen.VegetablePracticeScreen.route) {
             PicturePracticeScreen(
                 items = PictureQuestionRepository.vegetableQuestionList,
-                findText = "सब्जी खोजे",
+                findText = "भाज्या शोधा",
                 findSound = R.raw.beep
             )
         }
@@ -112,7 +112,7 @@ fun Navigation(navController: NavHostController) {
         composable(route = Screen.FruitPracticeScreen.route) {
             PicturePracticeScreen(
                 items = PictureQuestionRepository.fruitQuestionList,
-                findText = "फल खोजे",
+                findText = "फळ शोधा",
                 findSound = R.raw.beep
             )
         }
@@ -120,7 +120,7 @@ fun Navigation(navController: NavHostController) {
         composable(route = Screen.AnimalPracticeScreen.route) {
             PicturePracticeScreen(
                 items = PictureQuestionRepository.animalQuestionList,
-                findText = "प्राणी खोजे",
+                findText = "प्राणी शोधा",
                 findSound = R.raw.beep
             )
         }
@@ -128,14 +128,14 @@ fun Navigation(navController: NavHostController) {
         composable(route = Screen.BirdPracticeScreen.route) {
             PicturePracticeScreen(
                 items = PictureQuestionRepository.birdQuestionList,
-                findText = "पक्षी खोजे",
+                findText = "पक्षी शोधा",
                 findSound = R.raw.beep
             )
         }
         composable(route = Screen.ColorPracticeScreen.route) {
             ColorfulPracticeScreen(
                 items = PictureQuestionRepository.colorQuestionList,
-                findText = "रंग खोजे",
+                findText = "रंग शोधा",
                 findSound = R.raw.beep
             )
         }
@@ -143,7 +143,7 @@ fun Navigation(navController: NavHostController) {
         composable(route = Screen.ShapePracticeScreen.route) {
             ColorfulPracticeScreen(
                 items = PictureQuestionRepository.shapeQuestionList,
-                findText = "आकार खोजे",
+                findText = "आकार शोधा",
                 findSound = R.raw.beep
             )
         }
