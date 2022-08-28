@@ -8,7 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.CharacterQuestion
-import com.electrodiligent.core.util.RandomColor
+import com.electrodiligent.core.util.ColorUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
@@ -21,7 +21,7 @@ import javax.inject.Inject
 class PracticeCharactersViewModel @Inject constructor(@ApplicationContext val context: Context) :
     ViewModel() {
     private var isFirstTime = true
-    val randomColor = RandomColor.textColors.random().colorValue
+    val randomColor = ColorUtil.textColors.random().colorValue
     var validNextState = true
 
 

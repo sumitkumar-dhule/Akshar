@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.domain.model.DisplayCharacter
-import com.electrodiligent.core.util.RandomColor
 
 @Composable
 fun CharacterDisplay(
