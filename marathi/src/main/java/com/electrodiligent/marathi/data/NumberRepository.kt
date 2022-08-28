@@ -20,7 +20,7 @@ object NumberRepository {
             // audio = com.electrodiligent.hindi.R.raw.hn_1
         ),
         NumberItem(
-            name = "दो",
+            name = "दोन",
             countString = "२",
             count = 2,
             image = R.drawable.duck_cartoon,
@@ -41,14 +41,14 @@ object NumberRepository {
             // audio = com.electrodiligent.hindi.R.raw.hn_4
         ),
         NumberItem(
-            name = "पांच",
+            name = "पाच",
             countString = "५",
             count = 5,
             image = R.drawable.notepad,
             // audio = com.electrodiligent.hindi.R.raw.hn_5
         ),
         NumberItem(
-            name = "छह",
+            name = "सहा",
             countString = "६",
             count = 6,
             image = R.drawable.starfish,
@@ -69,84 +69,84 @@ object NumberRepository {
             // audio = com.electrodiligent.hindi.R.raw.hn_8
         ),
         NumberItem(
-            name = "नौ",
+            name = "नऊ",
             countString = "९",
             count = 9,
             image = R.drawable.crab,
             // audio = com.electrodiligent.hindi.R.raw.hn_9
         ),
         NumberItem(
-            name = "दस",
+            name = "दहा",
             countString = "१०",
             count = 10,
             image = R.drawable.octopus,
             // audio = com.electrodiligent.hindi.R.raw.hn_10
         ),
         NumberItem(
-            name = "ग्यारह",
+            name = "अकरा",
             countString = "११",
             count = 11,
             image = R.drawable.ant,
             // audio = com.electrodiligent.hindi.R.raw.hn_11
         ),
         NumberItem(
-            name = "बारह",
+            name = "बारा",
             countString = "१२",
             count = 12,
             image = R.drawable.penguin,
             // audio = com.electrodiligent.hindi.R.raw.hn_12
         ),
         NumberItem(
-            name = "तेरह",
+            name = "तेरा",
             countString = "१३",
             count = 13,
             image = R.drawable.bee,
             // audio = com.electrodiligent.hindi.R.raw.hn_13
         ),
         NumberItem(
-            name = "चौदह",
+            name = "चौदा",
             countString = "१४",
             count = 14,
             image = R.drawable.radish_catoon,
             // audio = com.electrodiligent.hindi.R.raw.hn_14
         ),
         NumberItem(
-            name = "पंद्रह",
+            name = "पंधरा",
             countString = "१५",
             count = 15,
             image = R.drawable.baloon,
             // audio = com.electrodiligent.hindi.R.raw.hn_15
         ),
         NumberItem(
-            name = "सोलह",
+            name = "सोळा",
             countString = "१६",
             count = 16,
             image = R.drawable.pencil,
             // audio = com.electrodiligent.hindi.R.raw.hn_16
         ),
         NumberItem(
-            name = "सत्रह",
+            name = "सतरा",
             countString = "१७",
             count = 17,
             image = R.drawable.tomato,
             // audio = com.electrodiligent.hindi.R.raw.hn_17
         ),
         NumberItem(
-            name = "अट्ठारह",
+            name = "अठरा",
             countString = "१८",
             count = 18,
             image = R.drawable.cap,
             // audio = com.electrodiligent.hindi.R.raw.hn_18
         ),
         NumberItem(
-            name = "उन्निस",
+            name = "एकोणीस",
             countString = "१९",
             count = 19,
             image = R.drawable.banana,
             // audio = com.electrodiligent.hindi.R.raw.hn_19
         ),
         NumberItem(
-            name = "बीस",
+            name = "वीस",
             countString = "२०",
             count = 20,
             image = R.drawable.lollipop,
@@ -154,55 +154,54 @@ object NumberRepository {
         )
     )
 
-/*
 
     private val list21to100 = listOf(
 
 
         NumberItem(
-            name = "इक्कीस",
+            name = "एकवीस",
             countString = "२१"
             // audio = com.electrodiligent.hindi.R.raw.hn_21
         ),
 
         NumberItem(
-            name = "बाईस",
+            name = "बावीस",
             countString = "२२",
             // audio = com.electrodiligent.hindi.R.raw.hn_22
         ),
 
         NumberItem(
-            name = "तेईस",
+            name = "तेवीस",
             countString = "२३",
             // audio = com.electrodiligent.hindi.R.raw.hn_23
         ),
         NumberItem(
-            name = "चौबीस",
+            name = "चोवीस",
             countString = "२४",
             // audio = com.electrodiligent.hindi.R.raw.hn_24
         ),
         NumberItem(
-            name = "पच्चीस",
+            name = "पंचवीस",
             countString = "२५",
             // audio = com.electrodiligent.hindi.R.raw.hn_25
         ),
         NumberItem(
-            name = "छब्बीस",
+            name = "सहावीस",
             countString = "२६",
             // audio = com.electrodiligent.hindi.R.raw.hn_26
         ),
         NumberItem(
-            name = "सत्ताईस",
+            name = "सत्तावीस",
             countString = "२७",
             // audio = com.electrodiligent.hindi.R.raw.hn_27
         ),
         NumberItem(
-            name = "अट्ठाईस",
+            name = "अठ्ठावीस",
             countString = " २८",
             // audio = com.electrodiligent.hindi.R.raw.hn_28
         ),
         NumberItem(
-            name = "उनतीस",
+            name = "एकोणतीस",
             countString = "२९",
             // audio = com.electrodiligent.hindi.R.raw.hn_29
         ),
@@ -213,7 +212,7 @@ object NumberRepository {
         ),
 
         NumberItem(
-            name = "इकतीस",
+            name = "एकतीस",
             countString = "३१",
             // audio = com.electrodiligent.hindi.R.raw.hn_31
         ),
@@ -223,119 +222,119 @@ object NumberRepository {
             // audio = com.electrodiligent.hindi.R.raw.hn_32
         ),
         NumberItem(
-            name = "तैंतीस",
+            name = "तेहतीस",
             countString = "३३",
             // audio = com.electrodiligent.hindi.R.raw.hn_33
         ),
         NumberItem(
-            name = "चौंतीस",
+            name = "चौतीस",
             countString = "३४",
             // audio = com.electrodiligent.hindi.R.raw.hn_34
         ),
         NumberItem(
-            name = "पैंतीस",
+            name = "पस्तीस",
             countString = "३५",
             // audio = com.electrodiligent.hindi.R.raw.hn_35
         ),
         NumberItem(
-            name = "छ्त्तीस",
+            name = "छत्तीस",
             countString = "३६",
             // audio = com.electrodiligent.hindi.R.raw.hn_36
         ),
         NumberItem(
-            name = "सैंतीस",
+            name = "सदोतीस",
             countString = "३७",
             // audio = com.electrodiligent.hindi.R.raw.hn_37
         ),
         NumberItem(
-            name = "अड़तीस",
+            name = "अडतीस",
             countString = "३८",
             // audio = com.electrodiligent.hindi.R.raw.hn_38
         ),
         NumberItem(
-            name = "उनतालीस",
+            name = "एकोण पन्नास",
             countString = "३९",
             // audio = com.electrodiligent.hindi.R.raw.hn_39
         ),
         NumberItem(
-            name = "चालीस",
+            name = "चाळीस",
             countString = "४०",
             // audio = com.electrodiligent.hindi.R.raw.hn_40
         ),
 
         NumberItem(
-            name = "इकतालीस",
+            name = "एक्केचाळीस",
             countString = "४१",
             // audio = com.electrodiligent.hindi.R.raw.hn_41
         ),
         NumberItem(
-            name = "बयालीस",
+            name = "बेचाळीस",
             countString = "४२",
             // audio = com.electrodiligent.hindi.R.raw.hn_42
         ),
         NumberItem(
-            name = "तैंतालीस",
+            name = "त्रे चाळीस",
             countString = "४३",
             // audio = com.electrodiligent.hindi.R.raw.hn_43
         ),
         NumberItem(
-            name = "चौंतालीस",
+            name = "चव्वेचाळीस",
             countString = "४४",
             // audio = com.electrodiligent.hindi.R.raw.hn_44
         ),
         NumberItem(
-            name = "पैंतालीस",
+            name = "पंचेचाळीस",
             countString = "४५",
             // audio = com.electrodiligent.hindi.R.raw.hn_45
         ),
         NumberItem(
-            name = "छियालीस",
+            name = "शेहचाळीस",
             countString = "४६",
             // audio = com.electrodiligent.hindi.R.raw.hn_46
         ),
         NumberItem(
-            name = "सैंतालीस",
+            name = "सत्तेचाळीस",
             countString = "४७",
             // audio = com.electrodiligent.hindi.R.raw.hn_47
         ),
         NumberItem(
-            name = "अड़तालीस",
+            name = "अठ्ठेचाळीस",
             countString = "४८",
             // audio = com.electrodiligent.hindi.R.raw.hn_48
         ),
         NumberItem(
-            name = "उनचास",
+            name = "एकोण पन्नास",
             countString = "४९",
             // audio = com.electrodiligent.hindi.R.raw.hn_49
         ),
         NumberItem(
-            name = "पचास",
+            name = "पन्नास",
             countString = "५०",
             // audio = com.electrodiligent.hindi.R.raw.hn_50
         ),
 
         NumberItem(
-            name = "इक्याबन",
+            name = "एकावन्न",
             countString = "५१",
             // audio = com.electrodiligent.hindi.R.raw.hn_51
         ),
         NumberItem(
-            name = "बावन",
+            name = "बाव्वन्न",
             countString = "५२",
             // audio = com.electrodiligent.hindi.R.raw.hn_52
         ),
         NumberItem(
-            name = "तिरेपन",
+            name = "त्रेपन्न",
             countString = "५३",
             // audio = com.electrodiligent.hindi.R.raw.hn_53
         ),
         NumberItem(
-            name = "चौअन",
+            name = "चौपन्न",
             countString = "५४",
             // audio = com.electrodiligent.hindi.R.raw.hn_54
         ),
         NumberItem(
-            name = "पचपन",
+            name = "पंचावन्न",
             countString = "५५",
             // audio = com.electrodiligent.hindi.R.raw.hn_55
         ),
@@ -345,17 +344,17 @@ object NumberRepository {
             // audio = com.electrodiligent.hindi.R.raw.hn_56
         ),
         NumberItem(
-            name = "सत्तावन",
+            name = "सत्तावन्न",
             countString = "५७",
             // audio = com.electrodiligent.hindi.R.raw.hn_57
         ),
         NumberItem(
-            name = "अठ्ठावन",
+            name = "अठ्ठावन्न",
             countString = "५८",
             // audio = com.electrodiligent.hindi.R.raw.hn_58
         ),
         NumberItem(
-            name = "उनसठ",
+            name = "एकोण सत्तर",
             countString = "५९",
             // audio = com.electrodiligent.hindi.R.raw.hn_59
         ),
@@ -363,214 +362,214 @@ object NumberRepository {
             name = "साठ",
             countString = "६०",
             // audio = com.electrodiligent.hindi.R.raw.hn_60),
+        ),
+        NumberItem(
+            name = "एकसष्ट",
+            countString = "६१",
+            // audio = com.electrodiligent.hindi.R.raw.hn_61
+        ),
+        NumberItem(
+            name = "बासष्ट",
+            countString = "६२",
+            // audio = com.electrodiligent.hindi.R.raw.hn_62
+        ),
+        NumberItem(
+            name = "तेसष्ट",
+            countString = "६३",
+            // audio = com.electrodiligent.hindi.R.raw.hn_63
+        ),
+        NumberItem(
+            name = "चौसष्ट",
+            countString = "६४",
+            // audio = com.electrodiligent.hindi.R.raw.hn_64
+        ),
+        NumberItem(
+            name = "पासष्ट",
+            countString = "६५",
+            // audio = com.electrodiligent.hindi.R.raw.hn_65
+        ),
+        NumberItem(
+            name = "सहासष्ठ",
+            countString = "६६",
+            // audio = com.electrodiligent.hindi.R.raw.hn_66
+        ),
+        NumberItem(
+            name = "सदुसष्ट",
+            countString = "६७",
+            // audio = com.electrodiligent.hindi.R.raw.hn_67
+        ),
+        NumberItem(
+            name = "अडुसष्ठ",
+            countString = "६८",
+            // audio = com.electrodiligent.hindi.R.raw.hn_68
+        ),
+        NumberItem(
+            name = "एकोण सत्तर",
+            countString = "६९",
+            // audio = com.electrodiligent.hindi.R.raw.hn_69
+        ),
+        NumberItem(
+            name = "सत्तर",
+            countString = "७०",
+            // audio = com.electrodiligent.hindi.R.raw.hn_70
+        ),
 
-            NumberItem(
-                name = "इकसठ",
-                countString = "६१",
-                // audio = com.electrodiligent.hindi.R.raw.hn_61
-            ),
-            NumberItem(
-                name = "बासठ",
-                countString = "६२",
-                // audio = com.electrodiligent.hindi.R.raw.hn_62
-            ),
-            NumberItem(
-                name = "तिरसठ",
-                countString = "६३",
-                // audio = com.electrodiligent.hindi.R.raw.hn_63
-            ),
-            NumberItem(
-                name = "चौंसठ",
-                countString = "६४",
-                // audio = com.electrodiligent.hindi.R.raw.hn_64
-            ),
-            NumberItem(
-                name = "पैंसठ",
-                countString = "६५",
-                // audio = com.electrodiligent.hindi.R.raw.hn_65
-            ),
-            NumberItem(
-                name = "छियासठ",
-                countString = "६६",
-                // audio = com.electrodiligent.hindi.R.raw.hn_66
-            ),
-            NumberItem(
-                name = "सड़सठ",
-                countString = "६७",
-                // audio = com.electrodiligent.hindi.R.raw.hn_67
-            ),
-            NumberItem(
-                name = "अड़सठ",
-                countString = "६८",
-                // audio = com.electrodiligent.hindi.R.raw.hn_68
-            ),
-            NumberItem(
-                name = "उनहत्तर",
-                countString = "६९",
-                // audio = com.electrodiligent.hindi.R.raw.hn_69
-            ),
-            NumberItem(
-                name = "सत्तर",
-                countString = "७०",
-                // audio = com.electrodiligent.hindi.R.raw.hn_70
-            ),
+        NumberItem(
+            name = "एकाहत्तर",
+            countString = "७१",
+            // audio = com.electrodiligent.hindi.R.raw.hn_71
+        ),
+        NumberItem(
+            name = "बहात्तर",
+            countString = "७२",
+            // audio = com.electrodiligent.hindi.R.raw.hn_72
+        ),
+        NumberItem(
+            name = "त्र्याहत्तर",
+            countString = "७३",
+            // audio = com.electrodiligent.hindi.R.raw.hn_73
+        ),
+        NumberItem(
+            name = "चौऱ्ह्यात्तर",
+            countString = "७४",
+            // audio = com.electrodiligent.hindi.R.raw.hn_74
+        ),
+        NumberItem(
+            name = "पंचाहत्तर",
+            countString = "७५",
+            // audio = com.electrodiligent.hindi.R.raw.hn_75
+        ),
+        NumberItem(
+            name = "शहात्तर",
+            countString = "७६",
+            // audio = com.electrodiligent.hindi.R.raw.hn_76
+        ),
+        NumberItem(
+            name = "सत्याहत्तर",
+            countString = "७७",
+            // audio = com.electrodiligent.hindi.R.raw.hn_77
+        ),
+        NumberItem(
+            name = "अठ्ठ्यात्तर",
+            countString = "७८",
+            // audio = com.electrodiligent.hindi.R.raw.hn_78
+        ),
+        NumberItem(
+            name = "एकोणऐंशी",
+            countString = "७९",
+            // audio = com.electrodiligent.hindi.R.raw.hn_79
+        ),
+        NumberItem(
+            name = "ऐंशी",
+            countString = "८०",
+            // audio = com.electrodiligent.hindi.R.raw.hn_80
+        ),
 
-            NumberItem(
-                name = "इकहत्तर",
-                countString = "७१",
-                // audio = com.electrodiligent.hindi.R.raw.hn_71
-            ),
-            NumberItem(
-                name = "बहत्तर",
-                countString = "७२",
-                // audio = com.electrodiligent.hindi.R.raw.hn_72
-            ),
-            NumberItem(
-                name = "तिहत्तर",
-                countString = "७३",
-                // audio = com.electrodiligent.hindi.R.raw.hn_73
-            ),
-            NumberItem(
-                name = "चौहत्तर",
-                countString = "७४",
-                // audio = com.electrodiligent.hindi.R.raw.hn_74
-            ),
-            NumberItem(
-                name = "पिचत्तर",
-                countString = "७५",
-                // audio = com.electrodiligent.hindi.R.raw.hn_75
-            ),
-            NumberItem(
-                name = "छिहत्तर",
-                countString = "७६",
-                // audio = com.electrodiligent.hindi.R.raw.hn_76
-            ),
-            NumberItem(
-                name = "सतत्तर",
-                countString = "७७",
-                // audio = com.electrodiligent.hindi.R.raw.hn_77
-            ),
-            NumberItem(
-                name = "अठत्तर",
-                countString = "७८",
-                // audio = com.electrodiligent.hindi.R.raw.hn_78
-            ),
-            NumberItem(
-                name = "उनासी",
-                countString = "७९",
-                // audio = com.electrodiligent.hindi.R.raw.hn_79
-            ),
-            NumberItem(
-                name = "अस्सी",
-                countString = "८०",
-                // audio = com.electrodiligent.hindi.R.raw.hn_80
-            ),
+        NumberItem(
+            name = "एक्याऐंशी",
+            countString = "८१",
+            // audio = com.electrodiligent.hindi.R.raw.hn_81
+        ),
+        NumberItem(
+            name = "ब्याऐंशी",
+            countString = "८२",
+            // audio = com.electrodiligent.hindi.R.raw.hn_82
+        ),
+        NumberItem(
+            name = "त्र्याऐंशी",
+            countString = "८३",
+            // audio = com.electrodiligent.hindi.R.raw.hn_83
+        ),
+        NumberItem(
+            name = "चौऱ्याऐंशी",
+            countString = "८४",
+            // audio = com.electrodiligent.hindi.R.raw.hn_84
+        ),
+        NumberItem(
+            name = "पंच्याऐंशी",
+            countString = "८५",
+            // audio = com.electrodiligent.hindi.R.raw.hn_85
+        ),
+        NumberItem(
+            name = "शहाऐंशी",
+            countString = "८६",
+            // audio = com.electrodiligent.hindi.R.raw.hn_86
+        ),
+        NumberItem(
+            name = "सत्त्याऐंशी",
+            countString = "८७",
+            // audio = com.electrodiligent.hindi.R.raw.hn_87
+        ),
+        NumberItem(
+            name = "अठ्ठ्याऐंशी",
+            countString = "८८",
+            // audio = com.electrodiligent.hindi.R.raw.hn_88
+        ),
+        NumberItem(
+            name = "एकोणनव्वद",
+            countString = "८९",
+            // audio = com.electrodiligent.hindi.R.raw.hn_89
+        ),
+        NumberItem(
+            name = "नव्वद",
+            countString = "९०",
+            // audio = com.electrodiligent.hindi.R.raw.hn_90
+        ),
 
-            NumberItem(
-                name = "इक्यासी",
-                countString = "८१",
-                // audio = com.electrodiligent.hindi.R.raw.hn_81
-            ),
-            NumberItem(
-                name = "ब्यासी",
-                countString = "८२",
-                // audio = com.electrodiligent.hindi.R.raw.hn_82
-            ),
-            NumberItem(
-                name = "तिरासी",
-                countString = "८३",
-                // audio = com.electrodiligent.hindi.R.raw.hn_83
-            ),
-            NumberItem(
-                name = "चौरासी",
-                countString = "८४",
-                // audio = com.electrodiligent.hindi.R.raw.hn_84
-            ),
-            NumberItem(
-                name = "पिचासी",
-                countString = "८५",
-                // audio = com.electrodiligent.hindi.R.raw.hn_85
-            ),
-            NumberItem(
-                name = "छियासी",
-                countString = "८६",
-                // audio = com.electrodiligent.hindi.R.raw.hn_86
-            ),
-            NumberItem(
-                name = "सतासी",
-                countString = "८७",
-                // audio = com.electrodiligent.hindi.R.raw.hn_87
-            ),
-            NumberItem(
-                name = "अठासी",
-                countString = "८८",
-                // audio = com.electrodiligent.hindi.R.raw.hn_88
-            ),
-            NumberItem(
-                name = "नवासी",
-                countString = "८९",
-                // audio = com.electrodiligent.hindi.R.raw.hn_89
-            ),
-            NumberItem(
-                name = "नब्बे",
-                countString = "९०",
-                // audio = com.electrodiligent.hindi.R.raw.hn_90
-            ),
-
-            NumberItem(
-                name = "इक्यानवे",
-                countString = "९१",
-                // audio = com.electrodiligent.hindi.R.raw.hn_91
-            ),
-            NumberItem(
-                name = "बानवे",
-                countString = "९२",
-                // audio = com.electrodiligent.hindi.R.raw.hn_92
-            ),
-            NumberItem(
-                name = "तिरानवे",
-                countString = "९३",
-                // audio = com.electrodiligent.hindi.R.raw.hn_93
-            ),
-            NumberItem(
-                name = "चौरानवे",
-                countString = "९४",
-                // audio = com.electrodiligent.hindi.R.raw.hn_94
-            ),
-            NumberItem(
-                name = "पिञ्चानवे",
-                countString = "९५",
-                // audio = com.electrodiligent.hindi.R.raw.hn_95
-            ),
-            NumberItem(
-                name = "छियानवे",
-                countString = "९६",
-                // audio = com.electrodiligent.hindi.R.raw.hn_96
-            ),
-            NumberItem(
-                name = "सत्तानवे",
-                countString = "९७",
-                // audio = com.electrodiligent.hindi.R.raw.hn_97
-            ),
-            NumberItem(
-                name = "अठ्ठानवे",
-                countString = "९८",
-                // audio = com.electrodiligent.hindi.R.raw.hn_98
-            ),
-            NumberItem(
-                name = "निन्यानवे",
-                countString = "९९",
-                // audio = com.electrodiligent.hindi.R.raw.hn_99
-            ),
-            NumberItem(
-                name = "सौ",
-                count = 100,
-                countString = "१००",
-                // audio = com.electrodiligent.hindi.R.raw.hn_100
-            )
+        NumberItem(
+            name = "एक्क्याण्णव",
+            countString = "९१",
+            // audio = com.electrodiligent.hindi.R.raw.hn_91
+        ),
+        NumberItem(
+            name = "ब्याण्णव",
+            countString = "९२",
+            // audio = com.electrodiligent.hindi.R.raw.hn_92
+        ),
+        NumberItem(
+            name = "त्र्याण्णव",
+            countString = "९३",
+            // audio = com.electrodiligent.hindi.R.raw.hn_93
+        ),
+        NumberItem(
+            name = "चौऱ्याण्णव",
+            countString = "९४",
+            // audio = com.electrodiligent.hindi.R.raw.hn_94
+        ),
+        NumberItem(
+            name = "पंच्याण्णव",
+            countString = "९५",
+            // audio = com.electrodiligent.hindi.R.raw.hn_95
+        ),
+        NumberItem(
+            name = "शहाण्णव",
+            countString = "९६",
+            // audio = com.electrodiligent.hindi.R.raw.hn_96
+        ),
+        NumberItem(
+            name = "सत्त्याण्णव",
+            countString = "९७",
+            // audio = com.electrodiligent.hindi.R.raw.hn_97
+        ),
+        NumberItem(
+            name = "अठ्ठ्याण्णव",
+            countString = "९८",
+            // audio = com.electrodiligent.hindi.R.raw.hn_98
+        ),
+        NumberItem(
+            name = "नव्व्याण्णव",
+            countString = "९९",
+            // audio = com.electrodiligent.hindi.R.raw.hn_99
+        ),
+        NumberItem(
+            name = "शंभर",
+            count = 100,
+            countString = "१००",
+            // audio = com.electrodiligent.hindi.R.raw.hn_100
         )
+    )
 
-        val listUpTo100 : List < NumberItem > = getFlashcardsUpTo100()
+    val listUpTo100: List<NumberItem> = getFlashcardsUpTo100()
 
     private fun getFlashcardsUpTo100(): List<NumberItem> {
         val mutableList = mutableListOf<NumberItem>()
@@ -578,7 +577,6 @@ object NumberRepository {
         mutableList.addAll(list21to100)
         return mutableList
     }
-*/
 
 
 }
