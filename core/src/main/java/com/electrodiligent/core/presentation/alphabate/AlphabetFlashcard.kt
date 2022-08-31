@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.domain.model.DisplayCharacter
-import com.electrodiligent.core.util.RandomColor
+import com.electrodiligent.core.util.ColorUtil
 
 @Composable
 fun AlphabetFlashcard(
@@ -25,7 +25,7 @@ fun AlphabetFlashcard(
     displayCharacters: List<DisplayCharacter>
 ) {
 
-    val randomColor = RandomColor.textColors.random().colorValue
+    val randomColor = ColorUtil.textColors.random().colorValue
     val alphabetFlashcardViewModel = hiltViewModel<AlphabetFlashcardViewModel>()
 
     Box(modifier = modifier.padding(horizontal = 16.dp), contentAlignment = Alignment.Center) {

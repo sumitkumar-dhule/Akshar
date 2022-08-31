@@ -1,6 +1,6 @@
 package com.electrodiligent.english.data
 
-import com.electrodiligent.core.R.raw.*
+import com.electrodiligent.english.R.raw.*
 import com.electrodiligent.core.domain.model.CharacterQuestion
 
 object AlphabetQuestionRepository {
@@ -24,32 +24,32 @@ object AlphabetQuestionRepository {
 
     private fun getSounds(): List<Int> {
         return listOf(
-            find_a,
-            find_b,
-            find_c,
-            find_d,
-            find_e,
-            find_f,
-            find_g,
-            find_h,
-            find_i,
-            find_j,
-            find_k,
-            find_l,
-            find_m,
-            find_n,
-            find_o,
-            find_p,
-            find_q,
-            find_r,
-            find_s,
-            find_t,
-            find_u,
-            find_v,
-            find_w,
-            find_x,
-            find_y,
-            find_z
+            kevin_a,
+            kevin_b,
+            kevin_c,
+            kevin_d,
+            kevin_e,
+            kevin_f,
+            kevin_g,
+            kevin_h,
+            kevin_i,
+            kevin_j,
+            kevin_k,
+            kevin_l,
+            kevin_m,
+            kevin_n,
+            kevin_o,
+            kevin_p,
+            kevin_q,
+            kevin_r,
+            kevin_s,
+            kevin_t,
+            kevin_u,
+            kevin_v,
+            kevin_w,
+            kevin_x,
+            kevin_y,
+            kevin_z
         )
     }
 

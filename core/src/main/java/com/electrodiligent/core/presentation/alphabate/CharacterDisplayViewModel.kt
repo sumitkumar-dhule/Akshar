@@ -8,7 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.DisplayCharacter
-import com.electrodiligent.core.util.RandomColor
+import com.electrodiligent.core.util.ColorUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
@@ -24,7 +24,7 @@ class CharacterDisplayViewModel @Inject constructor(@ApplicationContext val cont
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
     private var mediaPlayerMiddle = MediaPlayer.create(context, R.raw.beep)
     private var mediaPlayerEnd = MediaPlayer.create(context, R.raw.beep)
-    val randomColor = RandomColor.textColors.random().colorValue
+    val randomColor = ColorUtil.textColors.random().colorValue
     var displayCharacters: List<DisplayCharacter> = listOf(DisplayCharacter())
     private var currentIndex: Int by mutableStateOf(0)
     var displayCharacterState: DisplayCharacter by mutableStateOf(displayCharacters[currentIndex])

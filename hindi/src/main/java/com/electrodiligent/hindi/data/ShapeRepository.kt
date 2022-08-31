@@ -2,10 +2,10 @@ package com.electrodiligent.hindi.data
 
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.PictureItem
-import com.electrodiligent.core.util.RandomColor
+import com.electrodiligent.core.util.ColorUtil
 
 object ShapeRepository {
-    private val randomColor = RandomColor.textColors.random().colorValue
+    private val randomColor = ColorUtil.textColors.random().colorValue
     val list = listOf(
         PictureItem(
             "गोल",

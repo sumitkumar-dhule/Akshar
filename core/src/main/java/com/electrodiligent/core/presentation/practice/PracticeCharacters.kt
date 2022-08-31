@@ -25,7 +25,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.CharacterQuestion
 import com.electrodiligent.core.domain.model.ColorItem
-import com.electrodiligent.core.util.RandomColor
+import com.electrodiligent.core.util.ColorUtil
 
 
 @Composable
@@ -34,7 +34,7 @@ fun PracticeCharacters(
     items: List<CharacterQuestion>
 ) {
 
-    val randomColorList = RandomColor.list.toMutableList()
+    val randomColorList = ColorUtil.list.toMutableList()
 
     val practiceCharactersViewModel = hiltViewModel<PracticeCharactersViewModel>()
     practiceCharactersViewModel.questions = items

@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.PictureItem
 import com.electrodiligent.core.domain.model.PictureQuestion
-import com.electrodiligent.core.util.RandomColor
+import com.electrodiligent.core.util.ColorUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
@@ -24,7 +24,7 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
 
     private var isFirstTime = true
 
-    val randomColor = RandomColor.textColors.random().colorValue
+    val randomColor = ColorUtil.textColors.random().colorValue
     var validNextState = true
 
     private var questionMediaPlayer = MediaPlayer.create(context, R.raw.beep)

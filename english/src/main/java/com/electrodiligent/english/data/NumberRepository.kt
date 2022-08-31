@@ -9,127 +9,127 @@ object NumberRepository {
             name = "ZERO",
             count = 0,
             image = R.drawable.circle,
-            audio = R.raw.zero
+            audio = com.electrodiligent.english.R.raw.kevin_0
         ),
         NumberItem(
             name = "ONE",
             count = 1,
             image = R.drawable.dolphin,
-            audio = R.raw.one
+            audio = com.electrodiligent.english.R.raw.kevin_1
         ),
         NumberItem(
             name = "TWO",
             count = 2,
             image = R.drawable.duck_cartoon,
-            audio = R.raw.two
+            audio = com.electrodiligent.english.R.raw.kevin_2
         ),
         NumberItem(
             name = "THREE",
             count = 3,
             image = R.drawable.frog,
-            audio = R.raw.three
+            audio = com.electrodiligent.english.R.raw.kevin_3
         ),
         NumberItem(
             name = "FOUR",
             count = 4,
             image = R.drawable.hippo,
-            audio = R.raw.four
+            audio = com.electrodiligent.english.R.raw.kevin_4
         ),
         NumberItem(
             name = "FIVE",
             count = 5,
             image = R.drawable.notepad,
-            audio = R.raw.five
+            audio = com.electrodiligent.english.R.raw.kevin_5
         ),
         NumberItem(
             name = "SIX",
             count = 6,
             image = R.drawable.starfish,
-            audio = R.raw.six
+            audio = com.electrodiligent.english.R.raw.kevin_6
         ),
         NumberItem(
             name = "SEVEN",
             count = 7,
             image = R.drawable.hamster,
-            audio = R.raw.seven
+            audio = com.electrodiligent.english.R.raw.kevin_7
         ),
         NumberItem(
             name = "EIGHT",
             count = 8,
             image = R.drawable.piglet,
-            audio = R.raw.eight
+            audio = com.electrodiligent.english.R.raw.kevin_8
         ),
         NumberItem(
             name = "NINE",
             count = 9,
             image = R.drawable.crab,
-            audio = R.raw.nine
+            audio = com.electrodiligent.english.R.raw.kevin_9
         ),
         NumberItem(
             name = "TEN",
             count = 10,
             image = R.drawable.octopus,
-            audio = R.raw.ten
+            audio = com.electrodiligent.english.R.raw.kevin_10
         ),
         NumberItem(
             name = "ELEVEN",
             count = 11,
             image = R.drawable.ant,
-            audio = R.raw.eleven
+            audio = com.electrodiligent.english.R.raw.kevin_11
         ),
         NumberItem(
             name = "TWELVE",
             count = 12,
             image = R.drawable.penguin,
-            audio = R.raw.twelve
+            audio = com.electrodiligent.english.R.raw.kevin_12
         ),
         NumberItem(
             name = "THIRTEEN",
             count = 13,
             image = R.drawable.bee,
-            audio = R.raw.thirteen
+            audio = com.electrodiligent.english.R.raw.kevin_13
         ),
         NumberItem(
             name = "FOURTEEN",
             count = 14,
             image = R.drawable.radish_catoon,
-            audio = R.raw.fourteen
+            audio = com.electrodiligent.english.R.raw.kevin_14
         ),
         NumberItem(
             name = "FIFTEEN",
             count = 15,
             image = R.drawable.baloon,
-            audio = R.raw.fifteen
+            audio = com.electrodiligent.english.R.raw.kevin_15
         ),
         NumberItem(
             name = "SIXTEEN",
             count = 16,
             image = R.drawable.pencil,
-            audio = R.raw.sixteen
+            audio = com.electrodiligent.english.R.raw.kevin_16
         ),
         NumberItem(
             name = "SEVENTEEN",
             count = 17,
             image = R.drawable.tomato,
-            audio = R.raw.seventeen
+            audio = com.electrodiligent.english.R.raw.kevin_17
         ),
         NumberItem(
             name = "EIGHTEEN",
             count = 18,
             image = R.drawable.cap,
-            audio = R.raw.eighteen
+            audio = com.electrodiligent.english.R.raw.kevin_18
         ),
         NumberItem(
             name = "NINETEEN",
             count = 19,
             image = R.drawable.banana,
-            audio = R.raw.nineteen
+            audio = com.electrodiligent.english.R.raw.kevin_19
         ),
         NumberItem(
             name = "TWENTY",
             count = 20,
             image = R.drawable.lollipop,
-            audio = R.raw.twenty
+            audio = com.electrodiligent.english.R.raw.kevin_20
         )
     )
 }

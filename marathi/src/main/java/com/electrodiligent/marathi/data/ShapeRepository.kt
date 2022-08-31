@@ -1,0 +1,65 @@
+package com.electrodiligent.marathi.data
+
+import com.electrodiligent.core.R
+import com.electrodiligent.core.domain.model.PictureItem
+import com.electrodiligent.core.util.ColorUtil
+
+object ShapeRepository {
+    private val randomColor = ColorUtil.textColors.random().colorValue
+    val list = listOf(
+        PictureItem(
+            "वर्तुळ",
+            R.drawable.circle,
+            randomColor,
+            // audio = com.electrodiligent.hindi.R.raw.gol
+        ),
+        PictureItem(
+            name = "अंडाकृती",
+            imageId = R.drawable.oval,
+            randomColor,
+            // audio = com.electrodiligent.hindi.R.raw.andakar
+        ),
+        PictureItem(
+            "त्रिकोण",
+            R.drawable.triangle,
+            randomColor,
+            // audio = com.electrodiligent.hindi.R.raw.trikon
+        ),
+        PictureItem(
+            "चौरस",
+            R.drawable.square,
+            randomColor,
+            // audio = com.electrodiligent.hindi.R.raw.chaukor
+        ),
+        PictureItem(
+            "आयत",
+            R.drawable.rectangle,
+            randomColor,
+            // audio = com.electrodiligent.hindi.R.raw.ayat
+        ),
+
+        PictureItem(
+            "पंचकोन",
+            R.drawable.pentagon,
+            randomColor,
+            // audio = com.electrodiligent.hindi.R.raw.panchakon
+        ),
+        PictureItem(
+            "षटकोन",
+            R.drawable.hexagon,
+            randomColor,
+            // audio = com.electrodiligent.hindi.R.raw.shatkon
+        ),
+        PictureItem(
+            name = "तारा",
+            imageId = R.drawable.star,
+            color = randomColor,
+            // audio = com.electrodiligent.hindi.R.raw.sitara
+        ),
+        PictureItem(
+            name = "हृदय", imageId = R.drawable.heart,
+            color = randomColor,
+            // audio = com.electrodiligent.hindi.R.raw.dil
+        )
+    )
+}

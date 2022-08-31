@@ -8,7 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.PictureItem
-import com.electrodiligent.core.util.RandomColor
+import com.electrodiligent.core.util.ColorUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -20,7 +20,7 @@ class PictureDisplayViewModel @Inject constructor(@ApplicationContext val contex
 
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
-    val randomColor = RandomColor.textColors.random().colorValue
+    val randomColor = ColorUtil.textColors.random().colorValue
 
     var displayPictures: List<PictureItem> = listOf(PictureItem())
 
