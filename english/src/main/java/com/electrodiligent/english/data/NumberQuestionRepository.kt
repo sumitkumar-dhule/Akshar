@@ -1,6 +1,6 @@
 package com.electrodiligent.english.data
 
-import com.electrodiligent.core.R
+import com.electrodiligent.english.R
 import com.electrodiligent.core.domain.model.CharacterQuestion
 
 object NumberQuestionRepository {
@@ -26,27 +26,27 @@ object NumberQuestionRepository {
 
     private fun getSounds(): List<Int> {
         return listOf(
-            R.raw.find_0,
-            R.raw.find_1,
-            R.raw.find_2,
-            R.raw.find_3,
-            R.raw.find_4,
-            R.raw.find_5,
-            R.raw.find_6,
-            R.raw.find_7,
-            R.raw.find_8,
-            R.raw.find_9,
-            R.raw.find_10,
-            R.raw.find_11,
-            R.raw.find_12,
-            R.raw.find_13,
-            R.raw.find_14,
-            R.raw.find_15,
-            R.raw.find_16,
-            R.raw.find_17,
-            R.raw.find_18,
-            R.raw.find_19,
-            R.raw.find_20
+            R.raw.kevin_0,
+            R.raw.kevin_1,
+            R.raw.kevin_2,
+            R.raw.kevin_3,
+            R.raw.kevin_4,
+            R.raw.kevin_5,
+            R.raw.kevin_6,
+            R.raw.kevin_7,
+            R.raw.kevin_8,
+            R.raw.kevin_9,
+            R.raw.kevin_10,
+            R.raw.kevin_11,
+            R.raw.kevin_12,
+            R.raw.kevin_13,
+            R.raw.kevin_14,
+            R.raw.kevin_15,
+            R.raw.kevin_16,
+            R.raw.kevin_17,
+            R.raw.kevin_18,
+            R.raw.kevin_19,
+            R.raw.kevin_20
         )
     }
 
