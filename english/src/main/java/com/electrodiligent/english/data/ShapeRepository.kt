@@ -11,60 +11,60 @@ object ShapeRepository {
             "CIRCLE",
             R.drawable.circle,
             randomColor,
-            audio = com.electrodiligent.english.R.raw.circle
+            audio = com.electrodiligent.english.R.raw.kevin_circle
         ),
         PictureItem(
             name = "OVAL",
             imageId = R.drawable.oval,
             randomColor,
-            audio = com.electrodiligent.english.R.raw.oval
+            audio = com.electrodiligent.english.R.raw.kevin_oval
         ),
         PictureItem(
             "TRIANGLE",
             R.drawable.triangle,
             randomColor,
-            audio = com.electrodiligent.english.R.raw.triangle
+            audio = com.electrodiligent.english.R.raw.kevin_triangle
         ),
         PictureItem(
             "SQUARE",
             R.drawable.square,
             randomColor,
-            audio = com.electrodiligent.english.R.raw.square
+            audio = com.electrodiligent.english.R.raw.kevin_square
         ),
         PictureItem(
             "RECTANGLE",
             R.drawable.rectangle,
             randomColor,
-            audio = com.electrodiligent.english.R.raw.rectangle
+            audio = com.electrodiligent.english.R.raw.kevin_rectangle
         ),
         PictureItem(
             "DIAMOND",
             R.drawable.diamond,
             randomColor,
-            audio = com.electrodiligent.english.R.raw.diamond
+            audio = com.electrodiligent.english.R.raw.kevin_diamond
         ),
         PictureItem(
             "PENTAGON",
             R.drawable.pentagon,
             randomColor,
-            audio = com.electrodiligent.english.R.raw.pentagon
+            audio = com.electrodiligent.english.R.raw.kevin_pentagon
         ),
         PictureItem(
             "HEXAGON",
             R.drawable.hexagon,
             randomColor,
-            audio = com.electrodiligent.english.R.raw.hexagon
+            audio = com.electrodiligent.english.R.raw.kevin_hexagon
         ),
         PictureItem(
             name = "STAR",
             imageId = R.drawable.star,
             color = randomColor,
-            audio = com.electrodiligent.english.R.raw.star
+            audio = com.electrodiligent.english.R.raw.kevin_star
         ),
         PictureItem(
             name = "HEART", imageId = R.drawable.heart,
             color = randomColor,
-            audio = com.electrodiligent.english.R.raw.heart
+            audio = com.electrodiligent.english.R.raw.kevin_heart
         )
     )
 }

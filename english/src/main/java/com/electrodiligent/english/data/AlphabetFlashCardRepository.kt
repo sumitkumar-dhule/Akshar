@@ -1,6 +1,6 @@
 package com.electrodiligent.english.data
 
-import com.electrodiligent.core.R.raw.*
+import com.electrodiligent.english.R.raw.*
 import com.electrodiligent.core.domain.model.DisplayCharacter
 
 object AlphabetFlashCardRepository {
@@ -26,32 +26,32 @@ object AlphabetFlashCardRepository {
 
     private fun getSounds(): List<Int> {
         return listOf(
-            say_a,
-            say_b,
-            say_c,
-            say_d,
-            say_e,
-            say_f,
-            say_g,
-            say_h,
-            say_i,
-            say_j,
-            say_k,
-            say_l,
-            say_m,
-            say_n,
-            say_o,
-            say_p,
-            say_q,
-            say_r,
-            say_s,
-            say_t,
-            say_u,
-            say_v,
-            say_w,
-            say_x,
-            say_y,
-            say_z
+            kevin_a,
+            kevin_b,
+            kevin_c,
+            kevin_d,
+            kevin_e,
+            kevin_f,
+            kevin_g,
+            kevin_h,
+            kevin_i,
+            kevin_j,
+            kevin_k,
+            kevin_l,
+            kevin_m,
+            kevin_n,
+            kevin_o,
+            kevin_p,
+            kevin_q,
+            kevin_r,
+            kevin_s,
+            kevin_t,
+            kevin_u,
+            kevin_v,
+            kevin_w,
+            kevin_x,
+            kevin_y,
+            kevin_z
         )
     }
 }
