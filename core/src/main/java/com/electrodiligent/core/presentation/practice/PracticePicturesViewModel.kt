@@ -100,11 +100,6 @@ class PracticePicturesViewModel @Inject constructor(@ApplicationContext val cont
         if (isSoundPlaying()) {
             return
         }
-      /*  playFindSound(findSound)
-        CoroutineScope(Dispatchers.Main).launch() {
-            delay(500)
-            playSound(questions[currentIndex].correctAnswer.audio)
-        }*/
 
         playSound(questions[currentIndex].correctAnswer.audio)
 
