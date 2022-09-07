@@ -188,8 +188,8 @@ object VyanjanRepository {
         ),
         DisplayCharacter(
             left = "ब", display = "भ", right = "म",
-            displayImage = R.drawable.bhajiya,
-            displayName = "भजे",
+            displayImage = R.drawable.bharat,
+            displayName = "भारत",
             // audio =R.raw.bha_h,
             // middleAudio = R.raw.se,
             // displayAudio  = R.raw.bhalu
