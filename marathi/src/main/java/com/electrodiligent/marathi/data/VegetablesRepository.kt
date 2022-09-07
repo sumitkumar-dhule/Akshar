@@ -9,84 +9,84 @@ object VegetablesRepository {
     private val listItems = listOf(
         PictureItem(
             name = "भोपळा", imageId = R.drawable.pumpkin,
-            // audio = com.electrodiligent.hindi.R.raw.kaddu
+            audio = com.electrodiligent.marathi.R.raw.bhopla
         ),
         PictureItem(
             "टमाटर",
             R.drawable.tomato,
-            // audio = com.electrodiligent.hindi.R.raw.tamatar
+            audio = com.electrodiligent.marathi.R.raw.tamatar
         ),
         PictureItem(
             name = "काकडी",
             imageId = R.drawable.cucumber,
-            // audio = com.electrodiligent.hindi.R.raw.khira
+            audio = com.electrodiligent.marathi.R.raw.kakadi
         ),
         PictureItem(
             "कांदा",
             R.drawable.onion,
-            // audio = com.electrodiligent.hindi.R.raw.pyaj
+            audio = com.electrodiligent.marathi.R.raw.kanda
         ),
         PictureItem(
             "लसूण",
             R.drawable.garlic,
-            // audio = com.electrodiligent.hindi.R.raw.lehsoon
+            audio = com.electrodiligent.marathi.R.raw.lasun
         ),
         PictureItem(
             "गाजर",
             R.drawable.carrot,
-            // audio = com.electrodiligent.hindi.R.raw.gajar
+            audio = com.electrodiligent.marathi.R.raw.gajar
         ),
         PictureItem(
             "पालक",
             R.drawable.spinach,
-            // audio = com.electrodiligent.hindi.R.raw.palak
+            audio = com.electrodiligent.marathi.R.raw.palak
         ),
         PictureItem(
             "बटाटा",
             R.drawable.potato,
-            // audio = com.electrodiligent.hindi.R.raw.aloo
+            audio = com.electrodiligent.marathi.R.raw.batata
         ),
         PictureItem(
             "कोबी",
             R.drawable.cabbage,
-            // audio = com.electrodiligent.hindi.R.raw.pattagobhi
+            audio = com.electrodiligent.marathi.R.raw.kobi
         ),
         PictureItem(
             name = "मुळा",
             imageId = R.drawable.radish,
-            // audio = com.electrodiligent.hindi.R.raw.muli
+            audio = com.electrodiligent.marathi.R.raw.mula
         ),
         PictureItem(
             name = "वांगं", imageId = R.drawable.eggplant,
-            // audio = com.electrodiligent.hindi.R.raw.baigan
+            audio = com.electrodiligent.marathi.R.raw.vanga
         ),
         PictureItem(
             name = "मशरूम", imageId = R.drawable.mushroom,
-            // audio = com.electrodiligent.hindi.R.raw.mashroom
+            audio = com.electrodiligent.marathi.R.raw.mashroom
         ),
         PictureItem(
             name = "शिमला मिर्ची", imageId = R.drawable.green_pepper,
-            // audio = com.electrodiligent.hindi.R.raw.simla_mirch
+            audio = com.electrodiligent.marathi.R.raw.shimlamirchi
         ),
         PictureItem(
             name = "मका", imageId = R.drawable.corn,
-            // audio = com.electrodiligent.hindi.R.raw.makai,
+            audio = com.electrodiligent.marathi.R.raw.maka,
         ),
         PictureItem(
             name = "फुलकोबी", imageId = R.drawable.cauliflower,
-            // audio = com.electrodiligent.hindi.R.raw.fulgobhi
+            audio = com.electrodiligent.marathi.R.raw.fulkobi
         ),
         PictureItem(
             name = "लाल मिरची", imageId = R.drawable.red_chilli,
-            // audio = com.electrodiligent.hindi.R.raw.lal_mirch
+            audio = com.electrodiligent.marathi.R.raw.lalmirchi
         ),
         PictureItem(
             name = "हिरवी मिरची", imageId = R.drawable.green_chilli,
-            // audio = com.electrodiligent.hindi.R.raw.hari_mirch
+            audio = com.electrodiligent.marathi.R.raw.hirvimirchi
         ),
         PictureItem(
             name = "मटार", imageId = R.drawable.green_peas,
-            // audio = com.electrodiligent.hindi.R.raw.hari_matar
+            audio = com.electrodiligent.marathi.R.raw.matar
         )
     )
 }

@@ -11,55 +11,50 @@ object ShapeRepository {
             "वर्तुळ",
             R.drawable.circle,
             randomColor,
-            // audio = com.electrodiligent.hindi.R.raw.gol
+            audio = com.electrodiligent.marathi.R.raw.vartul
         ),
         PictureItem(
             name = "अंडाकृती",
             imageId = R.drawable.oval,
             randomColor,
-            // audio = com.electrodiligent.hindi.R.raw.andakar
+            audio = com.electrodiligent.marathi.R.raw.andakruti
         ),
         PictureItem(
             "त्रिकोण",
             R.drawable.triangle,
             randomColor,
-            // audio = com.electrodiligent.hindi.R.raw.trikon
+            audio = com.electrodiligent.marathi.R.raw.trikon
         ),
         PictureItem(
             "चौरस",
             R.drawable.square,
             randomColor,
-            // audio = com.electrodiligent.hindi.R.raw.chaukor
+            audio = com.electrodiligent.marathi.R.raw.churas
         ),
         PictureItem(
             "आयत",
             R.drawable.rectangle,
             randomColor,
-            // audio = com.electrodiligent.hindi.R.raw.ayat
+            audio = com.electrodiligent.marathi.R.raw.ayat
         ),
 
         PictureItem(
             "पंचकोन",
             R.drawable.pentagon,
             randomColor,
-            // audio = com.electrodiligent.hindi.R.raw.panchakon
+            audio = com.electrodiligent.marathi.R.raw.panchakon
         ),
         PictureItem(
             "षटकोन",
             R.drawable.hexagon,
             randomColor,
-            // audio = com.electrodiligent.hindi.R.raw.shatkon
+            audio = com.electrodiligent.marathi.R.raw.shatkon
         ),
         PictureItem(
             name = "तारा",
             imageId = R.drawable.star,
             color = randomColor,
-            // audio = com.electrodiligent.hindi.R.raw.sitara
-        ),
-        PictureItem(
-            name = "हृदय", imageId = R.drawable.heart,
-            color = randomColor,
-            // audio = com.electrodiligent.hindi.R.raw.dil
+            audio = com.electrodiligent.marathi.R.raw.tara
         )
     )
 }
