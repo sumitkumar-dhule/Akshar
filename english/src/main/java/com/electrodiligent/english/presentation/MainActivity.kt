@@ -110,7 +110,7 @@ class MainActivity : ComponentActivity() {
                                         "settings" -> {
                                             navigateTo(
                                                 navController,
-                                                Screen.SettingsScreen.route
+                                                Screen.ParentVerificationScreen.route
                                             )
                                         }
 

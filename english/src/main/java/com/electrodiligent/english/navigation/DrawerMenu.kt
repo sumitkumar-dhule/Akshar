@@ -1,5 +1,7 @@
 package com.electrodiligent.english.navigation
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import com.electrodiligent.core.R
 import com.electrodiligent.core.presentation.MenuItem
 
@@ -179,23 +181,23 @@ object DrawerMenu {
             title = "Colors",
             contentDescription = "Colors",
             icon = R.drawable.practice_colors
-        )
+        ),
 
 
-//        MenuItem(
-//            id = "blank",
-//            title = "",
-//            contentDescription = "",
-//            icon = R.drawable.bookmark,
-//            isSectionHeader = true
-//        ),
-//
-//        MenuItem(
-//            id = "settings",
-//            title = "Settings",
-//            contentDescription = "Go to settings screen",
-//            icon = Icons.Default.Settings
-//        ),
+        MenuItem(
+            id = "blank",
+            title = "",
+            contentDescription = "",
+            icon = R.drawable.bookmark,
+            isSectionHeader = true
+        ),
+
+        MenuItem(
+            id = "settings",
+            title = "Settings",
+            contentDescription = "Go to settings screen",
+            icon = R.drawable.settings_suggest
+        ),
 //        MenuItem(
 //            id = "help",
 //            title = "Help",
