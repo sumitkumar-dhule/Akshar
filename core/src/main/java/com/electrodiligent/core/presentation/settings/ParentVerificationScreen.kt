@@ -33,7 +33,7 @@ fun ParentVerificationScreen(navController: NavHostController) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
+//                .verticalScroll(rememberScrollState())
                 .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD),
             contentAlignment = Alignment.Center
         ) {
@@ -58,7 +58,7 @@ fun ParentVerificationScreen(navController: NavHostController) {
 
                 Text(
                     modifier = Modifier.padding(horizontal = 16.dp),
-                    text = "Enter correct answer to proceed to settings",
+                    text = "Enter correct answer to proceed",
                     fontSize = 24.sp,
                     textAlign = TextAlign.Center
                 )

@@ -1,6 +1,7 @@
 package com.electrodiligent.english.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -138,7 +139,10 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.SettingsScreen.route) {
-            SettingsScreen(navController)
+            SettingsScreen(
+                navController = navController,
+                reviewUrl = stringResource(com.electrodiligent.english.R.string.appReviewUrl)
+            )
         }
 
     }

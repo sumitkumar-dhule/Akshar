@@ -194,10 +194,12 @@ object DrawerMenu {
 
         MenuItem(
             id = "settings",
-            title = "Settings",
+            title = "Settings and more",
             contentDescription = "Go to settings screen",
             icon = R.drawable.settings_suggest
         ),
+
+
 //        MenuItem(
 //            id = "help",
 //            title = "Help",

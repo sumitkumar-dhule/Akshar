@@ -22,7 +22,7 @@ fun SettingItem(displayText: String, onClick: () -> Unit) {
             Text(
                 text = displayText,
                 Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(0.5f)
                     .padding(PADDING_SMALL),
                 color = Color.White,
                 fontSize = 18.sp,

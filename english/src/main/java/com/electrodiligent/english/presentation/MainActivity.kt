@@ -1,6 +1,8 @@
 package com.electrodiligent.english.presentation
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
@@ -14,6 +16,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
+import com.electrodiligent.core.navigation.NavigationUtil.navigateTo
+import com.electrodiligent.core.navigation.NavigationUtil.setAsBase
+import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.core.presentation.AppBar
 import com.electrodiligent.core.presentation.BackgroundImage
 import com.electrodiligent.core.presentation.DrawerBody
@@ -22,9 +27,6 @@ import com.electrodiligent.english.BuildConfig.VERSION_NAME
 import com.electrodiligent.english.R
 import com.electrodiligent.english.navigation.DrawerMenu
 import com.electrodiligent.english.navigation.Navigation
-import com.electrodiligent.core.navigation.NavigationUtil.navigateTo
-import com.electrodiligent.core.navigation.NavigationUtil.setAsBase
-import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.english.ui.theme.AksharTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -211,8 +213,6 @@ class MainActivity : ComponentActivity() {
                                                 Screen.ColorPracticeScreen.route
                                             )
                                         }
-
-
                                     }
 
                                     scope.launch {
