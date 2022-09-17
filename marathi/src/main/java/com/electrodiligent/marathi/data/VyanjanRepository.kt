@@ -25,19 +25,13 @@ object VyanjanRepository {
             audio = R.raw.ga_ni
         ),
         DisplayCharacter(
-            left = "ग", display = "घ", right = "ङ",
+            left = "ग", display = "घ", right = "च",
             displayImage = R.drawable.home,
             displayName = "घर",
             audio = R.raw.ghaa_ni
         ),
         DisplayCharacter(
-            left = "घ", display = "ङ", right = "च",
-            displayImage = daa,
-            displayName = "",
-//            audio =R.raw.umm_h,
-        ),
-        DisplayCharacter(
-            left = "ङ", display = "च", right = "छ",
+            left = "घ", display = "च", right = "छ",
             displayImage = spoon,
             displayName = "चमचा",
             audio = R.raw.cha_ni
@@ -55,19 +49,13 @@ object VyanjanRepository {
             audio = R.raw.ja_ni
         ),
         DisplayCharacter(
-            left = "ज", display = "झ", right = "ञ",
+            left = "ज", display = "झ", right = "ट",
             displayImage = indian_flag,
             displayName = "झेंडा",
             audio = R.raw.za_ni
         ),
         DisplayCharacter(
-            left = "झ", display = "ञ", right = "ट",
-            displayImage = tra,
-            displayName = "",
-//            audio =R.raw.eya_h,
-        ),
-        DisplayCharacter(
-            left = "ञ", display = "ट", right = "ठ",
+            left = "झ", display = "ट", right = "ठ",
             displayImage = watermelon,
             displayName = "टरबूज",
             audio = R.raw.ta_ni
