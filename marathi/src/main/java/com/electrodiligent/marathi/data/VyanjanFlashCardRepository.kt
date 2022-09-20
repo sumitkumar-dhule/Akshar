@@ -100,13 +100,13 @@ object VyanjanFlashCardRepository {
             left = "थ", display = "द", right = "ध",
             displayImage = com.electrodiligent.marathi.R.drawable.schoolbag,
             displayName = "दप्तर",
-            audio = com.electrodiligent.marathi.R.raw.da
+            audio = com.electrodiligent.marathi.R.raw.daa
         ),
         DisplayCharacter(
             left = "द", display = "ध", right = "न",
             displayImage = R.drawable.bow,
             displayName = "धनुष",
-            audio = com.electrodiligent.marathi.R.raw.dha
+            audio = com.electrodiligent.marathi.R.raw.dhaa
         ),
         DisplayCharacter(
             left = "ध", display = "न", right = "प",

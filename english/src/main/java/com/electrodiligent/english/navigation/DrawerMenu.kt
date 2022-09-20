@@ -184,20 +184,20 @@ object DrawerMenu {
         ),
 
 
-        MenuItem(
-            id = "blank",
-            title = "",
-            contentDescription = "",
-            icon = R.drawable.bookmark,
-            isSectionHeader = true
-        ),
-
-        MenuItem(
-            id = "settings",
-            title = "Settings and more",
-            contentDescription = "Go to settings screen",
-            icon = R.drawable.settings_suggest
-        ),
+//        MenuItem(
+//            id = "blank",
+//            title = "",
+//            contentDescription = "",
+//            icon = R.drawable.bookmark,
+//            isSectionHeader = true
+//        ),
+//
+//        MenuItem(
+//            id = "settings",
+//            title = "Settings and more",
+//            contentDescription = "Go to settings screen",
+//            icon = R.drawable.settings_suggest
+//        ),
 
 
 //        MenuItem(
