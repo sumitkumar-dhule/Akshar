@@ -27,4 +27,5 @@ sealed class Screen(val route: String) {
     object ColorPracticeScreen : Screen("color_practice_screen")
 
     object SettingsScreen : Screen("settings_screen")
+    object ParentVerificationScreen : Screen("pre_settings_screen")
 }

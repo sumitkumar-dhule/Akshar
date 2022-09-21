@@ -3,7 +3,6 @@ package com.electrodiligent.english.navigation
 import com.electrodiligent.core.R
 import com.electrodiligent.core.navigation.NavigationItem
 import com.electrodiligent.core.navigation.Screen
-import com.electrodiligent.core.presentation.MenuItem
 
 object PracticeItems {
     val menu: List<NavigationItem> = listOf(

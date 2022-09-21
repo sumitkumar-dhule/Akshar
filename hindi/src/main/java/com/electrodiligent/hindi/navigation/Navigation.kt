@@ -18,7 +18,7 @@ import com.electrodiligent.core.presentation.picture.BirdsScreen
 import com.electrodiligent.core.presentation.picture.FruitsScreen
 import com.electrodiligent.core.presentation.picture.VegetablesScreen
 import com.electrodiligent.core.presentation.practice.*
-import com.electrodiligent.core.presentation.settings.SettingsScreen
+import com.electrodiligent.core.presentation.settings.ParentVerificationScreen
 import com.electrodiligent.core.presentation.shape.ShapesScreen
 import com.electrodiligent.hindi.data.FruitsRepository
 import com.electrodiligent.hindi.data.*
@@ -149,8 +149,8 @@ fun Navigation(navController: NavHostController) {
             )
         }
 
-        composable(route = Screen.SettingsScreen.route) {
-            SettingsScreen()
+        composable(route = Screen.ParentVerificationScreen.route) {
+            ParentVerificationScreen(navController)
         }
 
     }

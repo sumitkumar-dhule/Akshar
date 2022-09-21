@@ -39,8 +39,8 @@ object VarnamalaQuestionRepository {
 
     private fun getAllSwarAndVyanjan(): List<DisplayCharacter> {
         val swarAndVyanjan = mutableListOf<DisplayCharacter>()
-        swarAndVyanjan.addAll(SwarRepository.list)
-        swarAndVyanjan.addAll(VyanjanRepository.list)
+        swarAndVyanjan.addAll(SwarFlashCardRepository.list)
+        swarAndVyanjan.addAll(VyanjanFlashCardRepository.list)
         return swarAndVyanjan
     }
 }

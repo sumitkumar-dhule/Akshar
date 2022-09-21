@@ -1,6 +1,7 @@
 package com.electrodiligent.english.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,13 +16,13 @@ import com.electrodiligent.core.presentation.picture.BirdsScreen
 import com.electrodiligent.core.presentation.picture.FruitsScreen
 import com.electrodiligent.core.presentation.picture.VegetablesScreen
 import com.electrodiligent.core.presentation.practice.*
-import com.electrodiligent.core.presentation.settings.SettingsScreen
+import com.electrodiligent.core.presentation.settings.ParentVerificationScreen
 import com.electrodiligent.core.presentation.shape.ShapesScreen
 import com.electrodiligent.english.data.*
 import com.electrodiligent.core.presentation.HomeScreen
 import com.electrodiligent.core.presentation.PracticeScreen
 import com.electrodiligent.core.R
-import java.nio.file.Files.find
+import com.electrodiligent.core.presentation.settings.SettingsScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -133,8 +134,15 @@ fun Navigation(navController: NavHostController) {
             )
         }
 
+        composable(route = Screen.ParentVerificationScreen.route) {
+            ParentVerificationScreen(navController)
+        }
+
         composable(route = Screen.SettingsScreen.route) {
-            SettingsScreen()
+            SettingsScreen(
+                navController = navController,
+                reviewUrl = stringResource(com.electrodiligent.english.R.string.appReviewUrl)
+            )
         }
 
     }
