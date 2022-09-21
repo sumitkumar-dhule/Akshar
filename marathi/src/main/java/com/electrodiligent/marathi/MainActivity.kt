@@ -124,7 +124,7 @@ class MainActivity : ComponentActivity() {
                                         "settings" -> {
                                             NavigationUtil.navigateTo(
                                                 navController,
-                                                Screen.SettingsScreen.route
+                                                Screen.ParentVerificationScreen.route
                                             )
                                         }
 

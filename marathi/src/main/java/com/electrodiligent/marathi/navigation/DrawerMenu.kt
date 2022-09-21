@@ -133,7 +133,7 @@ object DrawerMenu {
         //Practice
         MenuItem(
             id = "practice",
-            title = "खेले",
+            title = "खेळा",
             contentDescription = "General Knowledge",
             icon = R.drawable.bookmark,
             isSectionHeader = true
