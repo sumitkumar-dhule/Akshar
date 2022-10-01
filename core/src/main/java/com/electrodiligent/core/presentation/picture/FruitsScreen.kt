@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.electrodiligent.core.domain.model.PictureItem
-import com.electrodiligent.core.presentation.picture.PictureDisplay
 import com.electrodiligent.core.util.Dimension
 
 @Composable
@@ -15,7 +14,7 @@ fun FruitsScreen(items: List<PictureItem>, title: String) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD),
+                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BOTTOM),
             contentAlignment = Alignment.Center
         ) {
 
@@ -32,7 +31,7 @@ fun FruitsScreen(items: List<PictureItem>, title: String) {
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
-                .height(Dimension.PADDING_BANNER_AD)
+                .height(Dimension.PADDING_BOTTOM)
         )
     }
 
