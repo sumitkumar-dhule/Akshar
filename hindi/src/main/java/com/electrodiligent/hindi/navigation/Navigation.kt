@@ -6,8 +6,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.electrodiligent.hindi.R
 import com.electrodiligent.core.navigation.Screen
-import com.electrodiligent.core.presentation.HomeScreen
-import com.electrodiligent.core.presentation.PracticeScreen
 import com.electrodiligent.core.presentation.alphabate.AlphabetIdentificationScreen
 import com.electrodiligent.core.presentation.alphabate.DevnagariFlashcardScreen
 import com.electrodiligent.core.presentation.alphabate.NumberFlashcardScreen
@@ -22,6 +20,8 @@ import com.electrodiligent.core.presentation.settings.ParentVerificationScreen
 import com.electrodiligent.core.presentation.shape.ShapesScreen
 import com.electrodiligent.hindi.data.FruitsRepository
 import com.electrodiligent.hindi.data.*
+import com.electrodiligent.hindi.presentation.HomeScreen
+import com.electrodiligent.hindi.presentation.PracticeScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {

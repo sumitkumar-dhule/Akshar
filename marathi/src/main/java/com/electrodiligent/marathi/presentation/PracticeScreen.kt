@@ -1,4 +1,4 @@
-package com.electrodiligent.english.presentation
+package com.electrodiligent.marathi.presentation
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -18,9 +18,9 @@ import androidx.navigation.NavHostController
 import com.electrodiligent.core.navigation.NavigationItem
 import com.electrodiligent.core.presentation.DisplayTile
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.english.R
-import com.electrodiligent.english.presentation.ads.BannerAdvertView
+import com.electrodiligent.marathi.presentation.ads.BannerAdvertView
 import com.google.android.gms.ads.AdSize
+import com.electrodiligent.marathi.R
 
 @Composable
 fun PracticeScreen(
