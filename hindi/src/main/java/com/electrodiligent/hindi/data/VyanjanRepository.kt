@@ -34,7 +34,7 @@ object VyanjanRepository {
             left = "घ", display = "ङ", right = "च",
             displayImage = daa,
             displayName = "",
-            audio = R.raw.unn_se
+            audio = R.raw.umm_h
         ),
         DisplayCharacter(
             left = "ङ", display = "च", right = "छ",
@@ -188,9 +188,9 @@ object VyanjanRepository {
         ),
         DisplayCharacter(
             left = "श", display = "ष", right = "स",
-            displayImage = hexagon,
+            displayImage = hexagon_red,
             displayName = "षट्कोण",
-            audio = R.raw.sha_se
+            audio = R.raw.sha_se_shatkon
         ),
         DisplayCharacter(
             left = "ष", display = "स", right = "ह",
