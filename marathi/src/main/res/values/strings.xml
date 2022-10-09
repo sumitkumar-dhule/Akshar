@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Preschool Essentials Marathi</string>
+
+    <!--    Ads -->
+    <string name="admob_app_id">ca-app-pub-4371087315799110~5112778883</string>
+    <string name="admob_banner_ad_sample_id">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="admob_banner_ad_home">ca-app-pub-4371087315799110/4510143658</string>
+    <string name="admob_banner_ad_practice">ca-app-pub-4371087315799110/4490758515</string>
+
 </resources>

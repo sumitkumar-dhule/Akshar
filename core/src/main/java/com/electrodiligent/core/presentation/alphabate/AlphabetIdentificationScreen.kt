@@ -14,7 +14,7 @@ fun AlphabetIdentificationScreen(displayCharacters: List<DisplayCharacter>) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
+                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BOTTOM)
         ) {
             CharacterDisplay(
                 modifier = Modifier.fillMaxSize(),
@@ -28,7 +28,7 @@ fun AlphabetIdentificationScreen(displayCharacters: List<DisplayCharacter>) {
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
-                .height(Dimension.PADDING_BANNER_AD)
+                .height(Dimension.PADDING_BOTTOM)
         )
     }
 

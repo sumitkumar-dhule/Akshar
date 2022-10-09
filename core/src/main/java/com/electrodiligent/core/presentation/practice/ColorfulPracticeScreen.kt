@@ -14,7 +14,7 @@ fun ColorfulPracticeScreen(items: List<PictureQuestion>, findText: String = "FIN
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
+                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BOTTOM)
         ) {
             PracticeColorfulPictures(
                 modifier = Modifier.fillMaxSize(),
@@ -29,7 +29,7 @@ fun ColorfulPracticeScreen(items: List<PictureQuestion>, findText: String = "FIN
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
-                .height(Dimension.PADDING_BANNER_AD)
+                .height(Dimension.PADDING_BOTTOM)
         )
     }
 

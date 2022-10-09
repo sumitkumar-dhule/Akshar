@@ -3,8 +3,6 @@ package com.electrodiligent.core.presentation.settings
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -34,7 +32,7 @@ fun ParentVerificationScreen(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxSize()
 //                .verticalScroll(rememberScrollState())
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD),
+                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BOTTOM),
             contentAlignment = Alignment.Center
         ) {
 
@@ -115,7 +113,7 @@ fun ParentVerificationScreen(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
-                .height(Dimension.PADDING_BANNER_AD)
+                .height(Dimension.PADDING_BOTTOM)
         )
     }
 

@@ -33,7 +33,7 @@ fun ColorsScreen(colorItems: List<ColorItem>, title: String = "Colors") {
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
-                .height(Dimension.PADDING_BANNER_AD)
+                .height(Dimension.PADDING_BOTTOM)
         )
     }
 

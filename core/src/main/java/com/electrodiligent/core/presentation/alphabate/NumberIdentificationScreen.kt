@@ -15,7 +15,7 @@ fun NumberIdentificationScreen(items: List<NumberItem>) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BANNER_AD)
+                .padding(top = Dimension.PADDING_TITLE, bottom = Dimension.PADDING_BOTTOM)
         ) {
             NumberDisplay(
                 modifier = Modifier.fillMaxSize(),
@@ -28,7 +28,7 @@ fun NumberIdentificationScreen(items: List<NumberItem>) {
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
-                .height(Dimension.PADDING_BANNER_AD)
+                .height(Dimension.PADDING_BOTTOM)
         )
     }
 
