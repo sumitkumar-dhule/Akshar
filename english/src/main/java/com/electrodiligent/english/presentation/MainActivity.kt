@@ -28,6 +28,7 @@ import com.electrodiligent.english.R
 import com.electrodiligent.english.navigation.DrawerMenu
 import com.electrodiligent.english.navigation.Navigation
 import com.electrodiligent.english.ui.theme.AksharTheme
+import com.google.android.gms.ads.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

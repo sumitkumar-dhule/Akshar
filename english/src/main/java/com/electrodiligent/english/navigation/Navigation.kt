@@ -5,6 +5,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.electrodiligent.core.R
 import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.core.presentation.alphabate.AlphabetFlashcardScreen
 import com.electrodiligent.core.presentation.alphabate.AlphabetIdentificationScreen
@@ -15,14 +16,16 @@ import com.electrodiligent.core.presentation.picture.AnimalsScreen
 import com.electrodiligent.core.presentation.picture.BirdsScreen
 import com.electrodiligent.core.presentation.picture.FruitsScreen
 import com.electrodiligent.core.presentation.picture.VegetablesScreen
-import com.electrodiligent.core.presentation.practice.*
+import com.electrodiligent.core.presentation.practice.AlphabetsPracticeScreen
+import com.electrodiligent.core.presentation.practice.ColorfulPracticeScreen
+import com.electrodiligent.core.presentation.practice.NumbersPracticeScreen
+import com.electrodiligent.core.presentation.practice.PicturePracticeScreen
 import com.electrodiligent.core.presentation.settings.ParentVerificationScreen
+import com.electrodiligent.core.presentation.settings.SettingsScreen
 import com.electrodiligent.core.presentation.shape.ShapesScreen
 import com.electrodiligent.english.data.*
-import com.electrodiligent.core.presentation.HomeScreen
-import com.electrodiligent.core.presentation.PracticeScreen
-import com.electrodiligent.core.R
-import com.electrodiligent.core.presentation.settings.SettingsScreen
+import com.electrodiligent.english.presentation.HomeScreen
+import com.electrodiligent.english.presentation.PracticeScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {

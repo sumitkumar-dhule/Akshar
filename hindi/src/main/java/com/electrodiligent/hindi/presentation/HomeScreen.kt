@@ -1,4 +1,4 @@
-package com.electrodiligent.core.presentation
+package com.electrodiligent.hindi.presentation
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -9,16 +9,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.electrodiligent.core.navigation.NavigationItem
+import com.electrodiligent.core.presentation.DisplayTile
+import com.electrodiligent.hindi.presentation.ads.BannerAdvertView
 import com.electrodiligent.core.util.Dimension
+import com.electrodiligent.hindi.R
 
 @Composable
-fun PracticeScreen(
+fun HomeScreen(
     navController: NavHostController,
     screenTitle: String,
     navigationItems: List<NavigationItem>
@@ -67,13 +71,18 @@ fun PracticeScreen(
 
         }
 
-        //TODO:: Display Ad in following box
+        // Display Ad in following box
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
-                .height(Dimension.PADDING_BOTTOM)
-        )
-    }
+                .height(Dimension.PADDING_BANNER_AD)
+        ) {
+            BannerAdvertView(
+                modifier = Modifier.fillMaxSize(),
+                showAdUnit = stringResource(R.string.admob_banner_ad_practice)
+            )
+        }
 
+    }
 }
