@@ -6,6 +6,8 @@ plugins {
 }
 
 android {
+    namespace 'com.electrodiligent.core'
+
     compileSdk 32
 
     defaultConfig {
