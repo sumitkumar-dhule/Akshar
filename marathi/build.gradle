@@ -9,12 +9,12 @@ plugins {
 android {
     namespace 'com.electrodiligent.marathi'
 
-    compileSdk 32
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.electrodiligent.marathi"
         minSdk 21
-        targetSdk 32
+        targetSdk 36
         versionCode 16
         versionName "1.6"
 

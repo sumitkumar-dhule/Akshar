@@ -10,12 +10,12 @@ android {
 
     namespace 'com.electrodiligent.english'
 
-    compileSdk 32
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.electrodiligent.english"
         minSdk 21
-        targetSdk 32
+        targetSdk 36
         versionCode 34
         versionName "3.4"
 

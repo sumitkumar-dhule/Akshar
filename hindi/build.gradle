@@ -9,12 +9,12 @@ plugins {
 android {
     namespace 'com.electrodiligent.hindi'
 
-    compileSdk 32
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.electrodiligent.hindi"
         minSdk 21
-        targetSdk 32
+        targetSdk 36
         versionCode 13
         versionName "1.3"
 
