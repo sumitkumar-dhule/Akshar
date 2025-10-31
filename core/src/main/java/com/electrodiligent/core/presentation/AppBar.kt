@@ -1,10 +1,9 @@
 package com.electrodiligent.core.presentation
 
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
-
+import androidx.compose.ui.res.painterResource
+import com.electrodiligent.core.R
 @Composable
 fun AppBar(
     title: String,
@@ -19,7 +18,7 @@ fun AppBar(
         navigationIcon = {
             IconButton(onClick = onNavigationIconClick) {
                 Icon(
-                    imageVector = Icons.Default.Menu,
+                    painter = painterResource(id = R.drawable.menu_book),
                     contentDescription = "Toggle drawer"
                 )
             }
