@@ -1,7 +1,5 @@
 package com.electrodiligent.english.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Settings
 import com.electrodiligent.core.R
 import com.electrodiligent.core.presentation.MenuItem
 
