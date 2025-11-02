@@ -1,5 +1,4 @@
-# .github/workflows/ci.yml (simplified multi-module)
-name: Android CI (multi-module)
+name: Android CI (Akshar)
 
 on:
   push:
@@ -11,20 +10,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-      - name: Grant execute permission for gradlew
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/build.gradle*','**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant execute permission for Gradlew
         run: chmod +x ./gradlew
 
-      - name: Run tests & assemble debug for modules
+      - name: Run unit tests (all modules)
+        run: ./gradlew testDebugUnitTest --no-daemon
+
+      - name: Run lint on all app modules
+        run: ./gradlew lintDebug --no-daemon
+
+      - name: Assemble debug APKs (all apps)
         run: |
-          ./gradlew :app1:assembleDebug :app1:testDebugUnitTest :app2:assembleDebug :app2:testDebugUnitTest --no-daemon
-      - name: Upload debug APKs
+          ./gradlew :english:assembleDebug \
+                     :hindi:assembleDebug \
+                     :marathi:assembleDebug \
+                     --no-daemon
+
+      - name: Upload debug APKs as artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: debug-apks
-          path: app1/build/outputs/apk/debug/*.apk,app2/build/outputs/apk/debug/*.apk
+          name: akshar-debug-apks
+          path: |
+            english/build/outputs/apk/debug/*.apk
+            hindi/build/outputs/apk/debug/*.apk
+            marathi/build/outputs/apk/debug/*.apk
