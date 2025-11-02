@@ -1,0 +1,30 @@
+# .github/workflows/ci.yml (simplified multi-module)
+name: Android CI (multi-module)
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
+      - name: Run tests & assemble debug for modules
+        run: |
+          ./gradlew :app1:assembleDebug :app1:testDebugUnitTest :app2:assembleDebug :app2:testDebugUnitTest --no-daemon
+      - name: Upload debug APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-apks
+          path: app1/build/outputs/apk/debug/*.apk,app2/build/outputs/apk/debug/*.apk
