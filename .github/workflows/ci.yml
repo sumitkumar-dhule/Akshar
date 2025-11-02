@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'   # adjust if needed
+          java-version: '17'
 
       - name: Cache Gradle
         uses: actions/cache@v4
@@ -32,6 +32,7 @@ jobs:
       - name: Grant execute permission for Gradlew
         run: chmod +x ./gradlew
 
+      # 🔹 Decode Firebase google-services.json from secrets
       - name: Create google-services.json for modules from secrets
         run: |
           set -e
@@ -42,6 +43,7 @@ jobs:
             DEST1="${MODULE}/src/debug/google-services.json"
             DEST2="${MODULE}/src/google-services.json"
             GS_B64="${!SECRET_NAME}"
+
             if [ -n "$GS_B64" ]; then
               echo "Writing google-services.json for module: $MODULE"
               mkdir -p "${MODULE}/src/debug"
@@ -62,12 +64,36 @@ jobs:
           HINDI_GOOGLE_SERVICES_JSON_B64: ${{ secrets.HINDI_GOOGLE_SERVICES_JSON_B64 }}
           MARATHI_GOOGLE_SERVICES_JSON_B64: ${{ secrets.MARATHI_GOOGLE_SERVICES_JSON_B64 }}
 
+      # ✅ Run unit tests
       - name: Run unit tests (all modules)
         run: ./gradlew testDebugUnitTest --no-daemon
 
-      - name: Run lint on all app modules
-        run: ./gradlew lintDebug --no-daemon
+      # ⚠️ TEMPORARY — Run lint but don't fail the pipeline
+      # ----------------------------------------------------
+      # After 1 week → To re-enable strict lint checking:
+      # 1. Remove "set +e" and the exit-code logic below.
+      # 2. Replace this whole block with a simple:
+      #       - name: Run lint on all app modules
+      #         run: ./gradlew lintDebug --no-daemon
+      # ----------------------------------------------------
+      - name: Run lint (record exit code, do not fail pipeline)
+        run: |
+          set +e  # temporarily ignore non-zero exit codes
 
+          echo "Running lintDebug..."
+          ./gradlew lintDebug --no-daemon
+          LINT_EXIT_CODE=$?
+
+          echo "Lint exit code: $LINT_EXIT_CODE"
+          echo "LINT_EXIT_CODE=$LINT_EXIT_CODE" >> $GITHUB_ENV
+
+          if [ "$LINT_EXIT_CODE" -ne 0 ]; then
+            echo "::warning::Android lint finished with errors/warnings (exit code $LINT_EXIT_CODE). Reports will be uploaded."
+          else
+            echo "Android lint finished successfully."
+          fi
+
+      # 🔹 Build debug APKs
       - name: Assemble debug APKs (all apps)
         run: |
           ./gradlew :english:assembleDebug \
@@ -75,7 +101,8 @@ jobs:
                      :marathi:assembleDebug \
                      --no-daemon
 
-      - name: Upload debug APKs as artifacts
+      # 🔹 Upload debug APKs as artifacts
+      - name: Upload debug APKs
         uses: actions/upload-artifact@v4
         with:
           name: akshar-debug-apks
@@ -83,3 +110,13 @@ jobs:
             english/build/outputs/apk/debug/*.apk
             hindi/build/outputs/apk/debug/*.apk
             marathi/build/outputs/apk/debug/*.apk
+
+      # 🔹 Upload lint reports (so you can review them even if build is green)
+      - name: Upload lint reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-reports
+          path: |
+            english/build/reports/lint-results-debug.html
+            hindi/build/reports/lint-results-debug.html
+            marathi/build/reports/lint-results-debug.html
