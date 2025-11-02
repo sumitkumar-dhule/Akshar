@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '17'   # adjust if needed
 
       - name: Cache Gradle
         uses: actions/cache@v4
@@ -31,6 +31,36 @@ jobs:
 
       - name: Grant execute permission for Gradlew
         run: chmod +x ./gradlew
+
+      - name: Create google-services.json for modules from secrets
+        run: |
+          set -e
+
+          write_gs() {
+            SECRET_NAME="$1"
+            MODULE="$2"
+            DEST1="${MODULE}/src/debug/google-services.json"
+            DEST2="${MODULE}/src/google-services.json"
+            GS_B64="${!SECRET_NAME}"
+            if [ -n "$GS_B64" ]; then
+              echo "Writing google-services.json for module: $MODULE"
+              mkdir -p "${MODULE}/src/debug"
+              mkdir -p "${MODULE}/src"
+              echo "$GS_B64" | base64 -d > "$DEST1"
+              echo "$GS_B64" | base64 -d > "$DEST2"
+              echo "Wrote $DEST1 (size: $(wc -c < "$DEST1") bytes)"
+            else
+              echo "Secret $SECRET_NAME empty; skipping $MODULE"
+            fi
+          }
+
+          write_gs "ENGLISH_GOOGLE_SERVICES_JSON_B64" "english"
+          write_gs "HINDI_GOOGLE_SERVICES_JSON_B64"   "hindi"
+          write_gs "MARATHI_GOOGLE_SERVICES_JSON_B64" "marathi"
+        env:
+          ENGLISH_GOOGLE_SERVICES_JSON_B64: ${{ secrets.ENGLISH_GOOGLE_SERVICES_JSON_B64 }}
+          HINDI_GOOGLE_SERVICES_JSON_B64: ${{ secrets.HINDI_GOOGLE_SERVICES_JSON_B64 }}
+          MARATHI_GOOGLE_SERVICES_JSON_B64: ${{ secrets.MARATHI_GOOGLE_SERVICES_JSON_B64 }}
 
       - name: Run unit tests (all modules)
         run: ./gradlew testDebugUnitTest --no-daemon
