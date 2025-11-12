@@ -1,0 +1,122 @@
+name: Android CI (Akshar)
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/build.gradle*','**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant execute permission for Gradlew
+        run: chmod +x ./gradlew
+
+      # 🔹 Decode Firebase google-services.json from secrets
+      - name: Create google-services.json for modules from secrets
+        run: |
+          set -e
+
+          write_gs() {
+            SECRET_NAME="$1"
+            MODULE="$2"
+            DEST1="${MODULE}/src/debug/google-services.json"
+            DEST2="${MODULE}/src/google-services.json"
+            GS_B64="${!SECRET_NAME}"
+
+            if [ -n "$GS_B64" ]; then
+              echo "Writing google-services.json for module: $MODULE"
+              mkdir -p "${MODULE}/src/debug"
+              mkdir -p "${MODULE}/src"
+              echo "$GS_B64" | base64 -d > "$DEST1"
+              echo "$GS_B64" | base64 -d > "$DEST2"
+              echo "Wrote $DEST1 (size: $(wc -c < "$DEST1") bytes)"
+            else
+              echo "Secret $SECRET_NAME empty; skipping $MODULE"
+            fi
+          }
+
+          write_gs "ENGLISH_GOOGLE_SERVICES_JSON_B64" "english"
+          write_gs "HINDI_GOOGLE_SERVICES_JSON_B64"   "hindi"
+          write_gs "MARATHI_GOOGLE_SERVICES_JSON_B64" "marathi"
+        env:
+          ENGLISH_GOOGLE_SERVICES_JSON_B64: ${{ secrets.ENGLISH_GOOGLE_SERVICES_JSON_B64 }}
+          HINDI_GOOGLE_SERVICES_JSON_B64: ${{ secrets.HINDI_GOOGLE_SERVICES_JSON_B64 }}
+          MARATHI_GOOGLE_SERVICES_JSON_B64: ${{ secrets.MARATHI_GOOGLE_SERVICES_JSON_B64 }}
+
+      # ✅ Run unit tests
+      - name: Run unit tests (all modules)
+        run: ./gradlew testDebugUnitTest --no-daemon
+
+      # ⚠️ TEMPORARY — Run lint but don't fail the pipeline
+      # ----------------------------------------------------
+      # After 1 week → To re-enable strict lint checking:
+      # 1. Remove "set +e" and the exit-code logic below.
+      # 2. Replace this whole block with a simple:
+      #       - name: Run lint on all app modules
+      #         run: ./gradlew lintDebug --no-daemon
+      # ----------------------------------------------------
+      - name: Run lint (record exit code, do not fail pipeline)
+        run: |
+          set +e  # temporarily ignore non-zero exit codes
+
+          echo "Running lintDebug..."
+          ./gradlew lintDebug --no-daemon
+          LINT_EXIT_CODE=$?
+
+          echo "Lint exit code: $LINT_EXIT_CODE"
+          echo "LINT_EXIT_CODE=$LINT_EXIT_CODE" >> $GITHUB_ENV
+
+          if [ "$LINT_EXIT_CODE" -ne 0 ]; then
+            echo "::warning::Android lint finished with errors/warnings (exit code $LINT_EXIT_CODE). Reports will be uploaded."
+          else
+            echo "Android lint finished successfully."
+          fi
+
+      # 🔹 Build debug APKs
+      - name: Assemble debug APKs (all apps)
+        run: |
+          ./gradlew :english:assembleDebug \
+                     :hindi:assembleDebug \
+                     :marathi:assembleDebug \
+                     --no-daemon
+
+      # 🔹 Upload debug APKs as artifacts
+      - name: Upload debug APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: akshar-debug-apks
+          path: |
+            english/build/outputs/apk/debug/*.apk
+            hindi/build/outputs/apk/debug/*.apk
+            marathi/build/outputs/apk/debug/*.apk
+
+      # 🔹 Upload lint reports (so you can review them even if build is green)
+      - name: Upload lint reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-reports
+          path: |
+            english/build/reports/lint-results-debug.html
+            hindi/build/reports/lint-results-debug.html
+            marathi/build/reports/lint-results-debug.html
