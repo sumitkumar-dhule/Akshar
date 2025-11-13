@@ -71,6 +71,9 @@ jobs:
         run: |
           set -euo pipefail
 
+          # Ensure gradle.properties ends with a newline to avoid property concatenation
+          echo "" >> $GITHUB_WORKSPACE/gradle.properties
+
           # --- signing properties (write only if keystore password provided) ---
           if [ -n "${ENGLISH_KEYSTORE_PASSWORD:-}" ]; then
             echo "Writing signing properties to gradle.properties (keystore present)."
@@ -97,6 +100,7 @@ jobs:
           if [ -n "$VERSION_NAME" ]; then
             # create a monotonic integer versionCode (UTC timestamp)
             VERSION_CODE=$(date -u +"%Y%m%d%H%M")
+            echo "" >> $GITHUB_WORKSPACE/gradle.properties
             echo "VERSION_NAME=${VERSION_NAME}" >> $GITHUB_WORKSPACE/gradle.properties
             echo "VERSION_CODE=${VERSION_CODE}" >> $GITHUB_WORKSPACE/gradle.properties
             echo "Set versionName=$VERSION_NAME, versionCode=$VERSION_CODE"
