@@ -17,7 +17,7 @@ on:
 
 env:
   MODULE: english
-  # If you prefer, set ENGLISH_APPLICATION_ID secret to your package name (com.example.english)
+  # optional: set ENGLISH_APPLICATION_ID secret to your package name (com.example.english)
   PACKAGE: ${{ secrets.ENGLISH_APPLICATION_ID }}
 
 jobs:
@@ -49,29 +49,39 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Decode ENGLISH keystore (if provided)
-        if: ${{ secrets.ENGLISH_KEYSTORE_BASE64 != '' }}
+        # do not reference secrets.* in `if:`; expose via env and check inside shell
+        env:
+          ENGLISH_KEYSTORE_BASE64: ${{ secrets.ENGLISH_KEYSTORE_BASE64 }}
         run: |
-          echo "Decoding keystore for ${{ env.MODULE }}..."
-          # write the upload keystore to runner filesystem
-          echo "${{ secrets.ENGLISH_KEYSTORE_BASE64 }}" | base64 -d > "${{ env.MODULE }}-upload-keystore.jks"
-          ls -lh "${{ env.MODULE }}-upload-keystore.jks"
+          set -euo pipefail
+          if [ -n "${ENGLISH_KEYSTORE_BASE64:-}" ]; then
+            echo "Decoding keystore for ${{ env.MODULE }}..."
+            echo "$ENGLISH_KEYSTORE_BASE64" | base64 -d > "${{ env.MODULE }}-upload-keystore.jks"
+            ls -lh "${{ env.MODULE }}-upload-keystore.jks"
+          else
+            echo "No ENGLISH_KEYSTORE_BASE64 secret found — skipping keystore decode."
+          fi
 
       - name: Create gradle.properties with signing + version props
         id: write_props
+        env:
+          ENGLISH_KEYSTORE_PASSWORD: ${{ secrets.ENGLISH_KEYSTORE_PASSWORD }}
+          ENGLISH_KEY_ALIAS: ${{ secrets.ENGLISH_KEY_ALIAS }}
+          ENGLISH_KEY_PASSWORD: ${{ secrets.ENGLISH_KEY_PASSWORD }}
         run: |
-          set -e
+          set -euo pipefail
 
           # --- signing properties (write only if keystore password provided) ---
-          if [ -n "${{ secrets.ENGLISH_KEYSTORE_PASSWORD }}" ]; then
+          if [ -n "${ENGLISH_KEYSTORE_PASSWORD:-}" ]; then
             echo "Writing signing properties to gradle.properties (keystore present)."
-            echo "KEYSTORE_PASSWORD=${{ secrets.ENGLISH_KEYSTORE_PASSWORD }}" >> $GITHUB_WORKSPACE/gradle.properties
-            echo "KEY_ALIAS=${{ secrets.ENGLISH_KEY_ALIAS }}" >> $GITHUB_WORKSPACE/gradle.properties
-            echo "KEY_PASSWORD=${{ secrets.ENGLISH_KEY_PASSWORD }}" >> $GITHUB_WORKSPACE/gradle.properties
+            echo "KEYSTORE_PASSWORD=${ENGLISH_KEYSTORE_PASSWORD}" >> $GITHUB_WORKSPACE/gradle.properties
+            echo "KEY_ALIAS=${ENGLISH_KEY_ALIAS}" >> $GITHUB_WORKSPACE/gradle.properties
+            echo "KEY_PASSWORD=${ENGLISH_KEY_PASSWORD}" >> $GITHUB_WORKSPACE/gradle.properties
           else
             echo "No ENGLISH_KEYSTORE_PASSWORD secret set: build will proceed unsigned (or relying on Play signing)."
           fi
 
-          # --- determine versionName (prefer tag like english-v1.2.3, else workflow input) ---
+          # --- determine versionName (prefer tag english-v1.2.3, else workflow input) ---
           TAG=${GITHUB_REF##*/}
           VERSION_NAME=""
           if [[ "$TAG" =~ ^english-v([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
@@ -106,6 +116,7 @@ jobs:
           path: ${{ env.MODULE }}/build/outputs/bundle/release/*.aab
 
       - name: Publish to Google Play
+        # r0adkll/upload-google-play expects the service account JSON (raw JSON) as input
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJson: '${{ secrets.ENGLISH_PLAY_STORE_JSON }}'
@@ -115,4 +126,4 @@ jobs:
 
       - name: Final info
         run: |
-          echo "Release workflow finished. Check artifact 'english-release-aab' and Play Console."
+          echo "Release workflow finished. If publish step succeeded, check Play Console internal track for the uploaded AAB."
