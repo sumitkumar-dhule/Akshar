@@ -115,31 +115,49 @@ jobs:
             rm -f signing-config.properties || true
           fi
 
-      - name: Safely write VERSION_NAME & VERSION_CODE into gradle.properties (guarantee newline)
+      - name: Safely write VERSION_NAME & VERSION_CODE into gradle.properties (epoch seconds)
         run: |
           set -euo pipefail
+          GP="$GITHUB_WORKSPACE/gradle.properties"
+          touch "$GP"
+
+          # remove previously written keys to avoid duplicates
+          sed -i '/^VERSION_NAME=/d' "$GP" || true
+          sed -i '/^VERSION_CODE=/d' "$GP" || true
+
           TAG=${GITHUB_REF##*/}
           VERSION_NAME=""
+
           if [[ "$TAG" =~ ^english-v([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
             VERSION_NAME=${BASH_REMATCH[1]}
             echo "Detected tag version: $VERSION_NAME"
           fi
+
+          # prefer manual input if provided
           if [ -z "$VERSION_NAME" ] && [ -n "${{ github.event.inputs.version }}" ]; then
             VERSION_NAME="${{ github.event.inputs.version }}"
             echo "Using manual input version: $VERSION_NAME"
           fi
 
+          # Use epoch seconds (UTC) as version code — guaranteed increasing
+          VERSION_CODE=$(date -u +%s)
+          echo "Using VERSION_CODE=${VERSION_CODE}"
+
+          # append newline + properties
+          printf '\n' >> "$GP"
+          # write VERSION_NAME only if present (so local builds without VERSION_NAME still use project defaults)
           if [ -n "$VERSION_NAME" ]; then
-            VERSION_CODE=$(date -u +"%Y%m%d%H%M")
-            touch "$GITHUB_WORKSPACE/gradle.properties"
-            # ensure separation newline
-            printf '\n' >> "$GITHUB_WORKSPACE/gradle.properties"
-            printf '%s\n' "VERSION_NAME=${VERSION_NAME}" >> "$GITHUB_WORKSPACE/gradle.properties"
-            printf '%s\n' "VERSION_CODE=${VERSION_CODE}" >> "$GITHUB_WORKSPACE/gradle.properties"
-            echo "Wrote VERSION_NAME=${VERSION_NAME}, VERSION_CODE=${VERSION_CODE} to gradle.properties"
-          else
-            echo "No VERSION_NAME provided; build will use project defaults."
+            printf '%s\n' "VERSION_NAME=${VERSION_NAME}" >> "$GP"
           fi
+          # always write VERSION_CODE
+          printf '%s\n' "VERSION_CODE=${VERSION_CODE}" >> "$GP"
+          echo "WROTE to $GP (size: $(wc -c < $GP) bytes)"
+
+      - name: Print resolved version from Gradle (debug)
+        run: |
+          set -euo pipefail
+          echo "== Gradle resolved version (debug) =="
+          ./gradlew :${{ env.MODULE }}:printVersion --no-daemon
 
       - name: Pre-build listing (sanity)
         run: |
@@ -173,7 +191,6 @@ jobs:
           fi
           printf '%s\n' "$ENGLISH_PLAY_STORE_JSON" > ./service-account.json
           echo "WROTE service-account.json (size: $(wc -c < ./service-account.json) bytes)"
-          # show non-sensitive preview
           head -n 2 ./service-account.json || true
 
       - name: Publish to Google Play (use on-disk service account file)
