@@ -21,7 +21,7 @@ env:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
 
     steps:
       - name: Checkout
@@ -46,14 +46,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Decode ENGLISH keystore and google-services.json (if provided)
+      - name: Decode ENGLISH keystore and google-services.json (robust)
         env:
           ENGLISH_KEYSTORE_BASE64: ${{ secrets.ENGLISH_KEYSTORE_BASE64 }}
           ENGLISH_GOOGLE_SERVICES_JSON_B64: ${{ secrets.ENGLISH_GOOGLE_SERVICES_JSON_B64 }}
+          ENGLISH_GOOGLE_SERVICES_JSON_RAW: ${{ secrets.ENGLISH_GOOGLE_SERVICES_JSON_RAW }}
         run: |
           set -euo pipefail
 
-          # 1) Decode keystore if provided
+          # -- decode keystore if provided --
           if [ -n "${ENGLISH_KEYSTORE_BASE64:-}" ]; then
             echo "Decoding keystore for ${{ env.MODULE }}..."
             echo "$ENGLISH_KEYSTORE_BASE64" | base64 -d > "${{ env.MODULE }}-upload-keystore.jks"
@@ -62,24 +63,53 @@ jobs:
             echo "No ENGLISH_KEYSTORE_BASE64 secret found — skipping keystore decode."
           fi
 
-          # 2) Decode google-services.json for release/debug and module root
+          # -- prepare target locations for google-services.json --
+          mkdir -p "${{ env.MODULE }}/src/release"
+          mkdir -p "${{ env.MODULE }}/src/debug"
+          mkdir -p "${{ env.MODULE }}/src"
+
+          WRITE_PATHS=(
+            "${{ env.MODULE }}/src/release/google-services.json"
+            "${{ env.MODULE }}/src/debug/google-services.json"
+            "${{ env.MODULE }}/src/google-services.json"
+          )
+
+          # helper to inspect a written file safely
+          check_written() {
+            local p="$1"
+            if [ -f "$p" ]; then
+              echo "WROTE: $p (size: $(wc -c < "$p") bytes)"
+              echo "First 120 bytes (for sanity):"
+              head -c 120 "$p" | sed -n '1,4p' || true
+            else
+              echo "MISSING: $p"
+            fi
+          }
+
+          # -- Try base64 secret first if present --
           if [ -n "${ENGLISH_GOOGLE_SERVICES_JSON_B64:-}" ]; then
-            echo "Writing google-services.json for module: ${{ env.MODULE }}"
+            echo "Decoding ENGLISH_GOOGLE_SERVICES_JSON_B64 into module paths..."
+            for p in "${WRITE_PATHS[@]}"; do
+              echo "$ENGLISH_GOOGLE_SERVICES_JSON_B64" | base64 -d > "$p" || ( echo "ERROR decoding base64 to $p" && exit 1 )
+            done
 
-            mkdir -p "${{ env.MODULE }}/src/release"
-            mkdir -p "${{ env.MODULE }}/src/debug"
-            mkdir -p "${{ env.MODULE }}/src"
+            # quick sanity checks (do NOT print private_key value)
+            for p in "${WRITE_PATHS[@]}"; do
+              check_written "$p"
+            done
 
-            echo "$ENGLISH_GOOGLE_SERVICES_JSON_B64" | base64 -d > "${{ env.MODULE }}/src/release/google-services.json"
-            echo "$ENGLISH_GOOGLE_SERVICES_JSON_B64" | base64 -d > "${{ env.MODULE }}/src/debug/google-services.json"
-            echo "$ENGLISH_GOOGLE_SERVICES_JSON_B64" | base64 -d > "${{ env.MODULE }}/src/google-services.json"
+          # -- If base64 secret empty, try raw JSON secret if present --
+          elif [ -n "${ENGLISH_GOOGLE_SERVICES_JSON_RAW:-}" ]; then
+            echo "Writing ENGLISH_GOOGLE_SERVICES_JSON_RAW into module paths..."
+            for p in "${WRITE_PATHS[@]}"; do
+              printf '%s\n' "$ENGLISH_GOOGLE_SERVICES_JSON_RAW" > "$p"
+            done
+            for p in "${WRITE_PATHS[@]}"; do
+              check_written "$p"
+            done
 
-            echo "Wrote files (sizes in bytes):"
-            wc -c "${{ env.MODULE }}/src/release/google-services.json" || true
-            wc -c "${{ env.MODULE }}/src/debug/google-services.json" || true
-            wc -c "${{ env.MODULE }}/src/google-services.json" || true
           else
-            echo "No ENGLISH_GOOGLE_SERVICES_JSON_B64 secret found — skipping google-services.json write."
+            echo "No ENGLISH_GOOGLE_SERVICES_JSON_B64 or ENGLISH_GOOGLE_SERVICES_JSON_RAW secret found — google-services.json will be missing."
           fi
 
       - name: Create gradle.properties with signing + version props
@@ -91,7 +121,6 @@ jobs:
         run: |
           set -euo pipefail
 
-          # write signing props only if keystore password provided
           if [ -n "${ENGLISH_KEYSTORE_PASSWORD:-}" ]; then
             echo "Writing signing properties to gradle.properties (keystore present)."
             printf '%s\n' "KEYSTORE_PASSWORD=${ENGLISH_KEYSTORE_PASSWORD}" >> "$GITHUB_WORKSPACE/gradle.properties"
@@ -101,7 +130,6 @@ jobs:
             echo "No ENGLISH_KEYSTORE_PASSWORD secret set: build may proceed unsigned (or rely on Play signing)."
           fi
 
-          # determine versionName: prefer tag english-v1.2.3, else workflow input
           TAG=${GITHUB_REF##*/}
           VERSION_NAME=""
           if [[ "$TAG" =~ ^english-v([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
@@ -126,6 +154,10 @@ jobs:
       - name: Build release AAB for english
         run: |
           echo "Building :${{ env.MODULE }}:bundleRelease ..."
+          # show file existence before starting to be extra-sure
+          echo "Listing google-services.json checked locations:"
+          ls -la "${{ env.MODULE }}/src/release" || true
+          ls -la "${{ env.MODULE }}/src" || true
           ./gradlew :${{ env.MODULE }}:clean :${{ env.MODULE }}:bundleRelease --no-daemon
 
       - name: Upload built AAB artifact
@@ -144,4 +176,4 @@ jobs:
 
       - name: Final info
         run: |
-          echo "Release workflow finished. If publish step succeeded, check Play Console internal track for the uploaded AAB."
+          echo "Release workflow finished. Check artifact english-release-aab and Play Console."
