@@ -1,6 +1,5 @@
 name: Release — english
 
-# Triggers: push a tag like english-v1.2.3 OR run manually from Actions UI
 on:
   push:
     tags:
@@ -17,7 +16,6 @@ on:
 
 env:
   MODULE: english
-  # optional: set ENGLISH_APPLICATION_ID secret to your package name (com.example.english)
   PACKAGE: ${{ secrets.ENGLISH_APPLICATION_ID }}
 
 jobs:
@@ -35,7 +33,7 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Grant execute permission for gradlew
+      - name: Grant execute permission for Gradlew
         run: chmod +x ./gradlew
 
       - name: Restore Gradle cache
@@ -48,18 +46,40 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Decode ENGLISH keystore (if provided)
-        # do not reference secrets.* in `if:`; expose via env and check inside shell
+      - name: Decode ENGLISH keystore and google-services.json (if provided)
         env:
           ENGLISH_KEYSTORE_BASE64: ${{ secrets.ENGLISH_KEYSTORE_BASE64 }}
+          ENGLISH_GOOGLE_SERVICES_JSON_B64: ${{ secrets.ENGLISH_GOOGLE_SERVICES_JSON_B64 }}
         run: |
           set -euo pipefail
+
+          # 1) Decode keystore if provided
           if [ -n "${ENGLISH_KEYSTORE_BASE64:-}" ]; then
             echo "Decoding keystore for ${{ env.MODULE }}..."
             echo "$ENGLISH_KEYSTORE_BASE64" | base64 -d > "${{ env.MODULE }}-upload-keystore.jks"
             ls -lh "${{ env.MODULE }}-upload-keystore.jks"
           else
             echo "No ENGLISH_KEYSTORE_BASE64 secret found — skipping keystore decode."
+          fi
+
+          # 2) Decode google-services.json for release/debug and module root
+          if [ -n "${ENGLISH_GOOGLE_SERVICES_JSON_B64:-}" ]; then
+            echo "Writing google-services.json for module: ${{ env.MODULE }}"
+
+            mkdir -p "${{ env.MODULE }}/src/release"
+            mkdir -p "${{ env.MODULE }}/src/debug"
+            mkdir -p "${{ env.MODULE }}/src"
+
+            echo "$ENGLISH_GOOGLE_SERVICES_JSON_B64" | base64 -d > "${{ env.MODULE }}/src/release/google-services.json"
+            echo "$ENGLISH_GOOGLE_SERVICES_JSON_B64" | base64 -d > "${{ env.MODULE }}/src/debug/google-services.json"
+            echo "$ENGLISH_GOOGLE_SERVICES_JSON_B64" | base64 -d > "${{ env.MODULE }}/src/google-services.json"
+
+            echo "Wrote files (sizes in bytes):"
+            wc -c "${{ env.MODULE }}/src/release/google-services.json" || true
+            wc -c "${{ env.MODULE }}/src/debug/google-services.json" || true
+            wc -c "${{ env.MODULE }}/src/google-services.json" || true
+          else
+            echo "No ENGLISH_GOOGLE_SERVICES_JSON_B64 secret found — skipping google-services.json write."
           fi
 
       - name: Create gradle.properties with signing + version props
@@ -71,20 +91,17 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Ensure gradle.properties ends with a newline to avoid property concatenation
-          echo "" >> $GITHUB_WORKSPACE/gradle.properties
-
-          # --- signing properties (write only if keystore password provided) ---
+          # write signing props only if keystore password provided
           if [ -n "${ENGLISH_KEYSTORE_PASSWORD:-}" ]; then
             echo "Writing signing properties to gradle.properties (keystore present)."
-            echo "KEYSTORE_PASSWORD=${ENGLISH_KEYSTORE_PASSWORD}" >> $GITHUB_WORKSPACE/gradle.properties
-            echo "KEY_ALIAS=${ENGLISH_KEY_ALIAS}" >> $GITHUB_WORKSPACE/gradle.properties
-            echo "KEY_PASSWORD=${ENGLISH_KEY_PASSWORD}" >> $GITHUB_WORKSPACE/gradle.properties
+            printf '%s\n' "KEYSTORE_PASSWORD=${ENGLISH_KEYSTORE_PASSWORD}" >> "$GITHUB_WORKSPACE/gradle.properties"
+            printf '%s\n' "KEY_ALIAS=${ENGLISH_KEY_ALIAS}" >> "$GITHUB_WORKSPACE/gradle.properties"
+            printf '%s\n' "KEY_PASSWORD=${ENGLISH_KEY_PASSWORD}" >> "$GITHUB_WORKSPACE/gradle.properties"
           else
-            echo "No ENGLISH_KEYSTORE_PASSWORD secret set: build will proceed unsigned (or relying on Play signing)."
+            echo "No ENGLISH_KEYSTORE_PASSWORD secret set: build may proceed unsigned (or rely on Play signing)."
           fi
 
-          # --- determine versionName (prefer tag english-v1.2.3, else workflow input) ---
+          # determine versionName: prefer tag english-v1.2.3, else workflow input
           TAG=${GITHUB_REF##*/}
           VERSION_NAME=""
           if [[ "$TAG" =~ ^english-v([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
@@ -98,11 +115,9 @@ jobs:
           fi
 
           if [ -n "$VERSION_NAME" ]; then
-            # create a monotonic integer versionCode (UTC timestamp)
             VERSION_CODE=$(date -u +"%Y%m%d%H%M")
-            echo "" >> $GITHUB_WORKSPACE/gradle.properties
-            echo "VERSION_NAME=${VERSION_NAME}" >> $GITHUB_WORKSPACE/gradle.properties
-            echo "VERSION_CODE=${VERSION_CODE}" >> $GITHUB_WORKSPACE/gradle.properties
+            printf '%s\n' "VERSION_NAME=${VERSION_NAME}" >> "$GITHUB_WORKSPACE/gradle.properties"
+            printf '%s\n' "VERSION_CODE=${VERSION_CODE}" >> "$GITHUB_WORKSPACE/gradle.properties"
             echo "Set versionName=$VERSION_NAME, versionCode=$VERSION_CODE"
           else
             echo "No version provided via tag or input — build will use project defaults."
@@ -120,7 +135,6 @@ jobs:
           path: ${{ env.MODULE }}/build/outputs/bundle/release/*.aab
 
       - name: Publish to Google Play
-        # r0adkll/upload-google-play expects the service account JSON (raw JSON) as input
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJson: '${{ secrets.ENGLISH_PLAY_STORE_JSON }}'
