@@ -1,5 +1,6 @@
 name: Release — english
 
+# Triggers: push a tag like english-v1.2.3 OR run manually from Actions UI
 on:
   push:
     tags:
@@ -46,7 +47,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Decode ENGLISH keystore and google-services.json (robust)
+      - name: Decode ENGLISH keystore and google-services.json (robust + debug)
         env:
           ENGLISH_KEYSTORE_BASE64: ${{ secrets.ENGLISH_KEYSTORE_BASE64 }}
           ENGLISH_GOOGLE_SERVICES_JSON_B64: ${{ secrets.ENGLISH_GOOGLE_SERVICES_JSON_B64 }}
@@ -54,54 +55,46 @@ jobs:
         run: |
           set -euo pipefail
 
-          # --- Decode keystore if present ---
-          if [ -n "${ENGLISH_KEYSTORE_BASE64:-}" ]; then
-            echo "Decoding ENGLISH keystore..."
-            echo "$ENGLISH_KEYSTORE_BASE64" | base64 -d > "${{ env.MODULE }}-upload-keystore.jks"
-            ls -lh "${{ env.MODULE }}-upload-keystore.jks"
+          echo ">>> Checking secrets presence..."
+          if [ -z "${ENGLISH_GOOGLE_SERVICES_JSON_B64:-}" ] && [ -z "${ENGLISH_GOOGLE_SERVICES_JSON_RAW:-}" ]; then
+            echo "::warning::No google-services.json secret found (ENGLISH_GOOGLE_SERVICES_JSON_B64 or ENGLISH_GOOGLE_SERVICES_JSON_RAW). If your app requires Firebase in release, add one of these secrets."
           else
-            echo "No ENGLISH_KEYSTORE_BASE64 secret found — skipping keystore decode."
+            echo "google-services secret present (not shown)."
           fi
 
-          # --- Ensure module src dirs ---
-          mkdir -p "${{ env.MODULE }}/src/release"
-          mkdir -p "${{ env.MODULE }}/src/debug"
-          mkdir -p "${{ env.MODULE }}/src"
+          # ensure directories exist
+          mkdir -p english/src/release english/src/debug english/src
 
-          WRITE_PATHS=(
-            "${{ env.MODULE }}/src/release/google-services.json"
-            "${{ env.MODULE }}/src/debug/google-services.json"
-            "${{ env.MODULE }}/src/google-services.json"
-          )
-
-          check_written() {
-            local p="$1"
-            if [ -f "$p" ]; then
-              echo "WROTE: $p (size: $(wc -c < "$p") bytes)"
-              echo "First 120 bytes (sanity):"
-              head -c 120 "$p" | sed -n '1,4p' || true
-            else
-              echo "MISSING: $p"
-            fi
-          }
-
-          # --- Write google-services.json (prefer base64 secret, else raw JSON) ---
+          # prefer base64 secret (decoded) else raw JSON secret
           if [ -n "${ENGLISH_GOOGLE_SERVICES_JSON_B64:-}" ]; then
-            echo "Decoding ENGLISH_GOOGLE_SERVICES_JSON_B64 into module paths..."
-            for p in "${WRITE_PATHS[@]}"; do
-              echo "$ENGLISH_GOOGLE_SERVICES_JSON_B64" | base64 -d > "$p" || ( echo "ERROR decoding base64 to $p" && exit 1 )
-            done
-            for p in "${WRITE_PATHS[@]}"; do check_written "$p"; done
-
+            echo "Decoding ENGLISH_GOOGLE_SERVICES_JSON_B64 into release/debug/root..."
+            echo "$ENGLISH_GOOGLE_SERVICES_JSON_B64" | base64 -d > english/src/release/google-services.json
+            echo "$ENGLISH_GOOGLE_SERVICES_JSON_B64" | base64 -d > english/src/debug/google-services.json
+            echo "$ENGLISH_GOOGLE_SERVICES_JSON_B64" | base64 -d > english/src/google-services.json
           elif [ -n "${ENGLISH_GOOGLE_SERVICES_JSON_RAW:-}" ]; then
-            echo "Writing ENGLISH_GOOGLE_SERVICES_JSON_RAW into module paths..."
-            for p in "${WRITE_PATHS[@]}"; do
-              printf '%s\n' "$ENGLISH_GOOGLE_SERVICES_JSON_RAW" > "$p"
-            done
-            for p in "${WRITE_PATHS[@]}"; do check_written "$p"; done
+            echo "Writing ENGLISH_GOOGLE_SERVICES_JSON_RAW into release/debug/root..."
+            printf '%s\n' "$ENGLISH_GOOGLE_SERVICES_JSON_RAW" > english/src/release/google-services.json
+            printf '%s\n' "$ENGLISH_GOOGLE_SERVICES_JSON_RAW" > english/src/debug/google-services.json
+            printf '%s\n' "$ENGLISH_GOOGLE_SERVICES_JSON_RAW" > english/src/google-services.json
+          fi
 
+          # verify the files (show a tiny preview, not private key)
+          for f in english/src/release/google-services.json english/src/debug/google-services.json english/src/google-services.json; do
+            if [ -f "$f" ] && [ -s "$f" ]; then
+              echo "WROTE $f (size=$(wc -c <"$f") bytes). First 120 chars:"
+              head -c 120 "$f" | sed -n '1,4p' || true
+            else
+              echo "NOTE: $f does not exist or is empty (this might be expected if you don't use Firebase in release)."
+            fi
+          done
+
+          # decode keystore if provided
+          if [ -n "${ENGLISH_KEYSTORE_BASE64:-}" ]; then
+            echo "Decoding ENGLISH_KEYSTORE_BASE64 to english-upload-keystore.jks"
+            echo "$ENGLISH_KEYSTORE_BASE64" | base64 -d > english-upload-keystore.jks
+            ls -lh english-upload-keystore.jks || true
           else
-            echo "No ENGLISH_GOOGLE_SERVICES_JSON_B64 or ENGLISH_GOOGLE_SERVICES_JSON_RAW secret found — google-services.json will be missing."
+            echo "No ENGLISH_KEYSTORE_BASE64 secret provided — skipping keystore decode."
           fi
 
       - name: Write signing-config.properties (separate file, avoids gradle.properties append issues)
@@ -111,16 +104,14 @@ jobs:
           ENGLISH_KEY_PASSWORD: ${{ secrets.ENGLISH_KEY_PASSWORD }}
         run: |
           set -euo pipefail
-          # create empty file or overwrite with secrets if present
           if [ -n "${ENGLISH_KEYSTORE_PASSWORD:-}" ]; then
-            echo "Writing signing-config.properties (root) — NOT gradle.properties"
+            echo "Writing signing-config.properties (root)"
             printf '%s\n' "KEYSTORE_PASSWORD=${ENGLISH_KEYSTORE_PASSWORD}" > signing-config.properties
             printf '%s\n' "KEY_ALIAS=${ENGLISH_KEY_ALIAS}" >> signing-config.properties
             printf '%s\n' "KEY_PASSWORD=${ENGLISH_KEY_PASSWORD}" >> signing-config.properties
             echo "signing-config.properties written (size: $(wc -c < signing-config.properties) bytes)"
           else
-            echo "No signing secrets provided; skipping signing-config.properties write."
-            # ensure file does not accidentally exist with old content
+            echo "No signing secrets provided; ensure Play signing will handle signing or provide keystore secrets."
             rm -f signing-config.properties || true
           fi
 
@@ -140,11 +131,9 @@ jobs:
 
           if [ -n "$VERSION_NAME" ]; then
             VERSION_CODE=$(date -u +"%Y%m%d%H%M")
-            # ensure gradle.properties exists and ends with a newline
             touch "$GITHUB_WORKSPACE/gradle.properties"
-            # append a newline to separate safely
+            # ensure separation newline
             printf '\n' >> "$GITHUB_WORKSPACE/gradle.properties"
-            # now append version properties with newline
             printf '%s\n' "VERSION_NAME=${VERSION_NAME}" >> "$GITHUB_WORKSPACE/gradle.properties"
             printf '%s\n' "VERSION_CODE=${VERSION_CODE}" >> "$GITHUB_WORKSPACE/gradle.properties"
             echo "Wrote VERSION_NAME=${VERSION_NAME}, VERSION_CODE=${VERSION_CODE} to gradle.properties"
@@ -156,8 +145,8 @@ jobs:
         run: |
           set -euo pipefail
           echo "Checking google-services.json locations:"
-          ls -la "${{ env.MODULE }}/src/release" || true
-          ls -la "${{ env.MODULE }}/src" || true
+          ls -la english/src/release || true
+          ls -la english/src || true
           echo "Root signing-config.properties exists:"
           [ -f signing-config.properties ] && echo "signing-config.properties size: $(wc -c < signing-config.properties)" || echo "no signing-config.properties"
 
@@ -173,13 +162,32 @@ jobs:
           name: english-release-aab
           path: ${{ env.MODULE }}/build/outputs/bundle/release/*.aab
 
-      - name: Publish to Google Play
+      - name: Write Play service account JSON to file (for uploader)
+        env:
+          ENGLISH_PLAY_STORE_JSON: ${{ secrets.ENGLISH_PLAY_STORE_JSON }}
+        run: |
+          set -euo pipefail
+          if [ -z "${ENGLISH_PLAY_STORE_JSON:-}" ]; then
+            echo "::error::ENGLISH_PLAY_STORE_JSON secret is empty or missing"
+            exit 1
+          fi
+          printf '%s\n' "$ENGLISH_PLAY_STORE_JSON" > ./service-account.json
+          echo "WROTE service-account.json (size: $(wc -c < ./service-account.json) bytes)"
+          # show non-sensitive preview
+          head -n 2 ./service-account.json || true
+
+      - name: Publish to Google Play (use on-disk service account file)
         uses: r0adkll/upload-google-play@v1
         with:
-          serviceAccountJson: '${{ secrets.ENGLISH_PLAY_STORE_JSON }}'
+          serviceAccountJson: './service-account.json'
           packageName: ${{ env.PACKAGE }}
           releaseFiles: ${{ env.MODULE }}/build/outputs/bundle/release/*.aab
           track: ${{ github.event.inputs.track != '' && github.event.inputs.track || 'internal' }}
+
+      - name: Cleanup service-account.json
+        if: always()
+        run: |
+          rm -f ./service-account.json || true
 
       - name: Final info
         run: |
