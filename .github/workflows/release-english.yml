@@ -54,16 +54,16 @@ jobs:
         run: |
           set -euo pipefail
 
-          # -- decode keystore if provided --
+          # --- Decode keystore if present ---
           if [ -n "${ENGLISH_KEYSTORE_BASE64:-}" ]; then
-            echo "Decoding keystore for ${{ env.MODULE }}..."
+            echo "Decoding ENGLISH keystore..."
             echo "$ENGLISH_KEYSTORE_BASE64" | base64 -d > "${{ env.MODULE }}-upload-keystore.jks"
             ls -lh "${{ env.MODULE }}-upload-keystore.jks"
           else
             echo "No ENGLISH_KEYSTORE_BASE64 secret found — skipping keystore decode."
           fi
 
-          # -- prepare target locations for google-services.json --
+          # --- Ensure module src dirs ---
           mkdir -p "${{ env.MODULE }}/src/release"
           mkdir -p "${{ env.MODULE }}/src/debug"
           mkdir -p "${{ env.MODULE }}/src"
@@ -74,75 +74,65 @@ jobs:
             "${{ env.MODULE }}/src/google-services.json"
           )
 
-          # helper to inspect a written file safely
           check_written() {
             local p="$1"
             if [ -f "$p" ]; then
               echo "WROTE: $p (size: $(wc -c < "$p") bytes)"
-              echo "First 120 bytes (for sanity):"
+              echo "First 120 bytes (sanity):"
               head -c 120 "$p" | sed -n '1,4p' || true
             else
               echo "MISSING: $p"
             fi
           }
 
-          # -- Try base64 secret first if present --
+          # --- Write google-services.json (prefer base64 secret, else raw JSON) ---
           if [ -n "${ENGLISH_GOOGLE_SERVICES_JSON_B64:-}" ]; then
             echo "Decoding ENGLISH_GOOGLE_SERVICES_JSON_B64 into module paths..."
             for p in "${WRITE_PATHS[@]}"; do
               echo "$ENGLISH_GOOGLE_SERVICES_JSON_B64" | base64 -d > "$p" || ( echo "ERROR decoding base64 to $p" && exit 1 )
             done
+            for p in "${WRITE_PATHS[@]}"; do check_written "$p"; done
 
-            # quick sanity checks (do NOT print private_key value)
-            for p in "${WRITE_PATHS[@]}"; do
-              check_written "$p"
-            done
-
-          # -- If base64 secret empty, try raw JSON secret if present --
           elif [ -n "${ENGLISH_GOOGLE_SERVICES_JSON_RAW:-}" ]; then
             echo "Writing ENGLISH_GOOGLE_SERVICES_JSON_RAW into module paths..."
             for p in "${WRITE_PATHS[@]}"; do
               printf '%s\n' "$ENGLISH_GOOGLE_SERVICES_JSON_RAW" > "$p"
             done
-            for p in "${WRITE_PATHS[@]}"; do
-              check_written "$p"
-            done
+            for p in "${WRITE_PATHS[@]}"; do check_written "$p"; done
 
           else
             echo "No ENGLISH_GOOGLE_SERVICES_JSON_B64 or ENGLISH_GOOGLE_SERVICES_JSON_RAW secret found — google-services.json will be missing."
           fi
 
-      - name: Create gradle.properties with signing + version props
-        id: write_props
+      - name: Write signing-config.properties (separate file, avoids gradle.properties append issues)
         env:
           ENGLISH_KEYSTORE_PASSWORD: ${{ secrets.ENGLISH_KEYSTORE_PASSWORD }}
           ENGLISH_KEY_ALIAS: ${{ secrets.ENGLISH_KEY_ALIAS }}
           ENGLISH_KEY_PASSWORD: ${{ secrets.ENGLISH_KEY_PASSWORD }}
         run: |
           set -euo pipefail
-
-          # Ensure gradle.properties ends with a newline before appending
-          if [ -f "$GITHUB_WORKSPACE/gradle.properties" ]; then
-            # Add newline if file doesn't end with one
-            [ -n "$(tail -c1 "$GITHUB_WORKSPACE/gradle.properties")" ] && echo "" >> "$GITHUB_WORKSPACE/gradle.properties"
-          fi
-
+          # create empty file or overwrite with secrets if present
           if [ -n "${ENGLISH_KEYSTORE_PASSWORD:-}" ]; then
-            echo "Writing signing properties to gradle.properties (keystore present)."
-            printf '\n%s\n' "KEYSTORE_PASSWORD=${ENGLISH_KEYSTORE_PASSWORD}" >> "$GITHUB_WORKSPACE/gradle.properties"
-            printf '%s\n' "KEY_ALIAS=${ENGLISH_KEY_ALIAS}" >> "$GITHUB_WORKSPACE/gradle.properties"
-            printf '%s\n' "KEY_PASSWORD=${ENGLISH_KEY_PASSWORD}" >> "$GITHUB_WORKSPACE/gradle.properties"
+            echo "Writing signing-config.properties (root) — NOT gradle.properties"
+            printf '%s\n' "KEYSTORE_PASSWORD=${ENGLISH_KEYSTORE_PASSWORD}" > signing-config.properties
+            printf '%s\n' "KEY_ALIAS=${ENGLISH_KEY_ALIAS}" >> signing-config.properties
+            printf '%s\n' "KEY_PASSWORD=${ENGLISH_KEY_PASSWORD}" >> signing-config.properties
+            echo "signing-config.properties written (size: $(wc -c < signing-config.properties) bytes)"
           else
-            echo "No ENGLISH_KEYSTORE_PASSWORD secret set: build may proceed unsigned (or rely on Play signing)."
+            echo "No signing secrets provided; skipping signing-config.properties write."
+            # ensure file does not accidentally exist with old content
+            rm -f signing-config.properties || true
           fi
 
+      - name: Safely write VERSION_NAME & VERSION_CODE into gradle.properties (guarantee newline)
+        run: |
+          set -euo pipefail
           TAG=${GITHUB_REF##*/}
           VERSION_NAME=""
           if [[ "$TAG" =~ ^english-v([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
             VERSION_NAME=${BASH_REMATCH[1]}
             echo "Detected tag version: $VERSION_NAME"
           fi
-
           if [ -z "$VERSION_NAME" ] && [ -n "${{ github.event.inputs.version }}" ]; then
             VERSION_NAME="${{ github.event.inputs.version }}"
             echo "Using manual input version: $VERSION_NAME"
@@ -150,20 +140,31 @@ jobs:
 
           if [ -n "$VERSION_NAME" ]; then
             VERSION_CODE=$(date -u +"%Y%m%d%H%M")
+            # ensure gradle.properties exists and ends with a newline
+            touch "$GITHUB_WORKSPACE/gradle.properties"
+            # append a newline to separate safely
+            printf '\n' >> "$GITHUB_WORKSPACE/gradle.properties"
+            # now append version properties with newline
             printf '%s\n' "VERSION_NAME=${VERSION_NAME}" >> "$GITHUB_WORKSPACE/gradle.properties"
             printf '%s\n' "VERSION_CODE=${VERSION_CODE}" >> "$GITHUB_WORKSPACE/gradle.properties"
-            echo "Set versionName=$VERSION_NAME, versionCode=$VERSION_CODE"
+            echo "Wrote VERSION_NAME=${VERSION_NAME}, VERSION_CODE=${VERSION_CODE} to gradle.properties"
           else
-            echo "No version provided via tag or input — build will use project defaults."
+            echo "No VERSION_NAME provided; build will use project defaults."
           fi
+
+      - name: Pre-build listing (sanity)
+        run: |
+          set -euo pipefail
+          echo "Checking google-services.json locations:"
+          ls -la "${{ env.MODULE }}/src/release" || true
+          ls -la "${{ env.MODULE }}/src" || true
+          echo "Root signing-config.properties exists:"
+          [ -f signing-config.properties ] && echo "signing-config.properties size: $(wc -c < signing-config.properties)" || echo "no signing-config.properties"
 
       - name: Build release AAB for english
         run: |
+          set -euo pipefail
           echo "Building :${{ env.MODULE }}:bundleRelease ..."
-          # show file existence before starting to be extra-sure
-          echo "Listing google-services.json checked locations:"
-          ls -la "${{ env.MODULE }}/src/release" || true
-          ls -la "${{ env.MODULE }}/src" || true
           ./gradlew :${{ env.MODULE }}:clean :${{ env.MODULE }}:bundleRelease --no-daemon
 
       - name: Upload built AAB artifact
