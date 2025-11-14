@@ -121,9 +121,15 @@ jobs:
         run: |
           set -euo pipefail
 
+          # Ensure gradle.properties ends with a newline before appending
+          if [ -f "$GITHUB_WORKSPACE/gradle.properties" ]; then
+            # Add newline if file doesn't end with one
+            [ -n "$(tail -c1 "$GITHUB_WORKSPACE/gradle.properties")" ] && echo "" >> "$GITHUB_WORKSPACE/gradle.properties"
+          fi
+
           if [ -n "${ENGLISH_KEYSTORE_PASSWORD:-}" ]; then
             echo "Writing signing properties to gradle.properties (keystore present)."
-            printf '%s\n' "KEYSTORE_PASSWORD=${ENGLISH_KEYSTORE_PASSWORD}" >> "$GITHUB_WORKSPACE/gradle.properties"
+            printf '\n%s\n' "KEYSTORE_PASSWORD=${ENGLISH_KEYSTORE_PASSWORD}" >> "$GITHUB_WORKSPACE/gradle.properties"
             printf '%s\n' "KEY_ALIAS=${ENGLISH_KEY_ALIAS}" >> "$GITHUB_WORKSPACE/gradle.properties"
             printf '%s\n' "KEY_PASSWORD=${ENGLISH_KEY_PASSWORD}" >> "$GITHUB_WORKSPACE/gradle.properties"
           else
