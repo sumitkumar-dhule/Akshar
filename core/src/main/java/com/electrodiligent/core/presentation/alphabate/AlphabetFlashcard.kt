@@ -13,10 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.domain.model.DisplayCharacter
+import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.core.util.ColorUtil
 
 @Composable
@@ -68,4 +70,28 @@ fun AlphabetFlashcard(
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun AlphabetFlashcardPreview() {
+    val previewList = listOf(
+
+        DisplayCharacter(
+            display = "A",
+            subtitle = "a",
+        ),
+
+        DisplayCharacter(
+            display = "B",
+            subtitle = "b",
+        ),
+
+        DisplayCharacter(
+            display = "C",
+            subtitle = "c",
+        )
+    )
+
+    AlphabetFlashcard(modifier = Modifier.fillMaxSize(), previewList)
 }
