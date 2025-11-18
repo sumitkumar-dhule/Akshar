@@ -15,10 +15,18 @@ class AlphabetFlashcardViewModel @Inject constructor(@ApplicationContext val con
 
     private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
 
-    fun playSound(item: DisplayCharacter) {
+    private fun playSound(item: DisplayCharacter) {
         mediaPlayer.release()
         mediaPlayer = MediaPlayer.create(context, item.audio)
         mediaPlayer.start()
+    }
+
+    fun onAction(action: UserActions) {
+        when (action) {
+            is UserActions.PlaySound -> {
+                playSound(item = action.displayCharacter)
+            }
+        }
     }
 
 }

@@ -17,7 +17,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.domain.model.DisplayCharacter
 import com.electrodiligent.core.util.ColorUtil
 import com.electrodiligent.core.util.ResponsiveText
@@ -25,11 +24,11 @@ import com.electrodiligent.core.util.ResponsiveText
 @Composable
 fun DevnagariFlashcard(
     modifier: Modifier,
-    displayCharacters: List<DisplayCharacter>
+    displayCharacters: List<DisplayCharacter>,
+    onAction: (UserActions) -> Unit
 ) {
 
     val randomColor = ColorUtil.textColors.random().colorValue
-    val alphabetFlashcardViewModel = hiltViewModel<AlphabetFlashcardViewModel>()
 
     Box(modifier = modifier.padding(horizontal = 8.dp), contentAlignment = Alignment.Center) {
 
@@ -44,11 +43,13 @@ fun DevnagariFlashcard(
             items(displayCharacters) {
 
                 Card(
-                    modifier = Modifier.fillMaxWidth().aspectRatio(1f)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(1f)
                         .padding(8.dp)
                         .shadow(8.dp, shape = RoundedCornerShape(8.dp))
                         .clip(shape = RoundedCornerShape(8.dp))
-                        .clickable(onClick = { alphabetFlashcardViewModel.playSound(it) })
+                        .clickable(onClick = { onAction(UserActions.PlaySound(it)) })
 
                 ) {
 
