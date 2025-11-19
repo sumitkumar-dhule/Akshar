@@ -15,9 +15,10 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
+import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.DisplayCharacter
 import com.electrodiligent.core.util.ColorUtil
 import com.electrodiligent.core.util.ResponsiveText
@@ -25,14 +26,13 @@ import com.electrodiligent.core.util.ResponsiveText
 @Composable
 fun DevnagariFlashcard(
     modifier: Modifier,
-    displayCharacters: List<DisplayCharacter>
+    displayCharacters: List<DisplayCharacter>,
+    onAction: (UserActions) -> Unit
 ) {
 
     val randomColor = ColorUtil.textColors.random().colorValue
-    val alphabetFlashcardViewModel = hiltViewModel<AlphabetFlashcardViewModel>()
 
     Box(modifier = modifier.padding(horizontal = 8.dp), contentAlignment = Alignment.Center) {
-
 
         LazyVerticalGrid(
             modifier = Modifier
@@ -44,11 +44,13 @@ fun DevnagariFlashcard(
             items(displayCharacters) {
 
                 Card(
-                    modifier = Modifier.fillMaxWidth().aspectRatio(1f)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(1f)
                         .padding(8.dp)
                         .shadow(8.dp, shape = RoundedCornerShape(8.dp))
                         .clip(shape = RoundedCornerShape(8.dp))
-                        .clickable(onClick = { alphabetFlashcardViewModel.playSound(it) })
+                        .clickable(onClick = { onAction(UserActions.PlaySound(it)) })
 
                 ) {
 
@@ -74,4 +76,78 @@ fun DevnagariFlashcard(
         }
 
     }
+}
+
+@Preview
+@Composable
+fun DevnagariFlashcardPeview(){
+    val list = listOf(
+        DisplayCharacter(
+            left = "अ:", display = "अ", right = "आ",
+            displayImage = R.drawable.pomegranate,
+            displayName = "अनार",
+        ),
+        DisplayCharacter(
+            left = "अ", display = "आ", right = "इ",
+            displayImage = R.drawable.mango,
+            displayName = "आम",
+        ),
+        DisplayCharacter(
+            left = "आ", display = "इ", right = "ई",
+            displayImage = R.drawable.tamarind,
+            displayName = "इमली",
+        ),
+        DisplayCharacter(
+            left = "इ", display = "ई", right = "उ",
+            displayImage = R.drawable.sugarcane,
+            displayName = "ईख",
+        ),
+        DisplayCharacter(
+            left = "ई", display = "उ", right = "ऊ",
+            displayImage = R.drawable.owl,
+            displayName = "उल्लू",
+        ),
+        DisplayCharacter(
+            left = "उ", display = "ऊ", right = "ऋ",
+            displayImage = R.drawable.camel,
+            displayName = "ऊंट",
+        ),
+        DisplayCharacter(
+            left = "ऊ", display = "ऋ", right = "ए",
+            displayImage = R.drawable.rushi,
+            displayName = "ऋषि",
+        ),
+        DisplayCharacter(
+            left = "ऋ", display = "ए", right = "ऐ",
+            displayImage = R.drawable.ankle,
+            displayName = "एड़ी",
+        ),
+        DisplayCharacter(
+            left = "ए", display = "ऐ", right = "ओ",
+            displayImage = R.drawable.spectacle,
+            displayName = "ऐनक",
+        ),
+        DisplayCharacter(
+            left = "ऐ", display = "ओ", right = "औ",
+            displayImage = R.drawable.okhali,
+            displayName = "ओखली",
+        ),
+        DisplayCharacter(
+            left = "ओ", display = "औ", right = "अं",
+            displayImage = R.drawable.ashwini,
+            displayName = "औरत",
+        ),
+        DisplayCharacter(
+            left = "औ", display = "अं", right = "अ:",
+            displayImage = R.drawable.grapes,
+            displayName = "अंगूर",
+        ),
+        DisplayCharacter(
+            left = "अं", display = "अ:", right = "अ",
+            displayName = "",
+            displayImage = R.drawable.aha,
+        )
+    )
+
+    DevnagariFlashcard(modifier = Modifier.fillMaxSize(), displayCharacters = list, onAction = {})
 }

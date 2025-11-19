@@ -24,11 +24,11 @@ import com.electrodiligent.core.util.ColorUtil
 @Composable
 fun AlphabetFlashcard(
     modifier: Modifier,
-    displayCharacters: List<DisplayCharacter>
+    displayCharacters: List<DisplayCharacter>,
+    onAction: (UserActions) -> Unit
 ) {
 
     val randomColor = ColorUtil.textColors.random().colorValue
-    val alphabetFlashcardViewModel = hiltViewModel<AlphabetFlashcardViewModel>()
 
     Box(modifier = modifier.padding(horizontal = 16.dp), contentAlignment = Alignment.Center) {
 
@@ -47,7 +47,7 @@ fun AlphabetFlashcard(
                         Row(
                             modifier
                                 .fillMaxWidth()
-                                .clickable(onClick = { alphabetFlashcardViewModel.playSound(item) }),
+                                .clickable(onClick = { onAction(UserActions.PlaySound(item)) }),
                             horizontalArrangement = Arrangement.SpaceAround,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -93,5 +93,8 @@ fun AlphabetFlashcardPreview() {
         )
     )
 
-    AlphabetFlashcard(modifier = Modifier.fillMaxSize(), previewList)
+    AlphabetFlashcard(
+        modifier = Modifier.fillMaxSize(),
+        displayCharacters = previewList,
+        onAction = {})
 }
