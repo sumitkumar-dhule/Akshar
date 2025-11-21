@@ -47,7 +47,7 @@ fun AlphabetFlashcard(
                         Row(
                             modifier
                                 .fillMaxWidth()
-                                .clickable(onClick = { onAction(UserActions.PlaySound(item)) }),
+                                .clickable(onClick = { onAction(UserActions.PlaySound(item.audio)) }),
                             horizontalArrangement = Arrangement.SpaceAround,
                             verticalAlignment = Alignment.CenterVertically
                         ) {

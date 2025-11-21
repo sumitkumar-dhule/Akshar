@@ -50,7 +50,7 @@ fun DevnagariFlashcard(
                         .padding(8.dp)
                         .shadow(8.dp, shape = RoundedCornerShape(8.dp))
                         .clip(shape = RoundedCornerShape(8.dp))
-                        .clickable(onClick = { onAction(UserActions.PlaySound(it)) })
+                        .clickable(onClick = { onAction(UserActions.PlaySound(it.audio)) })
 
                 ) {
 
