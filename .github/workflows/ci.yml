@@ -105,6 +105,7 @@ jobs:
       - name: Upload debug APKs
         uses: actions/upload-artifact@v4
         with:
+          retention-days: 1
           name: akshar-debug-apks
           path: |
             english/build/outputs/apk/debug/*.apk

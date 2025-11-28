@@ -105,6 +105,8 @@ fun NumberFlashcardPreview() {
         NumberItem(name = "One", count = 1),
         NumberItem(name = "Two", count = 2),
         NumberItem(name = "Three", count = 3),
+        NumberItem(name = "Ten", count = 10),
+        NumberItem(name = "Fifty", count = 50),
         NumberItem(name = "Hundred", count = 100)
     )
     NumberFlashcard(
