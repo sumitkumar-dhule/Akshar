@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.domain.model.DisplayCharacter
-import com.electrodiligent.core.presentation.number.SoundViewModel
+import com.electrodiligent.core.presentation.SoundViewModel
 import com.electrodiligent.core.util.Dimension
 
 @Composable

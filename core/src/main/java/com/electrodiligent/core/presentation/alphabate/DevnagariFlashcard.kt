@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.DisplayCharacter
+import com.electrodiligent.core.presentation.UserActions
 import com.electrodiligent.core.util.ColorUtil
 import com.electrodiligent.core.util.ResponsiveText
 

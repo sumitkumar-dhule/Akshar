@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.electrodiligent.core.domain.model.NumberItem
-import com.electrodiligent.core.presentation.alphabate.UserActions
+import com.electrodiligent.core.presentation.UserActions
 import com.electrodiligent.core.util.ColorUtil
 
 @Composable
