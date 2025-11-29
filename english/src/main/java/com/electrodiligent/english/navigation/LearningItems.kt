@@ -80,12 +80,22 @@ object LearningItems {
             navigationRoute = Screen.AnimalsScreen
         ),
 
+
         NavigationItem(
             id = "gk_birds",
             title = "Birds",
             contentDescription = "Go to Birds screen",
             icon = R.drawable.birds,
             navigationRoute = Screen.BirdsScreen
+        ),
+
+
+        NavigationItem(
+            id = "gk_profession",
+            title = "Professions",
+            contentDescription = "Go to Profession screen",
+            icon = R.drawable.ic_professions,
+            navigationRoute = Screen.ProfessionsScreen
         ),
 
         NavigationItem(

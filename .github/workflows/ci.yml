@@ -113,12 +113,12 @@ jobs:
 #            hindi/build/outputs/apk/debug/*.apk
 #            marathi/build/outputs/apk/debug/*.apk
 
-      # 🔹 Upload lint reports (so you can review them even if build is green)
-      - name: Upload lint reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: lint-reports
-          path: |
-            english/build/reports/lint-results-debug.html
-            hindi/build/reports/lint-results-debug.html
-            marathi/build/reports/lint-results-debug.html
+#      # 🔹 Upload lint reports (so you can review them even if build is green)
+#      - name: Upload lint reports
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: lint-reports
+#          path: |
+#            english/build/reports/lint-results-debug.html
+#            hindi/build/reports/lint-results-debug.html
+#            marathi/build/reports/lint-results-debug.html
