@@ -7,76 +7,78 @@ object ProfessionsRepository {
     val list by lazy { listItems.shuffled() }
     private val listItems = listOf(
         PictureItem(
-            name = "CRANE", imageId = R.drawable.prof_artist,
-//            audio = com.electrodiligent.english.R.raw.kevin_crane
+            name = "ARTIST ", imageId = R.drawable.prof_artist,
+            audio = com.electrodiligent.english.R.raw.artist
         ),
         PictureItem(
-            "CROW",
+            "ASTRONAUT",
             R.drawable.prof_astronaut,
-//            audio = com.electrodiligent.english.R.raw.kevin_crow
+            audio = com.electrodiligent.english.R.raw.astronaut
         ),
         PictureItem(
-            name = "EAGLE",
+            name = "BUILDER",
             imageId = R.drawable.prof_builder,
-//            audio = com.electrodiligent.english.R.raw.kevin_eagle
+            audio = com.electrodiligent.english.R.raw.builder
         ),
         PictureItem(
-            "FLAMINGO",
+            "CHEF",
             R.drawable.prof_chef,
-//            audio = com.electrodiligent.english.R.raw.kevin_flamingo
+            audio = com.electrodiligent.english.R.raw.chef
         ),
         PictureItem(
-            "HAWK",
+            "DANCER",
             R.drawable.prof_dancer,
-//            audio = com.electrodiligent.english.R.raw.kevin_hawk
+            audio = com.electrodiligent.english.R.raw.dancer
         ),
         PictureItem(
-            "OWL",
+            "DOCTOR",
             R.drawable.prof_doctor,
-//            audio = com.electrodiligent.english.R.raw.kevin_owl
+            audio = com.electrodiligent.english.R.raw.doctor
         ),
         PictureItem(
-            "PARROT",
+            "FARMER",
             R.drawable.prof_farmer,
-//            audio = com.electrodiligent.english.R.raw.kevin_parrot
+            audio = com.electrodiligent.english.R.raw.farmer
         ),
         PictureItem(
-            "HEN",
+            "FIREFIGHTER",
             R.drawable.prof_firefighter,
-
-//            audio = com.electrodiligent.english.R.raw.kevin_hen
+            audio = com.electrodiligent.english.R.raw.firefighter
         ),
         PictureItem(
-            "HORN BILL",
+            "MECHANIC",
             R.drawable.prof_mechanic,
-//            audio = com.electrodiligent.english.R.raw.kevin_hornbill
+            audio = com.electrodiligent.english.R.raw.mechanic
         ),
         PictureItem(
-            "HUMMING BIRD",
+            "MUSICIAN",
             R.drawable.prof_musician,
-//            audio = com.electrodiligent.english.R.raw.kevin_hummingbird
+            audio = com.electrodiligent.english.R.raw.musician
         ),
         PictureItem(
-            "KINGFISHER",
+            "NURSE",
             R.drawable.prof_nurse,
-//            audio = com.electrodiligent.english.R.raw.kevin_kingfisher
+            audio = com.electrodiligent.english.R.raw.nurse
         ),
         PictureItem(
-            name = "OSTRICH",
+            name = "PILOT",
             imageId = R.drawable.prof_pilot,
-//            audio = com.electrodiligent.english.R.raw.kevin_ostrich
+            audio = com.electrodiligent.english.R.raw.pilot
         ),
         PictureItem(
-            name = "PEACOCK", imageId = R.drawable.prof_police_officer,
-//            audio = com.electrodiligent.english.R.raw.kevin_peacock
+            name = "POLICE OFFICER",
+            imageId = R.drawable.prof_police_officer,
+            audio = com.electrodiligent.english.R.raw.police_officer
         ),
         PictureItem(
-            name = "PENGUIN", imageId = R.drawable.prof_scientist,
-//            audio = com.electrodiligent.english.R.raw.kevin_penguin
+            name = "SCIENTIST",
+            imageId = R.drawable.prof_scientist,
+            audio = com.electrodiligent.english.R.raw.scientist
         ),
         PictureItem(
-            name = "SWAN", imageId = R.drawable.prof_teacher,
-//            audio = com.electrodiligent.english.R.raw.kevin_swan
+            name = "TEACHER",
+            imageId = R.drawable.prof_teacher,
+            audio = com.electrodiligent.english.R.raw.teacher
         )
     )
 }
