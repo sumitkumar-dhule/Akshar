@@ -2,16 +2,16 @@ package com.electrodiligent.core.presentation.alphabate
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.domain.model.DisplayCharacter
+import com.electrodiligent.core.presentation.SoundViewModel
 import com.electrodiligent.core.util.Dimension
 
 @Composable
 fun AlphabetFlashcardScreen(displayCharacters: List<DisplayCharacter>) {
 
-    val alphabetFlashcardViewModel = hiltViewModel<AlphabetFlashcardViewModel>()
+    val soundViewModel = hiltViewModel<SoundViewModel>()
 
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -23,7 +23,7 @@ fun AlphabetFlashcardScreen(displayCharacters: List<DisplayCharacter>) {
             AlphabetFlashcard(
                 modifier = Modifier.fillMaxSize(),
                 displayCharacters = displayCharacters,
-                alphabetFlashcardViewModel::onAction
+                soundViewModel::onAction
             )
         }
     }
