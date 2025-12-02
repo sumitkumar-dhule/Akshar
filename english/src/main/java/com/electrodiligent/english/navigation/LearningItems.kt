@@ -94,7 +94,7 @@ object LearningItems {
             id = "gk_profession",
             title = "Professions",
             contentDescription = "Go to Profession screen",
-            icon = R.drawable.ic_professions,
+            icon = R.drawable.prof_icon,
             navigationRoute = Screen.ProfessionsScreen
         ),
 
