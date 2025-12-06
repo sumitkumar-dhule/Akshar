@@ -95,6 +95,10 @@ fun Navigation(navController: NavHostController) {
             PictureScreen(items = ProfessionsRepository.list, title = "Professions")
         }
 
+        composable(route = Screen.VehicleScreen.route) {
+            PictureScreen(items = VehicleRepository.list, title = "Vehicles")
+        }
+
         composable(route = Screen.AlphabetsPracticeScreen.route) {
             AlphabetsPracticeScreen(items = AlphabetQuestionRepository.list)
         }
