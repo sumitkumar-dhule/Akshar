@@ -7,5 +7,6 @@ data class PictureItem(
     val name: String = "",
     val imageId: Int = R.drawable.ic_image_placeholder,
     var color: Color = Color.Blue,
-    val audio: Int = R.raw.beep
+    val audio: Int = R.raw.beep,
+    val canDoSomething: Boolean = false,
 )
