@@ -2,13 +2,16 @@ package com.electrodiligent.core.presentation.alphabate
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.domain.model.DisplayCharacter
+import com.electrodiligent.core.presentation.SoundViewModel
 import com.electrodiligent.core.util.Dimension
 
 @Composable
 fun DevnagariFlashcardScreen(displayCharacters: List<DisplayCharacter>) {
+
+    val soundViewModel = hiltViewModel<SoundViewModel>()
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
@@ -18,17 +21,11 @@ fun DevnagariFlashcardScreen(displayCharacters: List<DisplayCharacter>) {
         ) {
             DevnagariFlashcard(
                 modifier = Modifier.fillMaxSize(),
-                displayCharacters = displayCharacters
+                displayCharacters = displayCharacters,
+                soundViewModel::onAction
             )
         }
 
-        //TODO:: Display Ad in following box
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomCenter)
-                .height(Dimension.PADDING_BOTTOM)
-        )
     }
 
 }

@@ -15,6 +15,7 @@ import com.electrodiligent.core.presentation.color.ColorsScreen
 import com.electrodiligent.core.presentation.picture.AnimalsScreen
 import com.electrodiligent.core.presentation.picture.BirdsScreen
 import com.electrodiligent.core.presentation.picture.FruitsScreen
+import com.electrodiligent.core.presentation.picture.PictureScreen
 import com.electrodiligent.core.presentation.picture.VegetablesScreen
 import com.electrodiligent.core.presentation.practice.AlphabetsPracticeScreen
 import com.electrodiligent.core.presentation.practice.ColorfulPracticeScreen
@@ -88,6 +89,14 @@ fun Navigation(navController: NavHostController) {
 
         composable(route = Screen.BirdsScreen.route) {
             BirdsScreen(items = BirdsRepository.list, title = "Birds")
+        }
+
+        composable(route = Screen.ProfessionsScreen.route) {
+            PictureScreen(items = ProfessionsRepository.list, title = "Professions")
+        }
+
+        composable(route = Screen.VehicleScreen.route) {
+            PictureScreen(items = VehicleRepository.list, title = "Vehicles")
         }
 
         composable(route = Screen.AlphabetsPracticeScreen.route) {

@@ -2,9 +2,14 @@ package com.electrodiligent.core.presentation.picture
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,56 +42,14 @@ fun PictureDisplay(
 
         Column(
             Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.SpaceBetween,
+            verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight(0.18f),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Image(
-                    painter = painterResource(R.drawable.ic_arrow_circle_left),
-                    contentDescription = "Left",
-                    colorFilter = ColorFilter.tint(color = pictureDisplayViewModel.randomColor),
-
-                    modifier = Modifier
-                        .fillMaxHeight(0.7f)
-                        .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .clickable { pictureDisplayViewModel.previousPicture() }
-                )
-
-                ResponsiveText(
-                    modifier = Modifier.weight(1f, fill = true),
-                    targetTextSizeHeight = 45.sp,
-                    text = title,
-                    textAlign = TextAlign.Center,
-                    color = pictureDisplayViewModel.randomColor,
-                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
-                )
-
-
-                Image(
-                    painter = painterResource(R.drawable.ic_arrow_circle_right),
-                    contentDescription = "Right",
-                    colorFilter = ColorFilter.tint(color = pictureDisplayViewModel.randomColor),
-
-                    modifier = Modifier
-                        .fillMaxHeight(0.7f)
-                        .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .clickable { pictureDisplayViewModel.nextPicture() }
-                )
-            }
-
-
-
             Column(
                 Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState()),
+                    .fillMaxWidth()
+                    .fillMaxHeight(0.7f),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -110,8 +73,63 @@ fun PictureDisplay(
                     color = pictureDisplayViewModel.randomColor,
                     textStyle = TextStyle(fontWeight = FontWeight.Bold)
                 )
+
             }
 
+            UserActionBar(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(0.4f),
+                pictureDisplayViewModel = pictureDisplayViewModel
+            )
         }
+    }
+}
+
+@Composable
+private fun UserActionBar(
+    modifier: Modifier,
+    pictureDisplayViewModel: PictureDisplayViewModel
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            painter = painterResource(R.drawable.ic_arrow_circle_left),
+            contentDescription = "Left",
+            colorFilter = ColorFilter.tint(color = pictureDisplayViewModel.randomColor),
+
+            modifier = Modifier
+                .fillMaxHeight()
+                .aspectRatio(1f, matchHeightConstraintsFirst = true)
+                .clickable { pictureDisplayViewModel.previousPicture() }
+        )
+
+        if (pictureDisplayViewModel.pictureItem.canDoSomething) {
+            Image(
+                painter = painterResource(R.drawable.do_things),
+                contentDescription = "do_things",
+                colorFilter = ColorFilter.tint(color = pictureDisplayViewModel.randomColor),
+
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .aspectRatio(1f, matchHeightConstraintsFirst = true)
+                    .clickable { }
+            )
+        }
+
+
+        Image(
+            painter = painterResource(R.drawable.ic_arrow_circle_right),
+            contentDescription = "Right",
+            colorFilter = ColorFilter.tint(color = pictureDisplayViewModel.randomColor),
+
+            modifier = Modifier
+                .fillMaxHeight()
+                .aspectRatio(1f, matchHeightConstraintsFirst = true)
+                .clickable { pictureDisplayViewModel.nextPicture() }
+        )
     }
 }

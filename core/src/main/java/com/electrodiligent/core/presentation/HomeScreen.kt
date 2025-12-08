@@ -66,13 +66,5 @@ fun HomeScreen(
             }
 
         }
-
-        //TODO:: Display Ad in following box
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomCenter)
-                .height(Dimension.PADDING_BOTTOM)
-        )
     }
 }
