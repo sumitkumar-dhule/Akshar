@@ -1,6 +1,7 @@
 package com.electrodiligent.core.presentation.picture
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -20,28 +22,25 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.PictureItem
+import com.electrodiligent.core.presentation.DevicePreviews
 import com.electrodiligent.core.util.ResponsiveText
 
 @Composable
 fun PictureDisplay(
     modifier: Modifier,
-    items: List<PictureItem>,
-    title: String,
+    item: PictureItem,
+    onAction: (PictureActions) -> Unit,
+    screenElementColor: Color,
 ) {
-
-    val pictureDisplayViewModel = hiltViewModel<PictureDisplayViewModel>()
-    pictureDisplayViewModel.displayPictures = items
-    pictureDisplayViewModel.setup()
-
-    val shapeItem = pictureDisplayViewModel.pictureItem
 
     Box(modifier = modifier) {
 
         Column(
-            Modifier.fillMaxSize(),
+            Modifier
+                .fillMaxSize()
+                .background(color = Color.Red),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -49,28 +48,33 @@ fun PictureDisplay(
             Column(
                 Modifier
                     .fillMaxWidth()
+                    .background(color = Color.Green)
                     .fillMaxHeight(0.7f),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
                 Image(
-                    painter = painterResource(id = shapeItem.imageId),
-                    contentDescription = shapeItem.name,
+                    painter = painterResource(id = item.imageId),
+                    contentDescription = item.name,
                     modifier = Modifier
                         .fillMaxWidth(0.95f)
+                        .background(color = Color.Yellow)
+
                         .aspectRatio(1f)
-                        .clickable(onClick = { pictureDisplayViewModel.currentPicture() }),
+                        .clickable(onClick = { onAction(PictureActions.TapCurrent()) }),
                     contentScale = ContentScale.Fit
 
                 )
 
                 ResponsiveText(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(color = Color.Cyan),
                     targetTextSizeHeight = 60.sp,
-                    text = shapeItem.name,
+                    text = item.name,
                     textAlign = TextAlign.Center,
-                    color = pictureDisplayViewModel.randomColor,
+                    color = screenElementColor,
                     textStyle = TextStyle(fontWeight = FontWeight.Bold)
                 )
 
@@ -79,8 +83,12 @@ fun PictureDisplay(
             UserActionBar(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .fillMaxHeight(0.4f),
-                pictureDisplayViewModel = pictureDisplayViewModel
+                    .background(color = Color.DarkGray)
+
+                    .fillMaxHeight(0.3f),
+                pictureItem = item,
+                elementColor = screenElementColor,
+                onAction = onAction
             )
         }
     }
@@ -89,7 +97,9 @@ fun PictureDisplay(
 @Composable
 private fun UserActionBar(
     modifier: Modifier,
-    pictureDisplayViewModel: PictureDisplayViewModel
+    pictureItem: PictureItem,
+    onAction: (PictureActions) -> Unit,
+    elementColor: Color,
 ) {
     Row(
         modifier = modifier,
@@ -99,19 +109,19 @@ private fun UserActionBar(
         Image(
             painter = painterResource(R.drawable.ic_arrow_circle_left),
             contentDescription = "Left",
-            colorFilter = ColorFilter.tint(color = pictureDisplayViewModel.randomColor),
+            colorFilter = ColorFilter.tint(color = elementColor),
 
             modifier = Modifier
                 .fillMaxHeight()
                 .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                .clickable { pictureDisplayViewModel.previousPicture() }
+                .clickable { onAction(PictureActions.TapPrevious()) }
         )
 
-        if (pictureDisplayViewModel.pictureItem.canDoSomething) {
+        if (pictureItem.canDoSomething) {
             Image(
                 painter = painterResource(R.drawable.do_things),
                 contentDescription = "do_things",
-                colorFilter = ColorFilter.tint(color = pictureDisplayViewModel.randomColor),
+                colorFilter = ColorFilter.tint(color = elementColor),
 
                 modifier = Modifier
                     .fillMaxHeight()
@@ -124,12 +134,27 @@ private fun UserActionBar(
         Image(
             painter = painterResource(R.drawable.ic_arrow_circle_right),
             contentDescription = "Right",
-            colorFilter = ColorFilter.tint(color = pictureDisplayViewModel.randomColor),
+            colorFilter = ColorFilter.tint(color = elementColor),
 
             modifier = Modifier
                 .fillMaxHeight()
                 .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                .clickable { pictureDisplayViewModel.nextPicture() }
+                .clickable { onAction(PictureActions.TapNext()) }
         )
     }
+}
+
+@DevicePreviews
+@Composable
+private fun PictureDisplayPreview() {
+    PictureDisplay(
+        modifier = Modifier,
+        item = PictureItem(
+            imageId = R.drawable.rabbit,
+            name = "Shape Name",
+            canDoSomething = true
+        ),
+        onAction = {},
+        screenElementColor = Color.Blue
+    )
 }

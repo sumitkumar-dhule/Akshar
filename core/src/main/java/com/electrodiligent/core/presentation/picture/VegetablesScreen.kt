@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.electrodiligent.core.domain.model.PictureItem
 import com.electrodiligent.core.util.Dimension
 
@@ -18,10 +19,16 @@ fun VegetablesScreen(items: List<PictureItem>, title: String) {
             contentAlignment = Alignment.Center
         ) {
 
+            val pictureDisplayViewModel = hiltViewModel<PictureDisplayViewModel>()
+            pictureDisplayViewModel.displayPictures = items
+
+            val shapeItem = pictureDisplayViewModel.pictureItem
+
             PictureDisplay(
                 modifier = Modifier.fillMaxSize(),
-                items = items,
-                title = title
+                item = pictureDisplayViewModel.pictureItem,
+                screenElementColor = pictureDisplayViewModel.randomColor,
+                onAction = pictureDisplayViewModel::onAction
             )
         }
 

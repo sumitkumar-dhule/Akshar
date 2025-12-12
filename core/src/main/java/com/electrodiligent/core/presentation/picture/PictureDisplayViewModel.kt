@@ -72,6 +72,25 @@ class PictureDisplayViewModel @Inject constructor(@ApplicationContext val contex
         playSound()
     }
 
+    fun onAction(action: PictureActions) {
+        when (action) {
+            is PictureActions.TapNext -> {
+                nextPicture()
+            }
+
+            is PictureActions.TapPrevious -> {
+                previousPicture()
+            }
+
+            is PictureActions.TapCurrent -> {
+                currentPicture()
+            }
+
+            is PictureActions.Setup -> {
+                setup()
+            }
+        }
+    }
     private fun playSound() {
         if (isSoundPlaying()) {
             return
