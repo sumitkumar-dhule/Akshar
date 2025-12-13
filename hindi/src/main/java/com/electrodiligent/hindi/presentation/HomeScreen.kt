@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.electrodiligent.core.navigation.NavigationItem
+import com.electrodiligent.core.navigation.NavigationUtil
+import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.core.presentation.DisplayTile
 import com.electrodiligent.hindi.presentation.ads.BannerAdvertView
 import com.electrodiligent.core.util.Dimension
@@ -62,9 +64,15 @@ fun HomeScreen(
                 items(navigationItems) {
                     DisplayTile(
                         modifier = Modifier.fillMaxSize(),
-                        navController = navController,
                         item = it,
-                        color = brownColor
+                        color = brownColor,
+                        onClick = {
+                            if (it.navigationRoute == Screen.HomeScreen || it.navigationRoute == Screen.PracticeScreen) {
+                                NavigationUtil.setAsBase(navController, it.navigationRoute.route)
+                            } else {
+                                NavigationUtil.navigateTo(navController, it.navigationRoute.route)
+                            }
+                        }
                     )
                 }
             }
