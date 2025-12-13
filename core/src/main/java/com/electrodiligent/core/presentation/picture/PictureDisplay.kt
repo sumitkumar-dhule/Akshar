@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,6 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.PictureItem
@@ -38,9 +40,7 @@ fun PictureDisplay(
     Box(modifier = modifier) {
 
         Column(
-            Modifier
-                .fillMaxSize()
-                .background(color = Color.Red),
+            Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -48,7 +48,6 @@ fun PictureDisplay(
             Column(
                 Modifier
                     .fillMaxWidth()
-                    .background(color = Color.Green)
                     .fillMaxHeight(0.7f),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -59,33 +58,29 @@ fun PictureDisplay(
                     contentDescription = item.name,
                     modifier = Modifier
                         .fillMaxWidth(0.95f)
-                        .background(color = Color.Yellow)
-
                         .aspectRatio(1f)
                         .clickable(onClick = { onAction(PictureActions.TapCurrent()) }),
                     contentScale = ContentScale.Fit
 
                 )
 
-                ResponsiveText(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(color = Color.Cyan),
-                    targetTextSizeHeight = 60.sp,
-                    text = item.name,
-                    textAlign = TextAlign.Center,
-                    color = screenElementColor,
-                    textStyle = TextStyle(fontWeight = FontWeight.Bold)
-                )
 
             }
+
+            ResponsiveText(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                targetTextSizeHeight = 60.sp,
+                text = item.name,
+                textAlign = TextAlign.Center,
+                color = screenElementColor,
+                textStyle = TextStyle(fontWeight = FontWeight.Bold)
+            )
 
             UserActionBar(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(color = Color.DarkGray)
-
-                    .fillMaxHeight(0.3f),
+                    .fillMaxHeight(0.5f),
                 pictureItem = item,
                 elementColor = screenElementColor,
                 onAction = onAction
@@ -102,8 +97,8 @@ private fun UserActionBar(
     elementColor: Color,
 ) {
     Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.SpaceAround,
+        modifier = modifier.padding(horizontal = 20.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
