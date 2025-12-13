@@ -4,21 +4,34 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.electrodiligent.core.R
 import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.core.presentation.alphabate.AlphabetIdentificationScreen
 import com.electrodiligent.core.presentation.alphabate.DevnagariFlashcardScreen
 import com.electrodiligent.core.presentation.alphabate.NumberFlashcardScreen
 import com.electrodiligent.core.presentation.alphabate.NumberIdentificationScreen
 import com.electrodiligent.core.presentation.color.ColorsScreen
-import com.electrodiligent.core.presentation.picture.AnimalsScreen
-import com.electrodiligent.core.presentation.picture.BirdsScreen
-import com.electrodiligent.core.presentation.picture.FruitsScreen
-import com.electrodiligent.core.presentation.picture.VegetablesScreen
-import com.electrodiligent.core.presentation.practice.*
+import com.electrodiligent.core.presentation.picture.PictureScreen
+import com.electrodiligent.core.presentation.practice.AlphabetsPracticeScreen
+import com.electrodiligent.core.presentation.practice.ColorfulPracticeScreen
+import com.electrodiligent.core.presentation.practice.NumbersPracticeScreen
+import com.electrodiligent.core.presentation.practice.PicturePracticeScreen
 import com.electrodiligent.core.presentation.settings.ParentVerificationScreen
 import com.electrodiligent.core.presentation.shape.ShapesScreen
-import com.electrodiligent.core.R
-import com.electrodiligent.marathi.data.*
+import com.electrodiligent.marathi.data.AnimalsRepository
+import com.electrodiligent.marathi.data.BirdsRepository
+import com.electrodiligent.marathi.data.ColorRepository
+import com.electrodiligent.marathi.data.FruitsRepository
+import com.electrodiligent.marathi.data.NumberQuestionRepository
+import com.electrodiligent.marathi.data.NumberRepository
+import com.electrodiligent.marathi.data.PictureQuestionRepository
+import com.electrodiligent.marathi.data.ShapeRepository
+import com.electrodiligent.marathi.data.SwarFlashCardRepository
+import com.electrodiligent.marathi.data.SwarRepository
+import com.electrodiligent.marathi.data.VarnamalaQuestionRepository
+import com.electrodiligent.marathi.data.VegetablesRepository
+import com.electrodiligent.marathi.data.VyanjanFlashCardRepository
+import com.electrodiligent.marathi.data.VyanjanRepository
 import com.electrodiligent.marathi.presentation.HomeScreen
 import com.electrodiligent.marathi.presentation.PracticeScreen
 
@@ -78,19 +91,19 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.VegetablesScreen.route) {
-            VegetablesScreen(items = VegetablesRepository.list, title = "भाज्या")
+            PictureScreen(items = VegetablesRepository.list, title = "भाज्या")
         }
 
         composable(route = Screen.FruitsScreen.route) {
-            FruitsScreen(items = FruitsRepository.list, title = "फळे")
+            PictureScreen(items = FruitsRepository.list, title = "फळे")
         }
 
         composable(route = Screen.AnimalsScreen.route) {
-            AnimalsScreen(items = AnimalsRepository.list, title = "प्राणी")
+            PictureScreen(items = AnimalsRepository.list, title = "प्राणी")
         }
 
         composable(route = Screen.BirdsScreen.route) {
-            BirdsScreen(items = BirdsRepository.list, title = "पक्षी")
+            PictureScreen(items = BirdsRepository.list, title = "पक्षी")
         }
 
         composable(route = Screen.AlphabetsPracticeScreen.route) {

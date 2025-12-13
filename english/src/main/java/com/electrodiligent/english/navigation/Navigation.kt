@@ -12,11 +12,7 @@ import com.electrodiligent.core.presentation.alphabate.AlphabetIdentificationScr
 import com.electrodiligent.core.presentation.alphabate.NumberFlashcardScreen
 import com.electrodiligent.core.presentation.alphabate.NumberIdentificationScreen
 import com.electrodiligent.core.presentation.color.ColorsScreen
-import com.electrodiligent.core.presentation.picture.AnimalsScreen
-import com.electrodiligent.core.presentation.picture.BirdsScreen
-import com.electrodiligent.core.presentation.picture.FruitsScreen
 import com.electrodiligent.core.presentation.picture.PictureScreen
-import com.electrodiligent.core.presentation.picture.VegetablesScreen
 import com.electrodiligent.core.presentation.practice.AlphabetsPracticeScreen
 import com.electrodiligent.core.presentation.practice.ColorfulPracticeScreen
 import com.electrodiligent.core.presentation.practice.NumbersPracticeScreen
@@ -24,7 +20,21 @@ import com.electrodiligent.core.presentation.practice.PicturePracticeScreen
 import com.electrodiligent.core.presentation.settings.ParentVerificationScreen
 import com.electrodiligent.core.presentation.settings.SettingsScreen
 import com.electrodiligent.core.presentation.shape.ShapesScreen
-import com.electrodiligent.english.data.*
+import com.electrodiligent.english.data.AlphabetFlashCardRepository
+import com.electrodiligent.english.data.AlphabetQuestionRepository
+import com.electrodiligent.english.data.AlphabetsRepository
+import com.electrodiligent.english.data.AnimalsRepository
+import com.electrodiligent.english.data.BirdsRepository
+import com.electrodiligent.english.data.ColorRepository
+import com.electrodiligent.english.data.FruitsRepository
+import com.electrodiligent.english.data.NumberFlashCardRepository
+import com.electrodiligent.english.data.NumberQuestionRepository
+import com.electrodiligent.english.data.NumberRepository
+import com.electrodiligent.english.data.PictureQuestionRepository
+import com.electrodiligent.english.data.ProfessionsRepository
+import com.electrodiligent.english.data.ShapeRepository
+import com.electrodiligent.english.data.VegetablesRepository
+import com.electrodiligent.english.data.VehicleRepository
 import com.electrodiligent.english.presentation.HomeScreen
 import com.electrodiligent.english.presentation.PracticeScreen
 
@@ -76,19 +86,19 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = Screen.VegetablesScreen.route) {
-            VegetablesScreen(items = VegetablesRepository.list, title = "Vegetables")
+            PictureScreen(items = VegetablesRepository.list, title = "Vegetables")
         }
 
         composable(route = Screen.FruitsScreen.route) {
-            FruitsScreen(items = FruitsRepository.list, title = "Fruits")
+            PictureScreen(items = FruitsRepository.list, title = "Fruits")
         }
 
         composable(route = Screen.AnimalsScreen.route) {
-            AnimalsScreen(items = AnimalsRepository.list, title = "Animals")
+            PictureScreen(items = AnimalsRepository.list, title = "Animals")
         }
 
         composable(route = Screen.BirdsScreen.route) {
-            BirdsScreen(items = BirdsRepository.list, title = "Birds")
+            PictureScreen(items = BirdsRepository.list, title = "Birds")
         }
 
         composable(route = Screen.ProfessionsScreen.route) {
