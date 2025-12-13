@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.electrodiligent.core.navigation.NavigationItem
+import com.electrodiligent.core.navigation.NavigationUtil
+import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.core.util.Dimension
 
 @Composable
@@ -58,9 +60,15 @@ fun PracticeScreen(
                 items(navigationItems) {
                     DisplayTile(
                         modifier = Modifier.fillMaxSize(),
-                        navController = navController,
                         item = it,
-                        color = brownColor
+                        color = brownColor,
+                        onClick = {
+                            if (it.navigationRoute == Screen.HomeScreen || it.navigationRoute == Screen.PracticeScreen) {
+                                NavigationUtil.setAsBase(navController, it.navigationRoute.route)
+                            } else {
+                                NavigationUtil.navigateTo(navController, it.navigationRoute.route)
+                            }
+                        }
                     )
                 }
             }
@@ -77,3 +85,4 @@ fun PracticeScreen(
     }
 
 }
+
