@@ -1,13 +1,16 @@
 package com.electrodiligent.core.presentation
 
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.electrodiligent.core.R
+import com.electrodiligent.core.presentation.theme.AppTheme
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppBar(
     title: String,
@@ -17,32 +20,30 @@ fun AppBar(
         title = {
             Text(text = title)
         },
-        backgroundColor = MaterialTheme.colors.primary,
-        contentColor = MaterialTheme.colors.onPrimary,
         navigationIcon = {
             IconButton(onClick = onNavigationIconClick) {
                 Icon(
-                    modifier = Modifier.size(38.dp) ,
-
                     painter = painterResource(id = R.drawable.menu),
-                    contentDescription = "Toggle drawer"
+                    contentDescription = "Toggle drawer",
+                    modifier = Modifier.size(38.dp)
                 )
             }
-        }
+        },
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+            navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
+            titleContentColor = MaterialTheme.colorScheme.onPrimary
+        )
     )
 }
-
 
 @Preview(showBackground = true)
 @Composable
 fun AppBarPreview() {
-    // It's a good practice to wrap previews in your app's theme
-    // to ensure components like colors and fonts are displayed correctly.
-    // Using MaterialTheme as a base.
-    MaterialTheme {
+    AppTheme {   // 👈 your Material 3 theme
         AppBar(
             title = "App Title",
-            onNavigationIconClick = { /* In preview, this does nothing */ }
+            onNavigationIconClick = {}
         )
     }
 }

@@ -6,7 +6,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -56,12 +56,9 @@ fun DevnagariFlashcard(
                 ) {
 
                     Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .align(Alignment.Center),
+                        modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
-
                         ResponsiveText(
                             targetTextSizeHeight = 60.sp,
                             text = it.display,
@@ -69,8 +66,8 @@ fun DevnagariFlashcard(
                             color = randomColor,
                             textStyle = TextStyle(fontWeight = FontWeight.SemiBold)
                         )
-
                     }
+
                 }
 
             }
