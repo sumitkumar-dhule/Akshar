@@ -73,7 +73,7 @@ fun PictureDisplay(
 
             ResponsiveText(
                 modifier = Modifier.fillMaxWidth(),
-                targetTextSizeHeight = 60.sp,
+                targetTextSizeHeight = if (isTablet) 90.sp else 60.sp,
                 text = item.name,
                 textAlign = TextAlign.Center,
                 color = screenElementColor,
