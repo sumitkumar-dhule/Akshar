@@ -50,6 +50,7 @@ dependencies {
     // Compose UI
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material3:material3-window-size-class")
 
     // Material 3 (LATEST)
     implementation("androidx.compose.material3:material3")

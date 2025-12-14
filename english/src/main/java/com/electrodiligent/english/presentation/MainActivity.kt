@@ -7,6 +7,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -47,6 +50,30 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val scope = rememberCoroutineScope()
                 val drawerState = rememberDrawerState(DrawerValue.Closed)
+                val currentTitle = remember { mutableStateOf("Preschool Essentials") }
+
+                LaunchedEffect(navController) {
+                    navController.currentBackStackEntryFlow.collect { backStackEntry ->
+                        currentTitle.value = when (backStackEntry.destination.route) {
+                            Screen.HomeScreen.route -> "Preschool Essentials"
+                            Screen.PracticeScreen.route -> "Practice Zone"
+                            Screen.AlphabetIdentificationScreen.route -> "Identify Alphabets"
+                            Screen.AlphabetFlashcardScreen.route -> "Alphabet Flashcards"
+                            Screen.NumberIdentificationScreen.route -> "Numbers"
+                            Screen.NumberFlashcardScreen.route -> "Number Flashcards"
+                            Screen.ShapesScreen.route -> "Shapes"
+                            Screen.ColorsScreen.route -> "Colors"
+                            Screen.VegetablesScreen.route -> "Vegetables"
+                            Screen.FruitsScreen.route -> "Fruits"
+                            Screen.AnimalsScreen.route -> "Animals"
+                            Screen.BirdsScreen.route -> "Birds"
+                            Screen.ProfessionsScreen.route -> "Professions"
+                            // Add all other screens...
+                            else -> "Preschool Essentials" // Default title
+                        }
+                    }
+                }
+
 
                 ModalNavigationDrawer(
                     drawerState = drawerState,
@@ -72,7 +99,7 @@ class MainActivity : ComponentActivity() {
                         contentWindowInsets = WindowInsets.safeDrawing,
                         topBar = {
                             AppBar(
-                                title = "Preschool Essentials",
+                                title = currentTitle.value,
                                 onNavigationIconClick = {
                                     scope.launch { drawerState.open() }
                                 }
@@ -118,6 +145,7 @@ class MainActivity : ComponentActivity() {
             "gk_fruits" -> navigateTo(navController, Screen.FruitsScreen.route)
             "gk_animals" -> navigateTo(navController, Screen.AnimalsScreen.route)
             "gk_birds" -> navigateTo(navController, Screen.BirdsScreen.route)
+            "gk_professions" -> navigateTo(navController, Screen.ProfessionsScreen.route)
             "practice_alphabets" -> navigateTo(navController, Screen.AlphabetsPracticeScreen.route)
             "practice_numbers" -> navigateTo(navController, Screen.NumbersPracticeScreen.route)
             "practice_vegetable" -> navigateTo(navController, Screen.VegetablePracticeScreen.route)

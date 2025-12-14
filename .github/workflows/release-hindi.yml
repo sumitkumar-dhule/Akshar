@@ -1,0 +1,211 @@
+name: Release — hindi
+
+# Triggers: push a tag like hindi-v1.2.3 OR run manually from Actions UI
+on:
+  push:
+    tags:
+      - 'hindi-v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version name (e.g. 1.2.3) - optional (used for manual run)'
+        required: false
+      track:
+        description: 'Play Store track (internal/alpha/beta/production)'
+        required: false
+        default: internal
+
+env:
+  MODULE: hindi
+  PACKAGE: ${{ secrets.HINDI_APPLICATION_ID }}
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Grant execute permission for Gradlew
+        run: chmod +x ./gradlew
+
+      - name: Restore Gradle cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/build.gradle*','**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Decode HINDI keystore and google-services.json (robust + debug)
+        env:
+          HINDI_KEYSTORE_BASE64: ${{ secrets.HINDI_KEYSTORE_BASE64 }}
+          HINDI_GOOGLE_SERVICES_JSON_B64: ${{ secrets.HINDI_GOOGLE_SERVICES_JSON_B64 }}
+          HINDI_GOOGLE_SERVICES_JSON_RAW: ${{ secrets.HINDI_GOOGLE_SERVICES_JSON_RAW }}
+        run: |
+          set -euo pipefail
+
+          echo ">>> Checking secrets presence..."
+          if [ -z "${HINDI_GOOGLE_SERVICES_JSON_B64:-}" ] && [ -z "${HINDI_GOOGLE_SERVICES_JSON_RAW:-}" ]; then
+            echo "::warning::No google-services.json secret found (HINDI_GOOGLE_SERVICES_JSON_B64 or HINDI_GOOGLE_SERVICES_JSON_RAW). If your app requires Firebase in release, add one of these secrets."
+          else
+            echo "google-services secret present (not shown)."
+          fi
+
+          # ensure directories exist
+          mkdir -p hindi/src/release hindi/src/debug hindi/src
+
+          # prefer base64 secret (decoded) else raw JSON secret
+          if [ -n "${HINDI_GOOGLE_SERVICES_JSON_B64:-}" ]; then
+            echo "Decoding HINDI_GOOGLE_SERVICES_JSON_B64 into release/debug/root..."
+            echo "$HINDI_GOOGLE_SERVICES_JSON_B64" | base64 -d > hindi/src/release/google-services.json
+            echo "$HINDI_GOOGLE_SERVICES_JSON_B64" | base64 -d > hindi/src/debug/google-services.json
+            echo "$HINDI_GOOGLE_SERVICES_JSON_B64" | base64 -d > hindi/src/google-services.json
+          elif [ -n "${HINDI_GOOGLE_SERVICES_JSON_RAW:-}" ]; then
+            echo "Writing HINDI_GOOGLE_SERVICES_JSON_RAW into release/debug/root..."
+            printf '%s\n' "$HINDI_GOOGLE_SERVICES_JSON_RAW" > hindi/src/release/google-services.json
+            printf '%s\n' "$HINDI_GOOGLE_SERVICES_JSON_RAW" > hindi/src/debug/google-services.json
+            printf '%s\n' "$HINDI_GOOGLE_SERVICES_JSON_RAW" > hindi/src/google-services.json
+          fi
+
+          # verify the files (show a tiny preview, not private key)
+          for f in hindi/src/release/google-services.json hindi/src/debug/google-services.json hindi/src/google-services.json; do
+            if [ -f "$f" ] && [ -s "$f" ]; then
+              echo "WROTE $f (size=$(wc -c <"$f") bytes). First 120 chars:"
+              head -c 120 "$f" | sed -n '1,4p' || true
+            else
+              echo "NOTE: $f does not exist or is empty (this might be expected if you don't use Firebase in release)."
+            fi
+          done
+
+          # decode keystore if provided
+          if [ -n "${HINDI_KEYSTORE_BASE64:-}" ]; then
+            echo "Decoding HINDI_KEYSTORE_BASE64 to hindi-upload-keystore.jks"
+            echo "$HINDI_KEYSTORE_BASE64" | base64 -d > hindi-upload-keystore.jks
+            ls -lh hindi-upload-keystore.jks || true
+          else
+            echo "No HINDI_KEYSTORE_BASE64 secret provided — skipping keystore decode."
+          fi
+
+      - name: Write signing-config.properties (separate file, avoids gradle.properties append issues)
+        env:
+          HINDI_KEYSTORE_PASSWORD: ${{ secrets.HINDI_KEYSTORE_PASSWORD }}
+          HINDI_KEY_ALIAS: ${{ secrets.HINDI_KEY_ALIAS }}
+          HINDI_KEY_PASSWORD: ${{ secrets.HINDI_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [ -n "${HINDI_KEYSTORE_PASSWORD:-}" ]; then
+            echo "Writing signing-config.properties (root)"
+            printf '%s\n' "KEYSTORE_PASSWORD=${HINDI_KEYSTORE_PASSWORD}" > signing-config.properties
+            printf '%s\n' "KEY_ALIAS=${HINDI_KEY_ALIAS}" >> signing-config.properties
+            printf '%s\n' "KEY_PASSWORD=${HINDI_KEY_PASSWORD}" >> signing-config.properties
+            echo "signing-config.properties written (size: $(wc -c < signing-config.properties) bytes)"
+          else
+            echo "No signing secrets provided; ensure Play signing will handle signing or provide keystore secrets."
+            rm -f signing-config.properties || true
+          fi
+
+      - name: Safely write VERSION_NAME & VERSION_CODE into gradle.properties (epoch seconds)
+        run: |
+          set -euo pipefail
+          GP="$GITHUB_WORKSPACE/gradle.properties"
+          touch "$GP"
+
+          # remove previously written keys to avoid duplicates
+          sed -i '/^VERSION_NAME=/d' "$GP" || true
+          sed -i '/^VERSION_CODE=/d' "$GP" || true
+
+          TAG=${GITHUB_REF##*/}
+          VERSION_NAME=""
+
+          if [[ "$TAG" =~ ^hindi-v([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
+            VERSION_NAME=${BASH_REMATCH[1]}
+            echo "Detected tag version: $VERSION_NAME"
+          fi
+
+          # prefer manual input if provided
+          if [ -z "$VERSION_NAME" ] && [ -n "${{ github.event.inputs.version }}" ]; then
+            VERSION_NAME="${{ github.event.inputs.version }}"
+            echo "Using manual input version: $VERSION_NAME"
+          fi
+
+          # Use epoch seconds (UTC) as version code — guaranteed increasing
+          VERSION_CODE=$(date -u +%s)
+          echo "Using VERSION_CODE=${VERSION_CODE}"
+
+          # append newline + properties
+          printf '\n' >> "$GP"
+          # write VERSION_NAME only if present (so local builds without VERSION_NAME still use project defaults)
+          if [ -n "$VERSION_NAME" ]; then
+            printf '%s\n' "VERSION_NAME=${VERSION_NAME}" >> "$GP"
+          fi
+          # always write VERSION_CODE
+          printf '%s\n' "VERSION_CODE=${VERSION_CODE}" >> "$GP"
+          echo "WROTE to $GP (size: $(wc -c < $GP) bytes)"
+
+      - name: Print resolved version from Gradle (debug)
+        run: |
+          set -euo pipefail
+          echo "== Gradle resolved version (debug) =="
+          ./gradlew :${{ env.MODULE }}:printVersion --no-daemon
+
+      - name: Pre-build listing (sanity)
+        run: |
+          set -euo pipefail
+          echo "Checking google-services.json locations:"
+          ls -la hindi/src/release || true
+          ls -la hindi/src || true
+          echo "Root signing-config.properties exists:"
+          [ -f signing-config.properties ] && echo "signing-config.properties size: $(wc -c < signing-config.properties)" || echo "no signing-config.properties"
+
+      - name: Build release AAB for hindi
+        run: |
+          set -euo pipefail
+          echo "Building :${{ env.MODULE }}:bundleRelease ..."
+          ./gradlew :${{ env.MODULE }}:clean :${{ env.MODULE }}:bundleRelease --no-daemon
+
+      - name: Upload built AAB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: hindi-release-aab
+          path: ${{ env.MODULE }}/build/outputs/bundle/release/*.aab
+
+      - name: Write Play service account JSON to file (for uploader)
+        env:
+          HINDI_PLAY_STORE_JSON: ${{ secrets.HINDI_PLAY_STORE_JSON }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HINDI_PLAY_STORE_JSON:-}" ]; then
+            echo "::error::HINDI_PLAY_STORE_JSON secret is empty or missing"
+            exit 1
+          fi
+          printf '%s\n' "$HINDI_PLAY_STORE_JSON" > ./service-account.json
+          echo "WROTE service-account.json (size: $(wc -c < ./service-account.json) bytes)"
+          head -n 2 ./service-account.json || true
+
+      - name: Publish to Google Play (use on-disk service account file)
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJson: './service-account.json'
+          packageName: ${{ env.PACKAGE }}
+          releaseFiles: ${{ env.MODULE }}/build/outputs/bundle/release/*.aab
+          track: ${{ github.event.inputs.track != '' && github.event.inputs.track || 'internal' }}
+
+      - name: Cleanup service-account.json
+        if: always()
+        run: |
+          rm -f ./service-account.json || true
+
+      - name: Final info
+        run: |
+          echo "Release workflow finished. Check artifact hindi-release-aab and Play Console."
