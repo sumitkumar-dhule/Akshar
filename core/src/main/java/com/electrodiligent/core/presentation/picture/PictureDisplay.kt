@@ -25,6 +25,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
@@ -146,7 +148,12 @@ private fun UserActionBar(
 
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-@DevicePreviews
+@Preview(
+    name = "Phone",
+    device = Devices.PIXEL_4,
+    showBackground = true,
+    showSystemUi = true // This adds the system bars
+)
 @Composable
 private fun PictureDisplayPhonePreview() {
     PictureDisplay(
@@ -164,7 +171,13 @@ private fun PictureDisplayPhonePreview() {
 }
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-@DevicePreviews
+@Preview(
+    name = "Tablet Portrait",
+    device = Devices.TABLET,
+    showBackground = true,
+    widthDp = 600,
+    heightDp = 800
+)
 @Composable
 private fun PictureDisplayTabletPreview() {
     PictureDisplay(
