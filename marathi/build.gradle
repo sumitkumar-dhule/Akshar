@@ -7,6 +7,13 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.compose'
 }
 
+// put at top-level of the module build.gradle (outside android{}), or inside a conditional block
+def signingPropsFile = rootProject.file("signing-config.properties")
+def signingProps = new Properties()
+if (signingPropsFile.exists()) {
+    signingProps.load(new FileInputStream(signingPropsFile))
+}
+
 android {
     namespace 'com.electrodiligent.marathi'
 
@@ -16,12 +23,30 @@ android {
         applicationId "com.electrodiligent.marathi"
         minSdk 23
         targetSdk 36
-        versionCode 16
-        versionName "1.6"
+        // Use VERSION_CODE / VERSION_NAME from gradle.properties when present,
+        // otherwise fall back to the previous hard-coded values.
+        versionCode = (project.hasProperty('VERSION_CODE') ? project.VERSION_CODE.toInteger() : 34)
+        if (project.hasProperty('VERSION_NAME')) {
+            versionName = project.VERSION_NAME
+        } else {
+            versionName = "1.0.0"
+        }
+
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
+        }
+    }
+
+    signingConfigs {
+        release {
+            if (signingProps.containsKey('KEYSTORE_PASSWORD')) {
+                storeFile file("${rootDir}/marathi-upload-keystore.jks")
+                storePassword signingProps['KEYSTORE_PASSWORD']
+                keyAlias signingProps['KEY_ALIAS']
+                keyPassword signingProps['KEY_PASSWORD']
+            }
         }
     }
 
@@ -50,6 +75,15 @@ android {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
+    }
+}
+
+task printVersion {
+    doLast {
+        def vc = android.defaultConfig.versionCode
+        def vn = android.defaultConfig.versionName
+        println "Resolved versionCode = ${vc}"
+        println "Resolved versionName = ${vn}"
     }
 }
 
