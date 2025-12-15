@@ -182,7 +182,7 @@ jobs:
 
       - name: Write Play service account JSON to file (for uploader)
         env:
-          MARATHI_PLAY_STORE_JSON: ${{ secrets.MARATHI_PLAY_STORE_JSON }}
+          MARATHI_PLAY_STORE_JSON: ${{ secrets.ENGLISH_PLAY_STORE_JSON }}
         run: |
           set -euo pipefail
           if [ -z "${MARATHI_PLAY_STORE_JSON:-}" ]; then
