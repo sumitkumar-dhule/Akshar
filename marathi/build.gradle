@@ -7,6 +7,13 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.compose'
 }
 
+// put at top-level of the module build.gradle (outside android{}), or inside a conditional block
+def signingPropsFile = rootProject.file("signing-config.properties")
+def signingProps = new Properties()
+if (signingPropsFile.exists()) {
+    signingProps.load(new FileInputStream(signingPropsFile))
+}
+
 android {
     namespace 'com.electrodiligent.marathi'
 
