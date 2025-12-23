@@ -116,6 +116,14 @@ object DrawerMenu {
             icon = R.drawable.birds
         ),
 
+        MenuItem(
+            id = "gk_professions",
+            title = "Professions",
+            contentDescription = "Professions",
+            icon = R.drawable.prof_icon
+        ),
+
+
         //Practice
         MenuItem(
             id = "practice",

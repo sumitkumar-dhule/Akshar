@@ -52,12 +52,4 @@ object NumberQuestionRepository {
         return list
     }
 
-/*    private fun get10to90(): List<String> {
-        val list: MutableList<String> = mutableListOf()
-        for (letter in NumberRepository.listUpTo100) {
-            list.add(letter.countString)
-        }
-        list.removeLast()
-        return list
-    }*/
 }

@@ -54,7 +54,7 @@ object NumberQuestionRepository {
         for (letter in NumberRepository.listUpTo100) {
             list.add(letter.countString)
         }
-        list.removeLast()
+        list.removeAt(list.lastIndex)
         return list
     }
 }

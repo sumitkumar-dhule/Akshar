@@ -1,70 +1,82 @@
 package com.electrodiligent.english.presentation
 
-import android.annotation.SuppressLint
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowCompat
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.electrodiligent.core.navigation.NavigationUtil.navigateTo
 import com.electrodiligent.core.navigation.NavigationUtil.setAsBase
 import com.electrodiligent.core.navigation.Screen
-import com.electrodiligent.core.presentation.AppBar
-import com.electrodiligent.core.presentation.BackgroundImage
-import com.electrodiligent.core.presentation.DrawerBody
-import com.electrodiligent.core.presentation.DrawerHeader
+import com.electrodiligent.core.presentation.*
 import com.electrodiligent.english.BuildConfig.VERSION_NAME
 import com.electrodiligent.english.R
 import com.electrodiligent.english.navigation.DrawerMenu
 import com.electrodiligent.english.navigation.Navigation
-import com.electrodiligent.english.ui.theme.AksharTheme
-import com.google.android.gms.ads.MobileAds
+import com.electrodiligent.core.presentation.theme.AppTheme
+import com.electrodiligent.core.presentation.theme.SystemBarsStyle
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    //TODO:: Remove lint
-    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
         installSplashScreen()
+
         setContent {
-            AksharTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
+            AppTheme {
 
-                    val scaffoldState = rememberScaffoldState()
-                    val scope = rememberCoroutineScope()
-                    val navController = rememberNavController()
+                val navController = rememberNavController()
+                val scope = rememberCoroutineScope()
+                val drawerState = rememberDrawerState(DrawerValue.Closed)
+                val currentTitle = remember { mutableStateOf("Preschool Essentials") }
 
-                    Scaffold(
-                        scaffoldState = scaffoldState,
-                        topBar = {
-                            AppBar(
-                                title = "Preschool Essentials",
-                                onNavigationIconClick = {
-                                    scope.launch {
-                                        scaffoldState.drawerState.open()
-                                    }
-                                }
-                            )
-                        },
-                        drawerGesturesEnabled = scaffoldState.drawerState.isOpen,
-                        drawerContent = {
+                LaunchedEffect(navController) {
+                    navController.currentBackStackEntryFlow.collect { backStackEntry ->
+                        currentTitle.value = when (backStackEntry.destination.route) {
+                            Screen.HomeScreen.route -> "Preschool Essentials"
+                            Screen.PracticeScreen.route -> "Practice Zone"
+                            Screen.AlphabetIdentificationScreen.route -> "Identify Alphabets"
+                            Screen.AlphabetFlashcardScreen.route -> "Alphabet Flashcards"
+                            Screen.NumberIdentificationScreen.route -> "Numbers"
+                            Screen.NumberFlashcardScreen.route -> "Number Flashcards"
+                            Screen.ShapesScreen.route -> "Shapes"
+                            Screen.ColorsScreen.route -> "Colors"
+                            Screen.VegetablesScreen.route -> "Vegetables"
+                            Screen.FruitsScreen.route -> "Fruits"
+                            Screen.AnimalsScreen.route -> "Animals"
+                            Screen.BirdsScreen.route -> "Birds"
+                            Screen.ProfessionsScreen.route -> "Professions"
+                            // Add all other screens...
+                            else -> "Preschool Essentials" // Default title
+                        }
+                    }
+                }
+
+
+                ModalNavigationDrawer(
+                    drawerState = drawerState,
+                    drawerContent = {
+                        ModalDrawerSheet {
                             DrawerHeader(
                                 header = "Preschool Essentials",
                                 headerImageID = R.mipmap.ic_launcher,
@@ -72,164 +84,76 @@ class MainActivity : ComponentActivity() {
                             )
                             DrawerBody(
                                 items = DrawerMenu.menu,
-                                onItemClick = {
-                                    when (it.id) {
-                                        "alphabet" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.AlphabetIdentificationScreen.route
-                                            )
-                                        }
-                                        "alphabet_flashcards" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.AlphabetFlashcardScreen.route
-                                            )
-                                        }
-                                        "number_identification" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.NumberIdentificationScreen.route
-                                            )
-                                        }
-                                        "number_flashcards" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.NumberFlashcardScreen.route
-                                            )
-                                        }
-                                        "gk_shapes" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.ShapesScreen.route
-                                            )
-                                        }
-                                        "gk_colors" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.ColorsScreen.route
-                                            )
-                                        }
-                                        "settings" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.ParentVerificationScreen.route
-                                            )
-                                        }
-
-                                        "home" -> {
-                                            setAsBase(
-                                                navController,
-                                                Screen.HomeScreen.route
-                                            )
-                                        }
-
-                                        "home_practice" -> {
-                                            setAsBase(
-                                                navController,
-                                                Screen.PracticeScreen.route
-                                            )
-                                        }
-
-                                        "gk_vegetables" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.VegetablesScreen.route
-                                            )
-                                        }
-
-                                        "gk_fruits" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.FruitsScreen.route
-                                            )
-                                        }
-
-                                        "gk_animals" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.AnimalsScreen.route
-                                            )
-                                        }
-
-                                        "gk_birds" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.BirdsScreen.route
-                                            )
-                                        }
-
-                                        "practice_alphabets" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.AlphabetsPracticeScreen.route
-                                            )
-                                        }
-
-                                        "practice_numbers" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.NumbersPracticeScreen.route
-                                            )
-                                        }
-
-                                        "practice_vegetable" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.VegetablePracticeScreen.route
-                                            )
-                                        }
-
-                                        "practice_fruit" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.FruitPracticeScreen.route
-                                            )
-                                        }
-
-                                        "practice_animal" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.AnimalPracticeScreen.route
-                                            )
-                                        }
-
-                                        "practice_bird" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.BirdPracticeScreen.route
-                                            )
-                                        }
-
-                                        "practice_shapes" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.ShapePracticeScreen.route
-                                            )
-                                        }
-
-                                        "practice_colors" -> {
-                                            navigateTo(
-                                                navController,
-                                                Screen.ColorPracticeScreen.route
-                                            )
-                                        }
-                                    }
-
-                                    scope.launch {
-                                        scaffoldState.drawerState.close()
-                                    }
+                                onItemClick = handleClick(
+                                    navController,
+                                    scope,
+                                    drawerState
+                                )
+                            )
+                        }
+                    }
+                ) {
+                    Scaffold(
+                        contentWindowInsets = WindowInsets.safeDrawing,
+                        topBar = {
+                            AppBar(
+                                title = currentTitle.value,
+                                onNavigationIconClick = {
+                                    scope.launch { drawerState.open() }
                                 }
                             )
                         }
-                    ) {
-                        BackgroundImage()
-                        Navigation(navController = navController)
+                    ) { innerPadding ->
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(innerPadding)
+                        ) {
+                            BackgroundImage()
+                            Navigation(navController = navController)
+                        }
                     }
-
                 }
             }
-            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
+    }
+
+    @Composable
+    private fun handleClick(
+        navController: NavHostController,
+        scope: CoroutineScope,
+        drawerState: DrawerState
+    ): (MenuItem) -> Unit = {
+
+        when (it.id) {
+            "alphabet" -> navigateTo(navController, Screen.AlphabetIdentificationScreen.route)
+            "alphabet_flashcards" -> navigateTo(navController, Screen.AlphabetFlashcardScreen.route)
+            "number_identification" -> navigateTo(
+                navController,
+                Screen.NumberIdentificationScreen.route
+            )
+
+            "number_flashcards" -> navigateTo(navController, Screen.NumberFlashcardScreen.route)
+            "gk_shapes" -> navigateTo(navController, Screen.ShapesScreen.route)
+            "gk_colors" -> navigateTo(navController, Screen.ColorsScreen.route)
+            "settings" -> navigateTo(navController, Screen.ParentVerificationScreen.route)
+            "home" -> setAsBase(navController, Screen.HomeScreen.route)
+            "home_practice" -> setAsBase(navController, Screen.PracticeScreen.route)
+            "gk_vegetables" -> navigateTo(navController, Screen.VegetablesScreen.route)
+            "gk_fruits" -> navigateTo(navController, Screen.FruitsScreen.route)
+            "gk_animals" -> navigateTo(navController, Screen.AnimalsScreen.route)
+            "gk_birds" -> navigateTo(navController, Screen.BirdsScreen.route)
+            "gk_professions" -> navigateTo(navController, Screen.ProfessionsScreen.route)
+            "practice_alphabets" -> navigateTo(navController, Screen.AlphabetsPracticeScreen.route)
+            "practice_numbers" -> navigateTo(navController, Screen.NumbersPracticeScreen.route)
+            "practice_vegetable" -> navigateTo(navController, Screen.VegetablePracticeScreen.route)
+            "practice_fruit" -> navigateTo(navController, Screen.FruitPracticeScreen.route)
+            "practice_animal" -> navigateTo(navController, Screen.AnimalPracticeScreen.route)
+            "practice_bird" -> navigateTo(navController, Screen.BirdPracticeScreen.route)
+            "practice_shapes" -> navigateTo(navController, Screen.ShapePracticeScreen.route)
+            "practice_colors" -> navigateTo(navController, Screen.ColorPracticeScreen.route)
+        }
+
+        scope.launch { drawerState.close() }
     }
 }
