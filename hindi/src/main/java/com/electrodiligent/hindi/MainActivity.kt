@@ -39,7 +39,6 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             AppTheme {
-                SystemBarsStyle()
 
                 val navController = rememberNavController()
                 val scope = rememberCoroutineScope()

@@ -179,6 +179,7 @@ jobs:
         with:
           name: english-release-aab
           path: ${{ env.MODULE }}/build/outputs/bundle/release/*.aab
+          retention-days: 1
 
       - name: Write Play service account JSON to file (for uploader)
         env:
