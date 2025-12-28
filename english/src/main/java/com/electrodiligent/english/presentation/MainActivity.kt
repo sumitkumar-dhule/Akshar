@@ -66,6 +66,7 @@ class MainActivity : ComponentActivity() {
                             Screen.AnimalsScreen.route -> "Animals"
                             Screen.BirdsScreen.route -> "Birds"
                             Screen.ProfessionsScreen.route -> "Professions"
+                            Screen.VehicleScreen.route -> "Vehicles"
                             // Add all other screens...
                             else -> "Preschool Essentials" // Default title
                         }
