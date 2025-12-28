@@ -97,14 +97,14 @@ object LearningItems {
             icon = R.drawable.prof_icon,
             navigationRoute = Screen.ProfessionsScreen
         ),
-//TODO:: Enable when feature is ready
-//        NavigationItem(
-//            id = "gk_vehicles",
-//            title = "Vehicles",
-//            contentDescription = "Go to Vehicles screen",
-//            icon = R.drawable.veh_icon,
-//            navigationRoute = Screen.VehicleScreen
-//        ),
+
+        NavigationItem(
+            id = "gk_vehicles",
+            title = "Vehicles",
+            contentDescription = "Go to Vehicles screen",
+            icon = R.drawable.veh_icon,
+            navigationRoute = Screen.VehicleScreen
+        ),
 
         NavigationItem(
             id = "home_practice",

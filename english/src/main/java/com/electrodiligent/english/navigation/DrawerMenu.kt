@@ -123,6 +123,13 @@ object DrawerMenu {
             icon = R.drawable.prof_icon
         ),
 
+        MenuItem(
+            id = "gk_vehicles",
+            title = "Vehicles",
+            contentDescription = "Vehicles",
+            icon = R.drawable.veh_icon
+        ),
+
 
         //Practice
         MenuItem(
