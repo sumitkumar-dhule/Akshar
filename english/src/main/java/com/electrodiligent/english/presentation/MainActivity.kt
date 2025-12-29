@@ -145,6 +145,7 @@ class MainActivity : ComponentActivity() {
             "gk_animals" -> navigateTo(navController, Screen.AnimalsScreen.route)
             "gk_birds" -> navigateTo(navController, Screen.BirdsScreen.route)
             "gk_professions" -> navigateTo(navController, Screen.ProfessionsScreen.route)
+            "gk_vehicles" -> navigateTo(navController, Screen.VehicleScreen.route)
             "practice_alphabets" -> navigateTo(navController, Screen.AlphabetsPracticeScreen.route)
             "practice_numbers" -> navigateTo(navController, Screen.NumbersPracticeScreen.route)
             "practice_vegetable" -> navigateTo(navController, Screen.VegetablePracticeScreen.route)
