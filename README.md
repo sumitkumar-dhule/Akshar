@@ -36,11 +36,10 @@ This project is a showcase of modern Android application development.
 
 ## 📸 Screenshots
 
-*(It's highly recommended you replace these placeholders with actual screenshots of your app!)*
+| Home Screen | Alphabet Screen | Vehicles Screen |
+|:---:|:---:|:---:|
+| <img src="https://github.com/user-attachments/assets/9996f266-bfe1-4631-a52c-3bbbf8316a0d" width="90%"/> | <img src="https://github.com/user-attachments/assets/2b817f22-b432-4232-96f2-3485b219f451" width="90%"/> | <img src="https://github.com/user-attachments/assets/2d4b3794-1fb3-4655-8d0f-0c1338825316" width="90%"/> |
 
-|  Screen                              |  Screen                              |
-| -------------------------------------------- | ------------------------------------------ |
-| <img src="" width="250" alt="Screen"> | <img src="" width="250" alt="Screen"> |
 
 ### Feedback link
 https://docs.google.com/forms/d/e/1FAIpQLSfrWnpjmcS_ABDt9BrZlzFSYth21CGdmFRFqDTkQ0qv5QboIg/viewform?usp=pp_url
