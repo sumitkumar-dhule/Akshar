@@ -43,3 +43,18 @@ This project is a showcase of modern Android application development.
 
 ### Feedback link
 https://docs.google.com/forms/d/e/1FAIpQLSfrWnpjmcS_ABDt9BrZlzFSYth21CGdmFRFqDTkQ0qv5QboIg/viewform?usp=pp_url
+
+## 🤝 Git Commit Conventions
+
+This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+
+*   **`feat`**: A new feature.
+*   **`fix`**: A bug fix.
+*   **`docs`**: Documentation only changes.
+*   **`style`**: Changes that do not affect the meaning of the code (white-space, formatting, etc.).
+*   **`refactor`**: A code change that neither fixes a bug nor adds a feature.
+*   **`perf`**: A code change that improves performance.
+*   **`test`**: Adding missing tests or correcting existing tests.
+*   **`build`**: Changes that affect the build system or external dependencies (example scopes: gradle, toml).
+*   **`ci`**: Changes to CI configuration files and scripts.
+*   **`chore`**: Other changes that don't modify src or test files.

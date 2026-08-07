@@ -1,8 +1,9 @@
 package com.electrodiligent.core.presentation.practice
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.electrodiligent.core.domain.model.PictureQuestion
 import com.electrodiligent.core.util.Dimension
@@ -23,15 +24,5 @@ fun PicturePracticeScreen(items: List<PictureQuestion>, findText: String = "FIND
                 findSound = findSound
             )
         }
-
-        //TODO:: Display Ad in following box
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomCenter)
-                .height(Dimension.PADDING_BOTTOM)
-        )
     }
-
-
 }
