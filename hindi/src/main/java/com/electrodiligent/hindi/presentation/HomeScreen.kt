@@ -1,15 +1,18 @@
 package com.electrodiligent.hindi.presentation
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -19,9 +22,7 @@ import com.electrodiligent.core.navigation.NavigationItem
 import com.electrodiligent.core.navigation.NavigationUtil
 import com.electrodiligent.core.navigation.Screen
 import com.electrodiligent.core.presentation.DisplayTile
-import com.electrodiligent.hindi.presentation.ads.BannerAdvertView
 import com.electrodiligent.core.util.Dimension
-import com.electrodiligent.hindi.R
 
 @Composable
 fun HomeScreen(
@@ -78,19 +79,5 @@ fun HomeScreen(
             }
 
         }
-
-        // Display Ad in following box
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomCenter)
-                .height(Dimension.PADDING_BANNER_AD)
-        ) {
-            BannerAdvertView(
-                modifier = Modifier.fillMaxSize(),
-                showAdUnit = stringResource(R.string.admob_banner_ad_practice)
-            )
-        }
-
     }
 }
