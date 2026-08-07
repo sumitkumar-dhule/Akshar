@@ -1,6 +1,8 @@
 package com.electrodiligent.core.presentation.alphabate
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,15 +34,5 @@ fun NumberFlashcardScreen(numberItems: List<NumberItem>) {
             )
 
         }
-
-        //TODO:: Display Ad in following box
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomCenter)
-                .height(Dimension.PADDING_BOTTOM)
-        )
     }
-
-
 }
