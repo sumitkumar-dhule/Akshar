@@ -1,88 +1,60 @@
 package com.electrodiligent.core.presentation.color
 
-import android.content.Context
-import android.media.MediaPlayer
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.electrodiligent.core.R
 import com.electrodiligent.core.domain.model.ColorItem
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class ColorDisplayViewModel @Inject constructor(@ApplicationContext val context: Context) :
-    ViewModel() {
+class ColorDisplayViewModel @Inject constructor() : ViewModel() {
 
-    private var isFirstTime = true
+    private val mutableState = MutableStateFlow(ColorDisplayState())
+    val state: StateFlow<ColorDisplayState> = mutableState.asStateFlow()
 
-    private var mediaPlayer = MediaPlayer.create(context, R.raw.beep)
+    private val effectChannel = Channel<ColorDisplayEffect>(Channel.BUFFERED)
+    val effects = effectChannel.receiveAsFlow()
 
-    var displayColors: List<ColorItem> = listOf(ColorItem())
-
-    private var currentIndex: Int by mutableStateOf(0)
-
-    var colorItemState: ColorItem by mutableStateOf(displayColors[currentIndex])
-
-    fun setup() {
-        colorItemState = displayColors[currentIndex]
-        if (isFirstTime) {
-            playSound()
-            isFirstTime = false
+    fun onIntent(intent: ColorDisplayIntent) {
+        when (intent) {
+            is ColorDisplayIntent.Initialize -> initialize(intent.colors)
+            ColorDisplayIntent.PreviousClicked -> moveBy(-1)
+            ColorDisplayIntent.NextClicked -> moveBy(1)
+            ColorDisplayIntent.CurrentColorClicked -> playCurrentColor()
+            ColorDisplayIntent.SoundPlaybackFinished -> {
+                mutableState.value = mutableState.value.copy(isSoundPlaying = false)
+            }
         }
     }
 
-    fun nextColor() {
-        if (isSoundPlaying()) {
-            return
-        }
+    private fun initialize(colors: List<ColorItem>) {
+        if (colors.isEmpty() || mutableState.value.colors == colors) return
 
-        if (currentIndex == displayColors.lastIndex) {
-            currentIndex = 0
-        } else {
-            currentIndex++
-        }
-
-        colorItemState = displayColors[currentIndex]
-
-        playSound()
-
+        mutableState.value = ColorDisplayState(colors = colors)
+        playCurrentColor()
     }
 
-    fun previousColor() {
-        if (isSoundPlaying()) {
-            return
-        }
+    private fun moveBy(delta: Int) {
+        val currentState = mutableState.value
+        if (currentState.isSoundPlaying || currentState.colors.isEmpty()) return
 
-        if (currentIndex == 0) {
-            currentIndex = displayColors.lastIndex
-        } else {
-            currentIndex--
-        }
-
-        colorItemState = displayColors[currentIndex]
-
-        playSound()
-
+        val nextIndex = (currentState.currentIndex + delta).floorMod(currentState.colors.size)
+        mutableState.value = currentState.copy(currentIndex = nextIndex)
+        playCurrentColor()
     }
 
-    fun currentColor() {
-        colorItemState = displayColors[currentIndex]
-        playSound()
+    private fun playCurrentColor() {
+        val currentState = mutableState.value
+        val color = currentState.currentColor ?: return
+        if (currentState.isSoundPlaying) return
+
+        mutableState.value = currentState.copy(isSoundPlaying = true)
+        effectChannel.trySend(ColorDisplayEffect.PlaySound(color.audio))
     }
 
-    private fun playSound() {
-        if (isSoundPlaying()) {
-            return
-        }
-        mediaPlayer.release()
-        mediaPlayer = MediaPlayer.create(context, displayColors[currentIndex].audio)
-        mediaPlayer.start()
-    }
-
-    private fun isSoundPlaying(): Boolean {
-        return mediaPlayer.isPlaying
-    }
+    private fun Int.floorMod(modulus: Int): Int = ((this % modulus) + modulus) % modulus
 }
